@@ -1,0 +1,527 @@
+/* =========================================
+   Print-Specific CSS with mm/cm units
+   Modern CV Design - Print Optimized
+   ========================================= */
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+/* Define exact A4 page dimensions */
+@page {
+    size: A4 portrait;
+    margin: 15mm 20mm;
+    background-color: #fdfcfa;
+}
+
+:root {
+    /* Color Palette - Warm Ecru/Cream Tones */
+    --color-text-primary: #2d2d2d;
+    --color-text-secondary: #6b6b6b;
+    --color-text-muted: #8a8a8a;
+    --color-accent: #2d2d2d;
+    --color-border: #e8e3db;
+    --color-border-strong: #2d2d2d;
+    --color-bg-page: #fdfcfa;
+    --color-bg-container: #fdfcfa;
+    --color-bg-subtle: #f9f6f0;
+
+    /* Typography in mm */
+    --font-family:
+        "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui,
+        sans-serif;
+    --font-size-base: 3.4mm;
+    --line-height-base: 1.5;
+    --letter-spacing-tight: -0.02em;
+    --letter-spacing-normal: 0;
+
+    /* Spacing in mm */
+    --spacing-xs: 1mm;
+    --spacing-sm: 1.8mm;
+    --spacing-md: 2.8mm;
+    --spacing-lg: 4.5mm;
+    --spacing-xl: 5.5mm;
+    --spacing-2xl: 8mm;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    color: var(--color-text-primary);
+    background-color: #fdfcfa;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.container {
+    width: 100%;
+    max-width: none;
+    margin: 0 !important;
+    padding: 0 !important;
+    background: #fdfcfa;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.cv-container {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #fdfcfa !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+.cv-main {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: #fdfcfa !important;
+}
+
+.cv-content-wrapper {
+    padding: 0 !important;
+    margin: 0 !important;
+    display: block !important;
+}
+
+.cv-sidebar-wrapper {
+    display: none !important;
+}
+
+.cv-toc-sidebar {
+    display: none !important;
+}
+
+.print-buttons {
+    display: none !important;
+}
+
+.page-guide {
+    display: none !important;
+}
+
+.container::before,
+.container::after {
+    display: none !important;
+}
+
+a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+}
+
+/* =========================================
+   Header Section
+   ========================================= */
+
+header {
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: var(--spacing-xl);
+}
+
+header h1 {
+    font-size: 8mm;
+    font-weight: 700;
+    letter-spacing: var(--letter-spacing-tight);
+    margin-top: 0;
+    padding-top: 0;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-accent);
+}
+
+.contact-info {
+    margin-top: var(--spacing-md);
+    font-size: 3mm;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+}
+
+.contact-info div {
+    margin-bottom: 0.5mm;
+}
+
+.contact-info strong {
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-right: var(--spacing-xs);
+}
+
+.contact-info a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+}
+
+/* Editable field for phone number in print */
+.editable-field {
+    display: inline;
+    border: none;
+    background: transparent;
+    color: var(--color-text-secondary);
+    font-size: 3mm;
+    padding: 0;
+    margin: 0;
+}
+
+.editable-field:empty::before {
+    content: "";
+}
+
+/* =========================================
+   Section Styling
+   ========================================= */
+
+section {
+    margin-bottom: var(--spacing-2xl);
+}
+
+h2.section-title {
+    font-size: 5mm;
+    font-weight: 600;
+    letter-spacing: var(--letter-spacing-tight);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-accent);
+    page-break-after: avoid;
+    break-after: avoid;
+}
+
+hr {
+    border: 0;
+    border-top: 0.3mm solid var(--color-border);
+    margin-bottom: var(--spacing-lg);
+    page-break-after: avoid;
+    break-after: avoid;
+}
+
+.subsection-title {
+    font-size: 4mm;
+    font-weight: 500;
+    margin-top: var(--spacing-xl);
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-primary);
+}
+
+/* =========================================
+   Profile Section
+   ========================================= */
+
+.profile-summary {
+    font-size: 3mm;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+}
+
+/* =========================================
+   Timeline Layout (Experience & Education)
+   ========================================= */
+
+.timeline-entry {
+    display: grid;
+    grid-template-columns: 50mm 1fr;
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.timeline-entry:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.entry-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.entry-subheading {
+    font-weight: 600;
+    font-size: 3mm;
+    margin-bottom: var(--spacing-xs);
+    color: var(--color-text-primary);
+}
+
+.entry-location {
+    font-size: 3mm;
+    color: var(--color-text-muted);
+    display: block;
+    margin-bottom: var(--spacing-xs);
+}
+
+.entry-date {
+    font-size: 3mm;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    margin-bottom: var(--spacing-sm);
+}
+
+.team-description {
+    font-size: 3mm;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+    margin-top: var(--spacing-sm);
+    padding-top: var(--spacing-sm);
+    border-top: 0.3mm solid var(--color-border);
+}
+
+.entry-content h3 {
+    margin: 0 0 var(--spacing-sm) 0;
+    font-size: 3.5mm;
+    font-weight: 600;
+    letter-spacing: var(--letter-spacing-tight);
+    color: var(--color-accent);
+    page-break-after: avoid;
+    break-after: avoid;
+}
+
+.technologies {
+    font-size: 2.8mm;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-md);
+    display: block;
+    line-height: 1.5;
+    font-style: italic;
+}
+
+.entry-content > strong {
+    display: block;
+    margin-top: var(--spacing-md);
+    margin-bottom: var(--spacing-sm);
+    font-weight: 600;
+    font-size: 3mm;
+    color: var(--color-text-primary);
+}
+
+ul.achievements {
+    padding-left: 5mm;
+    margin: 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+ul.achievements li {
+    margin-bottom: var(--spacing-sm);
+    font-size: 3mm;
+    line-height: 1.5;
+    color: var(--color-text-secondary);
+}
+
+ul.achievements li strong {
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+/* =========================================
+   Skills Section
+   ========================================= */
+
+.skills-legend {
+    font-size: 3mm;
+    color: var(--color-text-muted);
+    margin-bottom: var(--spacing-sm);
+    font-style: italic;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg) var(--spacing-xl);
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.skill-category {
+    margin-bottom: 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    border-bottom: none !important;
+    padding-bottom: 0 !important;
+}
+
+.skill-category h4 {
+    font-size: 3.2mm;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-primary);
+}
+
+.skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.skill-tag {
+    font-size: 2.6mm;
+    padding: 0.7mm 1.7mm;
+    background: var(--color-bg-subtle);
+    border: 0.2mm solid var(--color-border);
+    border-radius: 1mm;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+}
+
+/* =========================================
+   Languages Section
+   ========================================= */
+
+.languages-list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 150mm;
+}
+
+.language-item {
+    font-size: 3mm;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+    background: transparent;
+    border: none;
+    padding: 0;
+    flex: 1;
+    text-align: center;
+}
+
+.language-item:first-child {
+    text-align: left;
+}
+
+.language-item:last-child {
+    text-align: right;
+}
+
+/* =========================================
+   Certificates Section
+   ========================================= */
+
+.certificates-compact {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg) var(--spacing-xl);
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.cert-category {
+    margin-bottom: 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.cert-category h4 {
+    font-size: 3.2mm;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-primary);
+}
+
+.cert-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.cert-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4mm;
+    padding-left: 2mm;
+    border-left: 0.5mm solid var(--color-border);
+}
+
+.cert-title {
+    font-size: 3mm;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+}
+
+.cert-meta {
+    font-size: 2.6mm;
+    color: var(--color-text-muted);
+    font-style: italic;
+}
+
+/* =========================================
+   Strengths Section
+   ========================================= */
+
+.strengths-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-lg) var(--spacing-xl);
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.strength-category {
+    margin-bottom: 0;
+    page-break-inside: avoid;
+    break-inside: avoid;
+    border-left: none !important;
+    padding-left: 0 !important;
+}
+
+.strength-category h4 {
+    font-size: 3.2mm;
+    font-weight: 600;
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-primary);
+}
+
+.strengths-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+}
+
+.strength-tag {
+    font-size: 2.6mm;
+    padding: 0.7mm 1.7mm;
+    background: var(--color-bg-subtle);
+    border: 0.2mm solid var(--color-border);
+    border-radius: 1mm;
+    color: var(--color-text-muted);
+    white-space: nowrap;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+}
+
+/* =========================================
+   Hobbies Section
+   ========================================= */
+
+.hobbies-tags {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md) var(--spacing-lg);
+    max-width: 100%;
+    page-break-inside: avoid;
+    break-inside: avoid;
+}
+
+.hobby-tag {
+    font-size: 3mm;
+    padding: 0;
+    background: transparent;
+    border: none;
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+    display: inline-flex;
+    align-items: center;
+    gap: 1.3mm;
+    font-weight: 400;
+}
+
+.hobby-tag i {
+    font-size: 3.2mm;
+    color: var(--color-text-primary);
+    opacity: 0.7;
+}

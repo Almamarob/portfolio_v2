@@ -172,7 +172,7 @@ a {
 
 /* Hero Section */
 .hero {
-    min-height: 100vh;
+    min-height: calc(100vh - 70px - 60px);
     display: flex;
     align-items: center;
     padding-top: 70px;
@@ -1074,5 +1074,80 @@ a {
     .strength-tag {
         font-size: 0.75rem;
         padding: 0.25rem 0.55rem;
+    }
+}
+
+/* Quick Links */
+.quick-links {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.quick-link-card {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    transition: all var(--transition);
+    text-decoration: none;
+}
+
+.quick-link-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    border-color: var(--color-accent);
+}
+
+.quick-link-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    color: var(--color-accent);
+    transition: all var(--transition);
+}
+
+.quick-link-card:hover .quick-link-icon {
+    background: var(--color-accent);
+    color: var(--color-bg);
+    border-color: var(--color-accent);
+}
+
+.quick-link-card h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+}
+
+.quick-link-card p {
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    max-width: 100%;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .quick-links {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .quick-link-card {
+        padding: 1.5rem 1.25rem;
+    }
+
+    .quick-link-icon {
+        width: 40px;
+        height: 40px;
     }
 }

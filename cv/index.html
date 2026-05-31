@@ -1,0 +1,781 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>CV | Personal Patterns</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="style.css" />
+        <script>
+            (function () {
+                const theme = localStorage.getItem("theme") || "light";
+                document.documentElement.setAttribute("data-theme", theme);
+            })();
+        </script>
+    </head>
+    <body>
+        <nav class="nav">
+            <div class="container nav-inner">
+                <a href="../home/index.html" class="nav-logo"
+                    >Portfolio | Personal Patterns</a
+                >
+                <div class="nav-actions">
+                    <ul class="nav-links">
+                        <li><a href="../home/index.html">Home</a></li>
+                        <li><a href="../about/index.html">Who I Am</a></li>
+                        <li>
+                            <a href="../cv/index.html" class="active">CV</a>
+                        </li>
+                        <li>
+                            <a href="../skills/index.html"
+                                >Skills & Expertise</a
+                            >
+                        </li>
+                        <li><a href="../projects/index.html">Projects</a></li>
+                    </ul>
+                    <button class="theme-toggle" aria-label="Toggle theme">
+                        <svg
+                            class="theme-toggle-icon sun"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
+                            />
+                        </svg>
+                        <svg
+                            class="theme-toggle-icon moon"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                        >
+                            <path
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
+                            />
+                        </svg>
+                    </button>
+                    <button class="nav-toggle" aria-label="Toggle navigation">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <main class="cv-main">
+            <div class="cv-content-wrapper">
+                <!-- CV Table of Contents - Fixed sidebar -->
+                <div class="cv-sidebar-wrapper">
+                    <nav class="cv-toc-sidebar">
+                        <h3>Contents</h3>
+                        <ul class="cv-toc-list">
+                            <li>
+                                <a href="#profile" class="cv-toc-link"
+                                    >Profile</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="#working-experience"
+                                    class="cv-toc-link"
+                                    >Working Experience</a
+                                >
+                            </li>
+                            <li>
+                                <a href="#education" class="cv-toc-link"
+                                    >Education</a
+                                >
+                            </li>
+                            <li>
+                                <a href="#certifications" class="cv-toc-link"
+                                    >Certifications</a
+                                >
+                            </li>
+                            <li>
+                                <a href="#skills" class="cv-toc-link"
+                                    >Skills & Expertise</a
+                                >
+                            </li>
+                            <li>
+                                <a href="#strengths" class="cv-toc-link"
+                                    >Strengths</a
+                                >
+                            </li>
+                            <li>
+                                <a href="#languages" class="cv-toc-link"
+                                    >Languages</a
+                                >
+                            </li>
+                        </ul>
+
+                        <div class="print-buttons">
+                            <button
+                                id="btnPuppeteer"
+                                onclick="generatePuppeteerPDF()"
+                            >
+                                Generate PDF
+                            </button>
+                        </div>
+                    </nav>
+                </div>
+
+                <div class="cv-container">
+                    <header>
+                        <h1>Alessandra Margherito</h1>
+                        <div class="contact-info">
+                            <div>
+                                <strong>Phone number:</strong>
+                                <span
+                                    class="editable-field"
+                                    contenteditable="true"
+                                    data-placeholder="+39 ___________"
+                                ></span>
+                            </div>
+                            <div>
+                                <strong>Email address:</strong>
+                                <a href="mailto:alessandra.margherito@gmail.com"
+                                    >alessandra.margherito@gmail.com</a
+                                >
+                            </div>
+                            <div>
+                                <strong>Linkedin:</strong>
+                                <a
+                                    href="https://www.linkedin.com/in/alessandramargherito/"
+                                    target="_blank"
+                                    >https://www.linkedin.com/in/alessandramargherito/</a
+                                >
+                            </div>
+                            <div>
+                                <strong>Portfolio:</strong>
+                                <a
+                                    href="https://almamarob.github.io/portfolio_v1/"
+                                    target="_blank"
+                                    >https://almamarob.github.io/portfolio_v1/</a
+                                >
+                            </div>
+                        </div>
+                    </header>
+
+                    <section id="profile">
+                        <h2 class="section-title">Profile</h2>
+                        <hr />
+                        <p class="profile-summary">
+                            I am naturally curious and observant, always
+                            exploring how and why things exist as they do. I
+                            question everything, not from doubt, but from a
+                            genuine desire to understand. For me, design is a
+                            dialogue between curiosity and meaning, where every
+                            exploration shapes the answer.
+                        </p>
+                    </section>
+
+                    <section id="working-experience">
+                        <h2 class="section-title">Working experience</h2>
+                        <hr />
+
+                        <div class="timeline-entry">
+                            <div class="entry-left">
+                                <div class="entry-subheading">Enablia</div>
+                                <span class="entry-location">Milan, Italy</span>
+                                <div class="entry-date">08/2025 – present</div>
+                                <div class="team-description">
+                                    Modular technology platform streamlining
+                                    insurance distribution through embedded and
+                                    affinity solutions across the entire value
+                                    chain.
+                                </div>
+                            </div>
+                            <div class="entry-content">
+                                <h3>Product owner</h3>
+                                <span class="technologies"
+                                    >Technologies: Atlassian Suite | Figma | MS
+                                    Office Suite | Generative AI</span
+                                >
+                                <strong
+                                    >Key Achievements and
+                                    Responsibilities</strong
+                                >
+                                <ul class="achievements">
+                                    <li>
+                                        <strong>Logic Deconstruction:</strong>
+                                        Deconstructed complex insurance
+                                        workflows into modular functional
+                                        blocks, bridging high-level business
+                                        goals with scalable technical execution.
+                                    </li>
+                                    <li>
+                                        <strong>Flow Engineering:</strong>
+                                        Mapped the entire end-to-end B2B/B2C
+                                        journey to ensure architectural
+                                        integrity, reworking logic until the
+                                        system structure was rock solid.
+                                    </li>
+                                    <li>
+                                        <strong
+                                            >Analytical Problem Solving:</strong
+                                        >
+                                        Leveraged data to identify operational
+                                        friction points and prioritized the
+                                        backlog based on technical ROI and
+                                        immediate impact, avoiding
+                                        "perfect-on-paper" traps.
+                                    </li>
+                                    <li>
+                                        <strong
+                                            >Technical Bridge &
+                                            Alignment:</strong
+                                        >
+                                        Translated vague stakeholder requests
+                                        into technical blueprints and PRDs,
+                                        providing the team with clarity.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="timeline-entry">
+                            <div class="entry-left">
+                                <div class="entry-subheading">Wefox</div>
+                                <span class="entry-location">Milan, Italy</span>
+                                <div class="entry-date">03/2024 – 07/2025</div>
+                                <div class="team-description">
+                                    Affinity Toolkit Team<br />
+                                    Simplified the insurance process via a
+                                    digital platform connecting customers,
+                                    brokers, and providers, making insurance
+                                    more accessible and helpful.
+                                </div>
+                            </div>
+                            <div class="entry-content">
+                                <h3>Product owner</h3>
+                                <span class="technologies"
+                                    >Technologies: Atlassian Suite | Figma | MS
+                                    Office Suite | Generative AI
+                                </span>
+
+                                <strong
+                                    >Key Achievements and
+                                    Responsibilities</strong
+                                >
+                                <ul class="achievements">
+                                    <li>
+                                        <strong>System Unpacking:</strong>
+                                        Unpacked a fragmented three-sided
+                                        marketplace (customers, brokers,
+                                        providers) and broke it down into
+                                        actionable product increments, building
+                                        a fluid digital infrastructure.
+                                    </li>
+                                    <li>
+                                        <strong
+                                            >Build Sequence
+                                            Optimization:</strong
+                                        >
+                                        Broke down complex delivery cycles into
+                                        actionable phases, stripping away
+                                        non-essential tasks to focus on
+                                        unblocking the system and shipping
+                                        functional solutions on time.
+                                    </li>
+                                    <li>
+                                        <strong>Process Optimization:</strong>
+                                        Treated the platform as a living
+                                        ecosystem, identifying internal workflow
+                                        failures and fixing them on the fly to
+                                        increase overall system resilience.
+                                    </li>
+                                    <li>
+                                        <strong>Radical Alignment:</strong>
+                                        Managed complex requirements with
+                                        radical candor, ensuring development
+                                        efforts remained aligned with long-term
+                                        technical stability and product vision.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="timeline-entry">
+                            <div class="entry-left">
+                                <div class="entry-subheading">
+                                    Jenses Hughes
+                                </div>
+                                <span class="entry-location">Milan, Italy</span>
+                                <div class="entry-date">01/2020 – 02/2024</div>
+                                <div class="team-description">
+                                    Fire Prevention and Protection Team<br />
+                                    Global multidisciplinary engineering and
+                                    consulting firm focused on life safety,
+                                    security, and resilience in the built
+                                    environment.
+                                </div>
+                            </div>
+                            <div class="entry-content">
+                                <h3>Engineering consultant</h3>
+                                <span class="technologies"
+                                    >Technologies: AutoCAD | Revit | PyroSim,
+                                    FDS | Pathfinder | MS Office Suite</span
+                                >
+
+                                <strong
+                                    >Key Achievements and
+                                    Responsibilities</strong
+                                >
+                                <ul class="achievements">
+                                    <li>
+                                        <strong
+                                            >On-site Testing and Client
+                                            Support:</strong
+                                        >
+                                        Conducted technical tests and assisted
+                                        on construction sites, strengthening
+                                        client relationships.
+                                    </li>
+                                    <li>
+                                        <strong
+                                            >Process and Quality
+                                            Optimization:</strong
+                                        >
+                                        Developed reporting formats and analysis
+                                        charts, reducing documentation time,
+                                        streamlining tasks, and improving
+                                        quality control.
+                                    </li>
+                                    <li>
+                                        <strong>Regulatory compliance:</strong>
+                                        Applied Fire Code Compliance and Fire
+                                        Safety Engineering methods to ensure
+                                        full project compliance.
+                                    </li>
+                                    <li>
+                                        <strong>Team Coordination:</strong>
+                                        Collaborated with stakeholders and
+                                        multidisciplinary teams to align goals
+                                        and support project success.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="timeline-entry">
+                            <div class="entry-left">
+                                <div class="entry-subheading">Arcoprofil</div>
+                                <span class="entry-location"
+                                    >Vicenza, Italy</span
+                                >
+                                <div class="entry-date">10/2019 – 12/2019</div>
+                                <div class="team-description">
+                                    Safety and Quality Team<br />
+                                    Arcoprofil is a family-owned company
+                                    specializing in cold-rolled grooved profiles
+                                    with the GROB system. Managing all
+                                    mechanical processes in-house, it serves
+                                    leading manufacturers worldwide.
+                                </div>
+                            </div>
+                            <div class="entry-content">
+                                <h3>Engineer</h3>
+
+                                <strong
+                                    >Key Achievements and
+                                    Responsibilities</strong
+                                >
+                                <ul class="achievements">
+                                    <li>
+                                        <strong
+                                            >Compliance and Systems
+                                            Management:</strong
+                                        >
+                                        Managed Integrated Management Systems to
+                                        meet industry standards and address
+                                        operational challenges.
+                                    </li>
+                                    <li>
+                                        <strong>Data-driven reporting:</strong>
+                                        Created spreadsheets, graphs, and
+                                        reports for audits and quality control,
+                                        turning data into actionable insights.
+                                    </li>
+                                    <li>
+                                        <strong>Process optimization:</strong>
+                                        Streamlined workflows, implemented
+                                        corrective actions, and prioritized
+                                        tasks to improve efficiency.
+                                    </li>
+                                    <li>
+                                        <strong>Analytical rigor:</strong>
+                                        Applied engineering methods and best
+                                        practices to uphold compliance during
+                                        audits.
+                                    </li>
+                                    <li>
+                                        <strong>Process Improvement:</strong>
+                                        Collaborated with cross-functional teams
+                                        to identify improvements and enhance
+                                        performance.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="timeline-entry">
+                            <div class="entry-left">
+                                <div class="entry-subheading">
+                                    National Fire Brigade Corps
+                                </div>
+                                <span class="entry-location">Turin, Italy</span>
+                                <div class="entry-date">04/2018 – 02/2019</div>
+                                <div class="team-description">
+                                    Firefighters - A key national organization
+                                    dedicated to fire safety, prevention, and
+                                    emergency response.<br />
+                                    Through expert consulting, inspections, and
+                                    advanced technology, they ensure life
+                                    safety, security, and resilience in urban
+                                    and industrial environments.
+                                </div>
+                            </div>
+                            <div class="entry-content">
+                                <h3>
+                                    Curricular intern and Master thesis student
+                                </h3>
+                                <span class="technologies"
+                                    >Technologies: AutoCAD | Revit | PyroSim,
+                                    FDS | Pathfinder | MS Office Suite</span
+                                >
+
+                                <strong
+                                    >Key Achievements and
+                                    Responsibilities</strong
+                                >
+                                <ul class="achievements">
+                                    <li>
+                                        <strong
+                                            >Field Experience and Applied
+                                            research:</strong
+                                        >
+                                        Bridged theory and practice during an
+                                        internship with the fire department by
+                                        supporting inspections, analyses,
+                                        meetings, and training sessions.
+                                        Conducted research on fluid dynamics to
+                                        study smoke behavior and evacuation
+                                        scenarios, delivering practical safety
+                                        solutions.
+                                    </li>
+                                    <li>
+                                        <strong
+                                            >Emergency Planning and
+                                            Compliance:</strong
+                                        >
+                                        Developed comprehensive emergency
+                                        response plans by translating safety
+                                        requirements into actionable strategies,
+                                        applying both analytical and engineering
+                                        approaches to ensure alignment with fire
+                                        safety standards.
+                                    </li>
+                                    <li>
+                                        <strong
+                                            >Collaboration and Knowledge
+                                            Sharing:</strong
+                                        >
+                                        Coordinated with multidisciplinary teams
+                                        to develop presentations and fire code
+                                        compliance reports, fostering
+                                        cooperation, mutual support, and
+                                        alignment across diverse professionals
+                                        to achieve shared safety goals.
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="education">
+                        <h2 class="section-title">Education</h2>
+                        <hr />
+
+                        <div class="timeline-entry">
+                            <div class="entry-left">
+                                <div class="entry-subheading">
+                                    Politecnico di Torino
+                                </div>
+                                <span class="entry-location">Turin, Italy</span>
+                                <div class="entry-date">04/2019</div>
+                            </div>
+                            <div class="entry-content">
+                                <h3>
+                                    Master's and Bachelor's Degree in Building
+                                    Engineering
+                                </h3>
+                                <ul class="achievements">
+                                    <li>
+                                        <strong>Final Grade:</strong> 110/110
+                                        with Honors
+                                    </li>
+                                    <li>
+                                        <strong
+                                            >Professional Qualification:</strong
+                                        >
+                                        Licensed Building Engineer (Successfully
+                                        passed the State Professional Practice
+                                        Examination)
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="certifications">
+                        <h2 class="section-title">Certifications</h2>
+                        <hr />
+
+                        <div class="certificates-compact">
+                            <div class="cert-category">
+                                <h4>Product Management and Design</h4>
+                                <div class="cert-list">
+                                    <div class="cert-item">
+                                        <span class="cert-title"
+                                            >Digital Product Management</span
+                                        >
+                                        <span class="cert-meta"
+                                            >Darden School of Business ·
+                                            2024</span
+                                        >
+                                    </div>
+                                    <div class="cert-item">
+                                        <span class="cert-title"
+                                            >Jira Advanced</span
+                                        >
+                                        <span class="cert-meta"
+                                            >Atlassian · 2024</span
+                                        >
+                                    </div>
+                                    <div class="cert-item">
+                                        <span class="cert-title"
+                                            >UX/UI Design</span
+                                        >
+                                        <span class="cert-meta"
+                                            >Google Professional Certificate ·
+                                            2022</span
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="cert-category">
+                                <h4>Technical and Development</h4>
+                                <div class="cert-list">
+                                    <div class="cert-item">
+                                        <span class="cert-title"
+                                            >SQL Advanced</span
+                                        >
+                                        <span class="cert-meta"
+                                            >HackerRank · 2025</span
+                                        >
+                                    </div>
+                                    <div class="cert-item">
+                                        <span class="cert-title"
+                                            >Python Basic</span
+                                        >
+                                        <span class="cert-meta"
+                                            >HackerRank · 2025</span
+                                        >
+                                    </div>
+                                    <div class="cert-item">
+                                        <span class="cert-title"
+                                            >HTML, CSS & JavaScript</span
+                                        >
+                                        <span class="cert-meta"
+                                            >University of Michigan & Johns
+                                            Hopkins University · 2023</span
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="skills">
+                        <h2 class="section-title" style="margin-bottom: 0">
+                            Skills and Expertise
+                        </h2>
+                        <p class="skills-legend">
+                            Level: Professional (P) | Advanced (A) |
+                            Intermediate (I) | Beginner (B)
+                        </p>
+                        <hr />
+                        <div class="skills-grid">
+                            <div class="skill-category">
+                                <h4>Product Management</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag"
+                                        >Strategy & Roadmapping (P)</span
+                                    >
+                                    <span class="skill-tag"
+                                        >Agile & Scrum (P)</span
+                                    >
+                                    <span class="skill-tag"
+                                        >Stakeholder Management (P)</span
+                                    >
+                                    <span class="skill-tag"
+                                        >User Research (A)</span
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="skill-category">
+                                <h4>Software and Platforms</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag"
+                                        >Revit & AutoCAD (P)</span
+                                    >
+                                    <span class="skill-tag">Pyrosim (A)</span>
+                                    <span class="skill-tag"
+                                        >Adobe Suite (I)</span
+                                    >
+                                    <span class="skill-tag"
+                                        >Jira & Confluence (P)</span
+                                    >
+                                    <span class="skill-tag"
+                                        >Figma & FigJam (A)</span
+                                    >
+                                    <span class="skill-tag">GIS (A)</span>
+                                </div>
+                            </div>
+
+                            <div class="skill-category">
+                                <h4>Domain Expertise</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag"
+                                        >Civil Engineering & ConTech (P)</span
+                                    >
+                                    <span class="skill-tag"
+                                        >Fire Engineering (P)</span
+                                    >
+                                    <span class="skill-tag"
+                                        >Real Estate & PropTech (A)</span
+                                    >
+                                    <span class="skill-tag"
+                                        >BIM & Digital Twins (A)</span
+                                    >
+                                    <span class="skill-tag"
+                                        >Sustainability & Reuse (A)</span
+                                    >
+                                </div>
+                            </div>
+
+                            <div class="skill-category">
+                                <h4>Coding and Data</h4>
+                                <div class="skill-tags">
+                                    <span class="skill-tag">SQL (I)</span>
+                                    <span class="skill-tag">Python (B)</span>
+                                    <span class="skill-tag"
+                                        >HTML & CSS (I)</span
+                                    >
+                                    <span class="skill-tag"
+                                        >JavaScript (B)</span
+                                    >
+                                    <span class="skill-tag"
+                                        >Data Analysis & Reporting (I)</span
+                                    >
+                                    <span class="skill-tag"
+                                        >Product Engineering (A)</span
+                                    >
+                                    <span class="skill-tag"
+                                        >Prompt Engineering (P)</span
+                                    >
+                                    <span class="skill-tag"
+                                        >AI-Assisted Development (A)</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="strengths">
+                        <h2 class="section-title">Strengths</h2>
+                        <hr />
+                        <div class="strengths-container">
+                            <div class="strength-category">
+                                <h4>Engineering Rigor</h4>
+                                <div class="strengths-list">
+                                    <span class="strength-tag"
+                                        >Analytical Mindset</span
+                                    >
+                                    <span class="strength-tag"
+                                        >Critical Thinking</span
+                                    >
+                                    <span class="strength-tag"
+                                        >Technical Bridge</span
+                                    >
+                                </div>
+                            </div>
+                            <div class="strength-category">
+                                <h4>Product Leadership and Growth</h4>
+                                <div class="strengths-list">
+                                    <span class="strength-tag"
+                                        >Avid Learner</span
+                                    >
+                                    <span class="strength-tag"
+                                        >Radical Candor</span
+                                    >
+                                    <span class="strength-tag"
+                                        >Divergent Thinking</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="languages">
+                        <h2 class="section-title">Languages</h2>
+                        <hr />
+                        <div class="languages-list">
+                            <span class="language-item"
+                                ><strong><em>Italian</em></strong>
+                                (Native)</span
+                            >
+                            <span class="language-item"
+                                ><strong><em>English</em></strong>
+                                (Fluent)</span
+                            >
+                            <span class="language-item"
+                                ><strong><em>German</em></strong>
+                                (Learning)</span
+                            >
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2025 Personal Patterns. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <script src="../js/main.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>

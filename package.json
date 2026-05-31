@@ -1,0 +1,21 @@
+{
+  "name": "portfolio-v1",
+  "version": "1.0.0",
+  "description": "Personal Portfolio Website with CV Generator",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "portfolio",
+    "cv",
+    "resume"
+  ],
+  "author": "Alessandra Margherito",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "puppeteer": "^21.0.0"
+  }
+}
