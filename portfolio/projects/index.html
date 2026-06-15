@@ -4,6 +4,11 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Projects | Personal Patterns</title>
+        <link
+            rel="icon"
+            type="image/svg+xml"
+            href="../images/favicon_am_e8d5b0_bold.svg"
+        />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -11,6 +16,7 @@
             rel="stylesheet"
         />
         <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="projects_style.css" />
         <script>
             // Set theme immediately before page renders to prevent flash
             (function () {
@@ -22,16 +28,29 @@
     <body>
         <nav class="nav">
             <div class="container nav-inner">
-                <a href="../home/index.html" class="nav-logo"
-                    >Portfolio | Personal Patterns</a
-                >
+                <a href="../home/index.html" class="nav-logo">
+                    <img
+                        src="../images/favicon_am_e8d5b0_bold.svg"
+                        alt="Logo"
+                        class="nav-logo-img"
+                    />
+                    Portfolio | Personal Patterns
+                </a>
                 <div class="nav-actions">
                     <ul class="nav-links">
                         <li><a href="../home/index.html">Home</a></li>
                         <li><a href="../about/index.html">Who I Am</a></li>
                         <li><a href="../cv/index.html">CV</a></li>
-                        <li><a href="../skills/index.html">Skills & Expertise</a></li>
-                        <li><a href="../projects/index.html" class="active">Projects</a></li>
+                        <li>
+                            <a href="../skills/index.html"
+                                >Skills & Expertise</a
+                            >
+                        </li>
+                        <li>
+                            <a href="../projects/index.html" class="active"
+                                >Projects</a
+                            >
+                        </li>
                     </ul>
                     <button class="theme-toggle" aria-label="Toggle theme">
                         <svg
@@ -339,6 +358,69 @@
                         </article>
 
                         <!-- Previous Portfolio -->
+                        <article
+                            class="project-card"
+                            data-category="realestate"
+                        >
+                            <div class="project-image">
+                                <div
+                                    style="
+                                        width: 100%;
+                                        height: 200px;
+                                        background: linear-gradient(
+                                            135deg,
+                                            #9e7420 0%,
+                                            #ba7517 100%
+                                        );
+                                        display: flex;
+                                        align-items: center;
+                                        justify-content: center;
+                                        color: #fff;
+                                        font-size: 1.5rem;
+                                        font-weight: 600;
+                                        letter-spacing: 0.05em;
+                                    "
+                                >
+                                    Human Traces
+                                </div>
+                            </div>
+                            <div class="project-content">
+                                <span class="project-category"
+                                    >Real Estate & PropTech</span
+                                >
+                                <h3 class="project-title">
+                                    Human Traces: PropTech & ConTech
+                                    Perspectives
+                                </h3>
+                                <p class="project-description">
+                                    A curated collection of insights on
+                                    PropTech, ConTech, and real estate
+                                    innovation. Exploring how technology
+                                    intersects with construction and property
+                                    markets across European cities, with
+                                    analysis of investment patterns, market
+                                    dynamics, and the silos that define the
+                                    industry.
+                                    <br /><br />
+                                    <strong>Topics:</strong> PropTech, ConTech,
+                                    Real Estate Markets, Capital Investment,
+                                    Urban Development
+                                    <br />
+                                    <strong>Period:</strong> 2026 - Ongoing
+                                    <br /><br />
+                                    <a
+                                        href="../../humantraces/index.html"
+                                        style="
+                                            color: var(--color-accent);
+                                            text-decoration: underline;
+                                        "
+                                    >
+                                        Explore Human Traces →
+                                    </a>
+                                </p>
+                            </div>
+                        </article>
+
                         <article class="project-card" data-category="previous">
                             <div class="project-image">
                                 <img
@@ -393,5 +475,6 @@
         </footer>
 
         <script src="../js/main.js"></script>
+        <script src="projects_main.js"></script>
     </body>
 </html>

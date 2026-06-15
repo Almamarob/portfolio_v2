@@ -1,0 +1,43 @@
+<svg viewBox="0 0 800 600" xmlns="http://www.w3.org/2000/svg" class="europe-map">
+    <!-- Simplified Europe map placeholder with approximate borders -->
+    <!-- Using a simplified rectangular representation with key geographic boundaries -->
+
+    <!-- Map boundary (simplified Europe outline) -->
+    <rect x="50" y="50" width="700" height="500" class="map-country" rx="20"/>
+
+    <!-- Simplified country shapes - using basic paths -->
+    <!-- This is a placeholder - you can add more detailed paths if needed -->
+
+    <!-- Italy (approximate) -->
+    <path d="M 380 350 L 400 380 L 420 420 L 410 460 L 390 480 L 370 470 L 360 440 L 350 400 L 360 370 Z" class="map-country"/>
+
+    <!-- Germany (approximate) -->
+    <path d="M 420 200 L 480 210 L 500 250 L 490 290 L 470 310 L 430 300 L 410 270 L 400 230 Z" class="map-country"/>
+
+    <!-- France (approximate) -->
+    <path d="M 280 280 L 340 260 L 370 300 L 360 350 L 320 370 L 270 350 L 250 310 Z" class="map-country"/>
+
+    <!-- Spain (approximate) -->
+    <path d="M 180 350 L 260 340 L 280 380 L 270 420 L 220 440 L 170 420 L 160 380 Z" class="map-country"/>
+
+    <!-- UK (approximate) -->
+    <path d="M 220 180 L 260 170 L 280 200 L 270 240 L 240 260 L 210 240 L 200 210 Z" class="map-country"/>
+
+    <!-- Milano node (lat 45.4°N lon 9.2°E) -->
+    <!-- Position: approximately in northern Italy -->
+    <g class="city-node" onclick="window.location.href='milano/milano.html'">
+        <circle class="city-node-outer" cx="385" cy="365" r="15"/>
+        <circle class="city-node-inner" cx="385" cy="365" r="5"/>
+        <text class="city-label" x="385" y="395" text-anchor="middle">Milano</text>
+        <text class="city-label-hover" x="385" y="345" text-anchor="middle">Milano</text>
+    </g>
+
+    <!-- Berlin node (lat 52.5°N lon 13.4°E) -->
+    <!-- Position: approximately in northeastern Germany -->
+    <g class="city-node" onclick="window.location.href='berlin/berlin.html'">
+        <circle class="city-node-outer" cx="465" cy="235" r="15"/>
+        <circle class="city-node-inner" cx="465" cy="235" r="5"/>
+        <text class="city-label" x="465" y="265" text-anchor="middle">Berlin</text>
+        <text class="city-label-hover" x="465" y="215" text-anchor="middle">Berlin</text>
+    </g>
+</svg>

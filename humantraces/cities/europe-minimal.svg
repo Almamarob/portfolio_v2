@@ -1,0 +1,41 @@
+<svg viewBox="0 0 800 900" xmlns="http://www.w3.org/2000/svg" class="europe-map">
+    <!-- Minimalist organic Europe map in magazine style -->
+
+    <!-- Scandinavia - smooth organic shapes -->
+    <path class="map-country" d="M 420,80 Q 450,70 480,85 Q 510,95 520,130 Q 525,165 515,195 Q 500,220 475,225 Q 450,220 435,200 Q 420,175 418,145 Q 415,115 420,80 Z"/>
+
+    <!-- British Isles - rounded forms -->
+    <path class="map-country" d="M 280,200 Q 310,190 340,205 Q 365,220 375,255 Q 380,285 370,315 Q 355,340 325,345 Q 295,340 275,315 Q 260,285 265,250 Q 270,220 280,200 Z"/>
+
+    <!-- Iberian Peninsula - organic blob -->
+    <path class="map-country" d="M 180,440 Q 220,425 270,435 Q 320,445 360,470 Q 385,495 390,535 Q 385,575 360,605 Q 320,630 270,635 Q 220,630 185,605 Q 160,575 165,535 Q 170,490 180,440 Z"/>
+
+    <!-- France - smooth transition -->
+    <path class="map-country" d="M 320,320 Q 365,310 410,325 Q 450,340 475,375 Q 490,410 485,450 Q 475,490 445,515 Q 405,535 365,530 Q 325,520 300,490 Q 280,455 285,415 Q 295,370 320,320 Z"/>
+
+    <!-- Central Europe (Germany, Poland, Czech) - larger organic mass -->
+    <path class="map-country" d="M 440,240 Q 490,235 540,250 Q 585,270 615,305 Q 640,345 645,390 Q 640,435 615,470 Q 580,500 535,510 Q 490,515 450,500 Q 415,480 400,445 Q 390,405 395,365 Q 405,320 425,285 Q 435,260 440,240 Z"/>
+
+    <!-- Italy - elegant boot shape -->
+    <path class="map-country" d="M 460,470 Q 490,465 515,480 Q 535,500 545,530 Q 550,565 545,605 Q 535,650 515,690 Q 490,725 460,745 Q 435,750 415,735 Q 400,715 395,685 Q 392,650 398,615 Q 408,575 425,540 Q 440,505 460,470 Z"/>
+
+    <!-- Balkans - organic cluster -->
+    <path class="map-country" d="M 560,500 Q 595,495 625,515 Q 650,540 660,575 Q 665,610 655,645 Q 635,675 605,690 Q 570,695 540,680 Q 515,660 510,630 Q 508,595 520,560 Q 535,525 560,500 Z"/>
+
+    <!-- Greece - southern extension -->
+    <path class="map-country" d="M 580,680 Q 615,675 645,695 Q 670,720 675,755 Q 670,790 645,810 Q 615,820 585,810 Q 560,795 555,765 Q 555,735 565,710 Q 575,690 580,680 Z"/>
+
+    <!-- Milano marker -->
+    <g class="city-node" onclick="window.location.href='milano/milano.html'" style="cursor: pointer;">
+        <circle class="city-node-outer" cx="485" cy="510" r="14"/>
+        <circle class="city-node-inner" cx="485" cy="510" r="5"/>
+        <text class="city-label" x="485" y="535" text-anchor="middle">Milano</text>
+    </g>
+
+    <!-- Berlin marker -->
+    <g class="city-node" onclick="window.location.href='berlin/berlin.html'" style="cursor: pointer;">
+        <circle class="city-node-outer" cx="520" cy="300" r="14"/>
+        <circle class="city-node-inner" cx="520" cy="300" r="5"/>
+        <text class="city-label" x="520" y="325" text-anchor="middle">Berlin</text>
+    </g>
+</svg>

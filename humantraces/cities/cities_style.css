@@ -1,0 +1,260 @@
+/* Ensure theme toggle displays correctly */
+.theme-toggle {
+    position: relative;
+    z-index: 1000;
+}
+
+.theme-toggle-icon {
+    pointer-events: none;
+    display: block;
+}
+
+/* Cities Page - Two Column Layout */
+.cities-layout {
+    position: relative;
+    display: grid;
+    grid-template-columns: 55% 45%;
+    gap: 4rem;
+    margin-top: 0;
+    align-items: start;
+    z-index: 1;
+}
+
+.cities-map-column {
+    position: relative;
+    order: 2;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    height: 500px;
+    overflow: hidden;
+    padding-top: 0;
+}
+
+.cities-content-column {
+    order: 1;
+}
+
+/* City Selector - Minimal Search */
+.city-selector {
+    position: relative;
+    margin: 1.5rem 0;
+    max-width: 300px;
+}
+
+#city-search {
+    width: 100%;
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    font-family: "Inter", sans-serif;
+    color: var(--color-text);
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(44, 44, 42, 0.15);
+    transition: all 0.2s ease;
+}
+
+#city-search::placeholder {
+    color: var(--color-text);
+    opacity: 0.4;
+}
+
+#city-search:focus {
+    outline: none;
+    border-bottom-color: rgba(158, 116, 32, 0.5);
+}
+
+.city-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 0.5rem;
+    background: var(--color-card-bg);
+    border: 1px solid rgba(44, 44, 42, 0.1);
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    z-index: 100;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.city-group {
+    padding: 0.5rem 0;
+}
+
+.city-group-header {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text);
+    opacity: 0.5;
+    padding: 0.5rem 1rem 0.25rem;
+}
+
+.city-subgroup {
+    padding-left: 0.5rem;
+}
+
+.city-subgroup-header {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-text);
+    opacity: 0.6;
+    padding: 0.25rem 1rem;
+}
+
+.city-item {
+    padding: 0.5rem 1rem 0.5rem 2rem;
+    font-size: 0.9rem;
+    color: var(--color-text);
+    cursor: pointer;
+    transition: all 0.15s ease;
+}
+
+.city-item:hover {
+    background: rgba(158, 116, 32, 0.08);
+    color: #9e7420;
+}
+
+/* Dark mode */
+[data-theme="dark"] #city-search {
+    border-bottom-color: rgba(245, 240, 232, 0.15);
+}
+
+[data-theme="dark"] #city-search:focus {
+    border-bottom-color: rgba(186, 117, 23, 0.5);
+}
+
+[data-theme="dark"] .city-dropdown {
+    border-color: rgba(245, 240, 232, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .city-item:hover {
+    background: rgba(186, 117, 23, 0.12);
+    color: #ba7517;
+}
+
+/* D3.js Map Container */
+#map-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-height: 600px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Europe Map SVG - D3.js Style */
+.europe-map {
+    position: relative;
+    width: 100%;
+    height: auto;
+    max-width: 450px;
+    max-height: 480px;
+    pointer-events: auto;
+}
+
+.map-country {
+    fill: #2c2c2a;
+    fill-opacity: 0.06;
+    stroke: #2c2c2a;
+    stroke-opacity: 0.25;
+    stroke-width: 0.5;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+}
+
+.city-node {
+    cursor: pointer;
+    pointer-events: all;
+}
+
+.city-node-outer {
+    fill: none;
+    stroke: #9e7420;
+    stroke-opacity: 0.3;
+    stroke-width: 1;
+    pointer-events: none;
+    transition:
+        stroke-opacity 0.15s ease,
+        stroke-width 0.15s ease;
+}
+
+.city-node-inner {
+    fill: #9e7420;
+    pointer-events: none;
+    transition: r 0.15s ease;
+}
+
+.city-label {
+    font-size: 14px;
+    fill: #2c2c2a;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+    pointer-events: none;
+    letter-spacing: 0.3px;
+    transition:
+        font-weight 0.15s ease,
+        font-size 0.15s ease;
+}
+
+.city-node:hover .city-node-outer {
+    stroke-opacity: 0.5;
+    stroke-width: 2;
+}
+
+.city-node:hover .city-label {
+    font-weight: 500;
+    font-size: 15px;
+}
+
+/* Dark mode styles */
+[data-theme="dark"] .map-country {
+    fill: #f5f0e8;
+    fill-opacity: 0.05;
+    stroke: #f5f0e8;
+    stroke-opacity: 0.15;
+}
+
+[data-theme="dark"] .city-label {
+    fill: #d4cdc3;
+}
+
+[data-theme="dark"] .city-node-outer {
+    stroke-opacity: 0.4;
+}
+
+[data-theme="dark"] .city-node-inner {
+    fill: #ba7517;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .cities-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .cities-map-column {
+        position: relative;
+        top: 0;
+        order: -1;
+    }
+
+    .cities-content-column {
+        order: 1;
+    }
+
+    .cities-map-column {
+        order: 2;
+    }
+
+    .europe-map {
+        min-height: 400px;
+    }
+}

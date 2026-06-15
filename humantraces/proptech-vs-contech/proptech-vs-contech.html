@@ -1,0 +1,488 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PropTech vs ConTech - Human Traces</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+            rel="stylesheet"
+        />
+        <script>
+            const theme = localStorage.getItem("theme") || "light";
+            document.documentElement.setAttribute("data-theme", theme);
+        </script>
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="proptech-vs-contech_style.css" />
+    </head>
+    <body>
+        <nav class="nav">
+            <div class="container">
+                <div class="nav-inner">
+                    <div
+                        style="display: flex; align-items: center; gap: 0.5rem"
+                    >
+                        <a
+                            href="../../portfolio/home/index.html"
+                            style="
+                                text-decoration: none;
+                                color: var(--color-text);
+                                font-size: 1.2rem;
+                                opacity: 0.6;
+                                transition: opacity 0.3s;
+                            "
+                            onmouseover="this.style.opacity = '1'"
+                            onmouseout="this.style.opacity = '0.6'"
+                            >‹</a
+                        >
+                        <a href="../index.html" class="nav-logo"
+                            >Human Traces</a
+                        >
+                    </div>
+                    <div class="nav-actions">
+                        <ul class="nav-links">
+                            <li><a href="../index.html">Home</a></li>
+                            <li>
+                                <a
+                                    href="../breaking-the-silos/breaking-the-silos.html"
+                                    >Breaking the Silos</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="proptech-vs-contech.html"
+                                    class="active"
+                                    >PropTech vs ConTech</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="../investment-categories/investment-categories.html"
+                                    >Investment</a
+                                >
+                            </li>
+                            <li><a href="../cities/cities.html">Cities</a></li>
+                        </ul>
+                        <button
+                            class="theme-toggle"
+                            id="themeToggle"
+                            aria-label="Toggle theme"
+                        >
+                            <svg
+                                class="theme-toggle-icon sun"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="14"
+                                height="14"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <circle cx="12" cy="12" r="5" />
+                                <line x1="12" y1="1" x2="12" y2="3" />
+                                <line x1="12" y1="21" x2="12" y2="23" />
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+                                <line
+                                    x1="18.36"
+                                    y1="18.36"
+                                    x2="19.78"
+                                    y2="19.78"
+                                />
+                                <line x1="1" y1="12" x2="3" y2="12" />
+                                <line x1="21" y1="12" x2="23" y2="12" />
+                                <line
+                                    x1="4.22"
+                                    y1="19.78"
+                                    x2="5.64"
+                                    y2="18.36"
+                                />
+                                <line
+                                    x1="18.36"
+                                    y1="5.64"
+                                    x2="19.78"
+                                    y2="4.22"
+                                />
+                            </svg>
+                            <svg
+                                class="theme-toggle-icon moon"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="14"
+                                height="14"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <path
+                                    d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                                />
+                            </svg>
+                        </button>
+                        <button
+                            class="nav-toggle"
+                            id="navToggle"
+                            aria-label="Toggle navigation"
+                        >
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <header class="page-header">
+            <div class="container">
+                <h1 class="page-title">PropTech vs ConTech</h1>
+                <p class="page-description">
+                    Two ecosystems, different languages: mapping the players,
+                    tools, and blind spots.
+                </p>
+            </div>
+        </header>
+        <section class="content-section">
+            <div class="container">
+                <h2>PropTech: The Real Estate Technology Stack</h2>
+                <p>
+                    PropTech emerged to digitize and optimize the operational
+                    and financial layers of real estate. It focuses on what
+                    happens <em>after</em> construction: tenant management,
+                    building operations, portfolio analytics, transactions, and
+                    capital flows.
+                </p>
+                <h3>Core Categories</h3>
+                <p>
+                    <strong>1. Asset & Property Management</strong><br />Tools
+                    for managing buildings and tenant relationships. Examples:
+                    Yardi, MRI Software, Procore (operations side), HqO, Equiem
+                    (tenant experience platforms).
+                </p>
+                <p>
+                    <strong>2. Smart Buildings & IoT</strong><br />Sensor
+                    networks, building automation, energy management. Examples:
+                    Johnson Controls, Schneider Electric, Willow (digital
+                    twins), Mapped.
+                </p>
+                <p>
+                    <strong>3. Portfolio & Investment Analytics</strong
+                    ><br />Financial modeling, risk assessment, ESG reporting,
+                    portfolio optimization. Examples: Altus Group, CoStar, REFM,
+                    Deepki (ESG), Measurabl.
+                </p>
+                <p>
+                    <strong>4. Leasing & Transactions</strong><br />CRE
+                    marketplaces, deal management, lease administration.
+                    Examples: VTS, Buildium, Reonomy, CompStak.
+                </p>
+                <p>
+                    <strong>5. Facilities & Maintenance</strong><br />Work order
+                    management, preventive maintenance, vendor coordination.
+                    Examples: ServiceChannel, Facilio, UpKeep.
+                </p>
+                <h3>Who Buys PropTech</h3>
+                <p>
+                    Asset managers, landlords, REITs, institutional investors,
+                    facility managers. Budgets come from operational expense
+                    lines or investment committees. Decision cycles are long,
+                    but contracts are sticky.
+                </p>
+                <h3>PropTech's Blind Spot</h3>
+                <p>
+                    PropTech inherits buildings as black boxes. It knows how a
+                    building performs <em>now</em>, but has no insight into how
+                    it was <em>made</em>. Construction quality, contractor
+                    reliability, as-built accuracy — all of that context is lost
+                    in the handoff.
+                </p>
+                <h2>ConTech: The Construction Technology Stack</h2>
+                <p>
+                    ConTech focuses on the design and delivery phase —
+                    everything that happens <em>before</em> a building becomes
+                    operational. It's about project execution: planning,
+                    coordination, labor, materials, and risk mitigation.
+                </p>
+                <h3>Core Categories</h3>
+                <p>
+                    <strong
+                        >1. Design & BIM (Building Information Modeling)</strong
+                    ><br />3D modeling, clash detection, design coordination.
+                    Examples: Autodesk (Revit, BIM 360), Trimble (SketchUp,
+                    Tekla), Graphisoft (ArchiCAD).
+                </p>
+                <p>
+                    <strong>2. Project Management & Collaboration</strong
+                    ><br />Document control, RFIs, submittals, scheduling.
+                    Examples: Procore, PlanGrid (now part of Autodesk),
+                    Fieldwire, Buildertrend.
+                </p>
+                <p>
+                    <strong>3. Site Logistics & Progress Tracking</strong
+                    ><br />Drones, computer vision, reality capture, progress
+                    monitoring. Examples: DroneDeploy, OpenSpace, Buildots,
+                    Disperse.
+                </p>
+                <p>
+                    <strong>4. Workforce & Labor Management</strong><br />Time
+                    tracking, safety compliance, crew coordination. Examples:
+                    Procore (labor module), Rhumbix, SmartBarrel, TradeTapp.
+                </p>
+                <p>
+                    <strong>5. Procurement & Supply Chain</strong><br />Material
+                    ordering, supplier management, cost tracking. Examples:
+                    BuildingConnected (Oracle), Kojo, Corecon, Materialogic.
+                </p>
+                <p>
+                    <strong>6. Risk, Safety & Compliance</strong><br />Safety
+                    incident tracking, quality control, compliance
+                    documentation. Examples: Procore (safety module), iAuditor,
+                    SafetyCulture, SiteAware.
+                </p>
+                <h3>Who Buys ConTech</h3>
+                <p>
+                    General contractors, subcontractors, construction managers,
+                    architects, engineers. Budgets are project-specific or part
+                    of overhead. ROI is measured in time saved, errors avoided,
+                    and cost overruns prevented.
+                </p>
+                <h3>ConTech's Blind Spot</h3>
+                <p>
+                    ConTech tools are built for delivery, not legacy. Once a
+                    project wraps, the data gets archived or thrown away.
+                    There's no incentive to structure it for the asset manager
+                    who takes over, or the investor evaluating the portfolio.
+                </p>
+                <h2>The Overlaps (Where Things Get Interesting)</h2>
+                <p>A few companies straddle both worlds:</p>
+                <ul>
+                    <li>
+                        <strong>Procore:</strong> Started as ConTech (project
+                        management), now expanding into PropTech (asset
+                        operations, owner tools).
+                    </li>
+                    <li>
+                        <strong>Autodesk:</strong> Dominates ConTech (BIM,
+                        design tools), but increasingly pushing into PropTech
+                        (Tandem for digital twins, FM integrations).
+                    </li>
+                    <li>
+                        <strong>Digital Twin Platforms:</strong> Willow,
+                        Matterport, RESO — trying to bridge construction and
+                        operations by creating persistent 3D models that live
+                        beyond the build phase.
+                    </li>
+                    <li>
+                        <strong>ESG & Sustainability Tools:</strong> Deepki,
+                        Measurabl, Giatec (concrete sensing) — touching both
+                        construction (material choices, carbon tracking) and
+                        operations (energy performance, emissions reporting).
+                    </li>
+                </ul>
+                <h2>The Fundamental Difference</h2>
+                <table
+                    style="
+                        width: 100%;
+                        border-collapse: collapse;
+                        margin: 2rem 0;
+                    "
+                >
+                    <thead>
+                        <tr
+                            style="border-bottom: 2px solid var(--color-border)"
+                        >
+                            <th
+                                style="
+                                    padding: 1rem;
+                                    text-align: left;
+                                    color: var(--color-text);
+                                "
+                            >
+                                Dimension
+                            </th>
+                            <th
+                                style="
+                                    padding: 1rem;
+                                    text-align: left;
+                                    color: var(--color-text);
+                                "
+                            >
+                                PropTech
+                            </th>
+                            <th
+                                style="
+                                    padding: 1rem;
+                                    text-align: left;
+                                    color: var(--color-text);
+                                "
+                            >
+                                ConTech
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr
+                            style="border-bottom: 1px solid var(--color-border)"
+                        >
+                            <td style="padding: 1rem; color: var(--color-text)">
+                                <strong>Time Horizon</strong>
+                            </td>
+                            <td
+                                style="
+                                    padding: 1rem;
+                                    color: var(--color-text-muted);
+                                "
+                            >
+                                Long-term (10-30 years)
+                            </td>
+                            <td
+                                style="
+                                    padding: 1rem;
+                                    color: var(--color-text-muted);
+                                "
+                            >
+                                Short-term (12-36 months)
+                            </td>
+                        </tr>
+                        <tr
+                            style="border-bottom: 1px solid var(--color-border)"
+                        >
+                            <td style="padding: 1rem; color: var(--color-text)">
+                                <strong>Primary User</strong>
+                            </td>
+                            <td
+                                style="
+                                    padding: 1rem;
+                                    color: var(--color-text-muted);
+                                "
+                            >
+                                Asset managers, landlords, investors
+                            </td>
+                            <td
+                                style="
+                                    padding: 1rem;
+                                    color: var(--color-text-muted);
+                                "
+                            >
+                                Contractors, architects, engineers
+                            </td>
+                        </tr>
+                        <tr
+                            style="border-bottom: 1px solid var(--color-border)"
+                        >
+                            <td style="padding: 1rem; color: var(--color-text)">
+                                <strong>Value Metric</strong>
+                            </td>
+                            <td
+                                style="
+                                    padding: 1rem;
+                                    color: var(--color-text-muted);
+                                "
+                            >
+                                NOI, occupancy, energy efficiency, ESG scores
+                            </td>
+                            <td
+                                style="
+                                    padding: 1rem;
+                                    color: var(--color-text-muted);
+                                "
+                            >
+                                On-time delivery, budget adherence, safety
+                                records
+                            </td>
+                        </tr>
+                        <tr
+                            style="border-bottom: 1px solid var(--color-border)"
+                        >
+                            <td style="padding: 1rem; color: var(--color-text)">
+                                <strong>Data Focus</strong>
+                            </td>
+                            <td
+                                style="
+                                    padding: 1rem;
+                                    color: var(--color-text-muted);
+                                "
+                            >
+                                Operational metrics, financial performance
+                            </td>
+                            <td
+                                style="
+                                    padding: 1rem;
+                                    color: var(--color-text-muted);
+                                "
+                            >
+                                Progress tracking, risk mitigation, execution
+                                details
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 1rem; color: var(--color-text)">
+                                <strong>Integration Priority</strong>
+                            </td>
+                            <td
+                                style="
+                                    padding: 1rem;
+                                    color: var(--color-text-muted);
+                                "
+                            >
+                                Financial systems, lease management, CRE
+                                platforms
+                            </td>
+                            <td
+                                style="
+                                    padding: 1rem;
+                                    color: var(--color-text-muted);
+                                "
+                            >
+                                BIM tools, scheduling software, procurement
+                                systems
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h2>Why They Don't Talk to Each Other</h2>
+                <p>
+                    It's not just different software. It's different companies,
+                    different incentives, different departments, and different
+                    moments in a building's life. The handoff between ConTech
+                    and PropTech is a gap where data goes to die.
+                </p>
+                <p>Until someone builds the bridge, the silos remain.</p>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="container">
+                <div
+                    style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        gap: 1.5rem;
+                        flex-wrap: wrap;
+                    "
+                >
+                    <a
+                        href="../../portfolio/home/index.html"
+                        style="
+                            text-decoration: none;
+                            color: var(--color-text);
+                            font-size: 0.95rem;
+                            opacity: 0.6;
+                            transition: opacity 0.3s;
+                        "
+                        onmouseover="this.style.opacity = '1'"
+                        onmouseout="this.style.opacity = '0.6'"
+                        >‹ Back to Portfolio</a
+                    >
+                    <p>&copy; 2026 Human Traces. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+        <script src="../js/main.js"></script>
+        <script src="proptech-vs-contech_main.js"></script>
+    </body>
+</html>

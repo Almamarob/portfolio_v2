@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Cities - Human Traces</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
+            rel="stylesheet"
+        />
+        <script>
+            const theme = localStorage.getItem("theme") || "light";
+            document.documentElement.setAttribute("data-theme", theme);
+        </script>
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="cities_style.css" />
+        <!-- D3.js and TopoJSON libraries -->
+        <script src="https://d3js.org/d3.v7.min.js"></script>
+        <script src="https://unpkg.com/topojson@3"></script>
+    </head>
+    <body>
+        <nav class="nav">
+            <div class="container">
+                <div class="nav-inner">
+                    <div
+                        style="display: flex; align-items: center; gap: 0.5rem"
+                    >
+                        <a
+                            href="../../portfolio/home/index.html"
+                            style="
+                                text-decoration: none;
+                                color: var(--color-text);
+                                font-size: 1.2rem;
+                                opacity: 0.6;
+                                transition: opacity 0.3s;
+                            "
+                            onmouseover="this.style.opacity = '1'"
+                            onmouseout="this.style.opacity = '0.6'"
+                            >‹</a
+                        >
+                        <a href="../index.html" class="nav-logo"
+                            >Human Traces</a
+                        >
+                    </div>
+                    <div class="nav-actions">
+                        <ul class="nav-links">
+                            <li><a href="../index.html">Home</a></li>
+                            <li>
+                                <a
+                                    href="../breaking-the-silos/breaking-the-silos.html"
+                                    >Breaking the Silos</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="../proptech-vs-contech/proptech-vs-contech.html"
+                                    >PropTech vs ConTech</a
+                                >
+                            </li>
+                            <li>
+                                <a
+                                    href="../investment-categories/investment-categories.html"
+                                    >Investment</a
+                                >
+                            </li>
+                            <li>
+                                <a href="cities.html" class="active">Cities</a>
+                            </li>
+                        </ul>
+                        <button
+                            class="theme-toggle"
+                            id="themeToggle"
+                            aria-label="Toggle theme"
+                        >
+                            <svg
+                                viewBox="0 0 800 900"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="europe-map"
+                            >
+                                <!-- Minimalist organic Europe map in magazine style -->
+
+                                <!-- Scandinavia - smooth organic shapes -->
+                                <path
+                                    class="map-country"
+                                    d="M 420,80 Q 450,70 480,85 Q 510,95 520,130 Q 525,165 515,195 Q 500,220 475,225 Q 450,220 435,200 Q 420,175 418,145 Q 415,115 420,80 Z"
+                                />
+
+                                <!-- British Isles - rounded forms -->
+                                <path
+                                    class="map-country"
+                                    d="M 280,200 Q 310,190 340,205 Q 365,220 375,255 Q 380,285 370,315 Q 355,340 325,345 Q 295,340 275,315 Q 260,285 265,250 Q 270,220 280,200 Z"
+                                />
+
+                                <!-- Iberian Peninsula - organic blob -->
+                                <path
+                                    class="map-country"
+                                    d="M 180,440 Q 220,425 270,435 Q 320,445 360,470 Q 385,495 390,535 Q 385,575 360,605 Q 320,630 270,635 Q 220,630 185,605 Q 160,575 165,535 Q 170,490 180,440 Z"
+                                />
+
+                                <!-- France - smooth transition -->
+                                <path
+                                    class="map-country"
+                                    d="M 320,320 Q 365,310 410,325 Q 450,340 475,375 Q 490,410 485,450 Q 475,490 445,515 Q 405,535 365,530 Q 325,520 300,490 Q 280,455 285,415 Q 295,370 320,320 Z"
+                                />
+
+                                <!-- Central Europe (Germany, Poland, Czech) - larger organic mass -->
+                                <path
+                                    class="map-country"
+                                    d="M 440,240 Q 490,235 540,250 Q 585,270 615,305 Q 640,345 645,390 Q 640,435 615,470 Q 580,500 535,510 Q 490,515 450,500 Q 415,480 400,445 Q 390,405 395,365 Q 405,320 425,285 Q 435,260 440,240 Z"
+                                />
+
+                                <!-- Italy - elegant boot shape -->
+                                <path
+                                    class="map-country"
+                                    d="M 460,470 Q 490,465 515,480 Q 535,500 545,530 Q 550,565 545,605 Q 535,650 515,690 Q 490,725 460,745 Q 435,750 415,735 Q 400,715 395,685 Q 392,650 398,615 Q 408,575 425,540 Q 440,505 460,470 Z"
+                                />
+
+                                <!-- Balkans - organic cluster -->
+                                <path
+                                    class="map-country"
+                                    d="M 560,500 Q 595,495 625,515 Q 650,540 660,575 Q 665,610 655,645 Q 635,675 605,690 Q 570,695 540,680 Q 515,660 510,630 Q 508,595 520,560 Q 535,525 560,500 Z"
+                                />
+
+                                <!-- Greece - southern extension -->
+                                <path
+                                    class="map-country"
+                                    d="M 580,680 Q 615,675 645,695 Q 670,720 675,755 Q 670,790 645,810 Q 615,820 585,810 Q 560,795 555,765 Q 555,735 565,710 Q 575,690 580,680 Z"
+                                />
+
+                                <!-- Milano marker -->
+                                <g
+                                    class="city-node"
+                                    onclick="
+                                        window.location.href =
+                                            'milano/milano.html'
+                                    "
+                                    style="cursor: pointer"
+                                >
+                                    <circle
+                                        class="city-node-outer"
+                                        cx="485"
+                                        cy="510"
+                                        r="14"
+                                    />
+                                    <circle
+                                        class="city-node-inner"
+                                        cx="485"
+                                        cy="510"
+                                        r="5"
+                                    />
+                                    <text
+                                        class="city-label"
+                                        x="485"
+                                        y="535"
+                                        text-anchor="middle"
+                                    >
+                                        Milano
+                                    </text>
+                                </g>
+
+                                <!-- Berlin marker -->
+                                <g
+                                    class="city-node"
+                                    onclick="
+                                        window.location.href =
+                                            'berlin/berlin.html'
+                                    "
+                                    style="cursor: pointer"
+                                >
+                                    <circle
+                                        class="city-node-outer"
+                                        cx="520"
+                                        cy="300"
+                                        r="14"
+                                    />
+                                    <circle
+                                        class="city-node-inner"
+                                        cx="520"
+                                        cy="300"
+                                        r="5"
+                                    />
+                                    <text
+                                        class="city-label"
+                                        x="520"
+                                        y="325"
+                                        text-anchor="middle"
+                                    >
+                                        Berlin
+                                    </text>
+                                </g>
+                            </svg>
+                            <svg
+                                viewBox="0 0 800 900"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="europe-map"
+                            >
+                                <!-- Minimalist organic Europe map in magazine style -->
+
+                                <!-- Scandinavia - smooth organic shapes -->
+                                <path
+                                    class="map-country"
+                                    d="M 420,80 Q 450,70 480,85 Q 510,95 520,130 Q 525,165 515,195 Q 500,220 475,225 Q 450,220 435,200 Q 420,175 418,145 Q 415,115 420,80 Z"
+                                />
+
+                                <!-- British Isles - rounded forms -->
+                                <path
+                                    class="map-country"
+                                    d="M 280,200 Q 310,190 340,205 Q 365,220 375,255 Q 380,285 370,315 Q 355,340 325,345 Q 295,340 275,315 Q 260,285 265,250 Q 270,220 280,200 Z"
+                                />
+
+                                <!-- Iberian Peninsula - organic blob -->
+                                <path
+                                    class="map-country"
+                                    d="M 180,440 Q 220,425 270,435 Q 320,445 360,470 Q 385,495 390,535 Q 385,575 360,605 Q 320,630 270,635 Q 220,630 185,605 Q 160,575 165,535 Q 170,490 180,440 Z"
+                                />
+
+                                <!-- France - smooth transition -->
+                                <path
+                                    class="map-country"
+                                    d="M 320,320 Q 365,310 410,325 Q 450,340 475,375 Q 490,410 485,450 Q 475,490 445,515 Q 405,535 365,530 Q 325,520 300,490 Q 280,455 285,415 Q 295,370 320,320 Z"
+                                />
+
+                                <!-- Central Europe (Germany, Poland, Czech) - larger organic mass -->
+                                <path
+                                    class="map-country"
+                                    d="M 440,240 Q 490,235 540,250 Q 585,270 615,305 Q 640,345 645,390 Q 640,435 615,470 Q 580,500 535,510 Q 490,515 450,500 Q 415,480 400,445 Q 390,405 395,365 Q 405,320 425,285 Q 435,260 440,240 Z"
+                                />
+
+                                <!-- Italy - elegant boot shape -->
+                                <path
+                                    class="map-country"
+                                    d="M 460,470 Q 490,465 515,480 Q 535,500 545,530 Q 550,565 545,605 Q 535,650 515,690 Q 490,725 460,745 Q 435,750 415,735 Q 400,715 395,685 Q 392,650 398,615 Q 408,575 425,540 Q 440,505 460,470 Z"
+                                />
+
+                                <!-- Balkans - organic cluster -->
+                                <path
+                                    class="map-country"
+                                    d="M 560,500 Q 595,495 625,515 Q 650,540 660,575 Q 665,610 655,645 Q 635,675 605,690 Q 570,695 540,680 Q 515,660 510,630 Q 508,595 520,560 Q 535,525 560,500 Z"
+                                />
+
+                                <!-- Greece - southern extension -->
+                                <path
+                                    class="map-country"
+                                    d="M 580,680 Q 615,675 645,695 Q 670,720 675,755 Q 670,790 645,810 Q 615,820 585,810 Q 560,795 555,765 Q 555,735 565,710 Q 575,690 580,680 Z"
+                                />
+
+                                <!-- Milano marker -->
+                                <g
+                                    class="city-node"
+                                    onclick="
+                                        window.location.href =
+                                            'milano/milano.html'
+                                    "
+                                    style="cursor: pointer"
+                                >
+                                    <circle
+                                        class="city-node-outer"
+                                        cx="485"
+                                        cy="510"
+                                        r="14"
+                                    />
+                                    <circle
+                                        class="city-node-inner"
+                                        cx="485"
+                                        cy="510"
+                                        r="5"
+                                    />
+                                    <text
+                                        class="city-label"
+                                        x="485"
+                                        y="535"
+                                        text-anchor="middle"
+                                    >
+                                        Milano
+                                    </text>
+                                </g>
+
+                                <!-- Berlin marker -->
+                                <g
+                                    class="city-node"
+                                    onclick="
+                                        window.location.href =
+                                            'berlin/berlin.html'
+                                    "
+                                    style="cursor: pointer"
+                                >
+                                    <circle
+                                        class="city-node-outer"
+                                        cx="520"
+                                        cy="300"
+                                        r="14"
+                                    />
+                                    <circle
+                                        class="city-node-inner"
+                                        cx="520"
+                                        cy="300"
+                                        r="5"
+                                    />
+                                    <text
+                                        class="city-label"
+                                        x="520"
+                                        y="325"
+                                        text-anchor="middle"
+                                    >
+                                        Berlin
+                                    </text>
+                                </g>
+                            </svg>
+                        </button>
+                        <button
+                            class="nav-toggle"
+                            id="navToggle"
+                            aria-label="Toggle navigation"
+                        >
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <header class="page-header">
+            <div class="container">
+                <h1 class="page-title">Cities</h1>
+                <p class="page-description">
+                    Real markets, real players, real patterns. Theory meets
+                    ground truth.
+                </p>
+            </div>
+        </header>
+        <section class="content-section">
+            <div class="container">
+                <div class="cities-layout">
+                    <div class="cities-content-column">
+                        <h2>Why Cities Matter</h2>
+                        <p>
+                            Real estate doesn't happen in the abstract. It
+                            happens in specific places, with specific rules,
+                            specific players, and specific constraints. Every
+                            market has its own rhythm, its own politics, its own
+                            unwritten rules about who builds what and where.
+                        </p>
+                        <p>
+                            I've spent years navigating European real estate
+                            markets — not as a tourist, but as someone trying to
+                            understand how value actually gets created and
+                            captured. What I've learned is that the framework
+                            matters less than the context. PropTech and ConTech
+                            tools don't operate in a vacuum. They succeed or
+                            fail based on local dynamics: regulation, ownership
+                            structures, labor markets, capital flows, cultural
+                            expectations.
+                        </p>
+                        <p>
+                            This section maps the cities I know best. Each one
+                            represents a different lens on how real estate,
+                            construction, and technology intersect. Not case
+                            studies. Not sales pitches. Just ground truth.
+                        </p>
+
+                        <div class="city-selector">
+                            <input
+                                type="text"
+                                id="city-search"
+                                placeholder="Search cities..."
+                                autocomplete="off"
+                                onfocus="showCityDropdown()"
+                                oninput="filterCities(this.value)"
+                            />
+                            <div
+                                id="city-dropdown"
+                                class="city-dropdown"
+                                style="display: none"
+                            >
+                                <div
+                                    class="city-group"
+                                    data-search="italy lombardia milano"
+                                >
+                                    <div class="city-group-header">Italy</div>
+                                    <div class="city-subgroup">
+                                        <div class="city-subgroup-header">
+                                            Lombardia
+                                        </div>
+                                        <div
+                                            class="city-item"
+                                            onclick="
+                                                navigateToCity(
+                                                    'milano/milano.html',
+                                                )
+                                            "
+                                        >
+                                            Milano
+                                        </div>
+                                    </div>
+                                </div>
+                                <div
+                                    class="city-group"
+                                    data-search="germany berlin"
+                                >
+                                    <div class="city-group-header">Germany</div>
+                                    <div class="city-subgroup">
+                                        <div class="city-subgroup-header">
+                                            Berlin State
+                                        </div>
+                                        <div
+                                            class="city-item"
+                                            onclick="
+                                                navigateToCity(
+                                                    'berlin/berlin.html',
+                                                )
+                                            "
+                                        >
+                                            Berlin
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <h2>Milano</h2>
+                        <p>
+                            Milan is where Italian ambition meets European
+                            capital. It's the country's financial center, its
+                            design capital, and increasingly, its real estate
+                            innovation lab. But it's also a city that moves at
+                            its own pace — where relationships matter more than
+                            term sheets, and where regulatory complexity can
+                            kill a deal before it starts.
+                        </p>
+                        <p>
+                            The real estate market here is fragmented.
+                            Family-owned developers, institutional funds, and
+                            global investors operate in parallel, often with
+                            minimal overlap. PropTech adoption is selective:
+                            sophisticated on the asset management side, patchy
+                            on construction and operations. ConTech is still
+                            niche, mostly confined to large-scale projects led
+                            by international GCs.
+                        </p>
+                        <p>
+                            What makes Milan interesting is the tension between
+                            tradition and transformation. The city is home to
+                            some of Europe's most innovative architecture (Bosco
+                            Verticale, CityLife) and some of its most ossified
+                            bureaucracy. Navigating this requires patience,
+                            local knowledge, and a willingness to play the long
+                            game.
+                        </p>
+                        <p>
+                            I grew up here. I've seen the deals that work and
+                            the ones that don't. Milan rewards insiders and
+                            punishes shortcuts.
+                        </p>
+
+                        <h2>Berlin</h2>
+                        <p>
+                            Berlin is the opposite of Milan in almost every way.
+                            Where Milan is polished and relationship-driven,
+                            Berlin is raw and data-driven. Where Milan moves
+                            slowly, Berlin moves fast — sometimes too fast.
+                        </p>
+                        <p>
+                            The city has spent the last decade transforming from
+                            Europe's affordable bohemian capital into one of its
+                            hottest real estate markets. The result is a clash
+                            of ideologies: startup culture meets rent control,
+                            speculative development meets social housing
+                            mandates, international capital meets local
+                            activism.
+                        </p>
+                        <p>
+                            From a PropTech and ConTech perspective, Berlin is a
+                            testing ground. The market is fragmented enough to
+                            be accessible, liquid enough to be scalable, and
+                            politically volatile enough to be unpredictable.
+                            Regulations shift. Politicians intervene. Investors
+                            get nervous. But the underlying fundamentals —
+                            population growth, economic dynamism, housing
+                            shortages — remain strong.
+                        </p>
+                        <p>
+                            I've spent time in Berlin's startup ecosystem, its
+                            construction sector, and its policy debates. What
+                            I've learned is that this is a market where ideology
+                            and economics collide constantly. Understanding both
+                            is the only way to build anything that lasts.
+                        </p>
+
+                        <h2>Other Cities (Coming Soon)</h2>
+                        <p>
+                            I'm expanding this section to include other European
+                            markets where I have direct experience: London,
+                            Paris, Barcelona, Munich. Each city represents a
+                            different archetype of how real estate capital,
+                            construction execution, and technology adoption
+                            intersect.
+                        </p>
+                        <p>
+                            The goal isn't to provide exhaustive market reports.
+                            It's to map the patterns that repeat across borders
+                            and the exceptions that define local markets. Real
+                            estate is global in its capital flows but ruthlessly
+                            local in its execution. This section is about
+                            understanding both.
+                        </p>
+                    </div>
+
+                    <div class="cities-map-column">
+                        <div id="map-container"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <footer class="footer">
+            <div class="container">
+                <div
+                    style="
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-between;
+                        gap: 1.5rem;
+                        flex-wrap: wrap;
+                    "
+                >
+                    <a
+                        href="../../portfolio/home/index.html"
+                        style="
+                            text-decoration: none;
+                            color: var(--color-text);
+                            font-size: 0.95rem;
+                            opacity: 0.6;
+                            transition: opacity 0.3s;
+                        "
+                        onmouseover="this.style.opacity = '1'"
+                        onmouseout="this.style.opacity = '0.6'"
+                        >‹ Back to Portfolio</a
+                    >
+                    <p>&copy; 2026 Human Traces. All rights reserved.</p>
+                </div>
+            </div>
+        </footer>
+        <script src="../js/main.js"></script>
+        <script src="map.js"></script>
+        <script>
+            function navigateToCity(url) {
+                if (url) {
+                    window.location.href = url;
+                }
+            }
+
+            function showCityDropdown() {
+                document.getElementById("city-dropdown").style.display =
+                    "block";
+            }
+
+            function hideCityDropdown() {
+                document.getElementById("city-dropdown").style.display = "none";
+            }
+
+            function filterCities(searchTerm) {
+                const dropdown = document.getElementById("city-dropdown");
+                const groups = dropdown.querySelectorAll(".city-group");
+                const term = searchTerm.toLowerCase();
+
+                if (term === "") {
+                    groups.forEach((group) => (group.style.display = "block"));
+                    dropdown.style.display = "block";
+                    return;
+                }
+
+                let hasResults = false;
+                groups.forEach((group) => {
+                    const searchData = group.getAttribute("data-search");
+                    if (searchData && searchData.includes(term)) {
+                        group.style.display = "block";
+                        hasResults = true;
+                    } else {
+                        group.style.display = "none";
+                    }
+                });
+
+                dropdown.style.display = hasResults ? "block" : "none";
+            }
+
+            // Close dropdown when clicking outside
+            document.addEventListener("click", function (event) {
+                const selector = document.querySelector(".city-selector");
+                if (selector && !selector.contains(event.target)) {
+                    hideCityDropdown();
+                }
+            });
+        </script>
+    </body>
+</html>

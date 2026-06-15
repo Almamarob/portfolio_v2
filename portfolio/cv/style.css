@@ -133,32 +133,58 @@
     margin-top: 1rem;
     padding-top: 1rem;
     border-top: 1px solid var(--cv-border);
+    display: flex;
+    justify-content: center;
 }
 
-.print-buttons button {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    background: var(--cv-accent);
-    color: #fff;
-    border: none;
+.download-arrow-btn {
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    background: transparent;
+    color: var(--cv-text-secondary);
+    border: 1px solid var(--cv-border);
     cursor: pointer;
-    font-size: 0.85rem;
-    font-weight: 600;
     border-radius: 6px;
     transition: all 0.2s ease;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    font-family: "Inter", sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.print-buttons button:hover {
-    background: #1a1a1a;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    transform: translateY(-2px);
+.download-arrow-btn svg {
+    width: 18px;
+    height: 18px;
+    transition: transform 0.2s ease;
 }
 
-.print-buttons button:disabled {
-    background: var(--cv-text-muted);
+.download-arrow-btn:hover {
+    color: var(--cv-accent);
+    border-color: var(--cv-accent);
+    background: var(--cv-bg-subtle);
+}
+
+.download-arrow-btn:hover svg {
+    transform: translateY(2px);
+}
+
+.download-arrow-btn:active {
+    transform: scale(0.95);
+}
+
+.download-arrow-btn:disabled {
+    color: var(--cv-text-muted);
+    border-color: var(--cv-border);
     cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.download-arrow-btn:disabled:hover {
+    transform: none;
+    background: transparent;
+}
+
+.download-arrow-btn:disabled svg {
     transform: none;
 }
 

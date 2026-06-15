@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Network Graph</title>
+        <style>
+            html,
+            body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+                background: transparent;
+                overflow: hidden;
+            }
+
+            #network-container {
+                width: 100%;
+                height: 100%;
+                position: relative;
+            }
+
+            canvas {
+                display: block;
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="network-container">
+            <canvas id="network-canvas"></canvas>
+        </div>
+
+        <script>
+            const canvas = document.getElementById("network-canvas");
+            const ctx = canvas.getContext("2d");
+            const container = document.getElementById("network-container");
+
+            // Set canvas size
+            const canvasWidth = 320;
+            const canvasHeight = 380;
+
+            // Handle high DPI displays
+            const dpr = window.devicePixelRatio || 1;
+            canvas.width = canvasWidth * dpr;
+            canvas.height = canvasHeight * dpr;
+            canvas.style.width = canvasWidth + "px";
+            canvas.style.height = canvasHeight + "px";
+            ctx.scale(dpr, dpr);
+
+            // Detect theme
+            const darkModeQuery = window.matchMedia(
+                "(prefers-color-scheme: dark)",
+            );
+
+            function getThemeColors() {
+                const isDark = darkModeQuery.matches;
+
+                if (isDark) {
+                    return {
+                        // Capital Investment
+                        capitalDot: "#D4A853",
+                        capitalRing: "rgba(212,168,83,0.2)",
+                        capitalEdgeHover: "rgba(212,168,83,0.5)",
+                        // Altri nodi
+                        dot: "#B4B2A9",
+                        ring: "rgba(180,178,169,0.2)",
+                        edgeHover: "rgba(180,178,169,0.5)",
+                        // Edge
+                        edge: "rgba(180,178,169,0.18)",
+                        edgeMuted: "rgba(180,178,169,0.04)",
+                        // Text
+                        label: "#888780",
+                        sublabel: "#5F5E5A",
+                    };
+                } else {
+                    return {
+                        // Capital Investment
+                        capitalDot: "#8A6318",
+                        capitalRing: "rgba(138,99,24,0.45)",
+                        capitalRingFill: "rgba(138,99,24,0.12)",
+                        capitalEdgeHover: "rgba(138,99,24,0.5)",
+                        capitalLabel: "#8A6318",
+                        capitalSublabel: "#9E7420",
+                        // Altri nodi
+                        dot: "#2C2C2A",
+                        ring: "rgba(44,44,42,0.4)",
+                        ringFill: "rgba(44,44,42,0.08)",
+                        edgeHover: "rgba(44,44,42,0.5)",
+                        // Edge
+                        edge: "rgba(44,44,42,0.3)",
+                        edgeMuted: "rgba(44,44,42,0.04)",
+                        // Text
+                        label: "#2C2C2A",
+                        sublabel: "#5F5E5A",
+                    };
+                }
+            }
+
+            // Node configuration with fixed positions
+            const nodes = [
+                {
+                    id: "investment",
+                    label: "Capital Investment",
+                    x: 160,
+                    y: 60,
+                    url: "investment-categories/investment-categories.html",
+                },
+                {
+                    id: "contech",
+                    label: "ConTech",
+                    x: 30,
+                    y: 190,
+                    url: "proptech-vs-contech/proptech-vs-contech.html",
+                },
+                {
+                    id: "proptech",
+                    label: "PropTech",
+                    x: 290,
+                    y: 190,
+                    url: "proptech-vs-contech/proptech-vs-contech.html",
+                },
+                {
+                    id: "silos",
+                    label: "Breaking the Silos",
+                    x: 160,
+                    y: 170,
+                    url: "breaking-the-silos/breaking-the-silos.html",
+                },
+                {
+                    id: "cities",
+                    label: "Cities",
+                    x: 160,
+                    y: 320,
+                    url: "cities/cities.html",
+                },
+            ];
+
+            // Define all connections
+            const edges = [
+                { source: "investment", target: "contech" },
+                { source: "investment", target: "proptech" },
+                { source: "investment", target: "cities" },
+                { source: "contech", target: "silos" },
+                { source: "proptech", target: "silos" },
+                { source: "contech", target: "cities" },
+                { source: "proptech", target: "cities" },
+                { source: "silos", target: "cities" },
+            ];
+
+            let hoveredNode = null;
+
+            function draw() {
+                const colors = getThemeColors();
+
+                // Clear canvas
+                ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+
+                // Draw edges with hover effect
+                edges.forEach((edge) => {
+                    const sourceNode = nodes.find((n) => n.id === edge.source);
+                    const targetNode = nodes.find((n) => n.id === edge.target);
+
+                    // Check if this edge is connected to hovered node
+                    const isConnected =
+                        hoveredNode &&
+                        (edge.source === hoveredNode ||
+                            edge.target === hoveredNode);
+
+                    // Set edge style based on hover state
+                    if (hoveredNode) {
+                        if (isConnected) {
+                            // Use capital edge hover if hovered node is Capital, otherwise normal hover
+                            ctx.strokeStyle =
+                                hoveredNode === "investment"
+                                    ? colors.capitalEdgeHover
+                                    : colors.edgeHover;
+                            ctx.lineWidth = 2;
+                        } else {
+                            ctx.strokeStyle = colors.edgeMuted;
+                            ctx.lineWidth = 0.8;
+                        }
+                    } else {
+                        // Normal state: default edge color
+                        ctx.strokeStyle = colors.edge;
+                        ctx.lineWidth = 0.8;
+                    }
+
+                    ctx.beginPath();
+                    ctx.moveTo(sourceNode.x, sourceNode.y);
+                    ctx.lineTo(targetNode.x, targetNode.y);
+                    ctx.stroke();
+                });
+
+                // Draw nodes
+                nodes.forEach((node) => {
+                    const isHovered = hoveredNode === node.id;
+                    const isCapital = node.id === "investment";
+
+                    // Use different colors for Capital Investment
+                    const nodeDot = isCapital ? colors.capitalDot : colors.dot;
+                    const nodeRing = isCapital
+                        ? colors.capitalRing
+                        : colors.ring;
+                    const nodeRingFill = isCapital
+                        ? colors.capitalRingFill
+                        : colors.ringFill;
+                    const nodeLabel = isCapital
+                        ? colors.capitalLabel
+                        : colors.label;
+
+                    // Outer ring with fill
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, 20, 0, Math.PI * 2);
+                    if (nodeRingFill) {
+                        ctx.fillStyle = nodeRingFill;
+                        ctx.fill();
+                    }
+                    ctx.strokeStyle = nodeRing;
+                    ctx.lineWidth = isHovered ? 2.5 : 2;
+                    ctx.stroke();
+
+                    // Middle ring with fill
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, 13, 0, Math.PI * 2);
+                    if (nodeRingFill) {
+                        ctx.fillStyle = nodeRingFill;
+                        ctx.fill();
+                    }
+                    ctx.strokeStyle = nodeRing;
+                    ctx.lineWidth = isHovered ? 2.5 : 2;
+                    ctx.stroke();
+
+                    // Center dot
+                    ctx.beginPath();
+                    ctx.arc(node.x, node.y, isHovered ? 8 : 6, 0, Math.PI * 2);
+                    ctx.fillStyle = nodeDot;
+                    ctx.fill();
+
+                    // Label - use specific label color
+                    ctx.fillStyle = nodeLabel;
+                    ctx.font = "bold 12px Inter, sans-serif";
+                    ctx.textAlign = "center";
+                    ctx.textBaseline = "top";
+                    ctx.fillText(node.label, node.x, node.y + 38);
+                });
+            }
+
+            // Handle mouse events
+            canvas.addEventListener("mousemove", (e) => {
+                const rect = canvas.getBoundingClientRect();
+                const scaleX = canvasWidth / rect.width;
+                const scaleY = canvasHeight / rect.height;
+
+                const mouseX = (e.clientX - rect.left) * scaleX;
+                const mouseY = (e.clientY - rect.top) * scaleY;
+
+                let foundNode = null;
+
+                nodes.forEach((node) => {
+                    const distance = Math.sqrt(
+                        Math.pow(mouseX - node.x, 2) +
+                            Math.pow(mouseY - node.y, 2),
+                    );
+
+                    if (distance < 20) {
+                        foundNode = node.id;
+                        canvas.style.cursor = "pointer";
+                    }
+                });
+
+                if (!foundNode) {
+                    canvas.style.cursor = "default";
+                }
+
+                if (hoveredNode !== foundNode) {
+                    hoveredNode = foundNode;
+                    draw();
+                }
+            });
+
+            canvas.addEventListener("click", (e) => {
+                const rect = canvas.getBoundingClientRect();
+                const scaleX = canvasWidth / rect.width;
+                const scaleY = canvasHeight / rect.height;
+
+                const mouseX = (e.clientX - rect.left) * scaleX;
+                const mouseY = (e.clientY - rect.top) * scaleY;
+
+                nodes.forEach((node) => {
+                    const distance = Math.sqrt(
+                        Math.pow(mouseX - node.x, 2) +
+                            Math.pow(mouseY - node.y, 2),
+                    );
+
+                    if (distance < 20) {
+                        window.parent.location.href = node.url;
+                    }
+                });
+            });
+
+            canvas.addEventListener("mouseleave", () => {
+                hoveredNode = null;
+                canvas.style.cursor = "default";
+                draw();
+            });
+
+            // Listen for theme changes
+            darkModeQuery.addEventListener("change", () => {
+                draw();
+            });
+
+            // Initial draw
+            draw();
+        </script>
+    </body>
+</html>
