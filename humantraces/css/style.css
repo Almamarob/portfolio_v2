@@ -216,9 +216,10 @@ a {
 .hero-subtitle {
     font-size: 0.875rem;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.08em;
     color: var(--color-text-muted);
     margin-bottom: 1.5rem;
+    white-space: nowrap;
 }
 
 .hero-title {
