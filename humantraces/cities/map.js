@@ -51,6 +51,9 @@ async function initMap() {
     const cities = [
       { name: "Milano", coords: [9.19, 45.46], url: "milano/milano.html" },
       { name: "Berlin", coords: [13.4, 52.52], url: "berlin/berlin.html" },
+      { name: "Munich", coords: [11.58, 48.14], url: "munich/munich.html" },
+      { name: "Utrecht", coords: [5.12, 52.09], url: "utrecht/utrecht.html" },
+      { name: "Ghent", coords: [3.72, 51.05], url: "ghent/ghent.html" },
     ];
 
     // Draw city nodes
