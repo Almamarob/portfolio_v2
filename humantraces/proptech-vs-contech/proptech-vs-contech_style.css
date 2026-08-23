@@ -1,1 +1,49 @@
 /* PropTech vs ConTech - Specific Styles */
+
+.content-section {
+    padding: 3rem 0 4rem;
+}
+
+.content-section h2 {
+    font-size: 1.75rem;
+    margin-top: 2.5rem;
+    margin-bottom: 0.875rem;
+}
+
+.content-section h2:first-child {
+    margin-top: 0;
+}
+
+.content-section h3 {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.content-section p {
+    font-size: 1rem;
+    line-height: 1.65;
+    max-width: none;
+    margin-bottom: 0.75rem;
+}
+
+.content-section ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 0.75rem;
+}
+
+.content-section li {
+    border-left: 2px solid var(--color-border);
+    padding: 0.6rem 1rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.875rem;
+    line-height: 1.55;
+    color: var(--color-text-muted);
+    transition: border-color 0.2s ease;
+}
+
+.content-section li:hover {
+    border-left-color: var(--color-accent);
+}

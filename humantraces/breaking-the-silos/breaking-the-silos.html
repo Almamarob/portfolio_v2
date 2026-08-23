@@ -3,7 +3,11 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" type="image/png" href="../../images/human_traces_logo_simplebold.png" />
+        <link
+            rel="icon"
+            type="image/png"
+            href="../../images/human_traces_logo_simplebold.png"
+        />
         <title>Breaking the Silos - Human Traces</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -53,7 +57,7 @@
                             <li>
                                 <a
                                     href="../proptech-vs-contech/proptech-vs-contech.html"
-                                    >PropTech vs ConTech</a
+                                    >ConTech vs PropTech</a
                                 >
                             </li>
                             <li>
@@ -141,7 +145,7 @@
                 <h1 class="page-title">Breaking the Silos</h1>
                 <p class="page-description">
                     Why data dies between the construction site and the
-                    boardroom — and how we can fix it.
+                    boardroom, and how we can fix it.
                 </p>
             </div>
         </header>
@@ -150,41 +154,163 @@
                 <h2>The Core Problem</h2>
                 <p>
                     Data is born on construction sites and dies before it
-                    reaches investors. This isn't a technology problem. It's a
-                    structural one.
+                    reaches investors.<br />This isn't a technology problem.
+                    It's a <strong>structural one</strong>.
                 </p>
                 <p>
                     Real estate and construction technology exist in parallel
-                    universes. PropTech companies build tools for asset
-                    managers, portfolio optimizers, and tenant experience
-                    platforms. ConTech companies build tools for site logistics,
-                    workforce tracking, and material procurement. Both sectors
-                    generate enormous amounts of data. Neither talks to the
-                    other.
+                    universes.
+                    <br />
+                    PropTech companies build tools for asset managers, portfolio
+                    optimizers, and tenant experience platforms.
+                    <br />
+                    ConTech companies build tools for site logistics, workforce
+                    tracking, and material procurement.
+                    <br />
+                    Both sectors generate enormous amounts of data.
+                    <br />
+                    Neither talks to the other.
                 </p>
                 <p>
-                    The result? Investors make decisions based on lagging
-                    indicators and spreadsheets. Developers manage risk with gut
-                    instinct and experience. Construction teams operate in data
-                    black holes, while the C-suite drowns in PowerPoint slides
-                    that barely reflect ground truth.
+                    <strong>The result?</strong>
+                    <br />
+                    Investors make decisions based on lagging indicators and
+                    spreadsheets.
+                    <br />Developers manage risk with gut instinct and
+                    experience.
+                    <br />
+                    Construction teams operate in data black holes, while the
+                    C-suite drowns in PowerPoint slides that barely reflect
+                    ground truth.
                 </p>
+
                 <h2>The Layer 0-3 Framework</h2>
                 <p>
                     To understand why this happens, you need to think in layers.
+                    <br />
                     I map the PropTech/ConTech ecosystem across four fundamental
                     levels:
                 </p>
+
+                <div class="diagram-card">
+                    <svg
+                        width="100%"
+                        viewBox="0 0 680 340"
+                        role="img"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-label="Layer 0-3 Framework diagram"
+                    >
+                        <style>
+                            .sv1-wave {
+                                fill: none;
+                                stroke: var(--color-text-muted);
+                            }
+                            .sv1-sep {
+                                fill: none;
+                                stroke: var(--color-border);
+                                stroke-width: 0.5;
+                            }
+                            .sv1-h {
+                                fill: var(--color-text);
+                                font-size: 14px;
+                                font-weight: 500;
+                            }
+                            .sv1-t {
+                                fill: var(--color-text-muted);
+                                font-size: 12px;
+                            }
+                            text {
+                                text-anchor: middle;
+                                font-family:
+                                    -apple-system, BlinkMacSystemFont,
+                                    "Segoe UI", sans-serif;
+                            }
+                        </style>
+                        <path
+                            d="M40 140 Q65 140,90 140 T130 140"
+                            class="sv1-wave"
+                            stroke-width="1"
+                        />
+                        <path
+                            d="M130 140 Q170 108,210 140 T290 140"
+                            class="sv1-wave"
+                            stroke-width="1"
+                        />
+                        <path
+                            d="M290 140 Q320 82,350 140 T410 140 Q435 195,460 140"
+                            class="sv1-wave"
+                            stroke-width="1.2"
+                        />
+                        <path
+                            d="M460 140 Q485 55,510 140 T555 140 Q580 220,605 140 T650 140"
+                            class="sv1-wave"
+                            stroke-width="1.4"
+                        />
+                        <line
+                            x1="130"
+                            y1="180"
+                            x2="130"
+                            y2="200"
+                            class="sv1-sep"
+                        />
+                        <line
+                            x1="290"
+                            y1="180"
+                            x2="290"
+                            y2="200"
+                            class="sv1-sep"
+                        />
+                        <line
+                            x1="460"
+                            y1="180"
+                            x2="460"
+                            y2="200"
+                            class="sv1-sep"
+                        />
+                        <text x="90" y="224" class="sv1-h">Layer 0</text>
+                        <text x="90" y="242" class="sv1-t">
+                            Physical operations
+                        </text>
+                        <text x="90" y="258" class="sv1-t">
+                            The construction site
+                        </text>
+                        <text x="90" y="278" class="sv1-t">ConTech</text>
+                        <text x="245" y="224" class="sv1-h">Layer 1</text>
+                        <text x="245" y="242" class="sv1-t">
+                            Asset management
+                        </text>
+                        <text x="245" y="258" class="sv1-t">
+                            The building as product
+                        </text>
+                        <text x="245" y="278" class="sv1-t">PropTech</text>
+                        <text x="400" y="224" class="sv1-h">Layer 2</text>
+                        <text x="400" y="242" class="sv1-t">
+                            Financial layer
+                        </text>
+                        <text x="400" y="258" class="sv1-t">
+                            Capital flows &amp; portfolio
+                        </text>
+                        <text x="400" y="278" class="sv1-t">
+                            Financial PropTech
+                        </text>
+                        <text x="565" y="224" class="sv1-h">Layer 3</text>
+                        <text x="565" y="242" class="sv1-t">
+                            Strategic intelligence
+                        </text>
+                        <text x="565" y="258" class="sv1-t">
+                            Market analysis &amp; decisions
+                        </text>
+                        <text x="565" y="278" class="sv1-t">
+                            Analysts, consultants
+                        </text>
+                    </svg>
+                </div>
+
                 <div class="layer-box">
                     <h4>
                         Layer 0: Physical Operations (The Construction Site)
                     </h4>
-                    <p>
-                        This is where value is created and risk is born.
-                        Concrete gets poured. Delays happen. Costs overrun.
-                        Quality gets compromised or delivered. Everything that
-                        matters starts here.
-                    </p>
+                    <p>This is where value is created and risk is born.</p>
                     <p>
                         <strong>Key players:</strong> ConTech companies (BIM
                         tools, workforce management, logistics, IoT sensors,
@@ -200,9 +326,10 @@
                     <h4>Layer 1: Asset Management (The Building as Product)</h4>
                     <p>
                         Once construction completes, the asset enters its
-                        operational life. PropTech dominates here: smart
-                        building platforms, energy management, tenant apps,
-                        maintenance scheduling.
+                        operational life.
+                        <br />
+                        PropTech dominates here: smart building platforms,
+                        energy management, tenant apps, maintenance scheduling.
                     </p>
                     <p>
                         <strong>Key players:</strong> PropTech companies
@@ -212,14 +339,16 @@
                     <p>
                         <strong>The gap:</strong> These systems know what the
                         building does now, but have no memory of how it was
-                        built. Construction data (actual costs, quality records,
+                        built.
+                        <br />
+                        Construction data (actual costs, quality records,
                         contractor performance) vanishes into filing cabinets
                         and SharePoint folders.
                     </p>
                 </div>
                 <div class="layer-box">
                     <h4>
-                        Layer 2: Financial Layer (Capital Flows & Portfolio
+                        Layer 2: Financial Layer (Capital Flows &amp; Portfolio
                         Management)
                     </h4>
                     <p>
@@ -235,13 +364,12 @@
                     <p>
                         <strong>The gap:</strong> Financial models rely on
                         assumptions and comparables, not real-time construction
-                        or operational data. Risk assessments are
-                        backward-looking. Development timelines are guesses.
+                        or operational data.
                     </p>
                 </div>
                 <div class="layer-box">
                     <h4>
-                        Layer 3: Strategic Intelligence (Market Analysis &
+                        Layer 3: Strategic Intelligence (Market Analysis &amp;
                         Decision Support)
                     </h4>
                     <p>
@@ -256,18 +384,23 @@
                     </p>
                     <p>
                         <strong>The gap:</strong> Analysis is done with public
-                        data, broker reports, and backward-looking trends. The
-                        richest signal — what's actually happening on the ground
-                        — is invisible.
+                        data, broker reports, and backward-looking trends.
+                        What's actually happening on the ground, is often
+                        invisible.
                     </p>
                 </div>
+
                 <h2>Why the Silos Exist</h2>
                 <p>
-                    <strong>1. Different buyers, different budgets</strong
-                    ><br />ConTech is sold to construction managers and GCs.
-                    PropTech is sold to asset managers and landlords. Financial
-                    tools are sold to CFOs and investment committees. No single
-                    buyer controls the full stack.
+                    <strong>1. Different buyers, different budgets</strong>
+                    <br />
+                    ConTech is sold to construction managers and General
+                    Contractors.<br />
+                    PropTech is sold to asset managers and landlords.
+                    <br />
+                    Financial tools are sold to CFOs and investment committees.
+                    <br />
+                    No single buyer controls the full stack.
                 </p>
                 <p>
                     <strong>2. Misaligned incentives</strong><br />Construction
@@ -289,56 +422,307 @@
                     is a 10-30 year cycle. Financial exits happen in between. No
                     one optimizes for the full lifecycle because no one owns it.
                 </p>
+
                 <h2>What Needs to Change</h2>
                 <p>
-                    Fixing this isn't about building another dashboard or adding
-                    another integration. It requires rethinking how data flows
-                    through the value chain:
+                    Fixing this requires rethinking how data flows through the
+                    value chain:
                 </p>
+
+                <div class="diagram-card">
+                    <svg
+                        width="100%"
+                        viewBox="0 0 680 426.87"
+                        role="img"
+                        xmlns="http://www.w3.org/2000/svg"
+                        aria-label="Closing the loop diagram"
+                    >
+                        <style>
+                            .sv2-wave {
+                                fill: none;
+                                stroke: var(--color-text-muted);
+                            }
+                            .sv2-h {
+                                fill: var(--color-text);
+                                font-size: 14px;
+                                font-weight: 500;
+                            }
+                            .sv2-t {
+                                fill: var(--color-text-muted);
+                                font-size: 12px;
+                            }
+                            .sv2-caption {
+                                fill: var(--color-text);
+                                font-size: 14px;
+                                font-weight: 500;
+                            }
+                            .sv2-caption-sub {
+                                fill: var(--color-text-muted);
+                                font-size: 12px;
+                            }
+                            text {
+                                text-anchor: middle;
+                                font-family:
+                                    -apple-system, BlinkMacSystemFont,
+                                    "Segoe UI", sans-serif;
+                            }
+                        </style>
+                        <defs>
+                            <marker
+                                id="arrow-sv2"
+                                viewBox="0 0 10 10"
+                                refX="8"
+                                refY="5"
+                                markerWidth="5"
+                                markerHeight="5"
+                                orient="auto-start-reverse"
+                            >
+                                <path
+                                    d="M2 1L8 5L2 9"
+                                    fill="none"
+                                    stroke="#EF9F27"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </marker>
+                            <mask id="mask-sv2" maskUnits="userSpaceOnUse">
+                                <rect
+                                    x="0"
+                                    y="0"
+                                    width="680"
+                                    height="426.87"
+                                    fill="white"
+                                />
+                                <rect
+                                    x="126.51"
+                                    y="137.34"
+                                    width="116.98"
+                                    height="18.53"
+                                    fill="black"
+                                    rx="2"
+                                />
+                                <rect
+                                    x="272.13"
+                                    y="109.34"
+                                    width="125.74"
+                                    height="18.53"
+                                    fill="black"
+                                    rx="2"
+                                />
+                                <rect
+                                    x="434.37"
+                                    y="79.34"
+                                    width="125.48"
+                                    height="18.53"
+                                    fill="black"
+                                    rx="2"
+                                />
+                                <rect
+                                    x="76.80"
+                                    y="214.44"
+                                    width="56.40"
+                                    height="21.44"
+                                    fill="black"
+                                    rx="2"
+                                />
+                                <rect
+                                    x="51.81"
+                                    y="234.34"
+                                    width="106.38"
+                                    height="18.53"
+                                    fill="black"
+                                    rx="2"
+                                />
+                                <rect
+                                    x="218.34"
+                                    y="214.44"
+                                    width="53.32"
+                                    height="21.44"
+                                    fill="black"
+                                    rx="2"
+                                />
+                                <rect
+                                    x="186.56"
+                                    y="234.34"
+                                    width="116.87"
+                                    height="18.53"
+                                    fill="black"
+                                    rx="2"
+                                />
+                                <rect
+                                    x="371.93"
+                                    y="214.44"
+                                    width="56.13"
+                                    height="21.44"
+                                    fill="black"
+                                    rx="2"
+                                />
+                                <rect
+                                    x="355.91"
+                                    y="234.34"
+                                    width="88.19"
+                                    height="18.53"
+                                    fill="black"
+                                    rx="2"
+                                />
+                                <rect
+                                    x="537.09"
+                                    y="214.44"
+                                    width="55.83"
+                                    height="21.44"
+                                    fill="black"
+                                    rx="2"
+                                />
+                                <rect
+                                    x="501.71"
+                                    y="234.34"
+                                    width="126.59"
+                                    height="18.53"
+                                    fill="black"
+                                    rx="2"
+                                />
+                                <rect
+                                    x="257.62"
+                                    y="379.44"
+                                    width="164.76"
+                                    height="21.44"
+                                    fill="black"
+                                    rx="2"
+                                />
+                                <rect
+                                    x="167.94"
+                                    y="400.34"
+                                    width="344.12"
+                                    height="18.53"
+                                    fill="black"
+                                    rx="2"
+                                />
+                            </mask>
+                        </defs>
+                        <text x="185" y="150" class="sv2-t">
+                            Structured handoff
+                        </text>
+                        <text x="335" y="122" class="sv2-t">
+                            Performance metrics
+                        </text>
+                        <text x="497" y="92" class="sv2-t">
+                            Live investment data
+                        </text>
+                        <path
+                            d="M60 190 Q85 190,110 190 T150 190 Q185 160,220 190 T290 190 Q320 138,350 190 T410 190 Q435 242,460 190 Q485 108,510 190 T555 190 Q580 268,605 190 T620 190"
+                            class="sv2-wave"
+                            stroke-width="1"
+                            mask="url(#mask-sv2)"
+                        />
+                        <path
+                            d="M150 190 L156.6 184.3"
+                            fill="none"
+                            stroke="#EF9F27"
+                            stroke-width="1.5"
+                            marker-end="url(#arrow-sv2)"
+                        />
+                        <path
+                            d="M290 190 L295.1 181.1"
+                            fill="none"
+                            stroke="#EF9F27"
+                            stroke-width="1.5"
+                            marker-end="url(#arrow-sv2)"
+                        />
+                        <path
+                            d="M460 190 L462.9 180.5"
+                            fill="none"
+                            stroke="#EF9F27"
+                            stroke-width="1.5"
+                            marker-end="url(#arrow-sv2)"
+                        />
+                        <text x="105" y="230" class="sv2-h">Layer 0</text>
+                        <text x="105" y="247" class="sv2-t">
+                            Construction site
+                        </text>
+                        <text x="245" y="230" class="sv2-h">Layer 1</text>
+                        <text x="245" y="247" class="sv2-t">
+                            Asset management
+                        </text>
+                        <text x="400" y="230" class="sv2-h">Layer 2</text>
+                        <text x="400" y="247" class="sv2-t">
+                            Financial layer
+                        </text>
+                        <text x="565" y="230" class="sv2-h">Layer 3</text>
+                        <text x="565" y="247" class="sv2-t">
+                            Strategic intelligence
+                        </text>
+                        <path
+                            d="M620 195 C 655 290,600 350,340 350 C 80 350,25 290,60 195"
+                            fill="none"
+                            stroke="#EF9F27"
+                            stroke-width="1.2"
+                            marker-end="url(#arrow-sv2)"
+                        />
+                        <text x="340" y="395" class="sv2-caption">
+                            This line closes the loop
+                        </text>
+                        <text x="340" y="413" class="sv2-caption-sub">
+                            Strategic intelligence feeds back into how buildings
+                            get built
+                        </text>
+                    </svg>
+                </div>
+
                 <ul>
                     <li>
-                        <strong>Layer 0 → Layer 1:</strong> Construction data
-                        must be structured for handoff. BIM models, progress
-                        tracking, cost actuals, and contractor performance
-                        records need to become part of the building's permanent
-                        record — not PDFs in a zip file.
+                        <strong>Layer 0 → Layer 1:</strong>
+                        <strong>
+                            Construction data must be structured for handoff.
+                        </strong>
+                        <br />
+                        BIM models, progress tracking, cost actuals, and
+                        contractor performance records need to become part of
+                        the building's permanent record.
                     </li>
                     <li>
-                        <strong>Layer 1 → Layer 2:</strong> Operational
-                        performance metrics (energy use, maintenance frequency,
-                        tenant satisfaction) should feed directly into financial
-                        models and portfolio dashboards. Real-time building
-                        performance should inform refinancing decisions and
-                        asset valuations.
+                        <strong>Layer 1 → Layer 2:</strong>
+                        <strong>
+                            Operational performance metrics should feed directly
+                            into financial models and portfolio dashboards.
+                        </strong>
+                        <br />
+                        (Energy use, maintenance frequency, tenant satisfaction)
+                        <br />
+                        Real-time building performance should inform refinancing
+                        decisions and asset valuations.
                     </li>
                     <li>
-                        <strong>Layer 2 → Layer 3:</strong> Investment analytics
-                        should pull from live data, not quarterly reports. If a
-                        development is behind schedule, the financial model
-                        should update automatically. If a building's energy
-                        performance is deteriorating, the ESG score should
-                        reflect it immediately.
+                        <strong>Layer 2 → Layer 3:</strong>
+                        <strong>
+                            Investment analytics should pull from live data.
+                        </strong>
                     </li>
                     <li>
-                        <strong>Layer 3 → Layer 0:</strong> Strategic
-                        intelligence should inform construction execution.
+                        <strong>Layer 3 → Layer 0:</strong>
+                        <strong>
+                            Strategic intelligence should inform construction
+                            execution.
+                        </strong>
+                        <br />
                         Market insights, tenant demand signals, and
                         portfolio-level learnings should loop back into how
                         buildings are designed and built.
                     </li>
                 </ul>
+
                 <h2>The Opportunity</h2>
                 <p>
                     The companies that bridge these layers won't be "PropTech"
-                    or "ConTech" — they'll be infrastructure. They'll build the
-                    pipes that connect site-level data to boardroom decisions.
-                    They'll make construction legible to finance, and finance
-                    legible to construction.
+                    or "ConTech": they'll be infrastructure. They'll build the
+                    pipes that connect site-level data to boardroom decisions,
+                    making construction legible to finance, and finance legible
+                    to construction.
                 </p>
                 <p>
                     This is where the next generation of real estate technology
-                    gets built. Not in better dashboards. In better connective
-                    tissue.
+                    gets built.
+                    <strong> In better connective tissue. </strong>
                 </p>
             </div>
         </section>
