@@ -54,6 +54,7 @@ async function initMap() {
       { name: "Munich", coords: [11.58, 48.14], url: "munich/munich.html" },
       { name: "Utrecht", coords: [5.12, 52.09], url: "utrecht/utrecht.html" },
       { name: "Ghent", coords: [3.72, 51.05], url: "ghent/ghent.html" },
+      { name: "Zurich", coords: [8.55, 47.37], url: "zurich/zurich.html" },
     ];
 
     // Draw city nodes
