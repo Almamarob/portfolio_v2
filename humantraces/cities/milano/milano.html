@@ -225,49 +225,143 @@
                     <div class="stat"><div class="label">Founded</div><div class="num">222<small>BC</small></div></div>
                     <div class="stat"><div class="label">Timezone</div><div class="num" style="font-size:20px">CET</div></div>
                 </div>
-                <h3 style="margin-top:32px;margin-bottom:14px">City Indices at a Glance</h3>
-                <div class="ci-stack">
-                    <div class="ci-row2">
-                        <div class="ci-panel">
-                            <div class="ci-cat">Population &amp; Origins</div>
-                            <div><span class="ci-big">1.37<small>M</small></span></div>
-                            <div class="ci-sub">city proper · 3.2M metro area · 19% non-Italian</div>
-                            <div style="margin-top:14px">
-                                <div class="origin-bar-row"><span>Filipino</span><div class="otrack"><div class="ofill" style="width:60%"></div></div><span class="oval">2.8%</span></div>
-                                <div class="origin-bar-row"><span>Egyptian</span><div class="otrack"><div class="ofill" style="width:45%"></div></div><span class="oval">2.1%</span></div>
-                                <div class="origin-bar-row"><span>Chinese</span><div class="otrack"><div class="ofill" style="width:40%"></div></div><span class="oval">1.9%</span></div>
-                                <div class="origin-bar-row"><span>Peruvian</span><div class="otrack"><div class="ofill" style="width:25%"></div></div><span class="oval">1.2%</span></div>
+                <div style="margin-top:32px">
+                    <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.09em;color:var(--ink-soft);margin-bottom:16px;display:flex;align-items:center;gap:12px">
+                        City Indices at a Glance<span style="flex:1;height:1px;background:var(--line);display:block"></span>
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)">
+                        <div style="background:var(--paper);padding:20px">
+                            <div style="display:flex;gap:28px;margin-bottom:18px">
+                                <div>
+                                    <div style="font-family:'Fraunces',serif;font-size:30px;font-weight:600;line-height:1">1.37<span style="font-family:Inter;font-size:14px;font-weight:400;color:var(--ink-soft)">M</span></div>
+                                    <div style="font-size:9.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);margin-top:5px">Population, Milano</div>
+                                </div>
+                                <div>
+                                    <div style="font-family:'Fraunces',serif;font-size:30px;font-weight:600;line-height:1">19<span style="font-family:Inter;font-size:14px;font-weight:400;color:var(--ink-soft)">%</span></div>
+                                    <div style="font-size:9.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);margin-top:5px">Non-Italian residents</div>
+                                </div>
+                            </div>
+                            <div class="origin-bar-row">
+                                <div>Filipino</div>
+                                <div class="otrack"><div class="ofill" style="width:60%"></div></div>
+                                <div style="text-align:right;font-family:'JetBrains Mono',monospace;font-size:11px">~2.8%</div>
+                            </div>
+                            <div class="origin-bar-row">
+                                <div>Egyptian</div>
+                                <div class="otrack"><div class="ofill" style="width:45%"></div></div>
+                                <div style="text-align:right;font-family:'JetBrains Mono',monospace;font-size:11px">~2.1%</div>
+                            </div>
+                            <div class="origin-bar-row">
+                                <div>Chinese</div>
+                                <div class="otrack"><div class="ofill" style="width:40%"></div></div>
+                                <div style="text-align:right;font-family:'JetBrains Mono',monospace;font-size:11px">~1.9%</div>
                             </div>
                         </div>
-                        <div class="ci-panel">
-                            <div class="ci-cat">Mobility</div>
-                            <div><span class="ci-big">220<small>km</small></span></div>
-                            <div class="ci-sub">metro network · ATM network 4 lines · Linate 7 min by M4</div>
-                            <div style="margin-top:10px;font-size:12px;color:var(--ink-soft)">Metro M1/M2/M3/M4 · Tram network 17 lines · BikeMi sharing · Malpensa Express ~45 min</div>
+                        <div style="background:var(--paper);padding:20px">
+                            <div style="font-size:9.5px;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-soft);margin-bottom:16px">Mobility &amp; Infrastructure</div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+                                <div>
+                                    <div style="font-family:'Fraunces',serif;font-size:26px;font-weight:600;line-height:1">220<span style="font-family:Inter;font-size:12px;font-weight:400;color:var(--ink-soft)">km</span></div>
+                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-top:5px">Metro network</div>
+                                </div>
+                                <div>
+                                    <div style="font-family:'Fraunces',serif;font-size:26px;font-weight:600;line-height:1">4</div>
+                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-top:5px">Metro lines (ATM)</div>
+                                </div>
+                                <div>
+                                    <div style="font-family:'Fraunces',serif;font-size:26px;font-weight:600;line-height:1">7<span style="font-family:Inter;font-size:12px;font-weight:400;color:var(--ink-soft)">min</span></div>
+                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-top:5px">To Linate Airport (M4)</div>
+                                </div>
+                                <div>
+                                    <div style="font-family:'Fraunces',serif;font-size:26px;font-weight:600;line-height:1">45<span style="font-family:Inter;font-size:12px;font-weight:400;color:var(--ink-soft)">min</span></div>
+                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-top:5px">Malpensa Express</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background:var(--paper);padding:20px">
+                            <div style="font-size:9.5px;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-soft);margin-bottom:16px">Quality of Life Indices</div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+                                <div>
+                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-bottom:4px">Purchasing Power</div>
+                                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                                        <span style="font-family:'Fraunces',serif;font-size:24px;font-weight:600;line-height:1">83</span>
+                                        <span style="font-size:9px;background:#3a6b32;color:white;padding:2px 8px;border-radius:2px;font-family:Inter;font-weight:600;letter-spacing:0.03em;white-space:nowrap">HIGH</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-bottom:4px">Safety</div>
+                                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                                        <span style="font-family:'Fraunces',serif;font-size:24px;font-weight:600;line-height:1">58</span>
+                                        <span style="font-size:9px;background:#c07030;color:white;padding:2px 8px;border-radius:2px;font-family:Inter;font-weight:600;letter-spacing:0.03em;white-space:nowrap">MODERATE</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-bottom:4px">Health Care</div>
+                                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                                        <span style="font-family:'Fraunces',serif;font-size:24px;font-weight:600;line-height:1">72</span>
+                                        <span style="font-size:9px;background:#3a6b32;color:white;padding:2px 8px;border-radius:2px;font-family:Inter;font-weight:600;letter-spacing:0.03em;white-space:nowrap">HIGH</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-bottom:4px">Climate</div>
+                                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                                        <span style="font-family:'Fraunces',serif;font-size:24px;font-weight:600;line-height:1">68</span>
+                                        <span style="font-size:9px;background:#c07030;color:white;padding:2px 8px;border-radius:2px;font-family:Inter;font-weight:600;letter-spacing:0.03em;white-space:nowrap">MODERATE</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-bottom:4px">Pollution</div>
+                                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                                        <span style="font-family:'Fraunces',serif;font-size:24px;font-weight:600;line-height:1">53</span>
+                                        <span style="font-size:9px;background:#c07030;color:white;padding:2px 8px;border-radius:2px;font-family:Inter;font-weight:600;letter-spacing:0.03em;white-space:nowrap">MODERATE</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-bottom:4px">Traffic Commute</div>
+                                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                                        <span style="font-family:'Fraunces',serif;font-size:24px;font-weight:600;line-height:1">40</span>
+                                        <span style="font-size:9px;background:#c07030;color:white;padding:2px 8px;border-radius:2px;font-family:Inter;font-weight:600;letter-spacing:0.03em;white-space:nowrap">MODERATE</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background:var(--paper);padding:20px">
+                            <div style="font-size:9.5px;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-soft);margin-bottom:16px">Economy &amp; Cost of Living</div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+                                <div>
+                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-bottom:4px">Cost of Living Index</div>
+                                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px">
+                                        <span style="font-family:'Fraunces',serif;font-size:24px;font-weight:600;line-height:1">71</span>
+                                        <span style="font-size:9px;background:#c07030;color:white;padding:2px 8px;border-radius:2px;font-family:Inter;font-weight:600;letter-spacing:0.03em;white-space:nowrap">HIGH</span>
+                                    </div>
+                                    <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink)">~€900/mo</div>
+                                    <div style="font-size:10.5px;color:var(--ink-soft);margin-top:2px">excl. housing costs</div>
+                                </div>
+                                <div>
+                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-bottom:4px">Property Price-to-Income</div>
+                                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px">
+                                        <span style="font-family:'Fraunces',serif;font-size:24px;font-weight:600;line-height:1">14</span>
+                                        <span style="font-size:9px;background:#c07030;color:white;padding:2px 8px;border-radius:2px;font-family:Inter;font-weight:600;letter-spacing:0.03em;white-space:nowrap">HIGH</span>
+                                    </div>
+                                    <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink)">~€630k avg. price</div>
+                                    <div style="font-size:10.5px;color:var(--ink-soft);margin-top:2px">90m² · €7k/m² existing</div>
+                                    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink);margin-top:6px">~14 yrs avg. income</div>
+                                    <div style="font-size:10.5px;color:var(--ink-soft);margin-top:2px">to buy 90m² apartment</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="ci-row2">
-                        <div class="ci-panel">
-                            <div class="ci-cat">Quality of Life Indices</div>
-                            <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:8px;align-items:flex-start">
-                                <div><div style="display:flex;align-items:center;gap:8px;margin-bottom:4px"><span class="ci-big" style="font-size:28px">38</span><span class="ci-badge green">HIGH</span></div><div class="ci-sub">Mercer QoL Ranking</div></div>
-                                <div><div style="display:flex;align-items:center;gap:8px;margin-bottom:4px"><span class="ci-big" style="font-size:28px">7.5</span><span class="ci-badge green">GOOD</span></div><div class="ci-sub">EIU Liveability /10</div></div>
-                                <div><div style="display:flex;align-items:center;gap:8px;margin-bottom:4px"><span class="ci-big" style="font-size:28px">39</span><span class="ci-badge amber">MODERATE</span></div><div class="ci-sub">Crime Index (Numbeo)</div></div>
-                            </div>
-                            <div class="ci-note">Fashion, design, finance, and gastronomy create a uniquely high quality of professional and cultural life, partially offset by high housing costs and traffic congestion.</div>
-                        </div>
-                        <div class="ci-panel">
-                            <div class="ci-cat">Economy &amp; Cost of Living</div>
-                            <div style="display:flex;align-items:center;gap:8px;margin-bottom:2px"><span class="ci-big" style="font-size:26px">14</span><span class="ci-badge amber">HIGH</span></div>
-                            <div class="ci-sub" style="margin-bottom:10px">Property Price-to-Income · 14 yrs income to buy 90m² apt · avg. price ~€630k</div>
-                            <table class="cost-table">
-                                <tr><td>Avg rent (new lease)</td><td>€22/sqm</td></tr>
-                                <tr><td>Avg buy price</td><td>€7,000/sqm</td></tr>
-                                <tr><td>Avg gross salary</td><td>~€45,000/yr</td></tr>
-                                <tr><td>Cost of living (excl. rent)</td><td>~€900/mo</td></tr>
-                                <tr><td>1BR apt (city avg)</td><td>~€1,400/mo</td></tr>
-                            </table>
-                        </div>
+                    <p class="mapnote" style="margin-top:10px">Source: Numbeo Quality of Life — Milan · Camera di Commercio Milano, 2025</p>
+                </div>
+
+                <div class="codegrid" style="margin-top:24px">
+                    <div class="code-card">
+                        <span class="tag">Economic Engine</span>
+                        <p class="body-text">Italy's financial capital and Europe's fashion and design hub. Milan generates 10% of Italian GDP. Borsa Italiana, UniCredit, Generali, and Pirelli are headquartered here. The Salone del Mobile and Fashion Week weeks attract 300,000+ professionals annually and generate over €1 billion in economic activity each.</p>
+                    </div>
+                    <div class="code-card">
+                        <span class="tag">Urban Philosophy</span>
+                        <p class="body-text">Fare bene le cose — doing things well. Milan does not compromise on quality: in food, in design, in dress, in architecture. The aperitivo is not leisure; it is maintenance. The city rewards those who understand that attention to form is not vanity but a form of respect — for others, for the city, for oneself.</p>
                     </div>
                 </div>
             </div>
@@ -280,18 +374,18 @@
                 <p class="body-text">Humid subtropical climate tempered by the Po Valley. Summers are hot and muggy; winters are cold and foggy (the famous nebbia). Spring and autumn are the most pleasant seasons. Rainfall peaks in May and October.</p>
                 <div class="rain-chart-wrap" style="margin-top:8px">
                     <div class="rain-chart">
-                        <div class="rain-bar"><div class="emoji">🌫</div><div class="bar" style="height:39px"><div class="dcount">62mm</div></div><div class="m">J</div><div class="temps"><span class="tmax">5°</span><br><span class="tmin">0°</span></div><div class="rdays">7d rain</div><div class="suntime"><span class="sr">8:04</span><br><span class="ss">16:45</span></div></div>
-                        <div class="rain-bar"><div class="emoji">🌫</div><div class="bar" style="height:36px"><div class="dcount">58mm</div></div><div class="m">F</div><div class="temps"><span class="tmax">8°</span><br><span class="tmin">2°</span></div><div class="rdays">7d rain</div><div class="suntime"><span class="sr">7:17</span><br><span class="ss">17:47</span></div></div>
-                        <div class="rain-bar"><div class="emoji">🌤</div><div class="bar" style="height:51px"><div class="dcount">82mm</div></div><div class="m">M</div><div class="temps"><span class="tmax">14°</span><br><span class="tmin">6°</span></div><div class="rdays">9d rain</div><div class="suntime"><span class="sr">6:15</span><br><span class="ss">18:43</span></div></div>
-                        <div class="rain-bar"><div class="emoji">⛅</div><div class="bar" style="height:51px"><div class="dcount">82mm</div></div><div class="m">A</div><div class="temps"><span class="tmax">19°</span><br><span class="tmin">10°</span></div><div class="rdays">10d rain</div><div class="suntime"><span class="sr">6:02</span><br><span class="ss">20:34</span></div></div>
-                        <div class="rain-bar"><div class="emoji">⛅</div><div class="bar" style="height:75px"><div class="dcount">120mm</div></div><div class="m">M</div><div class="temps"><span class="tmax">24°</span><br><span class="tmin">15°</span></div><div class="rdays">11d rain</div><div class="suntime"><span class="sr">5:15</span><br><span class="ss">21:18</span></div></div>
-                        <div class="rain-bar"><div class="emoji">☀</div><div class="bar" style="height:55px"><div class="dcount">88mm</div></div><div class="m">J</div><div class="temps"><span class="tmax">29°</span><br><span class="tmin">19°</span></div><div class="rdays">8d rain</div><div class="suntime"><span class="sr">4:47</span><br><span class="ss">21:38</span></div></div>
-                        <div class="rain-bar"><div class="emoji">☀</div><div class="bar" style="height:44px"><div class="dcount">70mm</div></div><div class="m">J</div><div class="temps"><span class="tmax">32°</span><br><span class="tmin">21°</span></div><div class="rdays">7d rain</div><div class="suntime"><span class="sr">5:05</span><br><span class="ss">21:24</span></div></div>
-                        <div class="rain-bar"><div class="emoji">☀</div><div class="bar" style="height:54px"><div class="dcount">87mm</div></div><div class="m">A</div><div class="temps"><span class="tmax">31°</span><br><span class="tmin">20°</span></div><div class="rdays">8d rain</div><div class="suntime"><span class="sr">5:52</span><br><span class="ss">20:26</span></div></div>
-                        <div class="rain-bar"><div class="emoji">🌤</div><div class="bar" style="height:67px"><div class="dcount">108mm</div></div><div class="m">S</div><div class="temps"><span class="tmax">25°</span><br><span class="tmin">15°</span></div><div class="rdays">9d rain</div><div class="suntime"><span class="sr">6:42</span><br><span class="ss">19:18</span></div></div>
-                        <div class="rain-bar"><div class="emoji">🌧</div><div class="bar" style="height:73px"><div class="dcount">117mm</div></div><div class="m">O</div><div class="temps"><span class="tmax">18°</span><br><span class="tmin">10°</span></div><div class="rdays">10d rain</div><div class="suntime"><span class="sr">7:33</span><br><span class="ss">18:07</span></div></div>
-                        <div class="rain-bar"><div class="emoji">🌫</div><div class="bar" style="height:54px"><div class="dcount">87mm</div></div><div class="m">N</div><div class="temps"><span class="tmax">10°</span><br><span class="tmin">4°</span></div><div class="rdays">8d rain</div><div class="suntime"><span class="sr">7:28</span><br><span class="ss">16:48</span></div></div>
-                        <div class="rain-bar"><div class="emoji">🌫</div><div class="bar" style="height:39px"><div class="dcount">62mm</div></div><div class="m">D</div><div class="temps"><span class="tmax">5°</span><br><span class="tmin">1°</span></div><div class="rdays">7d rain</div><div class="suntime"><span class="sr">8:06</span><br><span class="ss">16:32</span></div></div>
+                        <div class="rain-bar"><div class="emoji">🌫</div><div class="bar" style="height:39px"><div class="dcount">62mm</div></div><div class="m">J</div><div class="temps"><span class="tmax">5°</span><br><span class="tmin">0°</span></div><div class="suntime"><span class="sr">8:04</span><br><span class="ss">16:45</span></div><div class="rdays">7d rain</div></div>
+                        <div class="rain-bar"><div class="emoji">🌫</div><div class="bar" style="height:36px"><div class="dcount">58mm</div></div><div class="m">F</div><div class="temps"><span class="tmax">8°</span><br><span class="tmin">2°</span></div><div class="suntime"><span class="sr">7:17</span><br><span class="ss">17:47</span></div><div class="rdays">7d rain</div></div>
+                        <div class="rain-bar"><div class="emoji">🌤</div><div class="bar" style="height:51px"><div class="dcount">82mm</div></div><div class="m">M</div><div class="temps"><span class="tmax">14°</span><br><span class="tmin">6°</span></div><div class="suntime"><span class="sr">6:15</span><br><span class="ss">18:43</span></div><div class="rdays">9d rain</div></div>
+                        <div class="rain-bar"><div class="emoji">⛅</div><div class="bar" style="height:51px"><div class="dcount">82mm</div></div><div class="m">A</div><div class="temps"><span class="tmax">19°</span><br><span class="tmin">10°</span></div><div class="suntime"><span class="sr">6:02</span><br><span class="ss">20:34</span></div><div class="rdays">10d rain</div></div>
+                        <div class="rain-bar"><div class="emoji">⛅</div><div class="bar" style="height:75px"><div class="dcount">120mm</div></div><div class="m">M</div><div class="temps"><span class="tmax">24°</span><br><span class="tmin">15°</span></div><div class="suntime"><span class="sr">5:15</span><br><span class="ss">21:18</span></div><div class="rdays">11d rain</div></div>
+                        <div class="rain-bar"><div class="emoji">☀</div><div class="bar" style="height:55px"><div class="dcount">88mm</div></div><div class="m">J</div><div class="temps"><span class="tmax">29°</span><br><span class="tmin">19°</span></div><div class="suntime"><span class="sr">4:47</span><br><span class="ss">21:38</span></div><div class="rdays">8d rain</div></div>
+                        <div class="rain-bar"><div class="emoji">☀</div><div class="bar" style="height:44px"><div class="dcount">70mm</div></div><div class="m">J</div><div class="temps"><span class="tmax">32°</span><br><span class="tmin">21°</span></div><div class="suntime"><span class="sr">5:05</span><br><span class="ss">21:24</span></div><div class="rdays">7d rain</div></div>
+                        <div class="rain-bar"><div class="emoji">☀</div><div class="bar" style="height:54px"><div class="dcount">87mm</div></div><div class="m">A</div><div class="temps"><span class="tmax">31°</span><br><span class="tmin">20°</span></div><div class="suntime"><span class="sr">5:52</span><br><span class="ss">20:26</span></div><div class="rdays">8d rain</div></div>
+                        <div class="rain-bar"><div class="emoji">🌤</div><div class="bar" style="height:67px"><div class="dcount">108mm</div></div><div class="m">S</div><div class="temps"><span class="tmax">25°</span><br><span class="tmin">15°</span></div><div class="suntime"><span class="sr">6:42</span><br><span class="ss">19:18</span></div><div class="rdays">9d rain</div></div>
+                        <div class="rain-bar"><div class="emoji">🌧</div><div class="bar" style="height:73px"><div class="dcount">117mm</div></div><div class="m">O</div><div class="temps"><span class="tmax">18°</span><br><span class="tmin">10°</span></div><div class="suntime"><span class="sr">7:33</span><br><span class="ss">18:07</span></div><div class="rdays">10d rain</div></div>
+                        <div class="rain-bar"><div class="emoji">🌫</div><div class="bar" style="height:54px"><div class="dcount">87mm</div></div><div class="m">N</div><div class="temps"><span class="tmax">10°</span><br><span class="tmin">4°</span></div><div class="suntime"><span class="sr">7:28</span><br><span class="ss">16:48</span></div><div class="rdays">8d rain</div></div>
+                        <div class="rain-bar"><div class="emoji">🌫</div><div class="bar" style="height:39px"><div class="dcount">62mm</div></div><div class="m">D</div><div class="temps"><span class="tmax">5°</span><br><span class="tmin">1°</span></div><div class="suntime"><span class="sr">8:06</span><br><span class="ss">16:32</span></div><div class="rdays">7d rain</div></div>
                     </div>
                 </div>
                 <p class="body-text" style="margin-top:24px;font-size:13px">Bar = monthly rainfall (mm) · <span style="color:var(--rust)">Red</span> = avg max · <span style="color:var(--moss)">Green</span> = avg min · <span style="color:var(--gold)">Gold</span> = sunrise · <span style="color:var(--moss)">Moss</span> = sunset</p>
@@ -304,6 +398,9 @@
                 <div class="section-head"><span class="section-num">03</span><h2>Cultural Codes</h2></div>
                 <p class="body-text" style="margin-bottom:20px">Milan is Italy's most Northern city in mentality. Efficiency, punctuality, and professional discretion are valued — but so is aesthetics, at every level. The aperitivo is not optional; it is the social contract that lubricates the working week.</p>
                 <div style="margin-top:8px">
+                    <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.09em;color:var(--ink-soft);margin-bottom:20px;display:flex;align-items:center;gap:12px">
+                        Culture Adjustment Index<span style="flex:1;height:1px;background:var(--line);display:block"></span>
+                    </div>
                     <div class="meter-row"><div class="meter-label">Formality</div><div class="meter-track"><div class="meter-fill" style="left:65%"></div></div><div class="meter-note">Moderate–high</div></div>
                     <div class="meter-row"><div class="meter-label">Punctuality</div><div class="meter-track"><div class="meter-fill" style="left:60%"></div></div><div class="meter-note">Moderate</div></div>
                     <div class="meter-row"><div class="meter-label">Directness</div><div class="meter-track"><div class="meter-fill" style="left:50%"></div></div><div class="meter-note">Moderate</div></div>
@@ -316,24 +413,6 @@
                     <div class="code-card"><span class="tag">Design Consciousness</span><p class="body-text">Milan is the world's design capital. Aesthetic quality is expected everywhere — in products, spaces, food presentation, and personal style. Poor design is noticed and quietly judged.</p></div>
                     <div class="code-card"><span class="tag">Navigli &amp; Isola Identity</span><p class="body-text">Each neighbourhood has its own social character. Navigli is bohemian and international; Isola is creative-young; Brera is moneyed-intellectual. Belonging to a zona matters.</p></div>
                 </div>
-                <table class="yn-table" style="margin-top:32px">
-                    <thead><tr><th></th><th class="yes">Yes / Normal</th><th class="no">No / Unusual</th></tr></thead>
-                    <tbody>
-                        <tr class="cat-row"><td colspan="3">Behaviour</td></tr>
-                        <tr><td>Aperitivo after work (18:00–20:00)</td><td class="yes-cell"></td><td></td></tr>
-                        <tr><td>Long lunch (pausa pranzo)</td><td class="yes-cell"></td><td></td></tr>
-                        <tr><td>Cappuccino after 11am</td><td></td><td class="no-cell"></td></tr>
-                        <tr><td>Recycling (raccolta differenziata)</td><td class="yes-cell"></td><td></td></tr>
-                        <tr class="cat-row"><td colspan="3">Business</td></tr>
-                        <tr><td>Relationship before business</td><td class="yes-cell"></td><td></td></tr>
-                        <tr><td>Same-day decisions</td><td></td><td class="no-cell"></td></tr>
-                        <tr><td>First-name basis immediately</td><td></td><td class="no-cell"></td></tr>
-                        <tr class="cat-row"><td colspan="3">Daily Life</td></tr>
-                        <tr><td>Sunday lunch as family ritual</td><td class="yes-cell"></td><td></td></tr>
-                        <tr><td>Paying by card everywhere</td><td class="yes-cell"></td><td></td></tr>
-                        <tr><td>Shopping on Sundays</td><td class="yes-cell"></td><td></td></tr>
-                    </tbody>
-                </table>
             </div>
         </section>
 
