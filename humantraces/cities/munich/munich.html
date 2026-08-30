@@ -741,7 +741,7 @@
                 border-bottom: 1px solid var(--line);
                 line-height: 1.35;
             }
-            .maplegend-item:nth-last-child(-n+2) {
+            .maplegend-item:nth-last-child(-n + 2) {
                 border-bottom: none;
             }
             .maplegend-sym {
@@ -764,8 +764,8 @@
                 height: 10px;
                 border-radius: 50%;
                 display: inline-block;
-                border: 2px solid rgba(255,255,255,0.8);
-                box-shadow: 0 0 0 1px rgba(0,0,0,0.15);
+                border: 2px solid rgba(255, 255, 255, 0.8);
+                box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.15);
             }
             .reach-table {
                 margin-top: 20px;
@@ -1008,7 +1008,7 @@
                 text-align: center;
                 opacity: 0.72;
             }
-                        .rain-bar .suntime .ss {
+            .rain-bar .suntime .ss {
                 color: var(--moss);
             }
 
@@ -1320,18 +1320,20 @@
                 background: var(--paper);
                 border: 1px solid var(--line);
                 border-radius: 2px;
-                box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+                box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
                 padding: 0;
             }
             .leaflet-popup-content {
                 margin: 0;
-                font-family: 'Inter', sans-serif;
+                font-family: "Inter", sans-serif;
                 font-size: 13px;
                 color: var(--ink);
                 min-width: 180px;
                 max-width: 240px;
             }
-            .leaflet-popup-tip { background: var(--paper); }
+            .leaflet-popup-tip {
+                background: var(--paper);
+            }
             .leaflet-popup-close-button {
                 color: var(--ink-soft) !important;
                 font-size: 16px !important;
@@ -1339,7 +1341,7 @@
                 right: 8px !important;
             }
             .map-popup-num {
-                font-family: 'JetBrains Mono', monospace;
+                font-family: "JetBrains Mono", monospace;
                 font-size: 9px;
                 font-weight: 700;
                 color: white;
@@ -1347,7 +1349,9 @@
                 border-radius: 2px;
                 margin-right: 6px;
             }
-            .map-popup-inner { padding: 14px 16px; }
+            .map-popup-inner {
+                padding: 14px 16px;
+            }
             .map-popup-title {
                 font-weight: 600;
                 font-size: 13.5px;
@@ -1362,18 +1366,30 @@
                 margin-bottom: 8px;
             }
             .map-popup-link {
-                font-family: 'JetBrains Mono', monospace;
+                font-family: "JetBrains Mono", monospace;
                 font-size: 9.5px;
                 color: var(--rust);
                 text-decoration: none;
                 text-transform: uppercase;
                 letter-spacing: 0.05em;
             }
-            .map-popup-link:hover { text-decoration: underline; }
+            .map-popup-link:hover {
+                text-decoration: underline;
+            }
+            .leaflet-tile-pane {
+                filter: grayscale(40%) contrast(90%) brightness(105%);
+            }
             /* disable Leaflet default focus outline on map */
-            .leaflet-container { outline: none; }
+            .leaflet-container {
+                outline: none;
+            }
         </style>
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+            integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+            crossorigin=""
+        />
     </head>
     <body>
         <nav class="nav">
@@ -1447,11 +1463,26 @@
                                 <line x1="12" y1="1" x2="12" y2="3" />
                                 <line x1="12" y1="21" x2="12" y2="23" />
                                 <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+                                <line
+                                    x1="18.36"
+                                    y1="18.36"
+                                    x2="19.78"
+                                    y2="19.78"
+                                />
                                 <line x1="1" y1="12" x2="3" y2="12" />
                                 <line x1="21" y1="12" x2="23" y2="12" />
-                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-                                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+                                <line
+                                    x1="4.22"
+                                    y1="19.78"
+                                    x2="5.64"
+                                    y2="18.36"
+                                />
+                                <line
+                                    x1="18.36"
+                                    y1="5.64"
+                                    x2="19.78"
+                                    y2="4.22"
+                                />
                             </svg>
                             <svg
                                 class="theme-toggle-icon moon"
@@ -1465,7 +1496,9 @@
                                 stroke-linecap="round"
                                 stroke-linejoin="round"
                             >
-                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+                                <path
+                                    d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                                />
                             </svg>
                         </button>
                         <button
@@ -1485,7 +1518,12 @@
             <div class="wrap">
                 <div class="eyebrow">Cities · Europe</div>
                 <h1 class="city">Munich</h1>
-                <p class="lede">Driven by industrial excellence and a deep connection to its roots, Munich redefines contemporary living — where qualitative rigor meets asset value, and urban balance is built into every block.</p>
+                <p class="lede">
+                    Driven by industrial excellence and a deep connection to its
+                    roots, Munich redefines contemporary living — where
+                    qualitative rigor meets asset value, and urban balance is
+                    built into every block.
+                </p>
                 <nav class="tagnav">
                     <a href="#overview">01 Overview</a>
                     <a href="#weather">02 Climate</a>
@@ -1512,7 +1550,7 @@
                 <div class="statgrid">
                     <div class="stat">
                         <div class="label">Population (city)</div>
-                        <div class="num">1.58<small>M</small></div>
+                        <div class="num">1.6<small>M</small></div>
                     </div>
                     <div class="stat">
                         <div class="label">Metro area</div>
@@ -1531,137 +1569,796 @@
                         <div class="num">1158</div>
                     </div>
                 </div>
-                <p class="body-text" style="margin-top:24px;">Bavaria's capital and Germany's third-largest city, Munich sits at the northern edge of the Alps in a basin carved by the Isar river. It is the country's most expensive property market, its leading technology and engineering cluster outside Berlin, and consistently ranks among Europe's most liveable cities.</p>
+                <p class="body-text" style="margin-top: 24px">
+                    Bavaria's capital and Germany's third-largest city, Munich
+                    sits at the northern edge of the Alps in a basin carved by
+                    the Isar river. It is the country's most expensive property
+                    market, its leading technology and engineering cluster
+                    outside Berlin, and consistently ranks among Europe's most
+                    liveable cities.
+                </p>
 
                 <!-- City Indices at a Glance -->
-                <div style="margin-top:32px;">
-                    <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.09em;color:var(--ink-soft);margin-bottom:16px;display:flex;align-items:center;gap:12px;">City Indices at a Glance<span style="flex:1;height:1px;background:var(--line);display:block;"></span></div>
+                <div style="margin-top: 32px">
+                    <div
+                        style="
+                            font-family: &quot;JetBrains Mono&quot;, monospace;
+                            font-size: 9.5px;
+                            text-transform: uppercase;
+                            letter-spacing: 0.09em;
+                            color: var(--ink-soft);
+                            margin-bottom: 16px;
+                            display: flex;
+                            align-items: center;
+                            gap: 12px;
+                        "
+                    >
+                        City Indices at a Glance<span
+                            style="
+                                flex: 1;
+                                height: 1px;
+                                background: var(--line);
+                                display: block;
+                            "
+                        ></span>
+                    </div>
 
-                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);">
-
+                    <div
+                        style="
+                            display: grid;
+                            grid-template-columns: 1fr 1fr;
+                            gap: 1px;
+                            background: var(--line);
+                            border: 1px solid var(--line);
+                        "
+                    >
                         <!-- Population & Origins -->
-                        <div style="background:var(--paper);padding:20px;">
-                            <div style="display:flex;gap:28px;margin-bottom:18px;">
+                        <div style="background: var(--paper); padding: 20px">
+                            <div
+                                style="
+                                    display: flex;
+                                    gap: 28px;
+                                    margin-bottom: 18px;
+                                "
+                            >
                                 <div>
-                                    <div style="font-family:'Fraunces',serif;font-size:30px;font-weight:600;line-height:1;">1.6<span style="font-family:Inter;font-size:14px;font-weight:400;color:var(--ink-soft);">M</span></div>
-                                    <div style="font-size:9.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);margin-top:5px;">Population, Munich</div>
+                                    <div
+                                        style="
+                                            font-family:
+                                                &quot;Fraunces&quot;, serif;
+                                            font-size: 30px;
+                                            font-weight: 600;
+                                            line-height: 1;
+                                        "
+                                    >
+                                        1.6<span
+                                            style="
+                                                font-family: Inter;
+                                                font-size: 14px;
+                                                font-weight: 400;
+                                                color: var(--ink-soft);
+                                            "
+                                            >M</span
+                                        >
+                                    </div>
+                                    <div
+                                        style="
+                                            font-size: 9.5px;
+                                            text-transform: uppercase;
+                                            letter-spacing: 0.06em;
+                                            color: var(--ink-soft);
+                                            margin-top: 5px;
+                                        "
+                                    >
+                                        Population, Munich
+                                    </div>
                                 </div>
                                 <div>
-                                    <div style="font-family:'Fraunces',serif;font-size:30px;font-weight:600;line-height:1;">30<span style="font-family:Inter;font-size:14px;font-weight:400;color:var(--ink-soft);">%</span></div>
-                                    <div style="font-size:9.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);margin-top:5px;">Non-German residents</div>
+                                    <div
+                                        style="
+                                            font-family:
+                                                &quot;Fraunces&quot;, serif;
+                                            font-size: 30px;
+                                            font-weight: 600;
+                                            line-height: 1;
+                                        "
+                                    >
+                                        30<span
+                                            style="
+                                                font-family: Inter;
+                                                font-size: 14px;
+                                                font-weight: 400;
+                                                color: var(--ink-soft);
+                                            "
+                                            >%</span
+                                        >
+                                    </div>
+                                    <div
+                                        style="
+                                            font-size: 9.5px;
+                                            text-transform: uppercase;
+                                            letter-spacing: 0.06em;
+                                            color: var(--ink-soft);
+                                            margin-top: 5px;
+                                        "
+                                    >
+                                        Non-German residents
+                                    </div>
                                 </div>
                             </div>
-                            <div class="origin-bar-row"><div>Turkey</div><div class="otrack"><div class="ofill" style="width:50%"></div></div><div style="text-align:right;font-family:'JetBrains Mono',monospace;font-size:11px;">~2.5%</div></div>
-                            <div class="origin-bar-row"><div>Croatia</div><div class="otrack"><div class="ofill" style="width:46%"></div></div><div style="text-align:right;font-family:'JetBrains Mono',monospace;font-size:11px;">~2.3%</div></div>
-                            <div class="origin-bar-row"><div>Italy</div><div class="otrack"><div class="ofill" style="width:36%"></div></div><div style="text-align:right;font-family:'JetBrains Mono',monospace;font-size:11px;">~1.8%</div></div>
+                            <div class="origin-bar-row">
+                                <div>Turkey</div>
+                                <div class="otrack">
+                                    <div class="ofill" style="width: 50%"></div>
+                                </div>
+                                <div
+                                    style="
+                                        text-align: right;
+                                        font-family:
+                                            &quot;JetBrains Mono&quot;,
+                                            monospace;
+                                        font-size: 11px;
+                                    "
+                                >
+                                    ~2.5%
+                                </div>
+                            </div>
+                            <div class="origin-bar-row">
+                                <div>Croatia</div>
+                                <div class="otrack">
+                                    <div class="ofill" style="width: 46%"></div>
+                                </div>
+                                <div
+                                    style="
+                                        text-align: right;
+                                        font-family:
+                                            &quot;JetBrains Mono&quot;,
+                                            monospace;
+                                        font-size: 11px;
+                                    "
+                                >
+                                    ~2.3%
+                                </div>
+                            </div>
+                            <div class="origin-bar-row">
+                                <div>Italy</div>
+                                <div class="otrack">
+                                    <div class="ofill" style="width: 36%"></div>
+                                </div>
+                                <div
+                                    style="
+                                        text-align: right;
+                                        font-family:
+                                            &quot;JetBrains Mono&quot;,
+                                            monospace;
+                                        font-size: 11px;
+                                    "
+                                >
+                                    ~1.8%
+                                </div>
+                            </div>
                         </div>
 
                         <!-- Mobility & Infrastructure -->
-                        <div style="background:var(--paper);padding:20px;">
-                            <div style="font-size:9.5px;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-soft);margin-bottom:16px;">Mobility &amp; Infrastructure</div>
-                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                        <div style="background: var(--paper); padding: 20px">
+                            <div
+                                style="
+                                    font-size: 9.5px;
+                                    text-transform: uppercase;
+                                    letter-spacing: 0.07em;
+                                    color: var(--ink-soft);
+                                    margin-bottom: 16px;
+                                "
+                            >
+                                Mobility &amp; Infrastructure
+                            </div>
+                            <div
+                                style="
+                                    display: grid;
+                                    grid-template-columns: 1fr 1fr;
+                                    gap: 16px;
+                                "
+                            >
                                 <div>
-                                    <div style="font-family:'Fraunces',serif;font-size:26px;font-weight:600;line-height:1;">725<span style="font-family:Inter;font-size:12px;font-weight:400;color:var(--ink-soft);">km</span></div>
-                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-top:5px;">Protected bicycle infrastructure</div>
+                                    <div
+                                        style="
+                                            font-family:
+                                                &quot;Fraunces&quot;, serif;
+                                            font-size: 26px;
+                                            font-weight: 600;
+                                            line-height: 1;
+                                        "
+                                    >
+                                        725<span
+                                            style="
+                                                font-family: Inter;
+                                                font-size: 12px;
+                                                font-weight: 400;
+                                                color: var(--ink-soft);
+                                            "
+                                            >km</span
+                                        >
+                                    </div>
+                                    <div
+                                        style="
+                                            font-size: 9px;
+                                            text-transform: uppercase;
+                                            letter-spacing: 0.05em;
+                                            color: var(--ink-soft);
+                                            margin-top: 5px;
+                                        "
+                                    >
+                                        Protected bicycle infrastructure
+                                    </div>
                                 </div>
                                 <div>
-                                    <div style="font-family:'Fraunces',serif;font-size:26px;font-weight:600;line-height:1;">21<span style="font-family:Inter;font-size:13px;font-weight:400;color:var(--ink-soft);">%</span></div>
-                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-top:5px;">Bicycle modal share</div>
+                                    <div
+                                        style="
+                                            font-family:
+                                                &quot;Fraunces&quot;, serif;
+                                            font-size: 26px;
+                                            font-weight: 600;
+                                            line-height: 1;
+                                        "
+                                    >
+                                        21<span
+                                            style="
+                                                font-family: Inter;
+                                                font-size: 13px;
+                                                font-weight: 400;
+                                                color: var(--ink-soft);
+                                            "
+                                            >%</span
+                                        >
+                                    </div>
+                                    <div
+                                        style="
+                                            font-size: 9px;
+                                            text-transform: uppercase;
+                                            letter-spacing: 0.05em;
+                                            color: var(--ink-soft);
+                                            margin-top: 5px;
+                                        "
+                                    >
+                                        Bicycle modal share
+                                    </div>
                                 </div>
                                 <div>
-                                    <div style="font-family:'Fraunces',serif;font-size:26px;font-weight:600;line-height:1;">51<span style="font-family:Inter;font-size:13px;font-weight:400;color:var(--ink-soft);">%</span></div>
-                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-top:5px;">Urban green space</div>
+                                    <div
+                                        style="
+                                            font-family:
+                                                &quot;Fraunces&quot;, serif;
+                                            font-size: 26px;
+                                            font-weight: 600;
+                                            line-height: 1;
+                                        "
+                                    >
+                                        51<span
+                                            style="
+                                                font-family: Inter;
+                                                font-size: 13px;
+                                                font-weight: 400;
+                                                color: var(--ink-soft);
+                                            "
+                                            >%</span
+                                        >
+                                    </div>
+                                    <div
+                                        style="
+                                            font-size: 9px;
+                                            text-transform: uppercase;
+                                            letter-spacing: 0.05em;
+                                            color: var(--ink-soft);
+                                            margin-top: 5px;
+                                        "
+                                    >
+                                        Urban green space
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Quality of Life -->
-                        <div style="background:var(--paper);padding:20px;">
-                            <div style="font-size:9.5px;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-soft);margin-bottom:16px;">Quality of Life Indices</div>
-                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                        <div style="background: var(--paper); padding: 20px">
+                            <div
+                                style="
+                                    font-size: 9.5px;
+                                    text-transform: uppercase;
+                                    letter-spacing: 0.07em;
+                                    color: var(--ink-soft);
+                                    margin-bottom: 16px;
+                                "
+                            >
+                                Quality of Life Indices
+                            </div>
+                            <div
+                                style="
+                                    display: grid;
+                                    grid-template-columns: 1fr 1fr;
+                                    gap: 14px;
+                                "
+                            >
                                 <div>
-                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-bottom:4px;">Purchasing Power</div>
-                                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-                                        <span style="font-family:'Fraunces',serif;font-size:24px;font-weight:600;line-height:1;">135</span>
-                                        <span style="font-size:9px;background:#2d5a27;color:white;padding:2px 8px;border-radius:2px;font-family:Inter;font-weight:600;letter-spacing:0.03em;white-space:nowrap;">VERY HIGH</span>
+                                    <div
+                                        style="
+                                            font-size: 9px;
+                                            text-transform: uppercase;
+                                            letter-spacing: 0.05em;
+                                            color: var(--ink-soft);
+                                            margin-bottom: 4px;
+                                        "
+                                    >
+                                        Purchasing Power
+                                    </div>
+                                    <div
+                                        style="
+                                            display: flex;
+                                            align-items: center;
+                                            gap: 8px;
+                                            flex-wrap: wrap;
+                                        "
+                                    >
+                                        <span
+                                            style="
+                                                font-family:
+                                                    &quot;Fraunces&quot;, serif;
+                                                font-size: 24px;
+                                                font-weight: 600;
+                                                line-height: 1;
+                                            "
+                                            >135</span
+                                        >
+                                        <span
+                                            style="
+                                                font-size: 9px;
+                                                background: #2d5a27;
+                                                color: white;
+                                                padding: 2px 8px;
+                                                border-radius: 2px;
+                                                font-family: Inter;
+                                                font-weight: 600;
+                                                letter-spacing: 0.03em;
+                                                white-space: nowrap;
+                                            "
+                                            >VERY HIGH</span
+                                        >
                                     </div>
                                 </div>
                                 <div>
-                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-bottom:4px;">Safety</div>
-                                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-                                        <span style="font-family:'Fraunces',serif;font-size:24px;font-weight:600;line-height:1;">78</span>
-                                        <span style="font-size:9px;background:#2d5a27;color:white;padding:2px 8px;border-radius:2px;font-family:Inter;font-weight:600;letter-spacing:0.03em;white-space:nowrap;">HIGH</span>
+                                    <div
+                                        style="
+                                            font-size: 9px;
+                                            text-transform: uppercase;
+                                            letter-spacing: 0.05em;
+                                            color: var(--ink-soft);
+                                            margin-bottom: 4px;
+                                        "
+                                    >
+                                        Safety
+                                    </div>
+                                    <div
+                                        style="
+                                            display: flex;
+                                            align-items: center;
+                                            gap: 8px;
+                                            flex-wrap: wrap;
+                                        "
+                                    >
+                                        <span
+                                            style="
+                                                font-family:
+                                                    &quot;Fraunces&quot;, serif;
+                                                font-size: 24px;
+                                                font-weight: 600;
+                                                line-height: 1;
+                                            "
+                                            >78</span
+                                        >
+                                        <span
+                                            style="
+                                                font-size: 9px;
+                                                background: #2d5a27;
+                                                color: white;
+                                                padding: 2px 8px;
+                                                border-radius: 2px;
+                                                font-family: Inter;
+                                                font-weight: 600;
+                                                letter-spacing: 0.03em;
+                                                white-space: nowrap;
+                                            "
+                                            >HIGH</span
+                                        >
                                     </div>
                                 </div>
                                 <div>
-                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-bottom:4px;">Health Care</div>
-                                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-                                        <span style="font-family:'Fraunces',serif;font-size:24px;font-weight:600;line-height:1;">77</span>
-                                        <span style="font-size:9px;background:#2d5a27;color:white;padding:2px 8px;border-radius:2px;font-family:Inter;font-weight:600;letter-spacing:0.03em;white-space:nowrap;">HIGH</span>
+                                    <div
+                                        style="
+                                            font-size: 9px;
+                                            text-transform: uppercase;
+                                            letter-spacing: 0.05em;
+                                            color: var(--ink-soft);
+                                            margin-bottom: 4px;
+                                        "
+                                    >
+                                        Health Care
+                                    </div>
+                                    <div
+                                        style="
+                                            display: flex;
+                                            align-items: center;
+                                            gap: 8px;
+                                            flex-wrap: wrap;
+                                        "
+                                    >
+                                        <span
+                                            style="
+                                                font-family:
+                                                    &quot;Fraunces&quot;, serif;
+                                                font-size: 24px;
+                                                font-weight: 600;
+                                                line-height: 1;
+                                            "
+                                            >77</span
+                                        >
+                                        <span
+                                            style="
+                                                font-size: 9px;
+                                                background: #2d5a27;
+                                                color: white;
+                                                padding: 2px 8px;
+                                                border-radius: 2px;
+                                                font-family: Inter;
+                                                font-weight: 600;
+                                                letter-spacing: 0.03em;
+                                                white-space: nowrap;
+                                            "
+                                            >HIGH</span
+                                        >
                                     </div>
                                 </div>
                                 <div>
-                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-bottom:4px;">Climate</div>
-                                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-                                        <span style="font-family:'Fraunces',serif;font-size:24px;font-weight:600;line-height:1;">77</span>
-                                        <span style="font-size:9px;background:#3a6b32;color:white;padding:2px 8px;border-radius:2px;font-family:Inter;font-weight:600;letter-spacing:0.03em;white-space:nowrap;">FAVORABLE</span>
+                                    <div
+                                        style="
+                                            font-size: 9px;
+                                            text-transform: uppercase;
+                                            letter-spacing: 0.05em;
+                                            color: var(--ink-soft);
+                                            margin-bottom: 4px;
+                                        "
+                                    >
+                                        Climate
+                                    </div>
+                                    <div
+                                        style="
+                                            display: flex;
+                                            align-items: center;
+                                            gap: 8px;
+                                            flex-wrap: wrap;
+                                        "
+                                    >
+                                        <span
+                                            style="
+                                                font-family:
+                                                    &quot;Fraunces&quot;, serif;
+                                                font-size: 24px;
+                                                font-weight: 600;
+                                                line-height: 1;
+                                            "
+                                            >77</span
+                                        >
+                                        <span
+                                            style="
+                                                font-size: 9px;
+                                                background: #3a6b32;
+                                                color: white;
+                                                padding: 2px 8px;
+                                                border-radius: 2px;
+                                                font-family: Inter;
+                                                font-weight: 600;
+                                                letter-spacing: 0.03em;
+                                                white-space: nowrap;
+                                            "
+                                            >FAVORABLE</span
+                                        >
                                     </div>
                                 </div>
                                 <div>
-                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-bottom:4px;">Pollution</div>
-                                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-                                        <span style="font-family:'Fraunces',serif;font-size:24px;font-weight:600;line-height:1;">24</span>
-                                        <span style="font-size:9px;background:#2d5a27;color:white;padding:2px 8px;border-radius:2px;font-family:Inter;font-weight:600;letter-spacing:0.03em;white-space:nowrap;">LOW</span>
+                                    <div
+                                        style="
+                                            font-size: 9px;
+                                            text-transform: uppercase;
+                                            letter-spacing: 0.05em;
+                                            color: var(--ink-soft);
+                                            margin-bottom: 4px;
+                                        "
+                                    >
+                                        Pollution
+                                    </div>
+                                    <div
+                                        style="
+                                            display: flex;
+                                            align-items: center;
+                                            gap: 8px;
+                                            flex-wrap: wrap;
+                                        "
+                                    >
+                                        <span
+                                            style="
+                                                font-family:
+                                                    &quot;Fraunces&quot;, serif;
+                                                font-size: 24px;
+                                                font-weight: 600;
+                                                line-height: 1;
+                                            "
+                                            >24</span
+                                        >
+                                        <span
+                                            style="
+                                                font-size: 9px;
+                                                background: #2d5a27;
+                                                color: white;
+                                                padding: 2px 8px;
+                                                border-radius: 2px;
+                                                font-family: Inter;
+                                                font-weight: 600;
+                                                letter-spacing: 0.03em;
+                                                white-space: nowrap;
+                                            "
+                                            >LOW</span
+                                        >
                                     </div>
                                 </div>
                                 <div>
-                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-bottom:4px;">Traffic Commute</div>
-                                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-                                        <span style="font-family:'Fraunces',serif;font-size:24px;font-weight:600;line-height:1;">28</span>
-                                        <span style="font-size:9px;background:#2d5a27;color:white;padding:2px 8px;border-radius:2px;font-family:Inter;font-weight:600;letter-spacing:0.03em;white-space:nowrap;">LOW</span>
+                                    <div
+                                        style="
+                                            font-size: 9px;
+                                            text-transform: uppercase;
+                                            letter-spacing: 0.05em;
+                                            color: var(--ink-soft);
+                                            margin-bottom: 4px;
+                                        "
+                                    >
+                                        Traffic Commute
+                                    </div>
+                                    <div
+                                        style="
+                                            display: flex;
+                                            align-items: center;
+                                            gap: 8px;
+                                            flex-wrap: wrap;
+                                        "
+                                    >
+                                        <span
+                                            style="
+                                                font-family:
+                                                    &quot;Fraunces&quot;, serif;
+                                                font-size: 24px;
+                                                font-weight: 600;
+                                                line-height: 1;
+                                            "
+                                            >28</span
+                                        >
+                                        <span
+                                            style="
+                                                font-size: 9px;
+                                                background: #2d5a27;
+                                                color: white;
+                                                padding: 2px 8px;
+                                                border-radius: 2px;
+                                                font-family: Inter;
+                                                font-weight: 600;
+                                                letter-spacing: 0.03em;
+                                                white-space: nowrap;
+                                            "
+                                            >LOW</span
+                                        >
                                     </div>
                                 </div>
                             </div>
                         </div>
 
                         <!-- Economy & Cost of Living -->
-                        <div style="background:var(--paper);padding:20px;">
-                            <div style="font-size:9.5px;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-soft);margin-bottom:16px;">Economy &amp; Cost of Living</div>
-                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+                        <div style="background: var(--paper); padding: 20px">
+                            <div
+                                style="
+                                    font-size: 9.5px;
+                                    text-transform: uppercase;
+                                    letter-spacing: 0.07em;
+                                    color: var(--ink-soft);
+                                    margin-bottom: 16px;
+                                "
+                            >
+                                Economy &amp; Cost of Living
+                            </div>
+                            <div
+                                style="
+                                    display: grid;
+                                    grid-template-columns: 1fr 1fr;
+                                    gap: 16px;
+                                "
+                            >
                                 <div>
-                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-bottom:4px;">Cost of Living Index</div>
-                                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
-                                        <span style="font-family:'Fraunces',serif;font-size:24px;font-weight:600;line-height:1;">81</span>
-                                        <span style="font-size:9px;background:#8b2e2e;color:white;padding:2px 8px;border-radius:2px;font-family:Inter;font-weight:600;letter-spacing:0.03em;white-space:nowrap;">VERY HIGH</span>
+                                    <div
+                                        style="
+                                            font-size: 9px;
+                                            text-transform: uppercase;
+                                            letter-spacing: 0.05em;
+                                            color: var(--ink-soft);
+                                            margin-bottom: 4px;
+                                        "
+                                    >
+                                        Cost of Living Index
                                     </div>
-                                    <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink);">€1.1–1.3k / month</div>
-                                    <div style="font-size:10.5px;color:var(--ink-soft);margin-top:2px;">€1–14 yrs to afford housing</div>
+                                    <div
+                                        style="
+                                            display: flex;
+                                            align-items: center;
+                                            gap: 8px;
+                                            flex-wrap: wrap;
+                                            margin-bottom: 8px;
+                                        "
+                                    >
+                                        <span
+                                            style="
+                                                font-family:
+                                                    &quot;Fraunces&quot;, serif;
+                                                font-size: 24px;
+                                                font-weight: 600;
+                                                line-height: 1;
+                                            "
+                                            >81</span
+                                        >
+                                        <span
+                                            style="
+                                                font-size: 9px;
+                                                background: #8b2e2e;
+                                                color: white;
+                                                padding: 2px 8px;
+                                                border-radius: 2px;
+                                                font-family: Inter;
+                                                font-weight: 600;
+                                                letter-spacing: 0.03em;
+                                                white-space: nowrap;
+                                            "
+                                            >VERY HIGH</span
+                                        >
+                                    </div>
+                                    <div
+                                        style="
+                                            font-family:
+                                                &quot;JetBrains Mono&quot;,
+                                                monospace;
+                                            font-size: 11.5px;
+                                            color: var(--ink);
+                                        "
+                                    >
+                                        €1.1–1.3k / month
+                                    </div>
+                                    <div
+                                        style="
+                                            font-size: 10.5px;
+                                            color: var(--ink-soft);
+                                            margin-top: 2px;
+                                        "
+                                    >
+                                        €1–14 yrs to afford housing
+                                    </div>
                                 </div>
                                 <div>
-                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-bottom:4px;">Property Price-to-Income</div>
-                                    <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:8px;">
-                                        <span style="font-family:'Fraunces',serif;font-size:24px;font-weight:600;line-height:1;">13</span>
-                                        <span style="font-size:9px;background:#c07030;color:white;padding:2px 8px;border-radius:2px;font-family:Inter;font-weight:600;letter-spacing:0.03em;white-space:nowrap;">HIGH</span>
+                                    <div
+                                        style="
+                                            font-size: 9px;
+                                            text-transform: uppercase;
+                                            letter-spacing: 0.05em;
+                                            color: var(--ink-soft);
+                                            margin-bottom: 4px;
+                                        "
+                                    >
+                                        Property Price-to-Income
                                     </div>
-                                    <div style="font-family:'JetBrains Mono',monospace;font-size:11.5px;color:var(--ink);">~€750k–900k avg. price</div>
-                                    <div style="font-size:10.5px;color:var(--ink-soft);margin-top:2px;">90m² existing · €9k–11k/m² new-build</div>
-                                    <div style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--ink);margin-top:6px;">12–14 yrs avg. income</div>
-                                    <div style="font-size:10.5px;color:var(--ink-soft);margin-top:2px;">to buy 90m² apartment</div>
+                                    <div
+                                        style="
+                                            display: flex;
+                                            align-items: center;
+                                            gap: 8px;
+                                            flex-wrap: wrap;
+                                            margin-bottom: 8px;
+                                        "
+                                    >
+                                        <span
+                                            style="
+                                                font-family:
+                                                    &quot;Fraunces&quot;, serif;
+                                                font-size: 24px;
+                                                font-weight: 600;
+                                                line-height: 1;
+                                            "
+                                            >13</span
+                                        >
+                                        <span
+                                            style="
+                                                font-size: 9px;
+                                                background: #c07030;
+                                                color: white;
+                                                padding: 2px 8px;
+                                                border-radius: 2px;
+                                                font-family: Inter;
+                                                font-weight: 600;
+                                                letter-spacing: 0.03em;
+                                                white-space: nowrap;
+                                            "
+                                            >HIGH</span
+                                        >
+                                    </div>
+                                    <div
+                                        style="
+                                            font-family:
+                                                &quot;JetBrains Mono&quot;,
+                                                monospace;
+                                            font-size: 11.5px;
+                                            color: var(--ink);
+                                        "
+                                    >
+                                        ~€750k–900k avg. price
+                                    </div>
+                                    <div
+                                        style="
+                                            font-size: 10.5px;
+                                            color: var(--ink-soft);
+                                            margin-top: 2px;
+                                        "
+                                    >
+                                        90m² existing · €9k–11k/m² new-build
+                                    </div>
+                                    <div
+                                        style="
+                                            font-family:
+                                                &quot;JetBrains Mono&quot;,
+                                                monospace;
+                                            font-size: 11px;
+                                            color: var(--ink);
+                                            margin-top: 6px;
+                                        "
+                                    >
+                                        12–14 yrs avg. income
+                                    </div>
+                                    <div
+                                        style="
+                                            font-size: 10.5px;
+                                            color: var(--ink-soft);
+                                            margin-top: 2px;
+                                        "
+                                    >
+                                        to buy 90m² apartment
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <p class="mapnote" style="margin-top:10px;">Source: Numbeo Quality of Life — Munich · Statistisches Amt München, 2025 · Statista</p>
+                    <p class="mapnote" style="margin-top: 10px">
+                        Source: Numbeo Quality of Life — Munich · Statistisches
+                        Amt München, 2025 · Statista
+                    </p>
                 </div>
 
-                <div class="codegrid" style="margin-top:24px;">
+                <div class="codegrid" style="margin-top: 24px">
                     <div class="code-card">
                         <span class="tag">Economic Engine</span>
-                        <p class="body-text">Home to BMW, Siemens, MAN, Allianz, and Munich Re. GDP per capita is the highest of any major German city, sustained by a dense Mittelstand manufacturing base alongside global corporations.</p>
+                        <p class="body-text">
+                            Home to BMW, Siemens, MAN, Allianz, and Munich Re.
+                            GDP per capita is the highest of any major German
+                            city, sustained by a dense Mittelstand manufacturing
+                            base alongside global corporations.
+                        </p>
                     </div>
                     <div class="code-card">
                         <span class="tag">Urban Philosophy</span>
-                        <p class="body-text">Qualität über Quantität. Munich grows slowly and carefully, prioritising heritage preservation, green space, and resident quality of life over rapid densification or speculative development.</p>
+                        <p class="body-text">
+                            Qualität über Quantität. Munich grows slowly and
+                            carefully, prioritising heritage preservation, green
+                            space, and resident quality of life over rapid
+                            densification or speculative development.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -1674,203 +2371,219 @@
                     <span class="section-num">02</span>
                     <h2>Climate</h2>
                 </div>
-                <p class="body-text" style="margin-bottom:32px;">Continental climate with warm summers and cold winters. Foehn events bring dramatic warm spells and exceptional Alpine visibility. Snow cover from November through March. Summer thunderstorms are frequent and intense.</p>
-                <div style="display:flex; gap:2px; height:180px; align-items:flex-end; margin-top:40px;">
-            <div class="rain-bar">
-                <span class="emoji">❄️</span>
-                <div class="bar" style="height:32px;">
-                    <span class="dcount">37mm</span>
+                <p class="body-text" style="margin-bottom: 32px">
+                    Continental climate with warm summers and cold winters.
+                    Foehn events bring dramatic warm spells and exceptional
+                    Alpine visibility. Snow cover from November through March.
+                    Summer thunderstorms are frequent and intense.
+                </p>
+                <div
+                    style="
+                        display: flex;
+                        gap: 2px;
+                        height: 180px;
+                        align-items: flex-end;
+                        margin-top: 40px;
+                    "
+                >
+                    <div class="rain-bar">
+                        <span class="emoji">❄️</span>
+                        <div class="bar" style="height: 32px">
+                            <span class="dcount">37mm</span>
+                        </div>
+                        <div class="m">Jan</div>
+                        <div class="temps">
+                            <span class="tmax">+3°</span>
+                            <span class="tmin">-3°</span>
+                        </div>
+                        <div class="suntime">
+                            <span class="sr">8:02</span>
+                            <span class="ss">16:26</span>
+                        </div>
+                        <div class="rdays">11d rain</div>
+                    </div>
+                    <div class="rain-bar">
+                        <span class="emoji">🌨️</span>
+                        <div class="bar" style="height: 31px">
+                            <span class="dcount">36mm</span>
+                        </div>
+                        <div class="m">Feb</div>
+                        <div class="temps">
+                            <span class="tmax">+5°</span>
+                            <span class="tmin">-2°</span>
+                        </div>
+                        <div class="suntime">
+                            <span class="sr">7:27</span>
+                            <span class="ss">17:19</span>
+                        </div>
+                        <div class="rdays">9d rain</div>
+                    </div>
+                    <div class="rain-bar">
+                        <span class="emoji">🌤️</span>
+                        <div class="bar" style="height: 45px">
+                            <span class="dcount">52mm</span>
+                        </div>
+                        <div class="m">Mar</div>
+                        <div class="temps">
+                            <span class="tmax">+10°</span>
+                            <span class="tmin">+2°</span>
+                        </div>
+                        <div class="suntime">
+                            <span class="sr">6:36</span>
+                            <span class="ss">18:09</span>
+                        </div>
+                        <div class="rdays">11d rain</div>
+                    </div>
+                    <div class="rain-bar">
+                        <span class="emoji">🌧️</span>
+                        <div class="bar" style="height: 54px">
+                            <span class="dcount">62mm</span>
+                        </div>
+                        <div class="m">Apr</div>
+                        <div class="temps">
+                            <span class="tmax">+14°</span>
+                            <span class="tmin">+5°</span>
+                        </div>
+                        <div class="suntime">
+                            <span class="sr">6:31</span>
+                            <span class="ss">20:00</span>
+                        </div>
+                        <div class="rdays">12d rain</div>
+                    </div>
+                    <div class="rain-bar">
+                        <span class="emoji">🌦️</span>
+                        <div class="bar" style="height: 79px">
+                            <span class="dcount">91mm</span>
+                        </div>
+                        <div class="m">May</div>
+                        <div class="temps">
+                            <span class="tmax">+19°</span>
+                            <span class="tmin">+9°</span>
+                        </div>
+                        <div class="suntime">
+                            <span class="sr">5:49</span>
+                            <span class="ss">20:50</span>
+                        </div>
+                        <div class="rdays">14d rain</div>
+                    </div>
+                    <div class="rain-bar">
+                        <span class="emoji">☀️</span>
+                        <div class="bar" style="height: 100px">
+                            <span class="dcount">115mm</span>
+                        </div>
+                        <div class="m">Jun</div>
+                        <div class="temps">
+                            <span class="tmax">+23°</span>
+                            <span class="tmin">+13°</span>
+                        </div>
+                        <div class="suntime">
+                            <span class="sr">5:24</span>
+                            <span class="ss">21:21</span>
+                        </div>
+                        <div class="rdays">15d rain</div>
+                    </div>
+                    <div class="rain-bar">
+                        <span class="emoji">☀️</span>
+                        <div class="bar" style="height: 100px">
+                            <span class="dcount">115mm</span>
+                        </div>
+                        <div class="m">Jul</div>
+                        <div class="temps">
+                            <span class="tmax">+25°</span>
+                            <span class="tmin">+15°</span>
+                        </div>
+                        <div class="suntime">
+                            <span class="sr">5:31</span>
+                            <span class="ss">21:17</span>
+                        </div>
+                        <div class="rdays">14d rain</div>
+                    </div>
+                    <div class="rain-bar">
+                        <span class="emoji">🌤️</span>
+                        <div class="bar" style="height: 91px">
+                            <span class="dcount">105mm</span>
+                        </div>
+                        <div class="m">Aug</div>
+                        <div class="temps">
+                            <span class="tmax">+25°</span>
+                            <span class="tmin">+14°</span>
+                        </div>
+                        <div class="suntime">
+                            <span class="sr">6:07</span>
+                            <span class="ss">20:38</span>
+                        </div>
+                        <div class="rdays">13d rain</div>
+                    </div>
+                    <div class="rain-bar">
+                        <span class="emoji">🌤️</span>
+                        <div class="bar" style="height: 74px">
+                            <span class="dcount">85mm</span>
+                        </div>
+                        <div class="m">Sep</div>
+                        <div class="temps">
+                            <span class="tmax">+20°</span>
+                            <span class="tmin">+10°</span>
+                        </div>
+                        <div class="suntime">
+                            <span class="sr">6:47</span>
+                            <span class="ss">19:41</span>
+                        </div>
+                        <div class="rdays">11d rain</div>
+                    </div>
+                    <div class="rain-bar">
+                        <span class="emoji">🍂</span>
+                        <div class="bar" style="height: 59px">
+                            <span class="dcount">68mm</span>
+                        </div>
+                        <div class="m">Oct</div>
+                        <div class="temps">
+                            <span class="tmax">+13°</span>
+                            <span class="tmin">+5°</span>
+                        </div>
+                        <div class="suntime">
+                            <span class="sr">7:27</span>
+                            <span class="ss">18:41</span>
+                        </div>
+                        <div class="rdays">11d rain</div>
+                    </div>
+                    <div class="rain-bar">
+                        <span class="emoji">🌧️</span>
+                        <div class="bar" style="height: 49px">
+                            <span class="dcount">56mm</span>
+                        </div>
+                        <div class="m">Nov</div>
+                        <div class="temps">
+                            <span class="tmax">+7°</span>
+                            <span class="tmin">+1°</span>
+                        </div>
+                        <div class="suntime">
+                            <span class="sr">7:10</span>
+                            <span class="ss">17:01</span>
+                        </div>
+                        <div class="rdays">11d rain</div>
+                    </div>
+                    <div class="rain-bar">
+                        <span class="emoji">❄️</span>
+                        <div class="bar" style="height: 38px">
+                            <span class="dcount">44mm</span>
+                        </div>
+                        <div class="m">Dec</div>
+                        <div class="temps">
+                            <span class="tmax">+3°</span>
+                            <span class="tmin">-2°</span>
+                        </div>
+                        <div class="suntime">
+                            <span class="sr">7:52</span>
+                            <span class="ss">16:01</span>
+                        </div>
+                        <div class="rdays">11d rain</div>
+                    </div>
                 </div>
-                <div class="m">Jan</div>
-                <div class="temps">
-                    <span class="tmax">+3°</span>
-                    <span class="tmin">-3°</span>
-                </div>
-                <div class="suntime">
-                    <span class="sr">8:02</span>
-                    <span class="ss">16:26</span>
-                </div>
-                <div class="rdays">11d rain</div>
-            </div>
-            <div class="rain-bar">
-                <span class="emoji">🌨️</span>
-                <div class="bar" style="height:31px;">
-                    <span class="dcount">36mm</span>
-                </div>
-                <div class="m">Feb</div>
-                <div class="temps">
-                    <span class="tmax">+5°</span>
-                    <span class="tmin">-2°</span>
-                </div>
-                <div class="suntime">
-                    <span class="sr">7:27</span>
-                    <span class="ss">17:19</span>
-                </div>
-                <div class="rdays">9d rain</div>
-            </div>
-            <div class="rain-bar">
-                <span class="emoji">🌤️</span>
-                <div class="bar" style="height:45px;">
-                    <span class="dcount">52mm</span>
-                </div>
-                <div class="m">Mar</div>
-                <div class="temps">
-                    <span class="tmax">+10°</span>
-                    <span class="tmin">+2°</span>
-                </div>
-                <div class="suntime">
-                    <span class="sr">6:36</span>
-                    <span class="ss">18:09</span>
-                </div>
-                <div class="rdays">11d rain</div>
-            </div>
-            <div class="rain-bar">
-                <span class="emoji">🌧️</span>
-                <div class="bar" style="height:54px;">
-                    <span class="dcount">62mm</span>
-                </div>
-                <div class="m">Apr</div>
-                <div class="temps">
-                    <span class="tmax">+14°</span>
-                    <span class="tmin">+5°</span>
-                </div>
-                <div class="suntime">
-                    <span class="sr">6:31</span>
-                    <span class="ss">20:00</span>
-                </div>
-                <div class="rdays">12d rain</div>
-            </div>
-            <div class="rain-bar">
-                <span class="emoji">🌦️</span>
-                <div class="bar" style="height:79px;">
-                    <span class="dcount">91mm</span>
-                </div>
-                <div class="m">May</div>
-                <div class="temps">
-                    <span class="tmax">+19°</span>
-                    <span class="tmin">+9°</span>
-                </div>
-                <div class="suntime">
-                    <span class="sr">5:49</span>
-                    <span class="ss">20:50</span>
-                </div>
-                <div class="rdays">14d rain</div>
-            </div>
-            <div class="rain-bar">
-                <span class="emoji">☀️</span>
-                <div class="bar" style="height:100px;">
-                    <span class="dcount">115mm</span>
-                </div>
-                <div class="m">Jun</div>
-                <div class="temps">
-                    <span class="tmax">+23°</span>
-                    <span class="tmin">+13°</span>
-                </div>
-                <div class="suntime">
-                    <span class="sr">5:24</span>
-                    <span class="ss">21:21</span>
-                </div>
-                <div class="rdays">15d rain</div>
-            </div>
-            <div class="rain-bar">
-                <span class="emoji">☀️</span>
-                <div class="bar" style="height:100px;">
-                    <span class="dcount">115mm</span>
-                </div>
-                <div class="m">Jul</div>
-                <div class="temps">
-                    <span class="tmax">+25°</span>
-                    <span class="tmin">+15°</span>
-                </div>
-                <div class="suntime">
-                    <span class="sr">5:31</span>
-                    <span class="ss">21:17</span>
-                </div>
-                <div class="rdays">14d rain</div>
-            </div>
-            <div class="rain-bar">
-                <span class="emoji">🌤️</span>
-                <div class="bar" style="height:91px;">
-                    <span class="dcount">105mm</span>
-                </div>
-                <div class="m">Aug</div>
-                <div class="temps">
-                    <span class="tmax">+25°</span>
-                    <span class="tmin">+14°</span>
-                </div>
-                <div class="suntime">
-                    <span class="sr">6:07</span>
-                    <span class="ss">20:38</span>
-                </div>
-                <div class="rdays">13d rain</div>
-            </div>
-            <div class="rain-bar">
-                <span class="emoji">🌤️</span>
-                <div class="bar" style="height:74px;">
-                    <span class="dcount">85mm</span>
-                </div>
-                <div class="m">Sep</div>
-                <div class="temps">
-                    <span class="tmax">+20°</span>
-                    <span class="tmin">+10°</span>
-                </div>
-                <div class="suntime">
-                    <span class="sr">6:47</span>
-                    <span class="ss">19:41</span>
-                </div>
-                <div class="rdays">11d rain</div>
-            </div>
-            <div class="rain-bar">
-                <span class="emoji">🍂</span>
-                <div class="bar" style="height:59px;">
-                    <span class="dcount">68mm</span>
-                </div>
-                <div class="m">Oct</div>
-                <div class="temps">
-                    <span class="tmax">+13°</span>
-                    <span class="tmin">+5°</span>
-                </div>
-                <div class="suntime">
-                    <span class="sr">7:27</span>
-                    <span class="ss">18:41</span>
-                </div>
-                <div class="rdays">11d rain</div>
-            </div>
-            <div class="rain-bar">
-                <span class="emoji">🌧️</span>
-                <div class="bar" style="height:49px;">
-                    <span class="dcount">56mm</span>
-                </div>
-                <div class="m">Nov</div>
-                <div class="temps">
-                    <span class="tmax">+7°</span>
-                    <span class="tmin">+1°</span>
-                </div>
-                <div class="suntime">
-                    <span class="sr">7:10</span>
-                    <span class="ss">17:01</span>
-                </div>
-                <div class="rdays">11d rain</div>
-            </div>
-            <div class="rain-bar">
-                <span class="emoji">❄️</span>
-                <div class="bar" style="height:38px;">
-                    <span class="dcount">44mm</span>
-                </div>
-                <div class="m">Dec</div>
-                <div class="temps">
-                    <span class="tmax">+3°</span>
-                    <span class="tmin">-2°</span>
-                </div>
-                <div class="suntime">
-                    <span class="sr">7:52</span>
-                    <span class="ss">16:01</span>
-                </div>
-                <div class="rdays">11d rain</div>
-            </div>
-
-                </div>
-                <p class="mapnote" style="margin-top:14px;">Monthly precipitation (mm) · max/min temperature (°C) · sunrise / <span style="color:var(--moss)">sunset</span>. Source: DWD Klimadaten München-Stadt.</p>
+                <p class="mapnote" style="margin-top: 14px">
+                    Monthly precipitation (mm) · max/min temperature (°C) ·
+                    sunrise / <span style="color: var(--moss)">sunset</span>.
+                    Source: DWD Klimadaten München-Stadt.
+                </p>
             </div>
         </section>
 
@@ -1881,47 +2594,53 @@
                     <span class="section-num">03</span>
                     <h2>Cultural Codes</h2>
                 </div>
-                <p class="body-text" style="margin-bottom:24px;">Munich operates on a distinct Bavarian-inflected register — warmer than the north German stereotype, but no less precise. The city has a strong sense of local identity (Heimat) that coexists comfortably with cosmopolitan openness.</p>
+                <p class="body-text" style="margin-bottom: 24px">
+                    Munich operates on a distinct Bavarian-inflected register —
+                    warmer than the north German stereotype, but no less
+                    precise. The city has a strong sense of local identity
+                    (Heimat) that coexists comfortably with cosmopolitan
+                    openness.
+                </p>
 
-                <div style="margin-top:8px;">
-                <div class="meter-row">
-                    <div class="meter-label">Formality</div>
-                    <div class="meter-track">
-                        <div class="meter-fill" style="left:70%"></div>
+                <div style="margin-top: 8px">
+                    <div class="meter-row">
+                        <div class="meter-label">Formality</div>
+                        <div class="meter-track">
+                            <div class="meter-fill" style="left: 70%"></div>
+                        </div>
+                        <div class="meter-note">High</div>
                     </div>
-                    <div class="meter-note">High</div>
-                </div>
-                <div class="meter-row">
-                    <div class="meter-label">Punctuality</div>
-                    <div class="meter-track">
-                        <div class="meter-fill" style="left:90%"></div>
+                    <div class="meter-row">
+                        <div class="meter-label">Punctuality</div>
+                        <div class="meter-track">
+                            <div class="meter-fill" style="left: 90%"></div>
+                        </div>
+                        <div class="meter-note">Very high</div>
                     </div>
-                    <div class="meter-note">Very high</div>
-                </div>
-                <div class="meter-row">
-                    <div class="meter-label">Directness</div>
-                    <div class="meter-track">
-                        <div class="meter-fill" style="left:75%"></div>
+                    <div class="meter-row">
+                        <div class="meter-label">Directness</div>
+                        <div class="meter-track">
+                            <div class="meter-fill" style="left: 75%"></div>
+                        </div>
+                        <div class="meter-note">High</div>
                     </div>
-                    <div class="meter-note">High</div>
-                </div>
-                <div class="meter-row">
-                    <div class="meter-label">Work–life bal.</div>
-                    <div class="meter-track">
-                        <div class="meter-fill" style="left:65%"></div>
+                    <div class="meter-row">
+                        <div class="meter-label">Work–life bal.</div>
+                        <div class="meter-track">
+                            <div class="meter-fill" style="left: 65%"></div>
+                        </div>
+                        <div class="meter-note">Moderate–high</div>
                     </div>
-                    <div class="meter-note">Moderate–high</div>
-                </div>
-                <div class="meter-row">
-                    <div class="meter-label">English fluency</div>
-                    <div class="meter-track">
-                        <div class="meter-fill" style="left:68%"></div>
+                    <div class="meter-row">
+                        <div class="meter-label">English fluency</div>
+                        <div class="meter-track">
+                            <div class="meter-fill" style="left: 68%"></div>
+                        </div>
+                        <div class="meter-note">Good</div>
                     </div>
-                    <div class="meter-note">Good</div>
-                </div>
                 </div>
 
-                <table class="yn-table" style="margin-top:32px;">
+                <table class="yn-table" style="margin-top: 32px">
                     <thead>
                         <tr>
                             <th></th>
@@ -1930,7 +2649,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="cat-row"><td colspan="3">Behaviour</td></tr>
+                        <tr class="cat-row">
+                            <td colspan="3">Behaviour</td>
+                        </tr>
                         <tr>
                             <td>Punctuality expected</td>
                             <td class="yes-cell"></td>
@@ -1951,7 +2672,9 @@
                             <td></td>
                             <td class="no-cell"></td>
                         </tr>
-                        <tr class="cat-row"><td colspan="3">Business</td></tr>
+                        <tr class="cat-row">
+                            <td colspan="3">Business</td>
+                        </tr>
                         <tr>
                             <td>Titles used in formal contexts</td>
                             <td class="yes-cell"></td>
@@ -1967,7 +2690,9 @@
                             <td></td>
                             <td class="no-cell"></td>
                         </tr>
-                        <tr class="cat-row"><td colspan="3">Daily Life</td></tr>
+                        <tr class="cat-row">
+                            <td colspan="3">Daily Life</td>
+                        </tr>
                         <tr>
                             <td>Beer gardens (Biergärten) as social hubs</td>
                             <td class="yes-cell"></td>
@@ -1995,39 +2720,69 @@
                     <span class="section-num">04</span>
                     <h2>Districts</h2>
                 </div>
-                <p class="body-text" style="margin-bottom:16px;">Munich's 25 Stadtbezirke (city districts) range from the dense medieval core to villa suburbs and industrial fringes. The inner ring is consistently in demand; appreciation pressure is steadily pushing into the second and third rings.</p>
+                <p class="body-text" style="margin-bottom: 16px">
+                    Munich's 25 Stadtbezirke (city districts) range from the
+                    dense medieval core to villa suburbs and industrial fringes.
+                    The inner ring is consistently in demand; appreciation
+                    pressure is steadily pushing into the second and third
+                    rings.
+                </p>
                 <div class="schema-grid">
                     <div class="schema-row">
                         <div class="k">Altstadt-Lehel</div>
-                        <div class="v">Historic core. Marienplatz, Hofbräuhaus, Residenz. Premium retail and hospitality.</div>
+                        <div class="v">
+                            Historic core. Marienplatz, Hofbräuhaus, Residenz.
+                            Premium retail and hospitality.
+                        </div>
                     </div>
                     <div class="schema-row">
                         <div class="k">Maxvorstadt</div>
-                        <div class="v">Museum quarter and university district. Kunstareal, LMU, TU Munich. Dense café culture.</div>
+                        <div class="v">
+                            Museum quarter and university district. Kunstareal,
+                            LMU, TU Munich. Dense café culture.
+                        </div>
                     </div>
                     <div class="schema-row">
                         <div class="k">Schwabing</div>
-                        <div class="v">Bohemian-turned-affluent. Art Nouveau facades, Englischer Garten edge, startup scene.</div>
+                        <div class="v">
+                            Bohemian-turned-affluent. Art Nouveau facades,
+                            Englischer Garten edge, startup scene.
+                        </div>
                     </div>
                     <div class="schema-row">
                         <div class="k">Bogenhausen</div>
-                        <div class="v">Old-money villas and embassies along the east Isar bank. Very low density, high asset value.</div>
+                        <div class="v">
+                            Old-money villas and embassies along the east Isar
+                            bank. Very low density, high asset value.
+                        </div>
                     </div>
                     <div class="schema-row">
                         <div class="k">Haidhausen</div>
-                        <div class="v">Creative district SE of Altstadt. Jugendstil stock, galleries, independent F&B, gentrifying.</div>
+                        <div class="v">
+                            Creative district SE of Altstadt. Jugendstil stock,
+                            galleries, independent F&B, gentrifying.
+                        </div>
                     </div>
                     <div class="schema-row">
                         <div class="k">Giesing</div>
-                        <div class="v">Working-class roots, now rapidly appreciating. Good S-Bahn links, emerging hospitality.</div>
+                        <div class="v">
+                            Working-class roots, now rapidly appreciating. Good
+                            S-Bahn links, emerging hospitality.
+                        </div>
                     </div>
                     <div class="schema-row">
                         <div class="k">Neuhausen-Nymphenburg</div>
-                        <div class="v">Family-friendly west. Nymphenburg Palace canal, Victorian villas, solid mid-market.</div>
+                        <div class="v">
+                            Family-friendly west. Nymphenburg Palace canal,
+                            Victorian villas, solid mid-market.
+                        </div>
                     </div>
                     <div class="schema-row">
                         <div class="k">Au-Haidhausen</div>
-                        <div class="v">East Isar. Dense residential, Gasteig cultural complex, strong transit.</div>
+                        <div class="v">
+                            East Isar. Dense residential, Gasteig cultural
+                            complex, strong transit.
+                        </div>
                     </div>
                 </div>
             </div>
@@ -2040,49 +2795,165 @@
                     <span class="section-num">05</span>
                     <h2>Things To Do</h2>
                 </div>
-                <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-top:8px;">
-                <div class="taxo-card">
-                    <div class="tnum">01</div>
-                    <h3>Culture &amp; Art</h3>
-                    <div class="sub"><b>Kunstareal</b><span>Three Pinakotheken + Brandhorst + Glyptothek in one walkable cluster.</span></div>
-                    <div class="sub"><b>Haus der Kunst</b><span>International contemporary art in a landmark 1937 building.</span></div>
-                    <div class="sub"><b>Residenz Museum</b><span>Over 130 rooms of Wittelsbach palace history, Europe's largest city palace complex.</span></div>
-                </div>
-                <div class="taxo-card">
-                    <div class="tnum">02</div>
-                    <h3>Music &amp; Nightlife</h3>
-                    <div class="sub"><b>Bayerische Staatsoper</b><span>One of the world's leading opera houses. Season October–July.</span></div>
-                    <div class="sub"><b>Muffatwerk</b><span>Industrial riverside venue for electronic and live music.</span></div>
-                    <div class="sub"><b>Kultfabrik / Optimolwerke</b><span>Repurposed factory complex near Ostbahnhof; clubs, live shows, events.</span></div>
-                </div>
-                <div class="taxo-card">
-                    <div class="tnum">03</div>
-                    <h3>Innovation &amp; Tech</h3>
-                    <div class="sub"><b>TU Munich / LMU</b><span>Two of Germany's leading research universities. Deep industry–academia ties.</span></div>
-                    <div class="sub"><b>Munich Startup Ecosystem</b><span>Second-largest after Berlin: mobility-tech, aerospace, fintech, deep-tech.</span></div>
-                    <div class="sub"><b>Deutsches Museum</b><span>World's largest science &amp; technology museum. 73,000 exhibits.</span></div>
-                </div>
-                <div class="taxo-card">
-                    <div class="tnum">04</div>
-                    <h3>Sports &amp; Outdoors</h3>
-                    <div class="sub"><b>Englischer Garten</b><span>3.7 km² urban park larger than Central Park. River surfing at Eisbach year-round.</span></div>
-                    <div class="sub"><b>Isar riverbanks</b><span>Cycling, swimming, bbq corridors. Renaturalised stretch south of city.</span></div>
-                    <div class="sub"><b>Alps day trips</b><span>Zugspitze (zugspitze.de), Tegernsee, Garmisch — 1h by train.</span></div>
-                </div>
-                <div class="taxo-card">
-                    <div class="tnum">05</div>
-                    <h3>Food &amp; Gastronomy</h3>
-                    <div class="sub"><b>Viktualienmarkt</b><span>Daily outdoor market since 1807. Cheese, charcuterie, produce, beer garden.</span></div>
-                    <div class="sub"><b>Wirtshaus culture</b><span>Weisswurst before noon, soft pretzels, Helles beer — non-negotiable rituals.</span></div>
-                    <div class="sub"><b>Fine dining</b><span>Munich has 8 Michelin-starred restaurants including Atelier (2★) and Tantris (2★).</span></div>
-                </div>
-                <div class="taxo-card">
-                    <div class="tnum">06</div>
-                    <h3>Community &amp; Events</h3>
-                    <div class="sub"><b>Oktoberfest</b><span>16 days, 6M+ visitors. Theresienwiese. Late Sep – early Oct.</span></div>
-                    <div class="sub"><b>Tollwood Festival</b><span>Summer (Olympiapark) &amp; Winter (Theresienwiese). World music, market, debate.</span></div>
-                    <div class="sub"><b>Fasching</b><span>Bavarian carnival season culminating in Rosenmontag parade. Jan–Feb.</span></div>
-                </div>
+                <div
+                    style="
+                        display: grid;
+                        grid-template-columns: 1fr 1fr 1fr;
+                        gap: 16px;
+                        margin-top: 8px;
+                    "
+                >
+                    <div class="taxo-card">
+                        <div class="tnum">01</div>
+                        <h3>Culture &amp; Art</h3>
+                        <div class="sub">
+                            <b>Kunstareal</b
+                            ><span
+                                >Three Pinakotheken + Brandhorst + Glyptothek in
+                                one walkable cluster.</span
+                            >
+                        </div>
+                        <div class="sub">
+                            <b>Haus der Kunst</b
+                            ><span
+                                >International contemporary art in a landmark
+                                1937 building.</span
+                            >
+                        </div>
+                        <div class="sub">
+                            <b>Residenz Museum</b
+                            ><span
+                                >Over 130 rooms of Wittelsbach palace history,
+                                Europe's largest city palace complex.</span
+                            >
+                        </div>
+                    </div>
+                    <div class="taxo-card">
+                        <div class="tnum">02</div>
+                        <h3>Music &amp; Nightlife</h3>
+                        <div class="sub">
+                            <b>Bayerische Staatsoper</b
+                            ><span
+                                >One of the world's leading opera houses. Season
+                                October–July.</span
+                            >
+                        </div>
+                        <div class="sub">
+                            <b>Muffatwerk</b
+                            ><span
+                                >Industrial riverside venue for electronic and
+                                live music.</span
+                            >
+                        </div>
+                        <div class="sub">
+                            <b>Kultfabrik / Optimolwerke</b
+                            ><span
+                                >Repurposed factory complex near Ostbahnhof;
+                                clubs, live shows, events.</span
+                            >
+                        </div>
+                    </div>
+                    <div class="taxo-card">
+                        <div class="tnum">03</div>
+                        <h3>Innovation &amp; Tech</h3>
+                        <div class="sub">
+                            <b>TU Munich / LMU</b
+                            ><span
+                                >Two of Germany's leading research universities.
+                                Deep industry–academia ties.</span
+                            >
+                        </div>
+                        <div class="sub">
+                            <b>Munich Startup Ecosystem</b
+                            ><span
+                                >Second-largest after Berlin: mobility-tech,
+                                aerospace, fintech, deep-tech.</span
+                            >
+                        </div>
+                        <div class="sub">
+                            <b>Deutsches Museum</b
+                            ><span
+                                >World's largest science &amp; technology
+                                museum. 73,000 exhibits.</span
+                            >
+                        </div>
+                    </div>
+                    <div class="taxo-card">
+                        <div class="tnum">04</div>
+                        <h3>Sports &amp; Outdoors</h3>
+                        <div class="sub">
+                            <b>Englischer Garten</b
+                            ><span
+                                >3.7 km² urban park larger than Central Park.
+                                River surfing at Eisbach year-round.</span
+                            >
+                        </div>
+                        <div class="sub">
+                            <b>Isar riverbanks</b
+                            ><span
+                                >Cycling, swimming, bbq corridors. Renaturalised
+                                stretch south of city.</span
+                            >
+                        </div>
+                        <div class="sub">
+                            <b>Alps day trips</b
+                            ><span
+                                >Zugspitze (zugspitze.de), Tegernsee, Garmisch —
+                                1h by train.</span
+                            >
+                        </div>
+                    </div>
+                    <div class="taxo-card">
+                        <div class="tnum">05</div>
+                        <h3>Food &amp; Gastronomy</h3>
+                        <div class="sub">
+                            <b>Viktualienmarkt</b
+                            ><span
+                                >Daily outdoor market since 1807. Cheese,
+                                charcuterie, produce, beer garden.</span
+                            >
+                        </div>
+                        <div class="sub">
+                            <b>Wirtshaus culture</b
+                            ><span
+                                >Weisswurst before noon, soft pretzels, Helles
+                                beer — non-negotiable rituals.</span
+                            >
+                        </div>
+                        <div class="sub">
+                            <b>Fine dining</b
+                            ><span
+                                >Munich has 8 Michelin-starred restaurants
+                                including Atelier (2★) and Tantris (2★).</span
+                            >
+                        </div>
+                    </div>
+                    <div class="taxo-card">
+                        <div class="tnum">06</div>
+                        <h3>Community &amp; Events</h3>
+                        <div class="sub">
+                            <b>Oktoberfest</b
+                            ><span
+                                >16 days, 6M+ visitors. Theresienwiese. Late Sep
+                                – early Oct.</span
+                            >
+                        </div>
+                        <div class="sub">
+                            <b>Tollwood Festival</b
+                            ><span
+                                >Summer (Olympiapark) &amp; Winter
+                                (Theresienwiese). World music, market,
+                                debate.</span
+                            >
+                        </div>
+                        <div class="sub">
+                            <b>Fasching</b
+                            ><span
+                                >Bavarian carnival season culminating in
+                                Rosenmontag parade. Jan–Feb.</span
+                            >
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -2094,66 +2965,332 @@
                     <span class="section-num">06</span>
                     <h2>Food &amp; Rituals</h2>
                 </div>
-                <p class="body-text" style="margin-bottom:20px;">Munich's food culture is inseparable from its social rituals. The Biergarten, the Wirtshaus, and the Viktualienmarkt are the three stages on which daily life is performed — food here is not just sustenance but a form of civic participation.</p>
+                <p class="body-text" style="margin-bottom: 20px">
+                    Munich's food culture is inseparable from its social
+                    rituals. The Biergarten, the Wirtshaus, and the
+                    Viktualienmarkt are the three stages on which daily life is
+                    performed — food here is not just sustenance but a form of
+                    civic participation.
+                </p>
 
                 <div class="foodstrip">
-                <div class="dish">
-                    <div style="width:100%;height:110px;background:#e8dcc8;display:flex;align-items:center;justify-content:center;font-size:44px;opacity:0.85;">🥩</div>
-                    <div class="dtext">
-                        <div class="name"><a href="https://www.tasteatlas.com/weiwurste" target="_blank" style="color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);">Weisswurst</a></div>
-                        <div class="note" style="font-style:italic;margin-bottom:6px;">White veal sausage</div>
-                        <div class="note">Eaten before noon — the Weisswurst Äquator rule is sacred. Served with sweet mustard, a soft Brezn, and Weissbier. Peel the skin with a spoon or by "zuzeln" (sucking from the end).</div>
+                    <div class="dish">
+                        <div
+                            style="
+                                width: 100%;
+                                height: 110px;
+                                background: #e8dcc8;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 44px;
+                                opacity: 0.85;
+                            "
+                        >
+                            🥩
+                        </div>
+                        <div class="dtext">
+                            <div class="name">
+                                <a
+                                    href="https://www.tasteatlas.com/weiwurste"
+                                    target="_blank"
+                                    style="
+                                        color: var(--ink);
+                                        text-decoration: none;
+                                        border-bottom: 1px solid var(--line);
+                                    "
+                                    >Weisswurst</a
+                                >
+                            </div>
+                            <div
+                                class="note"
+                                style="font-style: italic; margin-bottom: 6px"
+                            >
+                                White veal sausage
+                            </div>
+                            <div class="note">
+                                Eaten before noon — the Weisswurst Äquator rule
+                                is sacred. Served with sweet mustard, a soft
+                                Brezn, and Weissbier. Peel the skin with a spoon
+                                or by "zuzeln" (sucking from the end).
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="dish">
-                    <div style="width:100%;height:110px;background:#d4a96a;display:flex;align-items:center;justify-content:center;font-size:44px;opacity:0.85;">🥨</div>
-                    <div class="dtext">
-                        <div class="name"><a href="https://www.tasteatlas.com/pretzel" target="_blank" style="color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);">Brezn</a></div>
-                        <div class="note" style="font-style:italic;margin-bottom:6px;">Soft lye pretzel</div>
-                        <div class="note">Munich's Brezn are bigger, softer, and saltier than elsewhere. The standard accompaniment to any beer. Eaten with Obatzda or salted butter.</div>
+                    <div class="dish">
+                        <div
+                            style="
+                                width: 100%;
+                                height: 110px;
+                                background: #d4a96a;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 44px;
+                                opacity: 0.85;
+                            "
+                        >
+                            🥨
+                        </div>
+                        <div class="dtext">
+                            <div class="name">
+                                <a
+                                    href="https://www.tasteatlas.com/pretzel"
+                                    target="_blank"
+                                    style="
+                                        color: var(--ink);
+                                        text-decoration: none;
+                                        border-bottom: 1px solid var(--line);
+                                    "
+                                    >Brezn</a
+                                >
+                            </div>
+                            <div
+                                class="note"
+                                style="font-style: italic; margin-bottom: 6px"
+                            >
+                                Soft lye pretzel
+                            </div>
+                            <div class="note">
+                                Munich's Brezn are bigger, softer, and saltier
+                                than elsewhere. The standard accompaniment to
+                                any beer. Eaten with Obatzda or salted butter.
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="dish">
-                    <div style="width:100%;height:110px;background:#c8a898;display:flex;align-items:center;justify-content:center;font-size:44px;opacity:0.85;">🍖</div>
-                    <div class="dtext">
-                        <div class="name"><a href="https://www.tasteatlas.com/schweinshaxe" target="_blank" style="color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);">Schweinshaxe</a></div>
-                        <div class="note" style="font-style:italic;margin-bottom:6px;">Roasted pork knuckle</div>
-                        <div class="note">Slow-roasted until the skin crackles and the meat falls off the bone. A true Bierhaus staple. Paired with Sauerkraut or Knödel.</div>
+                    <div class="dish">
+                        <div
+                            style="
+                                width: 100%;
+                                height: 110px;
+                                background: #c8a898;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 44px;
+                                opacity: 0.85;
+                            "
+                        >
+                            🍖
+                        </div>
+                        <div class="dtext">
+                            <div class="name">
+                                <a
+                                    href="https://www.tasteatlas.com/schweinshaxe"
+                                    target="_blank"
+                                    style="
+                                        color: var(--ink);
+                                        text-decoration: none;
+                                        border-bottom: 1px solid var(--line);
+                                    "
+                                    >Schweinshaxe</a
+                                >
+                            </div>
+                            <div
+                                class="note"
+                                style="font-style: italic; margin-bottom: 6px"
+                            >
+                                Roasted pork knuckle
+                            </div>
+                            <div class="note">
+                                Slow-roasted until the skin crackles and the
+                                meat falls off the bone. A true Bierhaus staple.
+                                Paired with Sauerkraut or Knödel.
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="dish">
-                    <div style="width:100%;height:110px;background:#e0c870;display:flex;align-items:center;justify-content:center;font-size:44px;opacity:0.85;">🧀</div>
-                    <div class="dtext">
-                        <div class="name"><a href="https://www.tasteatlas.com/obazda" target="_blank" style="color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);">Obatzda</a></div>
-                        <div class="note" style="font-style:italic;margin-bottom:6px;">Spiced Camembert spread</div>
-                        <div class="note">Ripe Camembert mashed with butter, cream cheese, paprika, caraway, and onion. Served with radishes and rye bread at any Biergarten.</div>
+                    <div class="dish">
+                        <div
+                            style="
+                                width: 100%;
+                                height: 110px;
+                                background: #e0c870;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 44px;
+                                opacity: 0.85;
+                            "
+                        >
+                            🧀
+                        </div>
+                        <div class="dtext">
+                            <div class="name">
+                                <a
+                                    href="https://www.tasteatlas.com/obazda"
+                                    target="_blank"
+                                    style="
+                                        color: var(--ink);
+                                        text-decoration: none;
+                                        border-bottom: 1px solid var(--line);
+                                    "
+                                    >Obatzda</a
+                                >
+                            </div>
+                            <div
+                                class="note"
+                                style="font-style: italic; margin-bottom: 6px"
+                            >
+                                Spiced Camembert spread
+                            </div>
+                            <div class="note">
+                                Ripe Camembert mashed with butter, cream cheese,
+                                paprika, caraway, and onion. Served with
+                                radishes and rye bread at any Biergarten.
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="dish">
-                    <div style="width:100%;height:110px;background:#c8b090;display:flex;align-items:center;justify-content:center;font-size:44px;opacity:0.85;">🎂</div>
-                    <div class="dtext">
-                        <div class="name"><a href="https://www.tasteatlas.com/baumkuchen" target="_blank" style="color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);">Baumkuchen</a></div>
-                        <div class="note" style="font-style:italic;margin-bottom:6px;">Tree cake</div>
-                        <div class="note">Baked on a rotating spit, each ring of batter forms a concentric layer — the cross-section resembles tree rings. A dense, buttery Bavarian confection.</div>
+                    <div class="dish">
+                        <div
+                            style="
+                                width: 100%;
+                                height: 110px;
+                                background: #c8b090;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 44px;
+                                opacity: 0.85;
+                            "
+                        >
+                            🎂
+                        </div>
+                        <div class="dtext">
+                            <div class="name">
+                                <a
+                                    href="https://www.tasteatlas.com/baumkuchen"
+                                    target="_blank"
+                                    style="
+                                        color: var(--ink);
+                                        text-decoration: none;
+                                        border-bottom: 1px solid var(--line);
+                                    "
+                                    >Baumkuchen</a
+                                >
+                            </div>
+                            <div
+                                class="note"
+                                style="font-style: italic; margin-bottom: 6px"
+                            >
+                                Tree cake
+                            </div>
+                            <div class="note">
+                                Baked on a rotating spit, each ring of batter
+                                forms a concentric layer — the cross-section
+                                resembles tree rings. A dense, buttery Bavarian
+                                confection.
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="dish">
-                    <div style="width:100%;height:110px;background:#f0e8d8;display:flex;align-items:center;justify-content:center;font-size:44px;opacity:0.85;">🍮</div>
-                    <div class="dtext">
-                        <div class="name"><a href="https://www.tasteatlas.com/bavarian-cream" target="_blank" style="color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line);">Bavarian Cream</a></div>
-                        <div class="note" style="font-style:italic;margin-bottom:6px;">Bayerische Creme</div>
-                        <div class="note">Silky gelatin-set custard enriched with whipped cream, served chilled. Often paired with fresh berries or a warm berry compote. A classic of Bavarian pastry tradition.</div>
+                    <div class="dish">
+                        <div
+                            style="
+                                width: 100%;
+                                height: 110px;
+                                background: #f0e8d8;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 44px;
+                                opacity: 0.85;
+                            "
+                        >
+                            🍮
+                        </div>
+                        <div class="dtext">
+                            <div class="name">
+                                <a
+                                    href="https://www.tasteatlas.com/bavarian-cream"
+                                    target="_blank"
+                                    style="
+                                        color: var(--ink);
+                                        text-decoration: none;
+                                        border-bottom: 1px solid var(--line);
+                                    "
+                                    >Bavarian Cream</a
+                                >
+                            </div>
+                            <div
+                                class="note"
+                                style="font-style: italic; margin-bottom: 6px"
+                            >
+                                Bayerische Creme
+                            </div>
+                            <div class="note">
+                                Silky gelatin-set custard enriched with whipped
+                                cream, served chilled. Often paired with fresh
+                                berries or a warm berry compote. A classic of
+                                Bavarian pastry tradition.
+                            </div>
+                        </div>
                     </div>
-                </div>
                 </div>
 
-                <div style="margin-top:28px;">
-                    <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.09em;color:var(--ink-soft);margin-bottom:14px;display:flex;align-items:center;gap:12px;">Key Rituals<span style="flex:1;height:1px;background:var(--line);display:block;"></span></div>
-                    <div class="sub"><b>Weisswurst Äquator</b><span> — the rule that Weisswurst must be eaten before noon. After midday, it's considered an affront. Order it at any Wirtshaus from 9am on Sundays.</span></div>
-                    <div class="sub"><b>Brotzeit</b><span> — the mid-morning snack break (typically 9–10am). Cold cuts, cheese, radishes, and bread. As important a ritual in factories and offices as in restaurants.</span></div>
-                    <div class="sub"><b>Biergarten etiquette</b><span> — you may bring your own food but not your own drink. Tables are shared with strangers. Speaking to your neighbours is not just accepted — it's expected.</span></div>
-                    <div class="sub"><b>Prost protocol</b><span> — clinked glasses require direct eye contact with every person at the table. Missing someone's gaze is considered disrespectful (and allegedly invites 7 years of bad luck).</span></div>
-                    <div class="sub"><b>Masskrug grip</b><span> — always hold the 1-litre stein by the handle. Never by the body. The handle exists for structural and social reasons equally.</span></div>
+                <div style="margin-top: 28px">
+                    <div
+                        style="
+                            font-family: &quot;JetBrains Mono&quot;, monospace;
+                            font-size: 9.5px;
+                            text-transform: uppercase;
+                            letter-spacing: 0.09em;
+                            color: var(--ink-soft);
+                            margin-bottom: 14px;
+                            display: flex;
+                            align-items: center;
+                            gap: 12px;
+                        "
+                    >
+                        Key Rituals<span
+                            style="
+                                flex: 1;
+                                height: 1px;
+                                background: var(--line);
+                                display: block;
+                            "
+                        ></span>
+                    </div>
+                    <div class="sub">
+                        <b>Weisswurst Äquator</b
+                        ><span>
+                            — the rule that Weisswurst must be eaten before
+                            noon. After midday, it's considered an affront.
+                            Order it at any Wirtshaus from 9am on Sundays.</span
+                        >
+                    </div>
+                    <div class="sub">
+                        <b>Brotzeit</b
+                        ><span>
+                            — the mid-morning snack break (typically 9–10am).
+                            Cold cuts, cheese, radishes, and bread. As important
+                            a ritual in factories and offices as in
+                            restaurants.</span
+                        >
+                    </div>
+                    <div class="sub">
+                        <b>Biergarten etiquette</b
+                        ><span>
+                            — you may bring your own food but not your own
+                            drink. Tables are shared with strangers. Speaking to
+                            your neighbours is not just accepted — it's
+                            expected.</span
+                        >
+                    </div>
+                    <div class="sub">
+                        <b>Prost protocol</b
+                        ><span>
+                            — clinked glasses require direct eye contact with
+                            every person at the table. Missing someone's gaze is
+                            considered disrespectful (and allegedly invites 7
+                            years of bad luck).</span
+                        >
+                    </div>
+                    <div class="sub">
+                        <b>Masskrug grip</b
+                        ><span>
+                            — always hold the 1-litre stein by the handle. Never
+                            by the body. The handle exists for structural and
+                            social reasons equally.</span
+                        >
+                    </div>
                 </div>
             </div>
         </section>
@@ -2165,143 +3302,974 @@
                     <span class="section-num">07</span>
                     <h2>Connectivity</h2>
                 </div>
-                <p class="body-text" style="margin-bottom:16px;"><b>Three levels, three radii.</b></p>
-                <div style="margin-bottom:20px;">
-                    <div class="sub"><b>Local / Urban Mobility</b><span> — the metro and S-Bahn network covers the city; MUC Airport is reachable via S1/S8 in under 40 minutes.</span></div>
-                    <div class="sub"><b>High-Speed Rail Corridor</b><span> — direct ICE trains connect Munich to Frankfurt (3h15), Zurich (3h40), Vienna (4h), and Milan (5h).</span></div>
-                    <div class="sub"><b>Global &amp; Long-Haul Aviation</b><span> — one-stop reach to London and Paris (~2h by air); direct long-haul to New York (7h30) and Singapore (12h) via MUC.</span></div>
+                <p class="body-text" style="margin-bottom: 16px">
+                    <b>Three levels, three radii.</b>
+                </p>
+                <div style="margin-bottom: 20px">
+                    <div class="sub">
+                        <b>Local / Urban Mobility</b
+                        ><span>
+                            — the metro and S-Bahn network covers the city; MUC
+                            Airport is reachable via S1/S8 in under 40
+                            minutes.</span
+                        >
+                    </div>
+                    <div class="sub">
+                        <b>High-Speed Rail Corridor</b
+                        ><span>
+                            — direct ICE trains connect Munich to Frankfurt
+                            (3h15), Zurich (3h40), Vienna (4h), and Milan
+                            (5h).</span
+                        >
+                    </div>
+                    <div class="sub">
+                        <b>Global &amp; Long-Haul Aviation</b
+                        ><span>
+                            — one-stop reach to London and Paris (~2h by air);
+                            direct long-haul to New York (7h30) and Singapore
+                            (12h) via MUC.</span
+                        >
+                    </div>
                 </div>
 
                 <div class="mapbox">
-                    <svg viewBox="0 0 900 760" xmlns="http://www.w3.org/2000/svg" style="width:100%; height:auto; display:block; border-radius:4px;">
-  <rect width="900" height="760" fill="var(--paper)"/>
-  <!-- Europe map background -->
-  <image href="../images/Blank_map_of_Europe_cropped.svg"
-         xlink:href="../images/Blank_map_of_Europe_cropped.svg"
-         x="90" y="-57" width="900" height="791" opacity="0.12"/>
+                    <svg
+                        viewBox="0 0 900 760"
+                        xmlns="http://www.w3.org/2000/svg"
+                        style="
+                            width: 100%;
+                            height: auto;
+                            display: block;
+                            border-radius: 4px;
+                        "
+                    >
+                        <rect width="900" height="760" fill="var(--paper)" />
+                        <!-- Europe map background -->
+                        <image
+                            href="../images/Blank_map_of_Europe_cropped.svg"
+                            xlink:href="../images/Blank_map_of_Europe_cropped.svg"
+                            x="90"
+                            y="-57"
+                            width="900"
+                            height="791"
+                            opacity="0.12"
+                        />
 
+                        <!-- ── CONCENTRIC RINGS ── -->
+                        <circle
+                            cx="450"
+                            cy="470"
+                            r="65"
+                            fill="none"
+                            stroke="#4a4035"
+                            stroke-width="1.2"
+                            stroke-dasharray="4,6"
+                            opacity="0.45"
+                        />
+                        <circle
+                            cx="450"
+                            cy="470"
+                            r="150"
+                            fill="none"
+                            stroke="#4a4035"
+                            stroke-width="1.2"
+                            stroke-dasharray="4,6"
+                            opacity="0.40"
+                        />
+                        <circle
+                            cx="450"
+                            cy="470"
+                            r="245"
+                            fill="none"
+                            stroke="#4a4035"
+                            stroke-width="1.2"
+                            stroke-dasharray="4,6"
+                            opacity="0.35"
+                        />
+                        <circle
+                            cx="450"
+                            cy="470"
+                            r="335"
+                            fill="none"
+                            stroke="#4a4035"
+                            stroke-width="1.2"
+                            stroke-dasharray="4,6"
+                            opacity="0.30"
+                        />
+                        <circle
+                            cx="450"
+                            cy="470"
+                            r="415"
+                            fill="none"
+                            stroke="#4a4035"
+                            stroke-width="1.2"
+                            stroke-dasharray="4,6"
+                            opacity="0.25"
+                        />
 
-  <!-- ── CONCENTRIC RINGS ── -->
-  <circle cx="450" cy="470" r="65"  fill="none" stroke="#4a4035" stroke-width="1.2" stroke-dasharray="4,6" opacity="0.45"/>
-  <circle cx="450" cy="470" r="150" fill="none" stroke="#4a4035" stroke-width="1.2" stroke-dasharray="4,6" opacity="0.40"/>
-  <circle cx="450" cy="470" r="245" fill="none" stroke="#4a4035" stroke-width="1.2" stroke-dasharray="4,6" opacity="0.35"/>
-  <circle cx="450" cy="470" r="335" fill="none" stroke="#4a4035" stroke-width="1.2" stroke-dasharray="4,6" opacity="0.30"/>
-  <circle cx="450" cy="470" r="415" fill="none" stroke="#4a4035" stroke-width="1.2" stroke-dasharray="4,6" opacity="0.25"/>
+                        <!-- ── RING LABELS ── -->
+                        <text
+                            x="462"
+                            y="543"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="9"
+                            fill="var(--ink)"
+                            stroke="white"
+                            stroke-width="3"
+                            paint-order="stroke"
+                            opacity="0.72"
+                        >
+                            S-Bahn ~15 min
+                        </text>
+                        <text
+                            x="215"
+                            y="512"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="9"
+                            fill="var(--ink)"
+                            stroke="white"
+                            stroke-width="3"
+                            paint-order="stroke"
+                            opacity="0.70"
+                        >
+                            High-speed rail ~2h–5h
+                        </text>
+                        <text
+                            x="163"
+                            y="290"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="9"
+                            fill="var(--ink)"
+                            stroke="white"
+                            stroke-width="3"
+                            paint-order="stroke"
+                            opacity="0.68"
+                        >
+                            Short-haul flights &lt;4h
+                        </text>
+                        <text
+                            x="793"
+                            y="365"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="9"
+                            fill="var(--ink)"
+                            stroke="white"
+                            stroke-width="3"
+                            paint-order="stroke"
+                            opacity="0.65"
+                            text-anchor="end"
+                        >
+                            Long-haul flights &gt;8h
+                        </text>
+                        <text
+                            x="812"
+                            y="125"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="9"
+                            fill="var(--ink)"
+                            stroke="white"
+                            stroke-width="3"
+                            paint-order="stroke"
+                            opacity="0.62"
+                            text-anchor="end"
+                        >
+                            Suborbital Flight
+                        </text>
 
-  <!-- ── RING LABELS ── -->
-  <text x="462" y="543" font-family="'JetBrains Mono',monospace" font-size="9" fill="var(--ink)" stroke="white" stroke-width="3" paint-order="stroke" opacity="0.72">S-Bahn ~15 min</text>
-  <text x="215" y="512" font-family="'JetBrains Mono',monospace" font-size="9" fill="var(--ink)" stroke="white" stroke-width="3" paint-order="stroke" opacity="0.70">High-speed rail ~2h–5h</text>
-  <text x="163" y="290" font-family="'JetBrains Mono',monospace" font-size="9" fill="var(--ink)" stroke="white" stroke-width="3" paint-order="stroke" opacity="0.68">Short-haul flights &lt;4h</text>
-  <text x="793" y="365" font-family="'JetBrains Mono',monospace" font-size="9" fill="var(--ink)" stroke="white" stroke-width="3" paint-order="stroke" opacity="0.65" text-anchor="end">Long-haul flights &gt;8h</text>
-  <text x="812" y="125" font-family="'JetBrains Mono',monospace" font-size="9" fill="var(--ink)" stroke="white" stroke-width="3" paint-order="stroke" opacity="0.62" text-anchor="end">Suborbital Flight</text>
+                        <!-- ── MARITIME (blue dotted) ── -->
+                        <line
+                            x1="450"
+                            y1="470"
+                            x2="614"
+                            y2="484"
+                            stroke="#2A4E6A"
+                            stroke-width="1.8"
+                            stroke-dasharray="4,4"
+                            opacity="0.85"
+                        />
+                        <line
+                            x1="614"
+                            y1="484"
+                            x2="709"
+                            y2="491"
+                            stroke="#2A4E6A"
+                            stroke-width="1.8"
+                            stroke-dasharray="4,4"
+                            opacity="0.85"
+                        />
 
-  <!-- ── MARITIME (blue dotted) ── -->
-  <line x1="450" y1="470" x2="614" y2="484" stroke="#2A4E6A" stroke-width="1.8" stroke-dasharray="4,4" opacity="0.85"/>
-  <line x1="614" y1="484" x2="709" y2="491" stroke="#2A4E6A" stroke-width="1.8" stroke-dasharray="4,4" opacity="0.85"/>
+                        <!-- ── RAIL (solid rust) ── -->
+                        <line
+                            x1="450"
+                            y1="470"
+                            x2="284"
+                            y2="304"
+                            stroke="#A65B3B"
+                            stroke-width="2.5"
+                            stroke-linecap="round"
+                        />
+                        <line
+                            x1="450"
+                            y1="470"
+                            x2="610"
+                            y2="358"
+                            stroke="#A65B3B"
+                            stroke-width="2.5"
+                            stroke-linecap="round"
+                        />
+                        <line
+                            x1="450"
+                            y1="470"
+                            x2="597"
+                            y2="432"
+                            stroke="#A65B3B"
+                            stroke-width="1.8"
+                            stroke-linecap="round"
+                            opacity="0.75"
+                        />
+                        <line
+                            x1="450"
+                            y1="470"
+                            x2="321"
+                            y2="623"
+                            stroke="#A65B3B"
+                            stroke-width="2.5"
+                            stroke-linecap="round"
+                        />
+                        <line
+                            x1="450"
+                            y1="470"
+                            x2="535"
+                            y2="663"
+                            stroke="#A65B3B"
+                            stroke-width="2.5"
+                            stroke-linecap="round"
+                        />
 
-  <!-- ── RAIL (solid rust) ── -->
-  <line x1="450" y1="470" x2="284" y2="304" stroke="#A65B3B" stroke-width="2.5" stroke-linecap="round"/>
-  <line x1="450" y1="470" x2="610" y2="358" stroke="#A65B3B" stroke-width="2.5" stroke-linecap="round"/>
-  <line x1="450" y1="470" x2="597" y2="432" stroke="#A65B3B" stroke-width="1.8" stroke-linecap="round" opacity="0.75"/>
-  <line x1="450" y1="470" x2="321" y2="623" stroke="#A65B3B" stroke-width="2.5" stroke-linecap="round"/>
-  <line x1="450" y1="470" x2="535" y2="663" stroke="#A65B3B" stroke-width="2.5" stroke-linecap="round"/>
+                        <!-- ── S-BAHN (gold dashed) ── -->
+                        <line
+                            x1="450"
+                            y1="470"
+                            x2="467"
+                            y2="407"
+                            stroke="#B08A4E"
+                            stroke-width="2"
+                            stroke-dasharray="5,4"
+                            stroke-linecap="round"
+                        />
 
-  <!-- ── S-BAHN (gold dashed) ── -->
-  <line x1="450" y1="470" x2="467" y2="407" stroke="#B08A4E" stroke-width="2" stroke-dasharray="5,4" stroke-linecap="round"/>
+                        <!-- ── FLIGHTS (gray dashed arcs) ── -->
+                        <path
+                            d="M450,470 Q320,305 204,404"
+                            fill="none"
+                            stroke="#5a5a6a"
+                            stroke-width="1.8"
+                            stroke-dasharray="9,5"
+                            opacity="0.8"
+                        />
+                        <path
+                            d="M450,470 Q480,400 509,343"
+                            fill="none"
+                            stroke="#5a5a6a"
+                            stroke-width="1.8"
+                            stroke-dasharray="9,5"
+                            opacity="0.8"
+                        />
 
-  <!-- ── FLIGHTS (gray dashed arcs) ── -->
-  <path d="M450,470 Q320,305 204,404" fill="none" stroke="#5a5a6a" stroke-width="1.8" stroke-dasharray="9,5" opacity="0.8"/>
-  <path d="M450,470 Q480,400 509,343" fill="none" stroke="#5a5a6a" stroke-width="1.8" stroke-dasharray="9,5" opacity="0.8"/>
+                        <!-- ── LONG-HAUL direct from MUC (tan dotted) ── -->
+                        <path
+                            d="M450,470 Q240,410 116,591"
+                            fill="none"
+                            stroke="#8a7a5c"
+                            stroke-width="2"
+                            stroke-dasharray="5,6"
+                            opacity="0.85"
+                        />
+                        <path
+                            d="M450,470 Q640,560 790,560"
+                            fill="none"
+                            stroke="#8a7a5c"
+                            stroke-width="2"
+                            stroke-dasharray="5,6"
+                            opacity="0.85"
+                        />
 
-  <!-- ── LONG-HAUL direct from MUC (tan dotted) ── -->
-  <path d="M450,470 Q240,410 116,591" fill="none" stroke="#8a7a5c" stroke-width="2" stroke-dasharray="5,6" opacity="0.85"/>
-  <path d="M450,470 Q640,560 790,560" fill="none" stroke="#8a7a5c" stroke-width="2" stroke-dasharray="5,6" opacity="0.85"/>
+                        <!-- ── SPACE (sage dashed) ── -->
+                        <line
+                            x1="450"
+                            y1="470"
+                            x2="418"
+                            y2="288"
+                            stroke="#4a6040"
+                            stroke-width="1.5"
+                            stroke-dasharray="4,5"
+                            opacity="0.7"
+                        />
+                        <line
+                            x1="418"
+                            y1="288"
+                            x2="459"
+                            y2="225"
+                            stroke="#4a6040"
+                            stroke-width="1.5"
+                            stroke-dasharray="4,5"
+                            opacity="0.7"
+                        />
+                        <line
+                            x1="459"
+                            y1="225"
+                            x2="450"
+                            y2="55"
+                            stroke="#4a6040"
+                            stroke-width="1.2"
+                            stroke-dasharray="4,6"
+                            opacity="0.5"
+                        />
 
-  <!-- ── SPACE (sage dashed) ── -->
-  <line x1="450" y1="470" x2="418" y2="288" stroke="#4a6040" stroke-width="1.5" stroke-dasharray="4,5" opacity="0.7"/>
-  <line x1="418" y1="288" x2="459" y2="225" stroke="#4a6040" stroke-width="1.5" stroke-dasharray="4,5" opacity="0.7"/>
-  <line x1="459" y1="225" x2="450" y2="55"  stroke="#4a6040" stroke-width="1.2" stroke-dasharray="4,6" opacity="0.5"/>
+                        <!-- ── NODES (far → near, hub last) ── -->
+                        <circle
+                            cx="450"
+                            cy="55"
+                            r="8"
+                            fill="#4a6040"
+                            stroke="white"
+                            stroke-width="2"
+                        />
+                        <circle
+                            cx="116"
+                            cy="591"
+                            r="9"
+                            fill="#8a7a5c"
+                            stroke="white"
+                            stroke-width="2.5"
+                        />
+                        <circle
+                            cx="790"
+                            cy="560"
+                            r="9"
+                            fill="#8a7a5c"
+                            stroke="white"
+                            stroke-width="2.5"
+                        />
+                        <circle
+                            cx="459"
+                            cy="225"
+                            r="8"
+                            fill="#4a6040"
+                            stroke="white"
+                            stroke-width="2"
+                        />
+                        <circle
+                            cx="204"
+                            cy="404"
+                            r="9"
+                            fill="#5a5a6a"
+                            stroke="white"
+                            stroke-width="2.5"
+                        />
+                        <circle
+                            cx="284"
+                            cy="304"
+                            r="9"
+                            fill="#A65B3B"
+                            stroke="white"
+                            stroke-width="2.5"
+                        />
+                        <circle
+                            cx="610"
+                            cy="358"
+                            r="9"
+                            fill="#A65B3B"
+                            stroke="white"
+                            stroke-width="2.5"
+                        />
+                        <circle
+                            cx="597"
+                            cy="432"
+                            r="8"
+                            fill="#A65B3B"
+                            stroke="white"
+                            stroke-width="2"
+                        />
+                        <circle
+                            cx="321"
+                            cy="623"
+                            r="9"
+                            fill="#A65B3B"
+                            stroke="white"
+                            stroke-width="2.5"
+                        />
+                        <circle
+                            cx="535"
+                            cy="663"
+                            r="9"
+                            fill="#A65B3B"
+                            stroke="white"
+                            stroke-width="2.5"
+                        />
+                        <circle
+                            cx="509"
+                            cy="343"
+                            r="8"
+                            fill="#5a5a6a"
+                            stroke="white"
+                            stroke-width="2"
+                        />
+                        <circle
+                            cx="418"
+                            cy="288"
+                            r="8"
+                            fill="#B08A4E"
+                            stroke="white"
+                            stroke-width="2"
+                        />
+                        <circle
+                            cx="709"
+                            cy="491"
+                            r="8"
+                            fill="#2A4E6A"
+                            stroke="white"
+                            stroke-width="2"
+                        />
+                        <circle
+                            cx="614"
+                            cy="484"
+                            r="8"
+                            fill="#2A4E6A"
+                            stroke="white"
+                            stroke-width="2"
+                        />
+                        <circle
+                            cx="467"
+                            cy="407"
+                            r="8"
+                            fill="#B08A4E"
+                            stroke="white"
+                            stroke-width="2.5"
+                        />
+                        <circle
+                            cx="450"
+                            cy="470"
+                            r="13"
+                            fill="#2A2420"
+                            stroke="white"
+                            stroke-width="3"
+                        />
 
-  <!-- ── NODES (far → near, hub last) ── -->
-  <circle cx="450" cy="55"  r="8"  fill="#4a6040" stroke="white" stroke-width="2"/>
-  <circle cx="116" cy="591" r="9"  fill="#8a7a5c" stroke="white" stroke-width="2.5"/>
-  <circle cx="790" cy="560" r="9"  fill="#8a7a5c" stroke="white" stroke-width="2.5"/>
-  <circle cx="459" cy="225" r="8"  fill="#4a6040" stroke="white" stroke-width="2"/>
-  <circle cx="204" cy="404" r="9"  fill="#5a5a6a" stroke="white" stroke-width="2.5"/>
-  <circle cx="284" cy="304" r="9"  fill="#A65B3B" stroke="white" stroke-width="2.5"/>
-  <circle cx="610" cy="358" r="9"  fill="#A65B3B" stroke="white" stroke-width="2.5"/>
-  <circle cx="597" cy="432" r="8"  fill="#A65B3B" stroke="white" stroke-width="2"/>
-  <circle cx="321" cy="623" r="9"  fill="#A65B3B" stroke="white" stroke-width="2.5"/>
-  <circle cx="535" cy="663" r="9"  fill="#A65B3B" stroke="white" stroke-width="2.5"/>
-  <circle cx="509" cy="343" r="8"  fill="#5a5a6a" stroke="white" stroke-width="2"/>
-  <circle cx="418" cy="288" r="8"  fill="#B08A4E" stroke="white" stroke-width="2"/>
-  <circle cx="709" cy="491" r="8"  fill="#2A4E6A" stroke="white" stroke-width="2"/>
-  <circle cx="614" cy="484" r="8"  fill="#2A4E6A" stroke="white" stroke-width="2"/>
-  <circle cx="467" cy="407" r="8"  fill="#B08A4E" stroke="white" stroke-width="2.5"/>
-  <circle cx="450" cy="470" r="13" fill="#2A2420" stroke="white" stroke-width="3"/>
-
-  <!-- ── LABELS ── -->
-  <text x="450" y="492" font-family="'JetBrains Mono',monospace" font-size="13" fill="var(--ink)" font-weight="700" text-anchor="middle" stroke="var(--paper)" stroke-width="4" paint-order="stroke">Munich Intermodal Hub (Hbf)</text>
-  <text x="481" y="401" font-family="'JetBrains Mono',monospace" font-size="11" fill="#B08A4E" font-weight="700" stroke="var(--paper)" stroke-width="3" paint-order="stroke">MUC Airport</text>
-  <text x="481" y="414" font-family="'JetBrains Mono',monospace" font-size="9"  fill="var(--ink)" opacity="0.65" stroke="var(--paper)" stroke-width="2.5" paint-order="stroke">S1 · S8</text>
-  <text x="272" y="299" font-family="'JetBrains Mono',monospace" font-size="12" fill="#A65B3B" font-weight="700" text-anchor="end" stroke="var(--paper)" stroke-width="3" paint-order="stroke">Frankfurt</text>
-  <text x="272" y="312" font-family="'JetBrains Mono',monospace" font-size="10" fill="var(--ink)" opacity="0.65" text-anchor="end" stroke="var(--paper)" stroke-width="2.5" paint-order="stroke">rail 3h15</text>
-  <text x="192" y="399" font-family="'JetBrains Mono',monospace" font-size="12" fill="#5a5a6a" font-weight="700" text-anchor="end" stroke="var(--paper)" stroke-width="3" paint-order="stroke">London</text>
-  <text x="192" y="412" font-family="'JetBrains Mono',monospace" font-size="10" fill="var(--ink)" opacity="0.65" text-anchor="end" stroke="var(--paper)" stroke-width="2.5" paint-order="stroke">flight 2h</text>
-  <text x="104" y="586" font-family="'JetBrains Mono',monospace" font-size="12" fill="#8a7a5c" font-weight="700" text-anchor="end" stroke="white" stroke-width="3" paint-order="stroke">New York</text>
-  <text x="104" y="600" font-family="'JetBrains Mono',monospace" font-size="10" fill="var(--ink)" text-anchor="end" stroke="white" stroke-width="2.5" paint-order="stroke">direct 7h30</text>
-  <text x="309" y="618" font-family="'JetBrains Mono',monospace" font-size="12" fill="#A65B3B" font-weight="700" text-anchor="end" stroke="var(--paper)" stroke-width="3" paint-order="stroke">Zurich (3h40)</text>
-  <text x="547" y="658" font-family="'JetBrains Mono',monospace" font-size="12" fill="#A65B3B" font-weight="700" stroke="var(--paper)" stroke-width="3" paint-order="stroke">Milano (~5h)</text>
-  <text x="547" y="671" font-family="'JetBrains Mono',monospace" font-size="9"  fill="var(--ink)" opacity="0.6" stroke="var(--paper)" stroke-width="2.5" paint-order="stroke">Brenner Corridor</text>
-  <text x="622" y="353" font-family="'JetBrains Mono',monospace" font-size="12" fill="#A65B3B" font-weight="700" stroke="var(--paper)" stroke-width="3" paint-order="stroke">Vienna 4h</text>
-  <text x="609" y="427" font-family="'JetBrains Mono',monospace" font-size="11" fill="#A65B3B" font-weight="600" stroke="var(--paper)" stroke-width="3" paint-order="stroke">Brussels</text>
-  <text x="609" y="440" font-family="'JetBrains Mono',monospace" font-size="9"  fill="var(--ink)" opacity="0.65" stroke="var(--paper)" stroke-width="2.5" paint-order="stroke">rail 1h40</text>
-  <text x="521" y="338" font-family="'JetBrains Mono',monospace" font-size="10.5" fill="#5a5a6a" font-weight="700" stroke="var(--paper)" stroke-width="3" paint-order="stroke">Vienna extd. / Paris</text>
-  <text x="521" y="350" font-family="'JetBrains Mono',monospace" font-size="9"    fill="var(--ink)" opacity="0.65" stroke="var(--paper)" stroke-width="2.5" paint-order="stroke">flight 1h40</text>
-  <text x="802" y="553" font-family="'JetBrains Mono',monospace" font-size="12" fill="#8a7a5c" font-weight="700" stroke="white" stroke-width="3" paint-order="stroke">Singapore</text>
-  <text x="802" y="567" font-family="'JetBrains Mono',monospace" font-size="10" fill="var(--ink)" stroke="white" stroke-width="2.5" paint-order="stroke">direct 12h</text>
-  <text x="406" y="283" font-family="'JetBrains Mono',monospace" font-size="10.5" fill="#B08A4E" font-weight="700" text-anchor="end" stroke="var(--paper)" stroke-width="3" paint-order="stroke">Monaco Spaceport</text>
-  <text x="406" y="295" font-family="'JetBrains Mono',monospace" font-size="8.5"  fill="var(--ink)" opacity="0.6" text-anchor="end" stroke="var(--paper)" stroke-width="2.5" paint-order="stroke">MUC Global Link</text>
-  <text x="472" y="221" font-family="'JetBrains Mono',monospace" font-size="10" fill="#4a6040" font-weight="600" stroke="var(--paper)" stroke-width="3" paint-order="stroke">Orbital Injection</text>
-  <text x="450" y="49" font-family="'JetBrains Mono',monospace" font-size="11" fill="#4a6040" font-weight="600" text-anchor="middle" stroke="var(--paper)" stroke-width="3" paint-order="stroke">Suborbital Flight</text>
-  <text x="602" y="477" font-family="'JetBrains Mono',monospace" font-size="11" fill="#2A4E6A" font-weight="700" text-anchor="end" stroke="var(--paper)" stroke-width="3" paint-order="stroke">Port District</text>
-  <text x="720" y="487" font-family="'JetBrains Mono',monospace" font-size="11" fill="#2A4E6A" font-weight="700" stroke="var(--paper)" stroke-width="3" paint-order="stroke">S-Link</text>
-  <text x="661" y="475" font-family="'JetBrains Mono',monospace" font-size="8" fill="#2A4E6A" opacity="0.7" text-anchor="middle" stroke="var(--paper)" stroke-width="2" paint-order="stroke">Maritime Link</text>
-
-</svg>
+                        <!-- ── LABELS ── -->
+                        <text
+                            x="450"
+                            y="492"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="13"
+                            fill="var(--ink)"
+                            font-weight="700"
+                            text-anchor="middle"
+                            stroke="var(--paper)"
+                            stroke-width="4"
+                            paint-order="stroke"
+                        >
+                            Munich Intermodal Hub (Hbf)
+                        </text>
+                        <text
+                            x="481"
+                            y="401"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="11"
+                            fill="#B08A4E"
+                            font-weight="700"
+                            stroke="var(--paper)"
+                            stroke-width="3"
+                            paint-order="stroke"
+                        >
+                            MUC Airport
+                        </text>
+                        <text
+                            x="481"
+                            y="414"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="9"
+                            fill="var(--ink)"
+                            opacity="0.65"
+                            stroke="var(--paper)"
+                            stroke-width="2.5"
+                            paint-order="stroke"
+                        >
+                            S1 · S8
+                        </text>
+                        <text
+                            x="272"
+                            y="299"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="12"
+                            fill="#A65B3B"
+                            font-weight="700"
+                            text-anchor="end"
+                            stroke="var(--paper)"
+                            stroke-width="3"
+                            paint-order="stroke"
+                        >
+                            Frankfurt
+                        </text>
+                        <text
+                            x="272"
+                            y="312"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="10"
+                            fill="var(--ink)"
+                            opacity="0.65"
+                            text-anchor="end"
+                            stroke="var(--paper)"
+                            stroke-width="2.5"
+                            paint-order="stroke"
+                        >
+                            rail 3h15
+                        </text>
+                        <text
+                            x="192"
+                            y="399"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="12"
+                            fill="#5a5a6a"
+                            font-weight="700"
+                            text-anchor="end"
+                            stroke="var(--paper)"
+                            stroke-width="3"
+                            paint-order="stroke"
+                        >
+                            London
+                        </text>
+                        <text
+                            x="192"
+                            y="412"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="10"
+                            fill="var(--ink)"
+                            opacity="0.65"
+                            text-anchor="end"
+                            stroke="var(--paper)"
+                            stroke-width="2.5"
+                            paint-order="stroke"
+                        >
+                            flight 2h
+                        </text>
+                        <text
+                            x="104"
+                            y="586"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="12"
+                            fill="#8a7a5c"
+                            font-weight="700"
+                            text-anchor="end"
+                            stroke="white"
+                            stroke-width="3"
+                            paint-order="stroke"
+                        >
+                            New York
+                        </text>
+                        <text
+                            x="104"
+                            y="600"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="10"
+                            fill="var(--ink)"
+                            text-anchor="end"
+                            stroke="white"
+                            stroke-width="2.5"
+                            paint-order="stroke"
+                        >
+                            direct 7h30
+                        </text>
+                        <text
+                            x="309"
+                            y="618"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="12"
+                            fill="#A65B3B"
+                            font-weight="700"
+                            text-anchor="end"
+                            stroke="var(--paper)"
+                            stroke-width="3"
+                            paint-order="stroke"
+                        >
+                            Zurich (3h40)
+                        </text>
+                        <text
+                            x="547"
+                            y="658"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="12"
+                            fill="#A65B3B"
+                            font-weight="700"
+                            stroke="var(--paper)"
+                            stroke-width="3"
+                            paint-order="stroke"
+                        >
+                            Milano (~5h)
+                        </text>
+                        <text
+                            x="547"
+                            y="671"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="9"
+                            fill="var(--ink)"
+                            opacity="0.6"
+                            stroke="var(--paper)"
+                            stroke-width="2.5"
+                            paint-order="stroke"
+                        >
+                            Brenner Corridor
+                        </text>
+                        <text
+                            x="622"
+                            y="353"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="12"
+                            fill="#A65B3B"
+                            font-weight="700"
+                            stroke="var(--paper)"
+                            stroke-width="3"
+                            paint-order="stroke"
+                        >
+                            Vienna 4h
+                        </text>
+                        <text
+                            x="609"
+                            y="427"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="11"
+                            fill="#A65B3B"
+                            font-weight="600"
+                            stroke="var(--paper)"
+                            stroke-width="3"
+                            paint-order="stroke"
+                        >
+                            Brussels
+                        </text>
+                        <text
+                            x="609"
+                            y="440"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="9"
+                            fill="var(--ink)"
+                            opacity="0.65"
+                            stroke="var(--paper)"
+                            stroke-width="2.5"
+                            paint-order="stroke"
+                        >
+                            rail 1h40
+                        </text>
+                        <text
+                            x="521"
+                            y="338"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="10.5"
+                            fill="#5a5a6a"
+                            font-weight="700"
+                            stroke="var(--paper)"
+                            stroke-width="3"
+                            paint-order="stroke"
+                        >
+                            Vienna extd. / Paris
+                        </text>
+                        <text
+                            x="521"
+                            y="350"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="9"
+                            fill="var(--ink)"
+                            opacity="0.65"
+                            stroke="var(--paper)"
+                            stroke-width="2.5"
+                            paint-order="stroke"
+                        >
+                            flight 1h40
+                        </text>
+                        <text
+                            x="802"
+                            y="553"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="12"
+                            fill="#8a7a5c"
+                            font-weight="700"
+                            stroke="white"
+                            stroke-width="3"
+                            paint-order="stroke"
+                        >
+                            Singapore
+                        </text>
+                        <text
+                            x="802"
+                            y="567"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="10"
+                            fill="var(--ink)"
+                            stroke="white"
+                            stroke-width="2.5"
+                            paint-order="stroke"
+                        >
+                            direct 12h
+                        </text>
+                        <text
+                            x="406"
+                            y="283"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="10.5"
+                            fill="#B08A4E"
+                            font-weight="700"
+                            text-anchor="end"
+                            stroke="var(--paper)"
+                            stroke-width="3"
+                            paint-order="stroke"
+                        >
+                            Monaco Spaceport
+                        </text>
+                        <text
+                            x="406"
+                            y="295"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="8.5"
+                            fill="var(--ink)"
+                            opacity="0.6"
+                            text-anchor="end"
+                            stroke="var(--paper)"
+                            stroke-width="2.5"
+                            paint-order="stroke"
+                        >
+                            MUC Global Link
+                        </text>
+                        <text
+                            x="472"
+                            y="221"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="10"
+                            fill="#4a6040"
+                            font-weight="600"
+                            stroke="var(--paper)"
+                            stroke-width="3"
+                            paint-order="stroke"
+                        >
+                            Orbital Injection
+                        </text>
+                        <text
+                            x="450"
+                            y="49"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="11"
+                            fill="#4a6040"
+                            font-weight="600"
+                            text-anchor="middle"
+                            stroke="var(--paper)"
+                            stroke-width="3"
+                            paint-order="stroke"
+                        >
+                            Suborbital Flight
+                        </text>
+                        <text
+                            x="602"
+                            y="477"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="11"
+                            fill="#2A4E6A"
+                            font-weight="700"
+                            text-anchor="end"
+                            stroke="var(--paper)"
+                            stroke-width="3"
+                            paint-order="stroke"
+                        >
+                            Port District
+                        </text>
+                        <text
+                            x="720"
+                            y="487"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="11"
+                            fill="#2A4E6A"
+                            font-weight="700"
+                            stroke="var(--paper)"
+                            stroke-width="3"
+                            paint-order="stroke"
+                        >
+                            S-Link
+                        </text>
+                        <text
+                            x="661"
+                            y="475"
+                            font-family="'JetBrains Mono',monospace"
+                            font-size="8"
+                            fill="#2A4E6A"
+                            opacity="0.7"
+                            text-anchor="middle"
+                            stroke="var(--paper)"
+                            stroke-width="2"
+                            paint-order="stroke"
+                        >
+                            Maritime Link
+                        </text>
+                    </svg>
 
                     <div class="maplegend">
                         <div class="maplegend-item">
-                            <div class="maplegend-sym"><i class="dot" style="background:#2A2420;width:13px;height:13px;"></i></div>
-                            <div><div class="maplegend-label">Munich Intermodal Hub (Hbf)</div><div class="maplegend-detail">Isochrone centre</div></div>
+                            <div class="maplegend-sym">
+                                <i
+                                    class="dot"
+                                    style="
+                                        background: #2a2420;
+                                        width: 13px;
+                                        height: 13px;
+                                    "
+                                ></i>
+                            </div>
+                            <div>
+                                <div class="maplegend-label">
+                                    Munich Intermodal Hub (Hbf)
+                                </div>
+                                <div class="maplegend-detail">
+                                    Isochrone centre
+                                </div>
+                            </div>
                         </div>
                         <div class="maplegend-item">
-                            <div class="maplegend-sym"><i class="dot" style="background:#B08A4E;"></i></div>
-                            <div><div class="maplegend-label">MUC Airport</div><div class="maplegend-detail">S1 / S8 · ~40 min to city</div></div>
+                            <div class="maplegend-sym">
+                                <i class="dot" style="background: #b08a4e"></i>
+                            </div>
+                            <div>
+                                <div class="maplegend-label">MUC Airport</div>
+                                <div class="maplegend-detail">
+                                    S1 / S8 · ~40 min to city
+                                </div>
+                            </div>
                         </div>
                         <div class="maplegend-item">
-                            <div class="maplegend-sym"><svg width="28" height="10"><line x1="0" y1="5" x2="28" y2="5" stroke="#A65B3B" stroke-width="2.5" stroke-linecap="round"/></svg></div>
-                            <div><div class="maplegend-label">High-speed rail</div><div class="maplegend-detail">Frankfurt 3h15 · Zurich 3h40 · Vienna 4h · Milan ~5h</div></div>
+                            <div class="maplegend-sym">
+                                <svg width="28" height="10">
+                                    <line
+                                        x1="0"
+                                        y1="5"
+                                        x2="28"
+                                        y2="5"
+                                        stroke="#A65B3B"
+                                        stroke-width="2.5"
+                                        stroke-linecap="round"
+                                    />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="maplegend-label">
+                                    High-speed rail
+                                </div>
+                                <div class="maplegend-detail">
+                                    Frankfurt 3h15 · Zurich 3h40 · Vienna 4h ·
+                                    Milan ~5h
+                                </div>
+                            </div>
                         </div>
                         <div class="maplegend-item">
-                            <div class="maplegend-sym"><svg width="28" height="10"><line x1="0" y1="5" x2="28" y2="5" stroke="#5a5a6a" stroke-width="2" stroke-dasharray="7 4" stroke-linecap="round"/></svg></div>
-                            <div><div class="maplegend-label">Short-haul flights</div><div class="maplegend-detail">London ~2h · Paris ~1h40</div></div>
+                            <div class="maplegend-sym">
+                                <svg width="28" height="10">
+                                    <line
+                                        x1="0"
+                                        y1="5"
+                                        x2="28"
+                                        y2="5"
+                                        stroke="#5a5a6a"
+                                        stroke-width="2"
+                                        stroke-dasharray="7 4"
+                                        stroke-linecap="round"
+                                    />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="maplegend-label">
+                                    Short-haul flights
+                                </div>
+                                <div class="maplegend-detail">
+                                    London ~2h · Paris ~1h40
+                                </div>
+                            </div>
                         </div>
                         <div class="maplegend-item">
-                            <div class="maplegend-sym"><svg width="28" height="10"><line x1="0" y1="5" x2="28" y2="5" stroke="#8a7a5c" stroke-width="2" stroke-dasharray="4 5" stroke-linecap="round"/></svg></div>
-                            <div><div class="maplegend-label">Long-haul direct</div><div class="maplegend-detail">New York 7h30 · Singapore 12h</div></div>
+                            <div class="maplegend-sym">
+                                <svg width="28" height="10">
+                                    <line
+                                        x1="0"
+                                        y1="5"
+                                        x2="28"
+                                        y2="5"
+                                        stroke="#8a7a5c"
+                                        stroke-width="2"
+                                        stroke-dasharray="4 5"
+                                        stroke-linecap="round"
+                                    />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="maplegend-label">
+                                    Long-haul direct
+                                </div>
+                                <div class="maplegend-detail">
+                                    New York 7h30 · Singapore 12h
+                                </div>
+                            </div>
                         </div>
                         <div class="maplegend-item">
-                            <div class="maplegend-sym"><svg width="28" height="10"><line x1="0" y1="5" x2="28" y2="5" stroke="#2A4E6A" stroke-width="2" stroke-dasharray="4 4" stroke-linecap="round"/></svg></div>
-                            <div><div class="maplegend-label">Maritime link</div><div class="maplegend-detail">Port District · S-Link (Adriatic)</div></div>
+                            <div class="maplegend-sym">
+                                <svg width="28" height="10">
+                                    <line
+                                        x1="0"
+                                        y1="5"
+                                        x2="28"
+                                        y2="5"
+                                        stroke="#2A4E6A"
+                                        stroke-width="2"
+                                        stroke-dasharray="4 4"
+                                        stroke-linecap="round"
+                                    />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="maplegend-label">Maritime link</div>
+                                <div class="maplegend-detail">
+                                    Port District · S-Link (Adriatic)
+                                </div>
+                            </div>
                         </div>
                         <div class="maplegend-item">
-                            <div class="maplegend-sym"><svg width="28" height="10"><line x1="0" y1="5" x2="28" y2="5" stroke="#4a6040" stroke-width="1.8" stroke-dasharray="4 5" stroke-linecap="round"/></svg></div>
-                            <div><div class="maplegend-label">Space / orbital</div><div class="maplegend-detail">Monaco Spaceport · Orbital Injection</div></div>
+                            <div class="maplegend-sym">
+                                <svg width="28" height="10">
+                                    <line
+                                        x1="0"
+                                        y1="5"
+                                        x2="28"
+                                        y2="5"
+                                        stroke="#4a6040"
+                                        stroke-width="1.8"
+                                        stroke-dasharray="4 5"
+                                        stroke-linecap="round"
+                                    />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="maplegend-label">
+                                    Space / orbital
+                                </div>
+                                <div class="maplegend-detail">
+                                    Monaco Spaceport · Orbital Injection
+                                </div>
+                            </div>
                         </div>
                         <div class="maplegend-item">
-                            <div class="maplegend-sym"><i class="dot" style="background:#B08A4E;"></i></div>
-                            <div><div class="maplegend-label">Monaco Spaceport</div><div class="maplegend-detail">MUC Global Link node</div></div>
+                            <div class="maplegend-sym">
+                                <i class="dot" style="background: #b08a4e"></i>
+                            </div>
+                            <div>
+                                <div class="maplegend-label">
+                                    Monaco Spaceport
+                                </div>
+                                <div class="maplegend-detail">
+                                    MUC Global Link node
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -2374,7 +4342,17 @@
                     <div class="route-tab r3">— Parks &amp; Palaces</div>
                 </div>
 
-                <div id="munich-visit-map" style="height:480px;border-radius:4px;border:1px solid var(--line);margin-top:16px;position:relative;z-index:0;"></div>
+                <div
+                    id="munich-visit-map"
+                    style="
+                        height: 480px;
+                        border-radius: 4px;
+                        border: 1px solid var(--line);
+                        margin-top: 16px;
+                        position: relative;
+                        z-index: 0;
+                    "
+                ></div>
 
                 <div class="landmark-list">
                     <div class="lm-item">
@@ -2913,78 +4891,242 @@
         <script src="../../js/main.js"></script>
 
         <!-- Leaflet JS -->
-        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WLs=" crossorigin=""></script>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
         <script>
-        (function () {
-            var mapEl = document.getElementById('munich-visit-map');
-            if (!mapEl) return;
+            (function () {
+                var mapEl = document.getElementById("munich-visit-map");
+                if (!mapEl) return;
 
-            var map = L.map('munich-visit-map', {
-                center: [48.148, 11.565],
-                zoom: 14,
-                scrollWheelZoom: false,
-                zoomControl: true
-            });
+                var map = L.map("munich-visit-map", {
+                    scrollWheelZoom: false,
+                    zoomControl: true,
+                }).setView([48.1351, 11.5820], 13);
 
-            L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
-                subdomains: 'abcd',
-                maxZoom: 19
-            }).addTo(map);
+                L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                    maxZoom: 19,
+                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                }).addTo(map);
 
-            var C = { rust: '#A65B3B', moss: '#4a7c59', gold: '#B08A4E' };
+                var C = { rust: "#A65B3B", moss: "#4a7c59", gold: "#B08A4E" };
 
-            var stops = [
-                ['01', 'Marienplatz',           48.1374, 11.5755, C.rust, 'Heart of the Altstadt. Gothic Rathaus, Glockenspiel.', 'https://en.wikipedia.org/wiki/Marienplatz'],
-                ['02', 'Frauenkirche',          48.1384, 11.5733, C.rust, 'Twin-towered cathedral, symbol of Munich since 1488.', 'https://en.wikipedia.org/wiki/Frauenkirche,_Munich'],
-                ['03', 'Viktualienmarkt',       48.1346, 11.5762, C.rust, 'Daily outdoor market since 1807. Cheese, charcuterie, beer garden.', 'https://en.wikipedia.org/wiki/Viktualienmarkt'],
-                ['04', 'Residenz',              48.1411, 11.5773, C.rust, 'Europe\'s largest city palace complex. 130+ rooms of Wittelsbach history.', 'https://en.wikipedia.org/wiki/Munich_Residenz'],
-                ['05', 'Odeonsplatz',           48.1437, 11.5756, C.rust, 'Neoclassical square. Feldherrnhalle, Theatinerkirche.', 'https://en.wikipedia.org/wiki/Odeonsplatz'],
-                ['06', 'Englischer Garten',     48.1552, 11.5847, C.rust, '3.7 km² urban park. Eisbach surfing wave, Chinese Tower beer garden.', 'https://en.wikipedia.org/wiki/Englischer_Garten'],
-                ['07', 'Alte Pinakothek',       48.1487, 11.5706, C.moss, 'Old Masters: Rubens, Dürer, Raphael, Titian.', 'https://en.wikipedia.org/wiki/Alte_Pinakothek'],
-                ['08', 'Pinakothek der Moderne',48.1474, 11.5722, C.moss, 'Design, architecture, graphic art, and modern art under one roof.', 'https://en.wikipedia.org/wiki/Pinakothek_der_Moderne'],
-                ['09', 'Lenbachhaus',           48.1486, 11.5699, C.moss, 'Blaue Reiter collection. Kandinsky, Klee, Münter.', 'https://en.wikipedia.org/wiki/Lenbachhaus'],
-                ['10', 'Nymphenburg Palace',    48.1582, 11.5032, C.gold, 'Baroque summer residence. Canal, park, porcelain manufactory.', 'https://en.wikipedia.org/wiki/Nymphenburg_Palace'],
-                ['11', 'Olympiapark',           48.1729, 11.5519, C.gold, '1972 Olympics venue. Tower, stadium, lake, concerts.', 'https://en.wikipedia.org/wiki/Olympiapark,_Munich'],
-                ['12', 'Isartor',               48.1330, 11.5810, C.gold, 'Medieval east gate of the Altstadt. Valentin-Karlstadt museum.', 'https://en.wikipedia.org/wiki/Isartor'],
-                ['13', 'Chinesischer Turm',     48.1543, 11.5937, C.gold, 'Iconic 5-storey pagoda. Largest beer garden in Munich (7,000 seats).', 'https://en.wikipedia.org/wiki/Chinese_Tower'],
-                ['14', 'Prinzregententheater',  48.1426, 11.5927, C.gold, 'Late-19c Jugendstil theatre. Opera, ballet, theatre.', 'https://en.wikipedia.org/wiki/Prinzregententheater']
-            ];
+                var stops = [
+                    [
+                        "01",
+                        "Marienplatz",
+                        48.1374,
+                        11.5755,
+                        C.rust,
+                        "Heart of the Altstadt. Gothic Rathaus, Glockenspiel.",
+                        "https://en.wikipedia.org/wiki/Marienplatz",
+                    ],
+                    [
+                        "02",
+                        "Frauenkirche",
+                        48.1384,
+                        11.5733,
+                        C.rust,
+                        "Twin-towered cathedral, symbol of Munich since 1488.",
+                        "https://en.wikipedia.org/wiki/Frauenkirche,_Munich",
+                    ],
+                    [
+                        "03",
+                        "Viktualienmarkt",
+                        48.1346,
+                        11.5762,
+                        C.rust,
+                        "Daily outdoor market since 1807. Cheese, charcuterie, beer garden.",
+                        "https://en.wikipedia.org/wiki/Viktualienmarkt",
+                    ],
+                    [
+                        "04",
+                        "Residenz",
+                        48.1411,
+                        11.5773,
+                        C.rust,
+                        "Europe's largest city palace complex. 130+ rooms of Wittelsbach history.",
+                        "https://en.wikipedia.org/wiki/Munich_Residenz",
+                    ],
+                    [
+                        "05",
+                        "Odeonsplatz",
+                        48.1437,
+                        11.5756,
+                        C.rust,
+                        "Neoclassical square. Feldherrnhalle, Theatinerkirche.",
+                        "https://en.wikipedia.org/wiki/Odeonsplatz",
+                    ],
+                    [
+                        "06",
+                        "Englischer Garten",
+                        48.1552,
+                        11.5847,
+                        C.rust,
+                        "3.7 km² urban park. Eisbach surfing wave, Chinese Tower beer garden.",
+                        "https://en.wikipedia.org/wiki/Englischer_Garten",
+                    ],
+                    [
+                        "07",
+                        "Alte Pinakothek",
+                        48.1487,
+                        11.5706,
+                        C.moss,
+                        "Old Masters: Rubens, Dürer, Raphael, Titian.",
+                        "https://en.wikipedia.org/wiki/Alte_Pinakothek",
+                    ],
+                    [
+                        "08",
+                        "Pinakothek der Moderne",
+                        48.1474,
+                        11.5722,
+                        C.moss,
+                        "Design, architecture, graphic art, and modern art under one roof.",
+                        "https://en.wikipedia.org/wiki/Pinakothek_der_Moderne",
+                    ],
+                    [
+                        "09",
+                        "Lenbachhaus",
+                        48.1486,
+                        11.5699,
+                        C.moss,
+                        "Blaue Reiter collection. Kandinsky, Klee, Münter.",
+                        "https://en.wikipedia.org/wiki/Lenbachhaus",
+                    ],
+                    [
+                        "10",
+                        "Nymphenburg Palace",
+                        48.1582,
+                        11.5032,
+                        C.gold,
+                        "Baroque summer residence. Canal, park, porcelain manufactory.",
+                        "https://en.wikipedia.org/wiki/Nymphenburg_Palace",
+                    ],
+                    [
+                        "11",
+                        "Olympiapark",
+                        48.1729,
+                        11.5519,
+                        C.gold,
+                        "1972 Olympics venue. Tower, stadium, lake, concerts.",
+                        "https://en.wikipedia.org/wiki/Olympiapark,_Munich",
+                    ],
+                    [
+                        "12",
+                        "Isartor",
+                        48.133,
+                        11.581,
+                        C.gold,
+                        "Medieval east gate of the Altstadt. Valentin-Karlstadt museum.",
+                        "https://en.wikipedia.org/wiki/Isartor",
+                    ],
+                    [
+                        "13",
+                        "Chinesischer Turm",
+                        48.1543,
+                        11.5937,
+                        C.gold,
+                        "Iconic 5-storey pagoda. Largest beer garden in Munich (7,000 seats).",
+                        "https://en.wikipedia.org/wiki/Chinese_Tower",
+                    ],
+                    [
+                        "14",
+                        "Prinzregententheater",
+                        48.1426,
+                        11.5927,
+                        C.gold,
+                        "Late-19c Jugendstil theatre. Opera, ballet, theatre.",
+                        "https://en.wikipedia.org/wiki/Prinzregententheater",
+                    ],
+                ];
 
-            function makeIcon(num, colour) {
-                return L.divIcon({
-                    className: '',
-                    html: '<div style="width:24px;height:24px;border-radius:50%;background:' + colour + ';color:#fff;font-family:\'JetBrains Mono\',monospace;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,0.9);box-shadow:0 1px 4px rgba(0,0,0,0.25);">' + num + '</div>',
-                    iconSize: [24, 24],
-                    iconAnchor: [12, 12],
-                    popupAnchor: [0, -14]
+                function makeIcon(num, colour) {
+                    return L.divIcon({
+                        className: "",
+                        html:
+                            '<div style="width:24px;height:24px;border-radius:50%;background:' +
+                            colour +
+                            ";color:#fff;font-family:'JetBrains Mono',monospace;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,255,255,0.9);box-shadow:0 1px 4px rgba(0,0,0,0.25);\">" +
+                            num +
+                            "</div>",
+                        iconSize: [24, 24],
+                        iconAnchor: [12, 12],
+                        popupAnchor: [0, -14],
+                    });
+                }
+
+                stops.forEach(function (s) {
+                    var num = s[0],
+                        name = s[1],
+                        lat = s[2],
+                        lng = s[3],
+                        col = s[4],
+                        note = s[5],
+                        wiki = s[6];
+                    var marker = L.marker([lat, lng], {
+                        icon: makeIcon(num, col),
+                    }).addTo(map);
+                    var popup =
+                        '<div style="padding:10px 12px;">' +
+                        "<div style=\"font-size:10px;font-family:'JetBrains Mono',monospace;color:" +
+                        col +
+                        ';font-weight:700;margin-bottom:2px;">STOP ' +
+                        num +
+                        "</div>" +
+                        '<div style="font-weight:700;font-size:14px;margin-bottom:4px;">' +
+                        name +
+                        "</div>" +
+                        '<div style="font-size:12px;color:#666;line-height:1.4;margin-bottom:6px;">' +
+                        note +
+                        "</div>" +
+                        '<a href="' +
+                        wiki +
+                        '" target="_blank" style="font-size:11px;color:' +
+                        col +
+                        ';text-decoration:none;border-bottom:1px solid currentColor;">Wikipedia ↗</a>' +
+                        "</div>";
+                    marker.bindPopup(popup, { maxWidth: 240 });
                 });
-            }
 
-            stops.forEach(function (s) {
-                var num = s[0], name = s[1], lat = s[2], lng = s[3], col = s[4], note = s[5], wiki = s[6];
-                var marker = L.marker([lat, lng], { icon: makeIcon(num, col) }).addTo(map);
-                var popup =
-                    '<div style="padding:10px 12px;">' +
-                    '<div style="font-size:10px;font-family:\'JetBrains Mono\',monospace;color:' + col + ';font-weight:700;margin-bottom:2px;">STOP ' + num + '</div>' +
-                    '<div style="font-weight:700;font-size:14px;margin-bottom:4px;">' + name + '</div>' +
-                    '<div style="font-size:12px;color:#666;line-height:1.4;margin-bottom:6px;">' + note + '</div>' +
-                    '<a href="' + wiki + '" target="_blank" style="font-size:11px;color:' + col + ';text-decoration:none;border-bottom:1px solid currentColor;">Wikipedia ↗</a>' +
-                    '</div>';
-                marker.bindPopup(popup, { maxWidth: 240 });
-            });
+                // Route polylines
+                var r1 = stops.slice(0, 6).map(function (s) {
+                    return [s[2], s[3]];
+                });
+                var r2 = stops.slice(6, 9).map(function (s) {
+                    return [s[2], s[3]];
+                });
+                var r3a = [stops[9], stops[10]].map(function (s) {
+                    return [s[2], s[3]];
+                });
+                var r3b = [stops[11], stops[12], stops[13]].map(function (s) {
+                    return [s[2], s[3]];
+                });
 
-            // Route polylines
-            var r1  = stops.slice(0, 6).map(function (s) { return [s[2], s[3]]; });
-            var r2  = stops.slice(6, 9).map(function (s) { return [s[2], s[3]]; });
-            var r3a = [stops[9], stops[10]].map(function (s) { return [s[2], s[3]]; });
-            var r3b = [stops[11], stops[12], stops[13]].map(function (s) { return [s[2], s[3]]; });
+                L.polyline(r1, {
+                    color: C.rust,
+                    weight: 2.5,
+                    opacity: 0.75,
+                }).addTo(map);
+                L.polyline(r2, {
+                    color: C.moss,
+                    weight: 2.5,
+                    opacity: 0.75,
+                }).addTo(map);
+                L.polyline(r3a, {
+                    color: C.gold,
+                    weight: 2,
+                    opacity: 0.7,
+                    dashArray: "6 5",
+                }).addTo(map);
+                L.polyline(r3b, {
+                    color: C.gold,
+                    weight: 2,
+                    opacity: 0.7,
+                    dashArray: "6 5",
+                }).addTo(map);
 
-            L.polyline(r1,  { color: C.rust, weight: 2.5, opacity: 0.75 }).addTo(map);
-            L.polyline(r2,  { color: C.moss, weight: 2.5, opacity: 0.75 }).addTo(map);
-            L.polyline(r3a, { color: C.gold, weight: 2,   opacity: 0.70, dashArray: '6 5' }).addTo(map);
-            L.polyline(r3b, { color: C.gold, weight: 2,   opacity: 0.70, dashArray: '6 5' }).addTo(map);
-        })();
+                map.on('click', function(e) {
+                    console.log(`Lat: ${e.latlng.lat.toFixed(4)}, Lng: ${e.latlng.lng.toFixed(4)}`);
+                });
+            })();
         </script>
     </body>
 </html>
