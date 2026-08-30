@@ -3,419 +3,1237 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            rel="icon"
-            type="image/png"
-            href="../../../images/human_traces_logo_simplebold.png"
-        />
-        <title>Ghent - Human Traces</title>
+        <link rel="icon" type="image/png" href="../../../images/human_traces_logo_simplebold.png" />
+        <title>Ghent — Human Traces</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
-            rel="stylesheet"
-        />
         <script>
             const theme = localStorage.getItem("theme") || "light";
             document.documentElement.setAttribute("data-theme", theme);
         </script>
         <link rel="stylesheet" href="../../css/style.css" />
-        <link rel="stylesheet" href="../city_style.css" />
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
+
+            :root {
+                --cream: #efe9dd;
+                --paper: #f7f3ea;
+                --ink: #2a2420;
+                --ink-soft: #6b6259;
+                --rust: #a65b3b;
+                --rust-soft: #c98a63;
+                --moss: #5c6650;
+                --line: #dcd3c2;
+                --gold: #b08a4e;
+            }
+            [data-theme="dark"] {
+                --cream: #1a1714;
+                --paper: #242018;
+                --ink: #ede8e0;
+                --ink-soft: #9a8a78;
+                --rust: #c07050;
+                --rust-soft: #d4956c;
+                --moss: #7a8a6a;
+                --line: #3a3028;
+                --gold: #c09a5e;
+            }
+            [data-theme="dark"] .tagnav a:hover { background: var(--paper); }
+            [data-theme="dark"] .schema-row .v { background: var(--paper); }
+            [data-theme="dark"] .yn-table thead th.yes { background: #253022; }
+            [data-theme="dark"] .yn-table thead th.no { background: #38221a; }
+            [data-theme="dark"] .mtag.savory { background: #38221a; color: var(--rust); }
+            [data-theme="dark"] .mtag.sweet { background: #332c18; color: var(--gold); }
+            [data-theme="dark"] .mtag.side { background: #252c20; color: var(--moss); }
+
+            * { box-sizing: border-box; margin: 0; padding: 0; }
+            body { background: var(--cream); color: var(--ink); font-family: "Inter", sans-serif; font-size: 15px; line-height: 1.6; }
+            a { color: inherit; text-decoration: none; }
+            .wrap { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+
+            header.hero { padding: 110px 0 40px; border-bottom: 1px solid var(--line); min-height: unset; display: block; }
+            .eyebrow { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rust); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+            .eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--rust); }
+            h1.city { font-family: "Inter", sans-serif; font-weight: 600; font-size: 76px; letter-spacing: -0.02em; line-height: 0.95; margin-bottom: 18px; }
+            .lede { max-width: 560px; color: var(--ink-soft); font-size: 16px; }
+
+            .tagnav { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+            .tagnav a { font-size: 12.5px; padding: 7px 14px; border: 1px solid var(--line); border-radius: 100px; background: var(--paper); color: var(--ink-soft); display: flex; align-items: center; gap: 6px; transition: 0.15s; }
+            .tagnav a:hover { border-color: var(--rust); color: var(--rust); background: var(--paper); }
+
+            section { padding: 52px 0; border-bottom: 1px solid var(--line); }
+            .section-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 28px; }
+            h2 { font-family: "Fraunces", serif; font-weight: 500; font-size: 28px; }
+            .section-num { font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--gold); }
+            h3 { font-family: "Fraunces", serif; font-weight: 500; font-size: 17px; margin-bottom: 8px; }
+            p.body-text { color: var(--ink-soft); font-size: 14.5px; max-width: 640px; }
+            .block { margin-bottom: 26px; }
+
+            .statgrid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 10px; }
+            .stat { background: var(--paper); padding: 20px 16px; }
+            .stat .num { font-family: "Fraunces", serif; font-size: 30px; font-weight: 600; color: var(--ink); line-height: 1; }
+            .stat .num small { font-family: "Inter"; font-size: 13px; font-weight: 400; color: var(--ink-soft); }
+            .stat .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); margin-bottom: 6px; }
+
+            table { width: 100%; border-collapse: collapse; margin-top: 6px; }
+            td { padding: 11px 4px; border-bottom: 1px solid var(--line); font-size: 14px; }
+            td:first-child { color: var(--ink-soft); width: 38%; }
+            td:last-child { font-family: "JetBrains Mono", monospace; font-size: 12.5px; }
+
+            .meter-row { display: grid; grid-template-columns: 130px 1fr 90px; align-items: center; gap: 14px; margin-bottom: 14px; }
+            .meter-label { font-size: 12.5px; color: var(--ink-soft); }
+            .meter-track { height: 5px; background: var(--line); border-radius: 3px; position: relative; }
+            .meter-fill { position: absolute; top: -4px; width: 12px; height: 12px; border-radius: 50%; background: var(--rust); border: 2px solid var(--paper); box-shadow: 0 0 0 1px var(--rust); }
+            .meter-note { font-size: 11px; color: var(--ink-soft); text-align: right; }
+
+            .codegrid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+            .code-card { background: var(--paper); border: 1px solid var(--line); padding: 20px; }
+            .code-card .tag { font-family: "JetBrains Mono", monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--rust); margin-bottom: 10px; display: block; }
+
+            .meal-block { margin-top: 30px; }
+            .meal-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px; }
+            .meal-head h4 { font-family: "Fraunces", serif; font-size: 17px; font-weight: 500; }
+            .meal-head .meal-time { font-family: "JetBrains Mono", monospace; font-size: 10.5px; color: var(--ink-soft); }
+            .meal-head::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+            .meal-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; }
+            .mdish { background: var(--paper); border: 1px solid var(--line); overflow: hidden; }
+            .mdish .mtext { padding: 12px; }
+            .mdish .mname { font-family: "Fraunces", serif; font-size: 14px; margin-bottom: 5px; }
+            .mdish .mnote { font-size: 11.5px; color: var(--ink-soft); margin-bottom: 8px; }
+            .mtag { display: inline-block; font-family: "JetBrains Mono", monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.05em; padding: 3px 7px; border-radius: 100px; }
+            .mtag.savory { background: #f5eae3; color: var(--rust); }
+            .mtag.sweet { background: #f3edd8; color: var(--gold); }
+            .mtag.side { background: #eef0ea; color: var(--moss); }
+
+            .identity-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 20px; }
+            .identity-col .tag-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--moss); margin-bottom: 10px; }
+            .identity-col ul { list-style: none; }
+            .identity-col li { font-size: 13.5px; padding: 7px 0; border-bottom: 1px dotted var(--line); color: var(--ink-soft); }
+            .identity-col li b { color: var(--ink); font-weight: 500; }
+
+            .hubpanels { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; margin-top: 28px; border-top: 1px solid var(--line); padding-top: 20px; }
+            .hubpanel { padding: 0 18px; border-right: 1px dotted var(--line); }
+            .hubpanel:last-child { border-right: none; }
+            .hubpanel .htitle { font-family: "JetBrains Mono", monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--rust); margin-bottom: 3px; }
+            .hubpanel .hsub { font-size: 10px; color: var(--ink-soft); margin-bottom: 12px; }
+            .hubpanel .bignum { font-family: "Fraunces", serif; font-size: 34px; font-weight: 600; color: var(--ink); line-height: 1; margin-top: 4px; }
+            .hubpanel .bignum small { font-family: "Inter"; font-size: 12px; font-weight: 400; color: var(--ink-soft); }
+
+            .schema-grid { display: grid; grid-template-columns: 150px 1fr; gap: 0; margin-top: 18px; border: 1px solid var(--line); }
+            .schema-row { display: contents; }
+            .schema-row .k { padding: 14px 16px; background: var(--paper); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--rust); border-top: 1px solid var(--line); border-right: 1px solid var(--line); display: flex; flex-direction: column; justify-content: center; gap: 3px; }
+            .schema-row .v { padding: 14px 16px; font-size: 13.5px; color: var(--ink-soft); border-top: 1px solid var(--line); background: var(--cream); }
+            .schema-row:first-child .k, .schema-row:first-child .v { border-top: none; }
+
+            .pillbar { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+            .pill { font-family: "JetBrains Mono", monospace; font-size: 10.5px; padding: 5px 10px; background: var(--paper); border: 1px solid var(--line); color: var(--ink-soft); }
+
+            .taxo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+            .taxo-card { background: var(--paper); border: 1px solid var(--line); padding: 20px; }
+            .taxo-card .tnum { font-family: "JetBrains Mono", monospace; font-size: 10px; color: var(--gold); margin-bottom: 4px; }
+            .taxo-card h3 { font-family: "Fraunces", serif; font-size: 16px; margin-bottom: 12px; }
+            .taxo-card .sub { margin-bottom: 9px; font-size: 12px; }
+            .taxo-card .sub b { color: var(--ink); font-weight: 600; display: block; margin-bottom: 1px; }
+            .taxo-card .sub span { color: var(--ink-soft); }
+
+            .event-row { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px dotted var(--line); font-size: 12.5px; gap: 12px; }
+            .event-row .etag { font-family: "JetBrains Mono", monospace; font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--moss); flex: 0 0 90px; }
+            .event-row .ename a { color: var(--ink); font-weight: 500; }
+            .event-row .ename a:hover { color: var(--rust); }
+            .event-row .ewhen { font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--ink-soft); white-space: nowrap; }
+
+            .yn-table { width: 100%; border-collapse: collapse; margin-top: 20px; border: 1px solid var(--line); font-size: 12.5px; }
+            .yn-table thead th { padding: 9px 16px; font-family: "JetBrains Mono", monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.08em; text-align: left; border-bottom: 1px solid var(--line); }
+            .yn-table thead th.yes { color: var(--moss); background: #eef0ea; }
+            .yn-table thead th.no { color: var(--rust); background: #f5eae3; }
+            .yn-table td { padding: 9px 16px; color: var(--ink-soft); border-bottom: 1px dotted var(--line); width: 50%; vertical-align: top; }
+            .yn-table td.yes-cell::before { content: "✓  "; color: var(--moss); }
+            .yn-table td.no-cell::before { content: "✕  "; color: var(--rust); }
+            .yn-table tr.cat-row td { padding: 10px 16px 4px; border-bottom: none; color: var(--gold); font-family: "JetBrains Mono", monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.08em; background: var(--paper); }
+
+            .mapbox { background: var(--paper); border: 1px solid var(--line); padding: 20px; margin-top: 20px; }
+            .maplegend { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 16px; font-size: 12px; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 3px; overflow: hidden; }
+            .maplegend-item { display: flex; align-items: center; gap: 10px; padding: 9px 14px; border-bottom: 1px solid var(--line); line-height: 1.35; }
+            .maplegend-item:nth-last-child(-n + 2) { border-bottom: none; }
+            .maplegend-sym { flex-shrink: 0; width: 28px; display: flex; align-items: center; justify-content: center; }
+            .maplegend-label { font-weight: 600; color: var(--ink); }
+            .maplegend-detail { color: var(--ink-soft); font-size: 11px; }
+            .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; border: 2px solid rgba(255,255,255,0.8); box-shadow: 0 0 0 1px rgba(0,0,0,0.15); }
+
+            .reach-table { margin-top: 20px; }
+            .reach-row { display: grid; grid-template-columns: 130px 1fr 90px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 12.5px; }
+            .reach-row .mode { font-weight: 500; }
+            .reach-row .bar { height: 5px; background: var(--line); position: relative; }
+            .reach-row .bar i { position: absolute; left: 0; top: 0; height: 100%; background: var(--rust-soft); display: block; }
+            .reach-row .val { font-family: "JetBrains Mono", monospace; text-align: right; color: var(--ink-soft); }
+
+            .route-tabs { display: flex; gap: 8px; margin-top: 18px; flex-wrap: wrap; }
+            .route-tab { font-size: 11.5px; padding: 7px 13px; border: 1px solid var(--line); background: var(--paper); color: var(--ink-soft); }
+            .route-tab.r1 { border-color: var(--rust-soft); color: var(--rust); }
+            .route-tab.r2 { border-color: var(--moss); color: var(--moss); }
+            .route-tab.r3 { border-color: var(--gold); color: var(--gold); }
+
+            .landmark-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 18px; border: 1px solid var(--line); }
+            .lm-item { padding: 11px 16px; font-size: 12.5px; border-bottom: 1px dotted var(--line); border-right: 1px dotted var(--line); display: flex; gap: 10px; align-items: baseline; }
+            .lm-item .lm-num { font-family: "JetBrains Mono", monospace; font-size: 10px; color: var(--gold); flex-shrink: 0; }
+            .lm-item a { color: var(--ink); font-weight: 500; }
+            .lm-item a:hover { color: var(--rust); }
+            .lm-item .lm-note { color: var(--ink-soft); font-size: 11.5px; display: block; margin-top: 2px; }
+
+            .mini-stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+            .mini-stat { background: var(--paper); padding: 16px 14px; }
+            .mini-stat .num { font-family: "Fraunces", serif; font-size: 22px; font-weight: 600; line-height: 1; }
+            .mini-stat .num small { font-family: "Inter"; font-size: 11px; font-weight: 400; color: var(--ink-soft); }
+            .mini-stat .label { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-soft); margin-top: 6px; }
+
+            .rain-chart { display: flex; align-items: flex-end; gap: 6px; height: 110px; margin-top: 34px; padding: 0 4px; }
+            .rain-bar { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; position: relative; }
+            .rain-bar .bar { width: 100%; background: var(--rust-soft); opacity: 0.65; position: relative; }
+            .rain-bar .bar .dcount { position: absolute; top: -15px; left: 0; right: 0; text-align: center; font-family: "JetBrains Mono", monospace; font-size: 9px; color: var(--rust); font-weight: 500; }
+            .rain-bar .m { font-family: "JetBrains Mono", monospace; font-size: 9px; color: var(--ink); font-weight: 600; margin-top: 6px; }
+            .rain-bar .temps { font-family: "JetBrains Mono", monospace; font-size: 8px; color: var(--ink-soft); margin-top: 2px; text-align: center; line-height: 1.5; }
+            .rain-bar .temps .tmax { color: var(--rust); }
+            .rain-bar .temps .tmin { color: var(--moss); }
+            .rain-bar .suntime { font-family: "JetBrains Mono", monospace; font-size: 9px; color: var(--ink-soft); margin-top: 3px; text-align: center; line-height: 1.6; }
+            .rain-bar .suntime .sr { color: var(--gold); }
+            .rain-bar .suntime .ss { color: var(--moss); }
+
+            .origin-bar-row { display: grid; grid-template-columns: 110px 1fr 40px; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 12px; }
+            .origin-bar-row .otrack { height: 6px; background: var(--line); }
+            .origin-bar-row .ofill { height: 100%; background: var(--moss); }
+
+            .ci-stack { display: flex; flex-direction: column; gap: 10px; }
+            .ci-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+            .ci-panel { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 20px 22px; }
+            .ci-cat { font-family: "JetBrains Mono", monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin-bottom: 8px; }
+            .ci-big { font-family: "Fraunces", serif; font-size: 36px; font-weight: 700; line-height: 1; color: var(--ink); display: inline-block; }
+            .ci-big small { font-family: "Inter", sans-serif; font-size: 14px; font-weight: 400; color: var(--ink-soft); margin-left: 1px; }
+            .ci-sub { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); margin-top: 5px; }
+            .ci-badge { font-family: "JetBrains Mono", monospace; font-size: 9px; font-weight: 700; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; letter-spacing: 0.04em; white-space: nowrap; }
+            .ci-badge.green { background: #3d6b3d; color: #fff; }
+            .ci-badge.red { background: #b84040; color: #fff; }
+            .ci-badge.amber { background: #b07030; color: #fff; }
+            .ci-note { font-size: 11px; color: var(--ink-soft); margin-top: 5px; font-style: italic; line-height: 1.4; }
+
+            .salary-table, .cost-table { width: 100%; border-collapse: collapse; margin-top: 6px; font-size: 13px; }
+            .salary-table td, .cost-table td { padding: 9px 4px; border-bottom: 1px solid var(--line); }
+            .salary-table td:last-child, .cost-table td:last-child { font-family: "JetBrains Mono", monospace; font-size: 12px; text-align: right; color: var(--ink-soft); }
+            .salary-table td:first-child, .cost-table td:first-child { color: var(--ink); font-weight: 500; }
+            .cost-table td.note { color: var(--ink-soft); font-weight: 400; font-size: 11.5px; }
+
+            .rwgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 20px; }
+            .rw-item { display: flex; gap: 12px; margin-bottom: 14px; }
+            .rw-item .idx { font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--gold); padding-top: 2px; }
+            .rw-item .t { font-size: 13.5px; font-weight: 500; }
+            .rw-item .a { font-size: 12px; color: var(--ink-soft); }
+
+            footer { padding: 40px 0; text-align: center; font-size: 11.5px; color: var(--ink-soft); font-family: "JetBrains Mono", monospace; }
+
+            @media (max-width: 700px) {
+                .wrap { padding: 0 20px; }
+                h1.city { font-size: 52px; }
+                .navlinks { display: none; }
+                .mini-stat-row { grid-template-columns: 1fr 1fr !important; }
+                .statgrid { grid-template-columns: repeat(2, 1fr); }
+                .codegrid { grid-template-columns: 1fr; }
+                .taxo-grid { grid-template-columns: 1fr; }
+                .landmark-list { grid-template-columns: 1fr; }
+                .rwgrid { grid-template-columns: 1fr; }
+                .hubpanels { grid-template-columns: 1fr; }
+                .hubpanel { border-right: none; border-bottom: 1px dotted var(--line); padding: 18px 0; }
+                .hubpanel:last-child { border-bottom: none; }
+                .identity-grid { grid-template-columns: 1fr; }
+                .schema-grid { grid-template-columns: 1fr; }
+                .schema-row .k { border-right: none; }
+                .schema-row .v { border-top: none; padding-top: 0; background: var(--cream); }
+                .schema-row:first-child .v { border-top: none; }
+                .mapbox { overflow-x: auto; padding: 12px; }
+                .mapbox svg { min-width: 600px; }
+                .meter-row { grid-template-columns: 100px 1fr 70px; gap: 8px; }
+                .reach-row { grid-template-columns: 110px 1fr 70px; }
+                .rain-chart { overflow-x: auto; min-width: 500px; }
+                .rain-chart-wrap { overflow-x: auto; }
+                .tagnav a { font-size: 11.5px; padding: 6px 11px; }
+            }
+            @media (max-width: 480px) {
+                h1.city { font-size: 40px; }
+                .mini-stat-row { grid-template-columns: 1fr !important; }
+                .statgrid { grid-template-columns: 1fr; }
+                .meter-row { grid-template-columns: 1fr; gap: 4px; }
+                .meter-note { text-align: left; }
+                .reach-row { grid-template-columns: 1fr; }
+                .reach-row .val { text-align: left; margin-top: 2px; }
+                .yn-table td { padding: 8px 10px; font-size: 11.5px; }
+                .lm-item { flex-direction: column; gap: 2px; }
+            }
+            .leaflet-popup-content-wrapper { background: var(--paper); border: 1px solid var(--line); border-radius: 2px; box-shadow: 0 2px 12px rgba(0,0,0,0.1); padding: 0; }
+            .leaflet-popup-content { margin: 0; font-family: "Inter", sans-serif; font-size: 13px; color: var(--ink); min-width: 180px; max-width: 240px; }
+            .leaflet-popup-tip { background: var(--paper); }
+            .leaflet-popup-close-button { color: var(--ink-soft) !important; font-size: 16px !important; top: 6px !important; right: 8px !important; }
+            .map-popup-num { font-family: "JetBrains Mono", monospace; font-size: 9px; font-weight: 700; color: white; padding: 2px 7px; border-radius: 2px; margin-right: 6px; }
+            .map-popup-inner { padding: 14px 16px; }
+            .map-popup-title { font-weight: 600; font-size: 13.5px; margin-bottom: 4px; display: flex; align-items: center; }
+            .map-popup-note { font-size: 11.5px; color: var(--ink-soft); line-height: 1.5; margin-bottom: 8px; }
+            .leaflet-tile-pane { filter: grayscale(40%) contrast(90%) brightness(105%); }
+            .leaflet-container { outline: none; }
+        </style>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     </head>
     <body>
         <nav class="nav">
             <div class="container">
                 <div class="nav-inner">
-                    <div
-                        style="display: flex; align-items: center; gap: 0.5rem"
-                    >
-                        <a
-                            href="../../../home/index.html"
-                            style="
-                                text-decoration: none;
-                                color: var(--color-text);
-                                font-size: 1.2rem;
-                                opacity: 0.6;
-                                transition: opacity 0.3s;
-                            "
-                            onmouseover="this.style.opacity = '1'"
-                            onmouseout="this.style.opacity = '0.6'"
-                            >‹</a
-                        >
-                        <a href="../../index.html" class="nav-logo"
-                            >Human Traces</a
-                        >
+                    <div style="display:flex;align-items:center;gap:0.5rem">
+                        <a href="../../../home/index.html" style="text-decoration:none;color:var(--color-text);font-size:1.2rem;opacity:0.6;transition:opacity 0.3s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">‹</a>
+                        <a href="../../index.html" class="nav-logo">Human Traces</a>
                     </div>
                     <div class="nav-actions">
                         <ul class="nav-links">
                             <li><a href="../../index.html">Home</a></li>
-                            <li>
-                                <a
-                                    href="../../breaking-the-silos/breaking-the-silos.html"
-                                    >Breaking the Silos</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="../../proptech-vs-contech/proptech-vs-contech.html"
-                                    >ConTech vs PropTech</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="../../investment-categories/investment-categories.html"
-                                    >Investment</a
-                                >
-                            </li>
-                            <li>
-                                <a href="../cities.html" class="active"
-                                    >Cities</a
-                                >
-                            </li>
+                            <li><a href="../../breaking-the-silos/breaking-the-silos.html">Breaking the Silos</a></li>
+                            <li><a href="../../proptech-vs-contech/proptech-vs-contech.html">ConTech vs PropTech</a></li>
+                            <li><a href="../../investment-categories/investment-categories.html">Investment</a></li>
+                            <li><a href="../cities.html" class="active">Cities</a></li>
                         </ul>
-                        <button
-                            class="theme-toggle"
-                            id="themeToggle"
-                            aria-label="Toggle theme"
-                        >
-                            <svg
-                                class="theme-toggle-icon sun"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="14"
-                                height="14"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <circle cx="12" cy="12" r="5" />
-                                <line x1="12" y1="1" x2="12" y2="3" />
-                                <line x1="12" y1="21" x2="12" y2="23" />
-                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                                <line
-                                    x1="18.36"
-                                    y1="18.36"
-                                    x2="19.78"
-                                    y2="19.78"
-                                />
-                                <line x1="1" y1="12" x2="3" y2="12" />
-                                <line x1="21" y1="12" x2="23" y2="12" />
-                                <line
-                                    x1="4.22"
-                                    y1="19.78"
-                                    x2="5.64"
-                                    y2="18.36"
-                                />
-                                <line
-                                    x1="18.36"
-                                    y1="5.64"
-                                    x2="19.78"
-                                    y2="4.22"
-                                />
+                        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                            <svg class="theme-toggle-icon sun" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5"/>
+                                <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                                <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
                             </svg>
-                            <svg
-                                class="theme-toggle-icon moon"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="14"
-                                height="14"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <path
-                                    d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
-                                />
+                            <svg class="theme-toggle-icon moon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
                             </svg>
                         </button>
-                        <button
-                            class="nav-toggle"
-                            id="navToggle"
-                            aria-label="Toggle navigation"
-                        >
-                            <span></span>
-                            <span></span>
-                            <span></span>
+                        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                            <span></span><span></span><span></span>
                         </button>
                     </div>
                 </div>
             </div>
         </nav>
-        <header class="page-header">
-            <div class="container">
-                <div style="margin-bottom: 1rem">
-                    <a
-                        href="../cities.html"
-                        style="
-                            text-decoration: none;
-                            color: var(--color-text);
-                            font-size: 0.9rem;
-                            opacity: 0.7;
-                            transition: opacity 0.3s;
-                            display: inline-flex;
-                            align-items: center;
-                            gap: 0.3rem;
-                        "
-                        onmouseover="this.style.opacity = '1'"
-                        onmouseout="this.style.opacity = '0.7'"
-                        >‹ Back to Cities</a
-                    >
-                </div>
-                <h1 class="page-title">Ghent</h1>
-                <p class="page-description">
-                    Shaped by its historical heritage and a fiercely independent
-                    spirit, Ghent redefines contemporary living by turning
-                    waterfront regeneration and ecological transition into a model
-                    of social cohesion, creativity, and high quality of life.
+
+        <header class="hero">
+            <div class="wrap">
+                <div class="eyebrow">Cities · Europe</div>
+                <h1 class="city">Ghent</h1>
+                <p class="lede">
+                    Belgium's most liveable city — a medieval trading capital that quietly reinvented itself as a university town, a design hub, and Europe's most ambitious car-free urban experiment.
                 </p>
+                <nav class="tagnav">
+                    <a href="#overview">01 Overview</a>
+                    <a href="#weather">02 Climate</a>
+                    <a href="#culture">03 Cultural Codes</a>
+                    <a href="#districts">04 Districts</a>
+                    <a href="#things">05 Things To Do</a>
+                    <a href="#food">06 Food</a>
+                    <a href="#connect">07 Connectivity</a>
+                    <a href="#visit">08 Visit</a>
+                    <a href="#invest">09 Invest</a>
+                    <a href="#resident">10 Living Here</a>
+                    <a href="#read">11 Read</a>
+                </nav>
             </div>
         </header>
-        <section class="content-section">
-            <div class="container">
 
-                <h2>Urban Matrix</h2>
-
-                <h3>Spatial Morphology</h3>
-                <p>
-                    A polycentric, compact Flemish city structured around the
-                    confluence of the Scheldt and Lys rivers. The pedestrianized
-                    medieval historic center (one of the largest in Europe) is
-                    enclosed by a ring of 19th-century and contemporary districts.
-                    Urban regeneration is concentrated on the northern axis of the
-                    city port (Oude Dokken) and former industrial and railway areas
-                    (Sint-Pieters), reconnected by pedestrian-cycle bridges and new
-                    tram lines. The mobility plan (Circulatieplan) eliminated
-                    through-traffic, returning the street to people.
-                </p>
-
-                <h3>City Layout &amp; Building Typologies</h3>
-                <p>
-                    High stratification. Historic stone buildings and corporate
-                    palaces in the center guarantee prestige but carry strict
-                    conservation constraints; typical Flemish brick bel-étage and
-                    terraced houses (rijteshuizen) characterize residential
-                    districts; modular timber and circular architecture dominate
-                    the regeneration of disused port areas.
-                </p>
-
-                <h3>Living Culture &amp; Social Anchors</h3>
-                <p>
-                    Commercially vibrant ground floors host organic markets,
-                    independent cafés, and creative spaces. The street is conceived
-                    as an extended social space (leefstraten — "livable streets"),
-                    where during the warm season traffic is suspended to make room
-                    for tables, temporary greenery, and play areas.
+        <!-- 01 OVERVIEW -->
+        <section id="overview">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="section-num">01</span>
+                    <h2>City Overview</h2>
+                </div>
+                <div class="statgrid">
+                    <div class="stat">
+                        <div class="label">Population (city)</div>
+                        <div class="num">270<small>k</small></div>
+                    </div>
+                    <div class="stat">
+                        <div class="label">Metro area</div>
+                        <div class="num">500<small>k</small></div>
+                    </div>
+                    <div class="stat">
+                        <div class="label">City area</div>
+                        <div class="num">157<small>km²</small></div>
+                    </div>
+                    <div class="stat">
+                        <div class="label">Altitude a.s.l.</div>
+                        <div class="num">8<small>m</small></div>
+                    </div>
+                    <div class="stat">
+                        <div class="label">Founded</div>
+                        <div class="num">7<small>th c.</small></div>
+                    </div>
+                </div>
+                <p class="body-text" style="margin-top:24px">
+                    At the confluence of the Lys and Scheldt rivers, Ghent was one of medieval Europe's largest and wealthiest cities after Paris. Today it is Belgium's second-largest university city, home to Ghent University's 50,000 students, and a model for sustainable urban planning — the Ghent Mobility Plan, eliminating through-traffic from the centre in 2017, is studied by cities worldwide.
                 </p>
 
-                <h3>Public Space, Urban Voids &amp; Nature</h3>
-                <p>
-                    Water is the structuring element of the city's identity. Canal
-                    remediation, riverbank renaturalization, and the creation of
-                    integrated urban parks (e.g., Brielmeersen, Gentbrugse Meersen)
-                    guide climate-response planning. Urban voids and disused
-                    industrial sites are given value through temporary cultural uses
-                    before their final transformation.
-                </p>
+                <div style="margin-top:32px">
+                    <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.09em;color:var(--ink-soft);margin-bottom:16px;display:flex;align-items:center;gap:12px">
+                        City Indices at a Glance<span style="flex:1;height:1px;background:var(--line);display:block"></span>
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)">
+                        <div style="background:var(--paper);padding:20px">
+                            <div style="display:flex;gap:28px;margin-bottom:18px">
+                                <div>
+                                    <div style="font-family:'Fraunces',serif;font-size:30px;font-weight:600;line-height:1">270<span style="font-family:Inter;font-size:14px;font-weight:400;color:var(--ink-soft)">k</span></div>
+                                    <div style="font-size:9.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);margin-top:5px">Population, Ghent</div>
+                                </div>
+                                <div>
+                                    <div style="font-family:'Fraunces',serif;font-size:30px;font-weight:600;line-height:1">17<span style="font-family:Inter;font-size:14px;font-weight:400;color:var(--ink-soft)">%</span></div>
+                                    <div style="font-size:9.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);margin-top:5px">Non-Belgian residents</div>
+                                </div>
+                            </div>
+                            <div class="origin-bar-row">
+                                <div>Morocco</div>
+                                <div class="otrack"><div class="ofill" style="width:54%"></div></div>
+                                <div style="text-align:right;font-family:'JetBrains Mono',monospace;font-size:11px">~3.8%</div>
+                            </div>
+                            <div class="origin-bar-row">
+                                <div>Turkey</div>
+                                <div class="otrack"><div class="ofill" style="width:35%"></div></div>
+                                <div style="text-align:right;font-family:'JetBrains Mono',monospace;font-size:11px">~2.5%</div>
+                            </div>
+                            <div class="origin-bar-row">
+                                <div>DR Congo</div>
+                                <div class="otrack"><div class="ofill" style="width:22%"></div></div>
+                                <div style="text-align:right;font-family:'JetBrains Mono',monospace;font-size:11px">~1.5%</div>
+                            </div>
+                        </div>
+                        <div style="background:var(--paper);padding:20px">
+                            <div style="font-size:9.5px;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-soft);margin-bottom:16px">Mobility &amp; Infrastructure</div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+                                <div>
+                                    <div style="font-family:'Fraunces',serif;font-size:26px;font-weight:600;line-height:1">50<span style="font-family:Inter;font-size:12px;font-weight:400;color:var(--ink-soft)">k</span></div>
+                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-top:5px">Ghent Univ. students</div>
+                                </div>
+                                <div>
+                                    <div style="font-family:'Fraunces',serif;font-size:26px;font-weight:600;line-height:1">2017</div>
+                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-top:5px">Car-free centre since</div>
+                                </div>
+                                <div>
+                                    <div style="font-family:'Fraunces',serif;font-size:26px;font-weight:600;line-height:1">29<span style="font-family:Inter;font-size:12px;font-weight:400;color:var(--ink-soft)">min</span></div>
+                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-top:5px">To Brussels by IC</div>
+                                </div>
+                                <div>
+                                    <div style="font-family:'Fraunces',serif;font-size:26px;font-weight:600;line-height:1">75<span style="font-family:Inter;font-size:12px;font-weight:400;color:var(--ink-soft)">%</span></div>
+                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-top:5px">Trips by active / public transport</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                <h3>Demographics &amp; Social Composition</h3>
-                <p>
-                    A dynamic, young population, marked by a very high percentage
-                    of university students (Ghent University) and young professionals
-                    in the creative and biotech industries. Demand is concentrated
-                    on functional apartments, renovated terraced houses, and flexible
-                    housing solutions.
-                </p>
-
-                <h2>Investor Perspective</h2>
-
-                <h3>Market Snapshot (2026)</h3>
-                <table class="market-table">
-                    <tr>
-                        <td>Average purchase price</td>
-                        <td>€2,865/sqm (median ~€401,500, +4.3% annually)</td>
-                    </tr>
-                    <tr>
-                        <td>Range by district</td>
-                        <td>Outer districts ~€2,400/sqm → Patershol &gt;€3,200/sqm</td>
-                    </tr>
-                    <tr>
-                        <td>Yield / Vacancy</td>
-                        <td><em>Data not available with sufficient granularity in public sources consulted</em></td>
-                    </tr>
-                    <tr>
-                        <td>Key constraint</td>
-                        <td>Betonstop (Flemish policy capping net land take/soil sealing to curb urban sprawl) + social housing quotas</td>
-                    </tr>
-                </table>
-                <p class="market-note">
-                    Compared to the other cities in this analysis, Ghent has less
-                    in-depth public statistical coverage on specific yield and
-                    vacancy figures — this gap is disclosed honestly rather than
-                    estimated, to preserve the reliability of the overall comparison.
-                </p>
-
-                <h3>Market Characteristics</h3>
-                <p>
-                    <strong>Urban Model:</strong> Flanders' second economic hub,
-                    Ghent offers a stable, highly attractive real estate market with
-                    housing demand structurally exceeding supply, ensuring steady
-                    returns and low vacancy risk.
-                </p>
-                <p>
-                    <strong>Investor Profile:</strong> A balanced presence of
-                    Belgian/European institutional capital (focused on the
-                    Build-to-Rent and student housing segments) and local private
-                    investors. Strong weight of sustainable development companies
-                    operating in partnership with public authorities.
-                </p>
-                <p>
-                    <strong>Construction Culture:</strong> Rigorous focus on circular
-                    construction, reuse of demolition materials, and energy efficiency
-                    (BEN — Bijna Energieneutraal, "nearly energy-neutral"). BIM
-                    adoption and timber prefabrication technologies are widely used
-                    in waterfront regeneration projects.
-                </p>
-                <p>
-                    <strong>Regulation:</strong> A regulatory framework oriented
-                    toward heritage protection and sustainable densification. Strict
-                    municipal urban plans requiring high ESG performance, reduced
-                    land consumption (betonstop), and social or regulated housing
-                    quotas in large developments.
-                </p>
-                <p>
-                    <strong>Tech Adoption:</strong> An innovation hub for cleantech
-                    and sustainable materials. Use of PropTech systems for monitoring
-                    district heating networks and solutions for integrating shared
-                    renewable energy.
-                </p>
-
-                <h3>What Makes Ghent Different</h3>
-                <p>
-                    In Ghent, innovation and capital must integrate with a strong,
-                    progressive community spirit. Investments succeed when they
-                    respect local identity and contribute to the city's environmental
-                    sustainability.
-                </p>
-                <ul>
-                    <li>
-                        <strong>Waterfront Regeneration:</strong> The redevelopment
-                        of former port areas (Oude Dokken) demonstrates how
-                        high-value densification can coexist with the creation of
-                        new, accessible, ecological public spaces.
-                    </li>
-                    <li>
-                        <strong>Strict ESG Standards:</strong> Energy efficiency,
-                        integration with the cycling network, and circular resource
-                        management are not optional, but necessary conditions for
-                        project approval.
-                    </li>
-                    <li>
-                        <strong>Long-Term Stability:</strong> A market driven by
-                        solid university and professional demand ensures rental values
-                        hold steady, sheltered from cyclical fluctuations.
-                    </li>
-                    <li>
-                        <strong>Collaborative Planning:</strong> Major interventions
-                        require strong coordination among developers, administration,
-                        and residents to secure social acceptance of the project.
-                    </li>
-                </ul>
-
-                <h2>Resident Perspective</h2>
-
-                <h3>Market Characteristics</h3>
-                <p>
-                    <strong>Urban Model:</strong> A human-scale city where cycling
-                    mobility and the public transport network allow any point in the
-                    city to be reached in under 15 minutes, ensuring a relaxed,
-                    sustainable lifestyle.
-                </p>
-                <p>
-                    <strong>Investor Profile (How the market is experienced):</strong>
-                    A competitive residential market with a high percentage of
-                    owner-occupiers and long-term tenants. Growing interest in
-                    cohousing, housing cooperatives, and community renovations.
-                </p>
-                <p>
-                    <strong>Construction Culture:</strong> Properties characterized
-                    by careful attention to thermal efficiency, use of natural
-                    materials, and flexible interior layouts. Constant presence of
-                    inner courtyards, terraces, or herringbone-pattern gardens.
-                </p>
-                <p>
-                    <strong>Regulation:</strong> Protections aimed at preserving the
-                    city's affordability, containing speculation, and ensuring high
-                    quality standards for both private rentals and social housing.
-                </p>
-                <p>
-                    <strong>Tech Adoption:</strong> Technology oriented toward
-                    improving daily life: shared mobility apps, home automation
-                    systems for energy consumption management, and local
-                    participatory platforms.
-                </p>
-
-                <h3>What Makes Ghent Different</h3>
-                <p>
-                    An urban culture grounded in cultural vibrancy, environmental
-                    respect, and community life.
-                </p>
-                <ul>
-                    <li>
-                        <strong>ESG as Everyday Comfort:</strong> Sustainability
-                        translates into car-free neighborhoods, clean air, widespread
-                        urban greenery, and swimmable canals.
-                    </li>
-                    <li>
-                        <strong>Progressive Community:</strong> An open, inclusive
-                        atmosphere oriented toward social innovation, where grassroots
-                        initiatives often find institutional support.
-                    </li>
-                    <li>
-                        <strong>Active Waterfront:</strong> Canals and riverbanks
-                        are not merely scenic elements, but genuine extensions of
-                        the domestic living room for leisure time.
-                    </li>
-                    <li>
-                        <strong>Work-Life Balance:</strong> The city's pace allows
-                        professional life to be balanced with leisure, culture, and
-                        neighborhood social life.
-                    </li>
-                </ul>
-
-            </div>
-        </section>
-        <footer class="footer">
-            <div class="container">
-                <div
-                    style="
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-                        gap: 1.5rem;
-                        flex-wrap: wrap;
-                    "
-                >
-                    <a
-                        href="../../../home/index.html"
-                        style="
-                            text-decoration: none;
-                            color: var(--color-text);
-                            font-size: 0.95rem;
-                            opacity: 0.6;
-                            transition: opacity 0.3s;
-                        "
-                        onmouseover="this.style.opacity = '1'"
-                        onmouseout="this.style.opacity = '0.6'"
-                        >‹ Back to Portfolio</a
-                    >
-                    <p>&copy; 2026 Human Traces. All rights reserved.</p>
+                <div style="margin-top:28px">
+                    <div class="ci-stack">
+                        <div class="ci-row2">
+                            <div class="ci-panel">
+                                <div class="ci-cat">Liveability</div>
+                                <div style="display:flex;align-items:baseline;gap:12px">
+                                    <span class="ci-big">#1<small> BE</small></span>
+                                    <span class="ci-badge green">Top-ranked</span>
+                                </div>
+                                <div class="ci-sub">Most liveable Belgian city (multiple indices)</div>
+                                <div class="ci-note">Consistently outranks Brussels and Antwerp on quality-of-life indices. Student city energy with small-city human scale.</div>
+                            </div>
+                            <div class="ci-panel">
+                                <div class="ci-cat">Housing Affordability</div>
+                                <div style="display:flex;align-items:baseline;gap:12px">
+                                    <span class="ci-big">€3.2<small>k/m²</small></span>
+                                    <span class="ci-badge amber">Rising</span>
+                                </div>
+                                <div class="ci-sub">Avg. purchase price, city centre</div>
+                                <div class="ci-note">More affordable than Brussels or Antwerp but rising fast. Demand driven by students and remote-working professionals relocating from Brussels.</div>
+                            </div>
+                        </div>
+                        <div class="ci-row2">
+                            <div class="ci-panel">
+                                <div class="ci-cat">Safety</div>
+                                <div style="display:flex;align-items:baseline;gap:12px">
+                                    <span class="ci-big">71<small>/100</small></span>
+                                    <span class="ci-badge green">Safe</span>
+                                </div>
+                                <div class="ci-sub">Numbeo Safety Index 2024</div>
+                                <div class="ci-note">Low violent crime. Car-free centre has reduced antisocial behaviour significantly since 2017.</div>
+                            </div>
+                            <div class="ci-panel">
+                                <div class="ci-cat">Air Quality</div>
+                                <div style="display:flex;align-items:baseline;gap:12px">
+                                    <span class="ci-big">AQI 28</span>
+                                    <span class="ci-badge green">Good</span>
+                                </div>
+                                <div class="ci-sub">Annual average — improved post car-free</div>
+                                <div class="ci-note">Measurable improvement in air quality since car traffic was rerouted from the historic centre.</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
+
+        <!-- 02 CLIMATE -->
+        <section id="weather">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="section-num">02</span>
+                    <h2>Climate</h2>
+                </div>
+                <div class="mini-stat-row">
+                    <div class="mini-stat">
+                        <div class="num">Cfb</div>
+                        <div class="label">Köppen — Maritime Temperate</div>
+                    </div>
+                    <div class="mini-stat">
+                        <div class="num">10.8<small>°C</small></div>
+                        <div class="label">Mean annual temp</div>
+                    </div>
+                    <div class="mini-stat">
+                        <div class="num">760<small>mm</small></div>
+                        <div class="label">Annual rainfall</div>
+                    </div>
+                    <div class="mini-stat">
+                        <div class="num">1,650<small>h</small></div>
+                        <div class="label">Annual sunshine</div>
+                    </div>
+                </div>
+                <p class="body-text" style="margin-top:20px">
+                    Ghent's climate is maritime temperate — mild, damp, and overcast for much of the year. Winters are cool but rarely harsh; summers are warm without being hot. The city's low altitude and proximity to the North Sea means the weather changes quickly. Prepare for rain year-round; spring and early summer are the most reliably pleasant seasons.
+                </p>
+                <div class="rain-chart-wrap">
+                    <div class="rain-chart">
+                        <div class="rain-bar"><div class="bar" style="height:44%"><div class="dcount">12d</div></div><div class="m">Jan</div><div class="temps"><span class="tmax">6°</span><br><span class="tmin">1°</span></div><div class="suntime"><span class="sr">8:50</span><br><span class="ss">16:40</span></div></div>
+                        <div class="rain-bar"><div class="bar" style="height:35%"><div class="dcount">10d</div></div><div class="m">Feb</div><div class="temps"><span class="tmax">7°</span><br><span class="tmin">1°</span></div><div class="suntime"><span class="sr">8:02</span><br><span class="ss">17:36</span></div></div>
+                        <div class="rain-bar"><div class="bar" style="height:40%"><div class="dcount">11d</div></div><div class="m">Mar</div><div class="temps"><span class="tmax">11°</span><br><span class="tmin">4°</span></div><div class="suntime"><span class="sr">7:03</span><br><span class="ss">18:30</span></div></div>
+                        <div class="rain-bar"><div class="bar" style="height:30%"><div class="dcount">9d</div></div><div class="m">Apr</div><div class="temps"><span class="tmax">15°</span><br><span class="tmin">6°</span></div><div class="suntime"><span class="sr">7:05</span><br><span class="ss">20:25</span></div></div>
+                        <div class="rain-bar"><div class="bar" style="height:38%"><div class="dcount">11d</div></div><div class="m">May</div><div class="temps"><span class="tmax">19°</span><br><span class="tmin">9°</span></div><div class="suntime"><span class="sr">5:55</span><br><span class="ss">21:15</span></div></div>
+                        <div class="rain-bar"><div class="bar" style="height:47%"><div class="dcount">11d</div></div><div class="m">Jun</div><div class="temps"><span class="tmax">22°</span><br><span class="tmin">12°</span></div><div class="suntime"><span class="sr">5:25</span><br><span class="ss">21:55</span></div></div>
+                        <div class="rain-bar"><div class="bar" style="height:50%"><div class="dcount">12d</div></div><div class="m">Jul</div><div class="temps"><span class="tmax">24°</span><br><span class="tmin">14°</span></div><div class="suntime"><span class="sr">5:40</span><br><span class="ss">21:40</span></div></div>
+                        <div class="rain-bar"><div class="bar" style="height:49%"><div class="dcount">12d</div></div><div class="m">Aug</div><div class="temps"><span class="tmax">24°</span><br><span class="tmin">14°</span></div><div class="suntime"><span class="sr">6:30</span><br><span class="ss">20:45</span></div></div>
+                        <div class="rain-bar"><div class="bar" style="height:46%"><div class="dcount">11d</div></div><div class="m">Sep</div><div class="temps"><span class="tmax">20°</span><br><span class="tmin">11°</span></div><div class="suntime"><span class="sr">7:27</span><br><span class="ss">19:30</span></div></div>
+                        <div class="rain-bar"><div class="bar" style="height:54%"><div class="dcount">13d</div></div><div class="m">Oct</div><div class="temps"><span class="tmax">15°</span><br><span class="tmin">8°</span></div><div class="suntime"><span class="sr">7:25</span><br><span class="ss">18:20</span></div></div>
+                        <div class="rain-bar"><div class="bar" style="height:54%"><div class="dcount">14d</div></div><div class="m">Nov</div><div class="temps"><span class="tmax">10°</span><br><span class="tmin">5°</span></div><div class="suntime"><span class="sr">7:25</span><br><span class="ss">17:05</span></div></div>
+                        <div class="rain-bar"><div class="bar" style="height:46%"><div class="dcount">13d</div></div><div class="m">Dec</div><div class="temps"><span class="tmax">7°</span><br><span class="tmin">2°</span></div><div class="suntime"><span class="sr">8:46</span><br><span class="ss">16:30</span></div></div>
+                    </div>
+                </div>
+                <p class="body-text" style="margin-top:22px">
+                    <b style="color:var(--ink)">Best months to visit:</b> May–June and September. The Gentse Feesten festival (mid-July, 10 days) transforms the city — book accommodation six months ahead. Winter is atmospheric along the lit-up canals but wet.
+                </p>
+            </div>
+        </section>
+
+        <!-- 03 CULTURAL CODES -->
+        <section id="culture">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="section-num">03</span>
+                    <h2>Cultural Codes</h2>
+                </div>
+                <p class="body-text">Ghent occupies a particular position in Belgian culture — fiercely Flemish but with a streak of left-wing radicalism and creative irreverence that distinguishes it from conservative Bruges or commercial Antwerp. It is simultaneously a city of medieval cathedrals and punk music venues.</p>
+                <div class="codegrid">
+                    <div class="code-card">
+                        <span class="tag">Concept</span>
+                        <h3>De Gentse Strop</h3>
+                        <p style="font-size:13.5px;color:var(--ink-soft)">Ghent residents are called "Stroppendragers" — noose-bearers — after a 1453 revolt against Philip the Good in which the rebels were forced to march barefoot with nooses around their necks. Far from shameful, locals wear the title with pride as a badge of rebellious independence. The city's iconography is full of ropes and nooses.</p>
+                    </div>
+                    <div class="code-card">
+                        <span class="tag">Concept</span>
+                        <h3>Gentse Feesten</h3>
+                        <p style="font-size:13.5px;color:var(--ink-soft)">Ten days in July when the entire historic centre becomes a free outdoor music and theatre festival. One million visitors descend; the city's 270,000 residents either dive in or leave. It is simultaneously the city's greatest achievement and its most chaotic moment — free, democratic, and wonderfully undignified.</p>
+                    </div>
+                    <div class="code-card">
+                        <span class="tag">Concept</span>
+                        <h3>Donderdag Veggiedag</h3>
+                        <p style="font-size:13.5px;color:var(--ink-soft)">Since 2009, Ghent runs a "Thursday Veggie Day" — the first city in the world to officially encourage plant-based eating one day a week. This is not performative: the city has over 200 vegetarian/vegan-friendly restaurants and the policy has measurably reduced meat consumption. Sustainability is not a slogan here but a long-term municipal strategy.</p>
+                    </div>
+                    <div class="code-card">
+                        <span class="tag">Concept</span>
+                        <h3>Circulatieplaan</h3>
+                        <p style="font-size:13.5px;color:var(--ink-soft)">The 2017 mobility plan that banned through-traffic from the historic core. It was deeply controversial before implementation; within two years, it was almost universally praised. It is now the most-studied urban mobility intervention in Europe and has inspired similar plans in Brussels, Leuven, and cities far beyond Belgium.</p>
+                    </div>
+                </div>
+
+                <div style="margin-top:36px">
+                    <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.09em;color:var(--ink-soft);margin-bottom:20px;display:flex;align-items:center;gap:12px">
+                        Culture Adjustment Index<span style="flex:1;height:1px;background:var(--line);display:block"></span>
+                    </div>
+                    <div class="meter-row">
+                        <div class="meter-label">Language barrier</div>
+                        <div class="meter-track"><div class="meter-fill" style="left:30%"></div></div>
+                        <div class="meter-note">Dutch primary; English good in centre</div>
+                    </div>
+                    <div class="meter-row">
+                        <div class="meter-label">Bureaucracy</div>
+                        <div class="meter-track"><div class="meter-fill" style="left:48%"></div></div>
+                        <div class="meter-note">Belgian admin: slower than NL</div>
+                    </div>
+                    <div class="meter-row">
+                        <div class="meter-label">Political culture</div>
+                        <div class="meter-track"><div class="meter-fill" style="left:65%"></div></div>
+                        <div class="meter-note">Left-leaning, activist, outspoken</div>
+                    </div>
+                    <div class="meter-row">
+                        <div class="meter-label">Cycling culture</div>
+                        <div class="meter-track"><div class="meter-fill" style="left:72%"></div></div>
+                        <div class="meter-note">Strong — car-free centre makes it essential</div>
+                    </div>
+                    <div class="meter-row">
+                        <div class="meter-label">Social openness</div>
+                        <div class="meter-track"><div class="meter-fill" style="left:55%"></div></div>
+                        <div class="meter-note">Warm but takes time to penetrate</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04 DISTRICTS -->
+        <section id="districts">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="section-num">04</span>
+                    <h2>Districts</h2>
+                </div>
+                <div class="block">
+                    <h3>Historisch Centrum</h3>
+                    <p class="body-text">The medieval core bounded by the Lys and Leie rivers — Gravensteen castle, Saint Bavo's Cathedral, Korenmarkt, Graslei. Tourism concentrated here but the evening belongs to locals. The Circulatieplaan has dramatically improved the atmosphere; the cobblestoned streets are now primarily pedestrian and cycling.</p>
+                </div>
+                <div class="block">
+                    <h3>Patershol</h3>
+                    <p class="body-text">A perfectly preserved medieval working-class district of narrow cobbled alleys immediately north of Gravensteen. Now Ghent's most coveted restaurant quarter — dozens of independent restaurants tucked into former craftsmen's houses. Atmospheric at any time; spectacular at night when lit by medieval lanterns.</p>
+                </div>
+                <div class="block">
+                    <h3>Prinsenhof &amp; Rabot</h3>
+                    <p class="body-text">Northwest of the centre, the site of the Prinsenhof palace (birthplace of Charles V, now mostly gone) and the Rabot medieval water gate. The Rabot neighbourhood is gentrifying — former industrial and social housing areas with growing creative economy presence. One of the city's most ethnically diverse areas.</p>
+                </div>
+                <div class="block">
+                    <h3>Sint-Amandsberg &amp; Gentbrugge</h3>
+                    <p class="body-text">East-bank residential districts across the Scheldt — quieter, more affordable, with strong local character. Popular with families who want proximity to the centre without the tourist noise. Good tram connections; 15 minutes to centre by bicycle.</p>
+                </div>
+                <div class="block">
+                    <h3>Dampoort &amp; Muide</h3>
+                    <p class="body-text">The creative district northeast of the centre, anchored by the 19th-century Dampoort station area. Warehouses converted to studios and co-working spaces, an emerging arts scene, and some of the most affordable property in the inner city. The Maritime Station (Dok Noord) area is the city's most dynamic redevelopment zone.</p>
+                </div>
+                <div class="block">
+                    <h3>Wondelgem &amp; Mariakerke</h3>
+                    <p class="body-text">Northern residential suburbs — green, quiet, and family-oriented. Less character than the inner city but significantly more affordable. Good cycle links to the centre; popular with professionals who value space and green surroundings over urban intensity.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 05 THINGS TO DO -->
+        <section id="things">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="section-num">05</span>
+                    <h2>Things To Do</h2>
+                </div>
+                <div class="taxo-grid">
+                    <div class="taxo-card">
+                        <div class="tnum">01</div>
+                        <h3>Saint Bavo's Cathedral &amp; The Adoration</h3>
+                        <div class="sub"><b>The Ghent Altarpiece</b><span>Jan van Eyck's 1432 "Adoration of the Mystic Lamb" — one of the most important paintings in Western art history. Now in a purpose-built climate-controlled room in the cathedral crypt. Queue early.</span></div>
+                        <div class="sub"><b>Cathedral treasury</b><span>Extraordinary collection of Flemish primitives and religious art in the broader cathedral complex.</span></div>
+                    </div>
+                    <div class="taxo-card">
+                        <div class="tnum">02</div>
+                        <h3>Gravensteen Castle</h3>
+                        <div class="sub"><b>Castle of the Counts</b><span>Perfectly intact 12th-century fortified castle in the city centre — one of the best-preserved medieval castles in northern Europe. The rooftop gives the best view of Ghent's three towers.</span></div>
+                        <div class="sub"><b>Museum of torture instruments</b><span>Grimly fascinating medieval collection. The castle's irreverent approach to its own history is very Ghentian.</span></div>
+                    </div>
+                    <div class="taxo-card">
+                        <div class="tnum">03</div>
+                        <h3>Graslei &amp; Canal Life</h3>
+                        <div class="sub"><b>Graslei quayside</b><span>The medieval guild houses along the Lys river — Ghent's most photographed view. Best seen at dusk when the light softens and the crowds thin. The terrace bars along the waterfront are the beating heart of Ghentian social life.</span></div>
+                        <div class="sub"><b>Boat tour</b><span>Canal boat tour departing from Korenlei — best way to see the backs of the medieval buildings and understand the water city.</span></div>
+                    </div>
+                    <div class="taxo-card">
+                        <div class="tnum">04</div>
+                        <h3>SMAK &amp; MSK</h3>
+                        <div class="sub"><b>SMAK</b><span>Stedelijk Museum voor Actuele Kunst — Belgium's leading contemporary art museum, with a permanent collection of international scope and provocative temporary exhibitions.</span></div>
+                        <div class="sub"><b>MSK</b><span>Museum voor Schone Kunsten — fine art from ancient Egypt to the 20th century, including a major Flemish primitives collection. Beautifully housed opposite SMAK in the Citadelpark.</span></div>
+                    </div>
+                    <div class="taxo-card">
+                        <div class="tnum">05</div>
+                        <h3>Gentse Feesten &amp; Nightlife</h3>
+                        <div class="sub"><b>Gentse Feesten (July)</b><span>Ten-day free outdoor festival — the largest in Belgium. Every street, square, and canal becomes a stage. Music ranges from folk to electronic; the atmosphere is open and euphoric.</span></div>
+                        <div class="sub"><b>Music scene</b><span>Vooruit arts centre (former socialist cultural palace) hosts concerts, theatre, and club nights in a stunning art nouveau building. 4AD, Deus, and Amenra all emerged from Ghent's music scene.</span></div>
+                    </div>
+                    <div class="taxo-card">
+                        <div class="tnum">06</div>
+                        <h3>Food, Markets &amp; Design</h3>
+                        <div class="sub"><b>Vrijdagmarkt</b><span>Friday market on the historic square surrounded by guild houses — the traditional focal point of Ghent civic life. Also the location of the Jacob van Artevelde statue.</span></div>
+                        <div class="sub"><b>Design Museum Gent</b><span>Applied arts and design from the 17th century to the present. Strong collection of Art Nouveau decorative arts — Ghent was a centre of the movement.</span></div>
+                    </div>
+                </div>
+
+                <div style="margin-top:36px">
+                    <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.09em;color:var(--ink-soft);margin-bottom:16px;display:flex;align-items:center;gap:12px">
+                        Annual Calendar<span style="flex:1;height:1px;background:var(--line);display:block"></span>
+                    </div>
+                    <div class="event-row">
+                        <div class="etag">Mar</div>
+                        <div class="ename"><a href="#">Gent Jazz</a> — jazz festival in the Bijloke cloister gardens</div>
+                        <div class="ewhen">Jul</div>
+                    </div>
+                    <div class="event-row">
+                        <div class="etag">Jul</div>
+                        <div class="ename"><a href="#">Gentse Feesten</a> — 10-day free outdoor festival, 1 million visitors</div>
+                        <div class="ewhen">3rd week Jul</div>
+                    </div>
+                    <div class="event-row">
+                        <div class="etag">Aug</div>
+                        <div class="ename"><a href="#">Ghent Film Festival</a> — among Belgium's most important film events</div>
+                        <div class="ewhen">Oct</div>
+                    </div>
+                    <div class="event-row">
+                        <div class="etag">Oct</div>
+                        <div class="ename"><a href="#">Kunst in de Stad</a> — open studios across the city's creative districts</div>
+                        <div class="ewhen">Oct</div>
+                    </div>
+                    <div class="event-row">
+                        <div class="etag">Dec</div>
+                        <div class="ename"><a href="#">Winter in Gent</a> — Christmas market and ice rink on Korenmarkt</div>
+                        <div class="ewhen">Dec</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 06 FOOD & RITUALS -->
+        <section id="food">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="section-num">06</span>
+                    <h2>Food &amp; Rituals</h2>
+                </div>
+                <p class="body-text">Ghent's food culture is one of Belgium's finest — serious about ingredients, unpretentious about presentation, and increasingly progressive about sustainability. The city's Thursday Veggie Day has shifted the baseline: restaurants here invest in their vegetable dishes rather than treating them as afterthoughts. Waterzooi, Ghent's own dish, is non-negotiable.</p>
+
+                <div class="meal-block">
+                    <div class="meal-head">
+                        <h4>Ghentian Classics</h4>
+                        <span class="meal-time">From waterzooi to cuberdons</span>
+                    </div>
+                    <div class="meal-items">
+                        <div class="mdish">
+                            <div class="mtext">
+                                <div class="mname">Waterzooi</div>
+                                <div class="mnote">Ghent's signature dish — a rich stew of chicken (originally fish) with root vegetables in a cream and egg broth. Every Ghentian restaurant has a version; the best are in Patershol. Neither soup nor stew but something in between.</div>
+                                <span class="mtag savory">Savory</span>
+                            </div>
+                        </div>
+                        <div class="mdish">
+                            <div class="mtext">
+                                <div class="mname">Cuberdons</div>
+                                <div class="mnote">Purple cone-shaped sweets filled with raspberry syrup — Ghent's most emblematic confection. Sold from traditional carts at Vrijdagmarkt. The crunchy shell and liquid centre make them unlike any other sweet.</div>
+                                <span class="mtag sweet">Sweet</span>
+                            </div>
+                        </div>
+                        <div class="mdish">
+                            <div class="mtext">
+                                <div class="mname">Hutsepot</div>
+                                <div class="mnote">Belgian winter stew of beef, pork, mutton and root vegetables slow-cooked together. A working-class dish elevated by quality ingredients. Often found as a Thursday special in traditional restaurants.</div>
+                                <span class="mtag savory">Savory</span>
+                            </div>
+                        </div>
+                        <div class="mdish">
+                            <div class="mtext">
+                                <div class="mname">Moules-Frites</div>
+                                <div class="mnote">Belgian mussels (season: September–April) steamed in white wine, shallots and parsley, served with hand-cut fries and Belgian mayonnaise. Simple, perfect. Order a kilo per person.</div>
+                                <span class="mtag savory">Savory</span>
+                            </div>
+                        </div>
+                        <div class="mdish">
+                            <div class="mtext">
+                                <div class="mname">Belgian Waffles</div>
+                                <div class="mnote">Ghent-style (Brussels waffle) — rectangular, light, crispy, with deep pockets for toppings. Eaten plain with powdered sugar from street vendors; never the tourist-trap topped versions.</div>
+                                <span class="mtag sweet">Sweet</span>
+                            </div>
+                        </div>
+                        <div class="mdish">
+                            <div class="mtext">
+                                <div class="mname">Trappist Beer</div>
+                                <div class="mnote">Belgium's extraordinary monastic brewing tradition — Westvleteren, Rochefort, Orval. Ghent has specialist beer bars stocking hundreds of Belgian labels. A guided beer tour of Patershol taverns is an evening well spent.</div>
+                                <span class="mtag side">Drink</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="meal-block">
+                    <div class="meal-head">
+                        <h4>Plant-Forward &amp; Modern</h4>
+                        <span class="meal-time">Thursday Veggie Day legacy</span>
+                    </div>
+                    <div class="meal-items">
+                        <div class="mdish">
+                            <div class="mtext">
+                                <div class="mname">OAK Ghent</div>
+                                <div class="mnote">Ghent's celebrated plant-based fine dining — Michelin-recommended entirely vegetable menu. Proof that the Thursday Veggie Day policy created a genuine culinary movement.</div>
+                                <span class="mtag side">Restaurant</span>
+                            </div>
+                        </div>
+                        <div class="mdish">
+                            <div class="mtext">
+                                <div class="mname">Moroccan Pastilla</div>
+                                <div class="mnote">The Rabot and Brugse Poort areas have some of Belgium's best North African restaurants — bastilla, couscous, and oven-baked lamb drawing from Ghent's substantial Moroccan community.</div>
+                                <span class="mtag savory">Savory</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 07 CONNECTIVITY -->
+        <section id="connect">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="section-num">07</span>
+                    <h2>Connectivity</h2>
+                </div>
+                <p class="body-text">Ghent has two main stations: Gent-Sint-Pieters (the main intercity hub, south of centre) and Gent-Dampoort (northeast, for local services). Brussels is 29 minutes by Intercity — close enough for daily commuting. Brussels Airport connects Ghent to worldwide destinations; the Thalys and Eurostar at Brussels-Midi add Paris and London within 2–3 hours.</p>
+
+                <div class="mapbox" style="margin-top:24px">
+                    <svg viewBox="0 0 700 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Inter',sans-serif">
+                        <!-- Concentric isochrone rings -->
+                        <ellipse cx="350" cy="240" rx="38" ry="28" fill="none" stroke="#4a4035" stroke-width="1.2" stroke-dasharray="4,6" opacity="0.45"/>
+                        <ellipse cx="350" cy="240" rx="80" ry="60" fill="none" stroke="#4a4035" stroke-width="1.2" stroke-dasharray="4,6" opacity="0.40"/>
+                        <ellipse cx="350" cy="240" rx="140" ry="105" fill="none" stroke="#4a4035" stroke-width="1.2" stroke-dasharray="4,6" opacity="0.35"/>
+                        <ellipse cx="350" cy="240" rx="210" ry="158" fill="none" stroke="#4a4035" stroke-width="1.2" stroke-dasharray="4,6" opacity="0.30"/>
+                        <ellipse cx="350" cy="240" rx="300" ry="220" fill="none" stroke="#4a4035" stroke-width="1.2" stroke-dasharray="4,6" opacity="0.25"/>
+
+                        <text x="395" y="215" font-family="'JetBrains Mono',monospace" font-size="8" fill="#6b6259" opacity="0.7">30 min</text>
+                        <text x="437" y="198" font-family="'JetBrains Mono',monospace" font-size="8" fill="#6b6259" opacity="0.7">1 hr</text>
+                        <text x="495" y="178" font-family="'JetBrains Mono',monospace" font-size="8" fill="#6b6259" opacity="0.7">2 hr</text>
+                        <text x="555" y="155" font-family="'JetBrains Mono',monospace" font-size="8" fill="#6b6259" opacity="0.7">3–4 hr</text>
+
+                        <!-- Hub: Gent-Sint-Pieters -->
+                        <circle cx="350" cy="240" r="8" fill="#2a2420"/>
+                        <text x="360" y="235" font-size="11" font-weight="600" fill="#2a2420">Gent-Sint-Pieters</text>
+                        <text x="360" y="248" font-family="'JetBrains Mono',monospace" font-size="8" fill="#6b6259">Hub · BE Rail</text>
+
+                        <!-- Brussels — 29 min, E -->
+                        <line x1="350" y1="240" x2="480" y2="240" stroke="#2a2420" stroke-width="2.5" opacity="0.8"/>
+                        <circle cx="480" cy="240" r="5" fill="#2a2420"/>
+                        <text x="490" y="236" font-size="10.5" font-weight="600" fill="#2a2420">Brussels</text>
+                        <text x="490" y="246" font-family="'JetBrains Mono',monospace" font-size="8" fill="#6b6259">IC · 29 min</text>
+
+                        <!-- Bruges — 25 min, W -->
+                        <line x1="350" y1="240" x2="208" y2="240" stroke="#2a2420" stroke-width="2" opacity="0.7"/>
+                        <circle cx="208" cy="240" r="5" fill="#2a2420"/>
+                        <text x="196" y="236" font-size="10.5" font-weight="600" fill="#2a2420" text-anchor="end">Bruges</text>
+                        <text x="196" y="246" font-family="'JetBrains Mono',monospace" font-size="8" fill="#6b6259" text-anchor="end">IC · 25 min</text>
+
+                        <!-- Antwerp — 55 min, NE -->
+                        <line x1="350" y1="240" x2="470" y2="158" stroke="#2a2420" stroke-width="2" opacity="0.7"/>
+                        <circle cx="470" cy="158" r="5" fill="#2a2420"/>
+                        <text x="480" y="154" font-size="10.5" font-weight="600" fill="#2a2420">Antwerp</text>
+                        <text x="480" y="164" font-family="'JetBrains Mono',monospace" font-size="8" fill="#6b6259">IC · 55 min</text>
+
+                        <!-- Brussels Airport — flight connection, E -->
+                        <line x1="350" y1="240" x2="530" y2="190" stroke="#a65b3b" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.7"/>
+                        <circle cx="530" cy="190" r="5" fill="#a65b3b"/>
+                        <text x="540" y="185" font-size="10" fill="#a65b3b">BRU Airport</text>
+                        <text x="540" y="196" font-family="'JetBrains Mono',monospace" font-size="8" fill="#a65b3b" opacity="0.8">IC + shuttle · 75 min</text>
+
+                        <!-- Paris — Thalys via Brussels, SE -->
+                        <line x1="350" y1="240" x2="200" y2="390" stroke="#5c6650" stroke-width="1.5" opacity="0.6"/>
+                        <circle cx="200" cy="390" r="4" fill="#5c6650"/>
+                        <text x="188" y="386" font-size="10" fill="#5c6650" text-anchor="end">Paris</text>
+                        <text x="188" y="396" font-family="'JetBrains Mono',monospace" font-size="8" fill="#5c6650" opacity="0.8" text-anchor="end">Thalys via BRU · 2h 30m</text>
+
+                        <!-- London — Eurostar via Brussels, NW -->
+                        <line x1="350" y1="240" x2="180" y2="120" stroke="#5c6650" stroke-width="1.5" opacity="0.6"/>
+                        <circle cx="180" cy="120" r="4" fill="#5c6650"/>
+                        <text x="168" y="115" font-size="10" fill="#5c6650" text-anchor="end">London</text>
+                        <text x="168" y="125" font-family="'JetBrains Mono',monospace" font-size="8" fill="#5c6650" opacity="0.8" text-anchor="end">Eurostar via BRU · 3h</text>
+
+                        <!-- Amsterdam — N -->
+                        <line x1="350" y1="240" x2="340" y2="78" stroke="#2a2420" stroke-width="1.5" opacity="0.6"/>
+                        <circle cx="340" cy="78" r="4" fill="#2a2420"/>
+                        <text x="328" y="72" font-size="10" fill="#2a2420" text-anchor="end">Amsterdam</text>
+                        <text x="328" y="83" font-family="'JetBrains Mono',monospace" font-size="8" fill="#6b6259" text-anchor="end">IC · 1h 45m</text>
+
+                        <!-- NY long-haul -->
+                        <line x1="350" y1="240" x2="68" y2="68" stroke="#b08a4e" stroke-width="1" stroke-dasharray="3,5" opacity="0.35"/>
+                        <circle cx="68" cy="68" r="3" fill="#b08a4e" opacity="0.6"/>
+                        <text x="56" y="62" font-size="9" fill="#b08a4e" opacity="0.6" text-anchor="end">New York</text>
+                        <text x="56" y="72" font-family="'JetBrains Mono',monospace" font-size="7" fill="#b08a4e" opacity="0.5" text-anchor="end">via BRU · 9h</text>
+
+                        <!-- Dubai long-haul -->
+                        <line x1="350" y1="240" x2="640" y2="400" stroke="#b08a4e" stroke-width="1" stroke-dasharray="3,5" opacity="0.35"/>
+                        <circle cx="640" cy="400" r="3" fill="#b08a4e" opacity="0.6"/>
+                        <text x="648" y="396" font-size="9" fill="#b08a4e" opacity="0.6">Dubai</text>
+                        <text x="648" y="406" font-family="'JetBrains Mono',monospace" font-size="7" fill="#b08a4e" opacity="0.5">via BRU · 7h</text>
+                    </svg>
+
+                    <div class="maplegend">
+                        <div class="maplegend-item">
+                            <div class="maplegend-sym"><svg width="20" height="4"><line x1="0" y1="2" x2="20" y2="2" stroke="#2a2420" stroke-width="2.5"/></svg></div>
+                            <div><div class="maplegend-label">Belgian Intercity (NMBS)</div><div class="maplegend-detail">Direct domestic rail services</div></div>
+                        </div>
+                        <div class="maplegend-item">
+                            <div class="maplegend-sym"><svg width="20" height="4"><line x1="0" y1="2" x2="20" y2="2" stroke="#a65b3b" stroke-width="1.5" stroke-dasharray="5,3"/></svg></div>
+                            <div><div class="maplegend-label">Airport Connection</div><div class="maplegend-detail">IC + bus/shuttle to BRU</div></div>
+                        </div>
+                        <div class="maplegend-item">
+                            <div class="maplegend-sym"><svg width="20" height="4"><line x1="0" y1="2" x2="20" y2="2" stroke="#5c6650" stroke-width="1.5"/></svg></div>
+                            <div><div class="maplegend-label">International (Thalys / Eurostar)</div><div class="maplegend-detail">Paris and London via Brussels</div></div>
+                        </div>
+                        <div class="maplegend-item">
+                            <div class="maplegend-sym"><svg width="20" height="4"><line x1="0" y1="2" x2="20" y2="2" stroke="#b08a4e" stroke-width="1.2" stroke-dasharray="6,4"/></svg></div>
+                            <div><div class="maplegend-label">Long-haul Flights</div><div class="maplegend-detail">Via Brussels Zaventem Airport</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hubpanels">
+                    <div class="hubpanel">
+                        <div class="htitle">Gent-Sint-Pieters</div>
+                        <div class="hsub">Daily rail passengers</div>
+                        <div class="bignum">42<small>k/day</small></div>
+                    </div>
+                    <div class="hubpanel">
+                        <div class="htitle">Brussels Midi</div>
+                        <div class="hsub">Eurostar + Thalys hub, 29 min away</div>
+                        <div class="bignum">29<small>min</small></div>
+                    </div>
+                    <div class="hubpanel">
+                        <div class="htitle">BRU Airport</div>
+                        <div class="hsub">Brussels Zaventem — IC + shuttle</div>
+                        <div class="bignum">75<small>min</small></div>
+                    </div>
+                </div>
+
+                <div class="reach-table">
+                    <div class="reach-row"><div class="mode">Bruges</div><div class="bar"><i style="width:19%"></i></div><div class="val">25 min</div></div>
+                    <div class="reach-row"><div class="mode">Brussels</div><div class="bar"><i style="width:22%"></i></div><div class="val">29 min</div></div>
+                    <div class="reach-row"><div class="mode">Antwerp</div><div class="bar"><i style="width:42%"></i></div><div class="val">55 min</div></div>
+                    <div class="reach-row"><div class="mode">Amsterdam</div><div class="bar"><i style="width:82%"></i></div><div class="val">1h 45m</div></div>
+                    <div class="reach-row"><div class="mode">Paris</div><div class="bar"><i style="width:88%"></i></div><div class="val">2h 30m</div></div>
+                    <div class="reach-row"><div class="mode">London</div><div class="bar"><i style="width:100%"></i></div><div class="val">3h (Eurostar)</div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 08 VISIT MAP -->
+        <section id="visit">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="section-num">08</span>
+                    <h2>Visit Map</h2>
+                </div>
+                <p class="body-text">Ghent's historic centre is compact — the main sights span a 1.5km walk. The Circulatieplaan has made the centre largely car-free and very pleasant to navigate on foot or by bicycle. Begin at the three towers (Sint-Baafs, Belfort, Sint-Niklaas), descend to the Graslei, and work outward from there.</p>
+
+                <div class="route-tabs">
+                    <span class="route-tab r1">Route A — Medieval Core</span>
+                    <span class="route-tab r2">Route B — Museums &amp; Parks</span>
+                    <span class="route-tab r3">Route C — Canal &amp; Patershol</span>
+                </div>
+
+                <div id="ghent-visit-map" style="height:420px;margin-top:18px;border:1px solid var(--line)"></div>
+
+                <div class="maplegend">
+                    <div class="maplegend-item">
+                        <div class="maplegend-sym"><i class="dot" style="background:#2a2420;width:13px;height:13px"></i></div>
+                        <div><div class="maplegend-label">Graslei / Korenmarkt</div><div class="maplegend-detail">Isochrone centre</div></div>
+                    </div>
+                    <div class="maplegend-item">
+                        <div class="maplegend-sym"><i class="dot" style="background:#a65b3b;width:11px;height:11px"></i></div>
+                        <div><div class="maplegend-label">Route A</div><div class="maplegend-detail">Medieval core stops</div></div>
+                    </div>
+                    <div class="maplegend-item">
+                        <div class="maplegend-sym"><i class="dot" style="background:#5c6650;width:11px;height:11px"></i></div>
+                        <div><div class="maplegend-label">Route B</div><div class="maplegend-detail">Museums &amp; green spaces</div></div>
+                    </div>
+                    <div class="maplegend-item">
+                        <div class="maplegend-sym"><i class="dot" style="background:#b08a4e;width:11px;height:11px"></i></div>
+                        <div><div class="maplegend-label">Route C</div><div class="maplegend-detail">Canal quarters &amp; Patershol</div></div>
+                    </div>
+                </div>
+
+                <div class="landmark-list">
+                    <div class="lm-item"><span class="lm-num">01</span><div><a href="#">Saint Bavo's Cathedral</a><span class="lm-note">Van Eyck Altarpiece — queue early</span></div></div>
+                    <div class="lm-item"><span class="lm-num">02</span><div><a href="#">Gravensteen Castle</a><span class="lm-note">12th-c. fortified castle · medieval museum</span></div></div>
+                    <div class="lm-item"><span class="lm-num">03</span><div><a href="#">Graslei &amp; Korenlei</a><span class="lm-note">Medieval guild houses · waterfront terraces</span></div></div>
+                    <div class="lm-item"><span class="lm-num">04</span><div><a href="#">Belfort &amp; Cloth Hall</a><span class="lm-note" style="color:#a65b3b">UNESCO bell tower · panoramic view</span></div></div>
+                    <div class="lm-item"><span class="lm-num">05</span><div><a href="#">Patershol</a><span class="lm-note" style="color:#b08a4e">Medieval alley restaurant quarter</span></div></div>
+                    <div class="lm-item"><span class="lm-num">06</span><div><a href="#">SMAK</a><span class="lm-note" style="color:#5c6650">Contemporary art museum · Citadelpark</span></div></div>
+                    <div class="lm-item"><span class="lm-num">07</span><div><a href="#">MSK Ghent</a><span class="lm-note" style="color:#5c6650">Fine arts · Flemish primitives collection</span></div></div>
+                    <div class="lm-item"><span class="lm-num">08</span><div><a href="#">Design Museum Gent</a><span class="lm-note">Applied arts · Art Nouveau focus</span></div></div>
+                    <div class="lm-item"><span class="lm-num">09</span><div><a href="#">Vrijdagmarkt</a><span class="lm-note">Historic civic square · Friday market</span></div></div>
+                    <div class="lm-item"><span class="lm-num">10</span><div><a href="#">Vooruit Arts Centre</a><span class="lm-note" style="color:#a65b3b">Art nouveau concert hall · music &amp; theatre</span></div></div>
+                    <div class="lm-item"><span class="lm-num">11</span><div><a href="#">Citadelpark</a><span class="lm-note" style="color:#5c6650">Large park · 19th-c. landscape design</span></div></div>
+                    <div class="lm-item"><span class="lm-num">12</span><div><a href="#">Dok Noord / Dampoort</a><span class="lm-note" style="color:#b08a4e">Creative hub · maritime redevelopment</span></div></div>
+                </div>
+
+                <div class="mapnote">
+                    <b style="color:var(--ink)">Practical note:</b> Ghent's Circulatieplaan means through-traffic is banned from the historic centre. Navigate on foot or hire a Blue-bike (Belgian bike-share) from Gent-Sint-Pieters station. The Graslei, Gravensteen, and Saint Bavo's form a natural triangle walkable in 30 minutes.
+                </div>
+            </div>
+        </section>
+
+        <!-- 09 INVESTOR PERSPECTIVE -->
+        <section id="invest">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="section-num">09</span>
+                    <h2>Investor Perspective</h2>
+                </div>
+                <p class="body-text">Ghent's real estate market is structurally attractive: strong demand from students and young professionals, a growing tech and life sciences cluster, and rising in-migration from Brussels professionals seeking quality of life. Supply in the historic centre is severely constrained by heritage protection; growth is concentrated in the Dok Noord and Wondelgem areas.</p>
+
+                <div class="schema-grid">
+                    <div class="schema-row">
+                        <div class="k">Market Type</div>
+                        <div class="v">Undersupplied residential market with growing professional in-migration. Commercial space constrained by car-free centre restrictions. New supply in Dok Noord (maritime redevelopment) and fringe neighbourhoods.</div>
+                    </div>
+                    <div class="schema-row">
+                        <div class="k">Price Level</div>
+                        <div class="v">€3,000–€4,000/m² in Patershol / historic centre. €2,400–€3,200/m² in Dampoort / Rabot. €1,800–€2,600/m² in Sint-Amandsberg / Gentbrugge. Student rental yields 4–5% in well-located units.</div>
+                    </div>
+                    <div class="schema-row">
+                        <div class="k">Demand Drivers</div>
+                        <div class="v">50,000 Ghent University students, UZ Gent hospital (12,000 staff), growing tech and biotech cluster at Ghent Tech Lane, increasing Brussels-to-Ghent commuter flow (29 min IC).</div>
+                    </div>
+                    <div class="schema-row">
+                        <div class="k">Risk Factors</div>
+                        <div class="v">Belgian property transfer tax 10–12.5% (reduced to 3% for first home). Rental regulation increasing; Brussels-style rent indexation pressure. Heritage restrictions limit redevelopment in historic core.</div>
+                    </div>
+                    <div class="schema-row">
+                        <div class="k">Opportunity Zones</div>
+                        <div class="v">Dok Noord (maritime industrial redevelopment — 2,000+ units planned); Rabot (gentrification in early stages); student housing adjacent to university campus at Sterre / De Pintelaan.</div>
+                    </div>
+                    <div class="schema-row">
+                        <div class="k">Key Employers</div>
+                        <div class="v">Ghent University (9,000+ staff), UZ Gent, ArcelorMittal, Volvo Trucks, Bekaert, Ablynx (Sanofi), IDT Biologika, major port logistics operators.</div>
+                    </div>
+                </div>
+
+                <div class="pillbar">
+                    <span class="pill">Student Housing</span>
+                    <span class="pill">Residential Resi</span>
+                    <span class="pill">Life Sciences Lab</span>
+                    <span class="pill">Adaptive Reuse</span>
+                    <span class="pill">Mixed-Use</span>
+                    <span class="pill">Maritime Heritage</span>
+                </div>
+
+                <div style="margin-top:36px">
+                    <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.09em;color:var(--ink-soft);margin-bottom:16px;display:flex;align-items:center;gap:12px">
+                        Cost of Living Snapshot<span style="flex:1;height:1px;background:var(--line);display:block"></span>
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+                        <div>
+                            <table class="salary-table">
+                                <tr><td>Software engineer (mid)</td><td>€48–65k/yr</td></tr>
+                                <tr><td>University researcher</td><td>€38–52k/yr</td></tr>
+                                <tr><td>Healthcare (UZ Gent)</td><td>€36–58k/yr</td></tr>
+                                <tr><td>Creative / design</td><td>€35–48k/yr</td></tr>
+                            </table>
+                        </div>
+                        <div>
+                            <table class="cost-table">
+                                <tr><td>1-bed rent, city centre</td><td>€900–1,300/mo</td></tr>
+                                <tr><td>Student studio, Overpoort</td><td>€550–800/mo</td></tr>
+                                <tr><td>Monthly transit pass</td><td>€49 (De Lijn)</td></tr>
+                                <tr><td>Restaurant meal (mid)</td><td>€18–28</td></tr>
+                                <tr><td>Grocery index vs BE avg</td><td class="note">~3% above average</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10 RESIDENT PERSPECTIVE -->
+        <section id="resident">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="section-num">10</span>
+                    <h2>Living Here</h2>
+                </div>
+                <p class="body-text">Ghent rewards residents with something increasingly rare in European cities: an authentic urban core that has not been Disneyfied. The Gentse Feesten spirit — democratic, festive, slightly chaotic — pervades daily life. The university keeps the city young; the medieval architecture keeps it grounded. The Circulatieplaan has genuinely improved quality of life in measurable ways.</p>
+
+                <table class="yn-table">
+                    <thead>
+                        <tr>
+                            <th class="yes">What works well</th>
+                            <th class="no">What to anticipate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="cat-row"><td colspan="2">Daily Life</td></tr>
+                        <tr>
+                            <td class="yes-cell">Car-free centre makes daily life pleasantly human-scaled</td>
+                            <td class="no-cell">Dutch-language requirement for full civic participation — French-speakers often feel friction</td>
+                        </tr>
+                        <tr>
+                            <td class="yes-cell">Excellent restaurant scene — one of Belgium's best value for quality</td>
+                            <td class="no-cell">Belgian bureaucracy is genuinely slow — residence registration, banking, health insurance all take months</td>
+                        </tr>
+                        <tr>
+                            <td class="yes-cell">Strong cycling infrastructure — cycling is the fastest way across the centre</td>
+                            <td class="no-cell">Housing demand outpacing supply; waiting times for good central rentals growing</td>
+                        </tr>
+                        <tr class="cat-row"><td colspan="2">Culture &amp; Social</td></tr>
+                        <tr>
+                            <td class="yes-cell">Gentse Feesten — the best annual urban festival in Belgium</td>
+                            <td class="no-cell">Social integration takes time; Ghentians are warm but circles are established</td>
+                        </tr>
+                        <tr>
+                            <td class="yes-cell">Vooruit, SMAK, Gent Jazz — strong cultural calendar year-round</td>
+                            <td class="no-cell">Limited nightlife compared to Antwerp or Brussels — Ghent is earlier to bed</td>
+                        </tr>
+                        <tr class="cat-row"><td colspan="2">Practicalities</td></tr>
+                        <tr>
+                            <td class="yes-cell">Brussels in 29 min — access to EU institutions, major employers, international airport</td>
+                            <td class="no-cell">Property purchase transfer taxes among highest in Europe at 10–12.5%</td>
+                        </tr>
+                        <tr>
+                            <td class="yes-cell">Belgian healthcare system is strong — mutualité reimbursement covers most GP and specialist costs</td>
+                            <td class="no-cell">Belgian income tax is among the highest in the OECD — effective rates above 50% for higher earners</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="identity-grid" style="margin-top:32px">
+                    <div class="identity-col">
+                        <div class="tag-title">Ghent-specific habits</div>
+                        <ul>
+                            <li><b>Blue-bike</b> — shared bicycle system used by students and commuters daily</li>
+                            <li><b>Overpoort</b> — student nightlife strip; not for the over-35s after midnight</li>
+                            <li><b>Thursday Veggie Day</b> — genuinely observed by locals in home cooking and restaurant orders</li>
+                            <li><b>Cuberdons</b> — buy from the Vrijdagmarkt cart vendors, not tourist shops</li>
+                            <li><b>Stadskaart</b> — city resident card giving access to cultural discounts</li>
+                        </ul>
+                    </div>
+                    <div class="identity-col">
+                        <div class="tag-title">Where locals actually go</div>
+                        <ul>
+                            <li><b>Patershol</b> — evening dining in narrow medieval alleyways away from tourists</li>
+                            <li><b>Dok Noord</b> — Sunday morning market and brunch at the maritime site</li>
+                            <li><b>Citadelpark</b> — weekend walks, SMAK and MSK without the tourist queues</li>
+                            <li><b>Vooruit</b> — regular concert and event programme; central to Ghent culture</li>
+                            <li><b>Leieboorden</b> — cycle south along the Leie river for the real Flemish countryside</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 11 READ & WATCH -->
+        <section id="read">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="section-num">11</span>
+                    <h2>Read &amp; Watch</h2>
+                </div>
+                <div class="rwgrid">
+                    <div>
+                        <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.09em;color:var(--ink-soft);margin-bottom:16px">Books</div>
+                        <div class="rw-item">
+                            <div class="idx">01</div>
+                            <div><div class="t">The Sorrow of Belgium</div><div class="a">Hugo Claus — The definitive Flemish novel; coming-of-age during WWII occupation. Claus was Ghentian.</div></div>
+                        </div>
+                        <div class="rw-item">
+                            <div class="idx">02</div>
+                            <div><div class="t">The Legend of Thyl Ulenspiegel</div><div class="a">Charles de Coster — Flemish picaresque epic set in the 16th-century Low Countries.</div></div>
+                        </div>
+                        <div class="rw-item">
+                            <div class="idx">03</div>
+                            <div><div class="t">In Flanders Fields</div><div class="a">Paul Fussell — WWI poetry and its Flemish landscapes, essential context for Belgian history.</div></div>
+                        </div>
+                        <div class="rw-item">
+                            <div class="idx">04</div>
+                            <div><div class="t">The Ghent Altarpiece (Art History)</div><div class="a">Lotte Brand Philip — Scholarly study of Van Eyck's masterpiece and its extraordinary history of theft and survival.</div></div>
+                        </div>
+                        <div class="rw-item">
+                            <div class="idx">05</div>
+                            <div><div class="t">Small Country</div><div class="a">Gaël Faye — Semi-autobiographical novel about Belgian colonial legacy, exile, and identity.</div></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.09em;color:var(--ink-soft);margin-bottom:16px">Film &amp; Documentary</div>
+                        <div class="rw-item">
+                            <div class="idx">01</div>
+                            <div><div class="t">Broken Circle Breakdown</div><div class="a">Felix van Groeningen, 2012 — Ghent-set Flemish film, Oscar-nominated. Devastating and beautiful.</div></div>
+                        </div>
+                        <div class="rw-item">
+                            <div class="idx">02</div>
+                            <div><div class="t">De Premier</div><div class="a">Erik Van Looy, 2016 — Belgian political thriller partly set in Ghent government corridors.</div></div>
+                        </div>
+                        <div class="rw-item">
+                            <div class="idx">03</div>
+                            <div><div class="t">Ghent: The City That Said No to Cars</div><div class="a">Various documentaries on the 2017 Circulatieplaan — widely studied by urban planners worldwide.</div></div>
+                        </div>
+                        <div class="rw-item">
+                            <div class="idx">04</div>
+                            <div><div class="t">Loft</div><div class="a">Erik Van Looy, 2008 — Belgian thriller, one of the highest-grossing Belgian films ever. Very Flemish.</div></div>
+                        </div>
+                        <div class="rw-item">
+                            <div class="idx">05</div>
+                            <div><div class="t">Deus: Worst Case Scenario (live)</div><div class="a">Concert film by Ghent's most important rock band — essential document of the Ghent music scene.</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="wrap">
+                Human Traces · Cities · Ghent ·
+                <span style="opacity:0.5">data compiled 2024–2025</span>
+            </div>
         </footer>
+
         <script src="../../js/main.js"></script>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <script>
+            var map = L.map("ghent-visit-map", { scrollWheelZoom: false, zoomControl: true }).setView([51.0543, 3.7174], 14);
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                maxZoom: 19,
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            map.on('click', function(e) {
+                console.log('Lat: ' + e.latlng.lat.toFixed(4) + ', Lng: ' + e.latlng.lng.toFixed(4));
+            });
+
+            function makeIcon(color, num) {
+                return L.divIcon({
+                    className: '',
+                    html: '<div style="background:' + color + ';color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:JetBrains Mono,monospace;font-size:9px;font-weight:700;border:2px solid rgba(255,255,255,0.8);box-shadow:0 1px 4px rgba(0,0,0,0.3)">' + num + '</div>',
+                    iconSize: [24, 24],
+                    iconAnchor: [12, 12]
+                });
+            }
+
+            var stops = [
+                { latlng: [51.0537, 3.7213], color: '#2a2420', num: '01', title: 'Saint Bavo\'s Cathedral', note: 'Van Eyck\'s Ghent Altarpiece (1432) — queue early. World-class Flemish primitive masterpiece.' },
+                { latlng: [51.0577, 3.7196], color: '#2a2420', num: '02', title: 'Gravensteen Castle', note: '12th-century fortified castle in the city centre — one of northern Europe\'s best-preserved medieval fortresses.' },
+                { latlng: [51.0548, 3.7188], color: '#2a2420', num: '03', title: 'Graslei & Korenlei', note: 'Medieval guild houses along the Lys river — Ghent\'s most iconic view. Waterfront terrace bars.' },
+                { latlng: [51.0538, 3.7220], color: '#a65b3b', num: '04', title: 'Belfort & Cloth Hall', note: 'UNESCO-listed medieval bell tower — climb for panoramic view of Ghent\'s three towers.' },
+                { latlng: [51.0572, 3.7215], color: '#b08a4e', num: '05', title: 'Patershol', note: 'Narrow medieval alleyways now Ghent\'s finest restaurant quarter — best in the evening.' },
+                { latlng: [51.0426, 3.7155], color: '#5c6650', num: '06', title: 'SMAK', note: 'Belgium\'s leading contemporary art museum. Permanent collection and ambitious temporary shows.' },
+                { latlng: [51.0430, 3.7163], color: '#5c6650', num: '07', title: 'MSK Ghent', note: 'Museum of Fine Arts — Flemish primitives, 19th-century Belgian art. In the Citadelpark.' },
+                { latlng: [51.0509, 3.7200], color: '#2a2420', num: '08', title: 'Design Museum Gent', note: 'Applied arts and design — strong Art Nouveau decorative arts collection.' },
+                { latlng: [51.0543, 3.7231], color: '#2a2420', num: '09', title: 'Vrijdagmarkt', note: 'Historic civic square with Friday market. Cuberdon carts and guild house facades.' },
+                { latlng: [51.0470, 3.7208], color: '#a65b3b', num: '10', title: 'Vooruit Arts Centre', note: 'Former socialist cultural palace (1914) — art nouveau interior, concerts, theatre, club nights.' },
+                { latlng: [51.0420, 3.7180], color: '#5c6650', num: '11', title: 'Citadelpark', note: '19th-century landscaped park housing MSK and SMAK. Peaceful escape from the historic core.' },
+                { latlng: [51.0618, 3.7328], color: '#b08a4e', num: '12', title: 'Dok Noord', note: 'Maritime redevelopment zone — creative studios, Sunday market, experimental urban development.' }
+            ];
+
+            stops.forEach(function(s) {
+                var marker = L.marker(s.latlng, { icon: makeIcon(s.color, s.num) }).addTo(map);
+                var popup = L.popup({ maxWidth: 240 }).setContent(
+                    '<div class="map-popup-inner">' +
+                    '<div class="map-popup-title"><span class="map-popup-num" style="background:' + s.color + '">' + s.num + '</span>' + s.title + '</div>' +
+                    '<div class="map-popup-note">' + s.note + '</div>' +
+                    '</div>'
+                );
+                marker.bindPopup(popup);
+            });
+        </script>
     </body>
 </html>
