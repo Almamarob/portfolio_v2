@@ -3,488 +3,1245 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link
-            rel="icon"
-            type="image/png"
-            href="../../../images/human_traces_logo_simplebold.png"
-        />
-        <title>Zurich - Human Traces</title>
+        <link rel="icon" type="image/png" href="../../../images/human_traces_logo_simplebold.png" />
+        <title>Zurich — Human Traces</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap"
-            rel="stylesheet"
-        />
         <script>
             const theme = localStorage.getItem("theme") || "light";
             document.documentElement.setAttribute("data-theme", theme);
         </script>
         <link rel="stylesheet" href="../../css/style.css" />
-        <link rel="stylesheet" href="../city_style.css" />
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap");
+
+            :root {
+                --cream: #efe9dd;
+                --paper: #f7f3ea;
+                --ink: #2a2420;
+                --ink-soft: #6b6259;
+                --rust: #a65b3b;
+                --rust-soft: #c98a63;
+                --moss: #5c6650;
+                --line: #dcd3c2;
+                --gold: #b08a4e;
+            }
+            [data-theme="dark"] {
+                --cream: #1a1714;
+                --paper: #242018;
+                --ink: #ede8e0;
+                --ink-soft: #9a8a78;
+                --rust: #c07050;
+                --rust-soft: #d4956c;
+                --moss: #7a8a6a;
+                --line: #3a3028;
+                --gold: #c09a5e;
+            }
+            [data-theme="dark"] .tagnav a:hover { background: var(--paper); }
+            [data-theme="dark"] .schema-row .v { background: var(--paper); }
+            [data-theme="dark"] .yn-table thead th.yes { background: #253022; }
+            [data-theme="dark"] .yn-table thead th.no { background: #38221a; }
+            [data-theme="dark"] .mtag.savory { background: #38221a; color: var(--rust); }
+            [data-theme="dark"] .mtag.sweet { background: #332c18; color: var(--gold); }
+            [data-theme="dark"] .mtag.side { background: #252c20; color: var(--moss); }
+
+            * { box-sizing: border-box; margin: 0; padding: 0; }
+            body { background: var(--cream); color: var(--ink); font-family: "Inter", sans-serif; font-size: 15px; line-height: 1.6; }
+            a { color: inherit; text-decoration: none; }
+            .wrap { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+
+            header.hero { padding: 110px 0 40px; border-bottom: 1px solid var(--line); min-height: unset; display: block; }
+            .eyebrow { font-family: "JetBrains Mono", monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rust); margin-bottom: 14px; display: flex; align-items: center; gap: 10px; }
+            .eyebrow::before { content: ""; width: 22px; height: 1px; background: var(--rust); }
+            h1.city { font-family: "Inter", sans-serif; font-weight: 600; font-size: 76px; letter-spacing: -0.02em; line-height: 0.95; margin-bottom: 18px; }
+            .lede { max-width: 560px; color: var(--ink-soft); font-size: 16px; }
+
+            .tagnav { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 32px; }
+            .tagnav a { font-size: 12.5px; padding: 7px 14px; border: 1px solid var(--line); border-radius: 100px; background: var(--paper); color: var(--ink-soft); display: flex; align-items: center; gap: 6px; transition: 0.15s; }
+            .tagnav a:hover { border-color: var(--rust); color: var(--rust); background: var(--paper); }
+
+            section { padding: 52px 0; border-bottom: 1px solid var(--line); }
+            .section-head { display: flex; align-items: baseline; gap: 14px; margin-bottom: 28px; }
+            h2 { font-family: "Fraunces", serif; font-weight: 500; font-size: 28px; }
+            .section-num { font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--gold); }
+            h3 { font-family: "Fraunces", serif; font-weight: 500; font-size: 17px; margin-bottom: 8px; }
+            p.body-text { color: var(--ink-soft); font-size: 14.5px; max-width: 640px; }
+            .block { margin-bottom: 26px; }
+
+            .statgrid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 10px; }
+            .stat { background: var(--paper); padding: 20px 16px; }
+            .stat .num { font-family: "Fraunces", serif; font-size: 30px; font-weight: 600; color: var(--ink); line-height: 1; }
+            .stat .num small { font-family: "Inter"; font-size: 13px; font-weight: 400; color: var(--ink-soft); }
+            .stat .label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); margin-bottom: 6px; }
+
+            table { width: 100%; border-collapse: collapse; margin-top: 6px; }
+            td { padding: 11px 4px; border-bottom: 1px solid var(--line); font-size: 14px; }
+            td:first-child { color: var(--ink-soft); width: 38%; }
+            td:last-child { font-family: "JetBrains Mono", monospace; font-size: 12.5px; }
+
+            .meter-row { display: grid; grid-template-columns: 130px 1fr 90px; align-items: center; gap: 14px; margin-bottom: 14px; }
+            .meter-label { font-size: 12.5px; color: var(--ink-soft); }
+            .meter-track { height: 5px; background: var(--line); border-radius: 3px; position: relative; }
+            .meter-fill { position: absolute; top: -4px; width: 12px; height: 12px; border-radius: 50%; background: var(--rust); border: 2px solid var(--paper); box-shadow: 0 0 0 1px var(--rust); }
+            .meter-note { font-size: 11px; color: var(--ink-soft); text-align: right; }
+
+            .codegrid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+            .code-card { background: var(--paper); border: 1px solid var(--line); padding: 20px; }
+            .code-card .tag { font-family: "JetBrains Mono", monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--rust); margin-bottom: 10px; display: block; }
+
+            .meal-block { margin-top: 30px; }
+            .meal-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px; }
+            .meal-head h4 { font-family: "Fraunces", serif; font-size: 17px; font-weight: 500; }
+            .meal-head .meal-time { font-family: "JetBrains Mono", monospace; font-size: 10.5px; color: var(--ink-soft); }
+            .meal-head::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+            .meal-items { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 14px; }
+            .mdish { background: var(--paper); border: 1px solid var(--line); overflow: hidden; }
+            .mdish .mtext { padding: 12px; }
+            .mdish .mname { font-family: "Fraunces", serif; font-size: 14px; margin-bottom: 5px; }
+            .mdish .mnote { font-size: 11.5px; color: var(--ink-soft); margin-bottom: 8px; }
+            .mtag { display: inline-block; font-family: "JetBrains Mono", monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.05em; padding: 3px 7px; border-radius: 100px; }
+            .mtag.savory { background: #f5eae3; color: var(--rust); }
+            .mtag.sweet { background: #f3edd8; color: var(--gold); }
+            .mtag.side { background: #eef0ea; color: var(--moss); }
+
+            .identity-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 20px; }
+            .identity-col .tag-title { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--moss); margin-bottom: 10px; }
+            .identity-col ul { list-style: none; }
+            .identity-col li { font-size: 13.5px; padding: 7px 0; border-bottom: 1px dotted var(--line); color: var(--ink-soft); }
+            .identity-col li b { color: var(--ink); font-weight: 500; }
+
+            .hubpanels { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; margin-top: 28px; border-top: 1px solid var(--line); padding-top: 20px; }
+            .hubpanel { padding: 0 18px; border-right: 1px dotted var(--line); }
+            .hubpanel:last-child { border-right: none; }
+            .hubpanel .htitle { font-family: "JetBrains Mono", monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--rust); margin-bottom: 3px; }
+            .hubpanel .hsub { font-size: 10px; color: var(--ink-soft); margin-bottom: 12px; }
+            .hubpanel .bignum { font-family: "Fraunces", serif; font-size: 34px; font-weight: 600; color: var(--ink); line-height: 1; margin-top: 4px; }
+            .hubpanel .bignum small { font-family: "Inter"; font-size: 12px; font-weight: 400; color: var(--ink-soft); }
+
+            .schema-grid { display: grid; grid-template-columns: 150px 1fr; gap: 0; margin-top: 18px; border: 1px solid var(--line); }
+            .schema-row { display: contents; }
+            .schema-row .k { padding: 14px 16px; background: var(--paper); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--rust); border-top: 1px solid var(--line); border-right: 1px solid var(--line); display: flex; flex-direction: column; justify-content: center; gap: 3px; }
+            .schema-row .v { padding: 14px 16px; font-size: 13.5px; color: var(--ink-soft); border-top: 1px solid var(--line); background: var(--cream); }
+            .schema-row:first-child .k, .schema-row:first-child .v { border-top: none; }
+
+            .pillbar { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 14px; }
+            .pill { font-family: "JetBrains Mono", monospace; font-size: 10.5px; padding: 5px 10px; background: var(--paper); border: 1px solid var(--line); color: var(--ink-soft); }
+
+            .taxo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+            .taxo-card { background: var(--paper); border: 1px solid var(--line); padding: 20px; }
+            .taxo-card .tnum { font-family: "JetBrains Mono", monospace; font-size: 10px; color: var(--gold); margin-bottom: 4px; }
+            .taxo-card h3 { font-family: "Fraunces", serif; font-size: 16px; margin-bottom: 12px; }
+            .taxo-card .sub { margin-bottom: 9px; font-size: 12px; }
+            .taxo-card .sub b { color: var(--ink); font-weight: 600; display: block; margin-bottom: 1px; }
+            .taxo-card .sub span { color: var(--ink-soft); }
+
+            .event-row { display: flex; justify-content: space-between; align-items: baseline; padding: 10px 0; border-bottom: 1px dotted var(--line); font-size: 12.5px; gap: 12px; }
+            .event-row .etag { font-family: "JetBrains Mono", monospace; font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--moss); flex: 0 0 90px; }
+            .event-row .ename a { color: var(--ink); font-weight: 500; }
+            .event-row .ename a:hover { color: var(--rust); }
+            .event-row .ewhen { font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--ink-soft); white-space: nowrap; }
+
+            .yn-table { width: 100%; border-collapse: collapse; margin-top: 20px; border: 1px solid var(--line); font-size: 12.5px; }
+            .yn-table thead th { padding: 9px 16px; font-family: "JetBrains Mono", monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.08em; text-align: left; border-bottom: 1px solid var(--line); }
+            .yn-table thead th.yes { color: var(--moss); background: #eef0ea; }
+            .yn-table thead th.no { color: var(--rust); background: #f5eae3; }
+            .yn-table td { padding: 9px 16px; color: var(--ink-soft); border-bottom: 1px dotted var(--line); width: 50%; vertical-align: top; }
+            .yn-table td.yes-cell::before { content: "✓  "; color: var(--moss); }
+            .yn-table td.no-cell::before { content: "✕  "; color: var(--rust); }
+            .yn-table tr.cat-row td { padding: 10px 16px 4px; border-bottom: none; color: var(--gold); font-family: "JetBrains Mono", monospace; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.08em; background: var(--paper); }
+
+            .mapbox { background: var(--paper); border: 1px solid var(--line); padding: 20px; margin-top: 20px; }
+            .maplegend { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 16px; font-size: 12px; color: var(--ink); background: var(--paper); border: 1px solid var(--line); border-radius: 3px; overflow: hidden; }
+            .maplegend-item { display: flex; align-items: center; gap: 10px; padding: 9px 14px; border-bottom: 1px solid var(--line); line-height: 1.35; }
+            .maplegend-item:nth-last-child(-n + 2) { border-bottom: none; }
+            .maplegend-sym { flex-shrink: 0; width: 28px; display: flex; align-items: center; justify-content: center; }
+            .maplegend-label { font-weight: 600; color: var(--ink); }
+            .maplegend-detail { color: var(--ink-soft); font-size: 11px; }
+            .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; border: 2px solid rgba(255,255,255,0.8); box-shadow: 0 0 0 1px rgba(0,0,0,0.15); }
+
+            .reach-table { margin-top: 20px; }
+            .reach-row { display: grid; grid-template-columns: 130px 1fr 90px; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--line); font-size: 12.5px; }
+            .reach-row .mode { font-weight: 500; }
+            .reach-row .bar { height: 5px; background: var(--line); position: relative; }
+            .reach-row .bar i { position: absolute; left: 0; top: 0; height: 100%; background: var(--rust-soft); display: block; }
+            .reach-row .val { font-family: "JetBrains Mono", monospace; text-align: right; color: var(--ink-soft); }
+
+            .route-tabs { display: flex; gap: 8px; margin-top: 18px; flex-wrap: wrap; }
+            .route-tab { font-size: 11.5px; padding: 7px 13px; border: 1px solid var(--line); background: var(--paper); color: var(--ink-soft); }
+            .route-tab.r1 { border-color: var(--rust-soft); color: var(--rust); }
+            .route-tab.r2 { border-color: var(--moss); color: var(--moss); }
+            .route-tab.r3 { border-color: var(--gold); color: var(--gold); }
+
+            .landmark-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 18px; border: 1px solid var(--line); }
+            .lm-item { padding: 11px 16px; font-size: 12.5px; border-bottom: 1px dotted var(--line); border-right: 1px dotted var(--line); display: flex; gap: 10px; align-items: baseline; }
+            .lm-item .lm-num { font-family: "JetBrains Mono", monospace; font-size: 10px; color: var(--gold); flex-shrink: 0; }
+            .lm-item a { color: var(--ink); font-weight: 500; }
+            .lm-item a:hover { color: var(--rust); }
+            .lm-item .lm-note { color: var(--ink-soft); font-size: 11.5px; display: block; margin-top: 2px; }
+
+            .mini-stat-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+            .mini-stat { background: var(--paper); padding: 16px 14px; }
+            .mini-stat .num { font-family: "Fraunces", serif; font-size: 22px; font-weight: 600; line-height: 1; }
+            .mini-stat .num small { font-family: "Inter"; font-size: 11px; font-weight: 400; color: var(--ink-soft); }
+            .mini-stat .label { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-soft); margin-top: 6px; }
+
+            .rain-chart { display: flex; align-items: flex-end; gap: 6px; height: 110px; margin-top: 34px; padding: 0 4px; }
+            .rain-bar { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; position: relative; }
+            .rain-bar .bar { width: 100%; background: var(--rust-soft); opacity: 0.65; position: relative; }
+            .rain-bar .bar .dcount { position: absolute; top: -15px; left: 0; right: 0; text-align: center; font-family: "JetBrains Mono", monospace; font-size: 9px; color: var(--rust); font-weight: 500; }
+            .rain-bar .m { font-family: "JetBrains Mono", monospace; font-size: 9px; color: var(--ink); font-weight: 600; margin-top: 6px; }
+            .rain-bar .temps { font-family: "JetBrains Mono", monospace; font-size: 8px; color: var(--ink-soft); margin-top: 2px; text-align: center; line-height: 1.5; }
+            .rain-bar .temps .tmax { color: var(--rust); }
+            .rain-bar .temps .tmin { color: var(--moss); }
+            .rain-bar .suntime { font-family: "JetBrains Mono", monospace; font-size: 9px; color: var(--ink-soft); margin-top: 3px; text-align: center; line-height: 1.6; }
+            .rain-bar .suntime .sr { color: var(--gold); }
+            .rain-bar .suntime .ss { color: var(--moss); }
+
+            .origin-bar-row { display: grid; grid-template-columns: 110px 1fr 40px; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 12px; }
+            .origin-bar-row .otrack { height: 6px; background: var(--line); }
+            .origin-bar-row .ofill { height: 100%; background: var(--moss); }
+
+            .ci-stack { display: flex; flex-direction: column; gap: 10px; }
+            .ci-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+            .ci-panel { background: var(--paper); border: 1px solid var(--line); border-radius: 8px; padding: 20px 22px; }
+            .ci-cat { font-family: "JetBrains Mono", monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-soft); margin-bottom: 8px; }
+            .ci-big { font-family: "Fraunces", serif; font-size: 36px; font-weight: 700; line-height: 1; color: var(--ink); display: inline-block; }
+            .ci-big small { font-family: "Inter", sans-serif; font-size: 14px; font-weight: 400; color: var(--ink-soft); margin-left: 1px; }
+            .ci-sub { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); margin-top: 5px; }
+            .ci-badge { font-family: "JetBrains Mono", monospace; font-size: 9px; font-weight: 700; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; letter-spacing: 0.04em; white-space: nowrap; }
+            .ci-badge.green { background: #3d6b3d; color: #fff; }
+            .ci-badge.red { background: #b84040; color: #fff; }
+            .ci-badge.amber { background: #b07030; color: #fff; }
+            .ci-note { font-size: 11px; color: var(--ink-soft); margin-top: 5px; font-style: italic; line-height: 1.4; }
+
+            .salary-table, .cost-table { width: 100%; border-collapse: collapse; margin-top: 6px; font-size: 13px; }
+            .salary-table td, .cost-table td { padding: 9px 4px; border-bottom: 1px solid var(--line); }
+            .salary-table td:last-child, .cost-table td:last-child { font-family: "JetBrains Mono", monospace; font-size: 12px; text-align: right; color: var(--ink-soft); }
+            .salary-table td:first-child, .cost-table td:first-child { color: var(--ink); font-weight: 500; }
+            .cost-table td.note { color: var(--ink-soft); font-weight: 400; font-size: 11.5px; }
+
+            .rwgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 20px; }
+            .rw-item { display: flex; gap: 12px; margin-bottom: 14px; }
+            .rw-item .idx { font-family: "JetBrains Mono", monospace; font-size: 11px; color: var(--gold); padding-top: 2px; }
+            .rw-item .t { font-size: 13.5px; font-weight: 500; }
+            .rw-item .a { font-size: 12px; color: var(--ink-soft); }
+
+            footer { padding: 40px 0; text-align: center; font-size: 11.5px; color: var(--ink-soft); font-family: "JetBrains Mono", monospace; }
+
+            @media (max-width: 700px) {
+                .wrap { padding: 0 20px; }
+                h1.city { font-size: 52px; }
+                .navlinks { display: none; }
+                .mini-stat-row { grid-template-columns: 1fr 1fr !important; }
+                .statgrid { grid-template-columns: repeat(2, 1fr); }
+                .codegrid { grid-template-columns: 1fr; }
+                .taxo-grid { grid-template-columns: 1fr; }
+                .landmark-list { grid-template-columns: 1fr; }
+                .rwgrid { grid-template-columns: 1fr; }
+                .hubpanels { grid-template-columns: 1fr; }
+                .hubpanel { border-right: none; border-bottom: 1px dotted var(--line); padding: 18px 0; }
+                .hubpanel:last-child { border-bottom: none; }
+                .identity-grid { grid-template-columns: 1fr; }
+                .schema-grid { grid-template-columns: 1fr; }
+                .schema-row .k { border-right: none; }
+                .schema-row .v { border-top: none; padding-top: 0; background: var(--cream); }
+                .schema-row:first-child .v { border-top: none; }
+                .mapbox { overflow-x: auto; padding: 12px; }
+                .mapbox svg { min-width: 600px; }
+                .meter-row { grid-template-columns: 100px 1fr 70px; gap: 8px; }
+                .reach-row { grid-template-columns: 110px 1fr 70px; }
+                .rain-chart { overflow-x: auto; min-width: 500px; }
+                .rain-chart-wrap { overflow-x: auto; }
+                .tagnav a { font-size: 11.5px; padding: 6px 11px; }
+            }
+            @media (max-width: 480px) {
+                h1.city { font-size: 40px; }
+                .mini-stat-row { grid-template-columns: 1fr !important; }
+                .statgrid { grid-template-columns: 1fr; }
+                .meter-row { grid-template-columns: 1fr; gap: 4px; }
+                .meter-note { text-align: left; }
+                .reach-row { grid-template-columns: 1fr; }
+                .reach-row .val { text-align: left; margin-top: 2px; }
+                .yn-table td { padding: 8px 10px; font-size: 11.5px; }
+                .lm-item { flex-direction: column; gap: 2px; }
+            }
+            .leaflet-popup-content-wrapper { background: var(--paper); border: 1px solid var(--line); border-radius: 2px; box-shadow: 0 2px 12px rgba(0,0,0,0.1); padding: 0; }
+            .leaflet-popup-content { margin: 0; font-family: "Inter", sans-serif; font-size: 13px; color: var(--ink); min-width: 180px; max-width: 240px; }
+            .leaflet-popup-tip { background: var(--paper); }
+            .leaflet-popup-close-button { color: var(--ink-soft) !important; font-size: 16px !important; top: 6px !important; right: 8px !important; }
+            .map-popup-num { font-family: "JetBrains Mono", monospace; font-size: 9px; font-weight: 700; color: white; padding: 2px 7px; border-radius: 2px; margin-right: 6px; }
+            .map-popup-inner { padding: 14px 16px; }
+            .map-popup-title { font-weight: 600; font-size: 13.5px; margin-bottom: 4px; display: flex; align-items: center; }
+            .map-popup-note { font-size: 11.5px; color: var(--ink-soft); line-height: 1.5; margin-bottom: 8px; }
+            .leaflet-tile-pane { filter: grayscale(40%) contrast(90%) brightness(105%); }
+            .leaflet-container { outline: none; }
+        </style>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     </head>
     <body>
         <nav class="nav">
             <div class="container">
                 <div class="nav-inner">
-                    <div
-                        style="display: flex; align-items: center; gap: 0.5rem"
-                    >
-                        <a
-                            href="../../../home/index.html"
-                            style="
-                                text-decoration: none;
-                                color: var(--color-text);
-                                font-size: 1.2rem;
-                                opacity: 0.6;
-                                transition: opacity 0.3s;
-                            "
-                            onmouseover="this.style.opacity = '1'"
-                            onmouseout="this.style.opacity = '0.6'"
-                            >‹</a
-                        >
-                        <a href="../../index.html" class="nav-logo"
-                            >Human Traces</a
-                        >
+                    <div style="display:flex;align-items:center;gap:0.5rem">
+                        <a href="../../../home/index.html" style="text-decoration:none;color:var(--color-text);font-size:1.2rem;opacity:0.6;transition:opacity 0.3s" onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">‹</a>
+                        <a href="../../index.html" class="nav-logo">Human Traces</a>
                     </div>
                     <div class="nav-actions">
                         <ul class="nav-links">
                             <li><a href="../../index.html">Home</a></li>
-                            <li>
-                                <a
-                                    href="../../breaking-the-silos/breaking-the-silos.html"
-                                    >Breaking the Silos</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="../../proptech-vs-contech/proptech-vs-contech.html"
-                                    >ConTech vs PropTech</a
-                                >
-                            </li>
-                            <li>
-                                <a
-                                    href="../../investment-categories/investment-categories.html"
-                                    >Investment</a
-                                >
-                            </li>
-                            <li>
-                                <a href="../cities.html" class="active"
-                                    >Cities</a
-                                >
-                            </li>
+                            <li><a href="../../breaking-the-silos/breaking-the-silos.html">Breaking the Silos</a></li>
+                            <li><a href="../../proptech-vs-contech/proptech-vs-contech.html">ConTech vs PropTech</a></li>
+                            <li><a href="../../investment-categories/investment-categories.html">Investment</a></li>
+                            <li><a href="../cities.html" class="active">Cities</a></li>
                         </ul>
-                        <button
-                            class="theme-toggle"
-                            id="themeToggle"
-                            aria-label="Toggle theme"
-                        >
-                            <svg
-                                class="theme-toggle-icon sun"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="14"
-                                height="14"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <circle cx="12" cy="12" r="5" />
-                                <line x1="12" y1="1" x2="12" y2="3" />
-                                <line x1="12" y1="21" x2="12" y2="23" />
-                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-                                <line
-                                    x1="18.36"
-                                    y1="18.36"
-                                    x2="19.78"
-                                    y2="19.78"
-                                />
-                                <line x1="1" y1="12" x2="3" y2="12" />
-                                <line x1="21" y1="12" x2="23" y2="12" />
-                                <line
-                                    x1="4.22"
-                                    y1="19.78"
-                                    x2="5.64"
-                                    y2="18.36"
-                                />
-                                <line
-                                    x1="18.36"
-                                    y1="5.64"
-                                    x2="19.78"
-                                    y2="4.22"
-                                />
+                        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                            <svg class="theme-toggle-icon sun" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="5"/>
+                                <line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/>
+                                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+                                <line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/>
+                                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
                             </svg>
-                            <svg
-                                class="theme-toggle-icon moon"
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="14"
-                                height="14"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <path
-                                    d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
-                                />
+                            <svg class="theme-toggle-icon moon" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
                             </svg>
                         </button>
-                        <button
-                            class="nav-toggle"
-                            id="navToggle"
-                            aria-label="Toggle navigation"
-                        >
-                            <span></span>
-                            <span></span>
-                            <span></span>
+                        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+                            <span></span><span></span><span></span>
                         </button>
                     </div>
                 </div>
             </div>
         </nav>
-        <header class="page-header">
-            <div class="container">
-                <div style="margin-bottom: 1rem">
-                    <a
-                        href="../cities.html"
-                        style="
-                            text-decoration: none;
-                            color: var(--color-text);
-                            font-size: 0.9rem;
-                            opacity: 0.7;
-                            transition: opacity 0.3s;
-                            display: inline-flex;
-                            align-items: center;
-                            gap: 0.3rem;
-                        "
-                        onmouseover="this.style.opacity = '1'"
-                        onmouseout="this.style.opacity = '0.7'"
-                        >‹ Back to Cities</a
-                    >
-                </div>
-                <h1 class="page-title">Zurich</h1>
-                <p class="page-description">
-                    Europe's most expensive residential market per square meter,
-                    where capital preservation outweighs yield, and the lake
-                    is not a backdrop but daily infrastructure.
+
+        <header class="hero">
+            <div class="wrap">
+                <div class="eyebrow">Cities · Europe</div>
+                <h1 class="city">Zurich</h1>
+                <p class="lede">
+                    Europe's most consistently liveable city — a small financial capital of extraordinary wealth and precision, set between a lake and the Alps, where efficiency is a civic religion and quality of life is measured in granular detail.
                 </p>
+                <nav class="tagnav">
+                    <a href="#overview">01 Overview</a>
+                    <a href="#weather">02 Climate</a>
+                    <a href="#culture">03 Cultural Codes</a>
+                    <a href="#districts">04 Districts</a>
+                    <a href="#things">05 Things To Do</a>
+                    <a href="#food">06 Food</a>
+                    <a href="#connect">07 Connectivity</a>
+                    <a href="#visit">08 Visit</a>
+                    <a href="#invest">09 Invest</a>
+                    <a href="#resident">10 Living Here</a>
+                    <a href="#read">11 Read</a>
+                </nav>
             </div>
         </header>
-        <section class="content-section">
-            <div class="container">
 
-                <h2>Urban Matrix</h2>
-
-                <h3>Spatial Morphology</h3>
-                <p>
-                    A compact, lakeside city structured around Lake Zurich and the
-                    Limmat river corridor. The twelve Kreise (municipal districts)
-                    radiate from the historic core — Altstadt (Kreis 1) and the
-                    twin hills of Lindenhügel and Zürichberg — toward post-industrial
-                    transformation zones to the west and north. Zurich West (Kreis 5)
-                    and Oerlikon (Kreis 11) anchor the two most active urban
-                    regeneration axes, converting former factory land into mixed-use
-                    districts with high-density residential, office, and cultural
-                    programming. The S-Bahn Taktfahrplan (clockwork rail network)
-                    connects the city to the metropolitan region without requiring
-                    private car ownership.
-                </p>
-
-                <h3>City Layout &amp; Building Typologies</h3>
-                <p>
-                    Extreme typological stratification. The Altstadt preserves
-                    medieval guild houses and patrician buildings under strict cantonal
-                    heritage protection; Kreise 6–8 offer turn-of-the-century
-                    Gründerzeit apartment blocks prized for ceiling height and
-                    craftsmanship; the lake-facing Kreise 2 and 8 (Seefeld, Enge)
-                    command the highest residential values citywide. New construction
-                    concentrates in transformation zones: timber-hybrid towers,
-                    modular student residences, and net-zero commercial buildings
-                    dominate current pipeline volumes.
-                </p>
-
-                <h3>Living Culture &amp; Social Anchors</h3>
-                <p>
-                    A city of disciplined public life: punctual transit, quiet
-                    Sundays, and a civic culture that prizes quality over display.
-                    Zurich West has shifted from industrial wasteland to one of
-                    Europe's most sought-after creative and nightlife districts
-                    (Langstrasse, Viadukt market arches, Schiffbau cultural center)
-                    without losing its working-class grain. The Zurich Festival,
-                    Kunsthaus expansion, and Opera House anchor cultural demand
-                    from international residents.
+        <!-- 01 OVERVIEW -->
+        <section id="overview">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="section-num">01</span>
+                    <h2>City Overview</h2>
+                </div>
+                <div class="statgrid">
+                    <div class="stat">
+                        <div class="label">Population (city)</div>
+                        <div class="num">450<small>k</small></div>
+                    </div>
+                    <div class="stat">
+                        <div class="label">Metro area</div>
+                        <div class="num">1.4<small>M</small></div>
+                    </div>
+                    <div class="stat">
+                        <div class="label">City area</div>
+                        <div class="num">87<small>km²</small></div>
+                    </div>
+                    <div class="stat">
+                        <div class="label">Altitude a.s.l.</div>
+                        <div class="num">408<small>m</small></div>
+                    </div>
+                    <div class="stat">
+                        <div class="label">Founded</div>
+                        <div class="num">15<small>BC</small></div>
+                    </div>
+                </div>
+                <p class="body-text" style="margin-top:24px">
+                    At the northern tip of Lake Zurich where the Limmat river begins its flow north, Zurich is Switzerland's largest city and the country's economic engine — though not its capital. It houses the Swiss Exchange (SIX), the European headquarters of major global banks, the ETH Zurich (consistently ranked world's top technical university outside the US), and a cultural life disproportionate to its size.
                 </p>
 
-                <h3>Public Space, Urban Voids &amp; Nature</h3>
-                <p>
-                    Lake Zurich and the Limmat, Sihl, and Glatt rivers function
-                    as genuine urban infrastructure: swimming in the lake from
-                    municipal baths (Badi) is a summer ritual across all social
-                    strata. The Käferberg, Zürichberg, and Uetliberg forest hills
-                    are accessible on foot from inner-city neighborhoods. Green
-                    corridors and tram rights-of-way are protected in cantonal
-                    zoning law, limiting infill opportunities but reinforcing
-                    liveability premiums.
-                </p>
+                <div style="margin-top:32px">
+                    <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.09em;color:var(--ink-soft);margin-bottom:16px;display:flex;align-items:center;gap:12px">
+                        City Indices at a Glance<span style="flex:1;height:1px;background:var(--line);display:block"></span>
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)">
+                        <div style="background:var(--paper);padding:20px">
+                            <div style="display:flex;gap:28px;margin-bottom:18px">
+                                <div>
+                                    <div style="font-family:'Fraunces',serif;font-size:30px;font-weight:600;line-height:1">450<span style="font-family:Inter;font-size:14px;font-weight:400;color:var(--ink-soft)">k</span></div>
+                                    <div style="font-size:9.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);margin-top:5px">Population, Zurich</div>
+                                </div>
+                                <div>
+                                    <div style="font-family:'Fraunces',serif;font-size:30px;font-weight:600;line-height:1">32<span style="font-family:Inter;font-size:14px;font-weight:400;color:var(--ink-soft)">%</span></div>
+                                    <div style="font-size:9.5px;text-transform:uppercase;letter-spacing:0.06em;color:var(--ink-soft);margin-top:5px">Non-Swiss residents</div>
+                                </div>
+                            </div>
+                            <div class="origin-bar-row">
+                                <div>Germany</div>
+                                <div class="otrack"><div class="ofill" style="width:60%"></div></div>
+                                <div style="text-align:right;font-family:'JetBrains Mono',monospace;font-size:11px">~7.2%</div>
+                            </div>
+                            <div class="origin-bar-row">
+                                <div>Italy</div>
+                                <div class="otrack"><div class="ofill" style="width:38%"></div></div>
+                                <div style="text-align:right;font-family:'JetBrains Mono',monospace;font-size:11px">~4.5%</div>
+                            </div>
+                            <div class="origin-bar-row">
+                                <div>Portugal</div>
+                                <div class="otrack"><div class="ofill" style="width:28%"></div></div>
+                                <div style="text-align:right;font-family:'JetBrains Mono',monospace;font-size:11px">~3.3%</div>
+                            </div>
+                        </div>
+                        <div style="background:var(--paper);padding:20px">
+                            <div style="font-size:9.5px;text-transform:uppercase;letter-spacing:0.07em;color:var(--ink-soft);margin-bottom:16px">Economy &amp; Infrastructure</div>
+                            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+                                <div>
+                                    <div style="font-family:'Fraunces',serif;font-size:26px;font-weight:600;line-height:1">CHF 110<span style="font-family:Inter;font-size:12px;font-weight:400;color:var(--ink-soft)">k</span></div>
+                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-top:5px">Median household income</div>
+                                </div>
+                                <div>
+                                    <div style="font-family:'Fraunces',serif;font-size:26px;font-weight:600;line-height:1">#1</div>
+                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-top:5px">Mercer liveability rank</div>
+                                </div>
+                                <div>
+                                    <div style="font-family:'Fraunces',serif;font-size:26px;font-weight:600;line-height:1">40<span style="font-family:Inter;font-size:12px;font-weight:400;color:var(--ink-soft)">min</span></div>
+                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-top:5px">To ZRH Airport by S-Bahn</div>
+                                </div>
+                                <div>
+                                    <div style="font-family:'Fraunces',serif;font-size:26px;font-weight:600;line-height:1">ETH</div>
+                                    <div style="font-size:9px;text-transform:uppercase;letter-spacing:0.05em;color:var(--ink-soft);margin-top:5px">Top global technical university</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                <h3>Demographics &amp; Social Composition</h3>
-                <p>
-                    A dual city: a highly educated, internationally mobile workforce
-                    concentrated in finance (UBS, Credit Suisse legacy operations,
-                    Julius Bär), pharma (Novartis, Roche proximity), tech (Google,
-                    Microsoft European HQs), and consulting coexists with a shrinking
-                    cohort of long-term Swiss tenants protected by rent-reference-rate
-                    legislation. Expat demand — particularly from US, UK, and Asian
-                    multinationals — sustains the upper rental and purchase segments.
-                    The under-35 demographic faces severe affordability pressure:
-                    homeownership rates in Canton Zurich are among the lowest in
-                    Western Europe (~35%).
-                </p>
-
-                <h2>Investor Perspective</h2>
-
-                <h3>Market Snapshot (2026)</h3>
-                <table class="market-table">
-                    <tr>
-                        <td>Average purchase price</td>
-                        <td>CHF 14,700–15,000/sqm citywide; CHF ~19,500/sqm for apartments (median transaction)</td>
-                    </tr>
-                    <tr>
-                        <td>Range by district</td>
-                        <td>Kreis 5/11 (transformation) ~CHF 12,000–14,000/sqm → Seefeld/Enge (Kreis 2/8) CHF 22,000–28,000/sqm</td>
-                    </tr>
-                    <tr>
-                        <td>Average rent</td>
-                        <td>~CHF 400/sqm/year (~CHF 33/sqm/month) for mid-market apartments</td>
-                    </tr>
-                    <tr>
-                        <td>Gross yield</td>
-                        <td>2.0–3.8% (lower in prime lake districts, higher in transformation zones)</td>
-                    </tr>
-                    <tr>
-                        <td>Vacancy</td>
-                        <td>~0.1% (~235 empty apartments citywide — structural near-zero)</td>
-                    </tr>
-                    <tr>
-                        <td>5-year price forecast</td>
-                        <td>+15–20% (UBS Swiss Real Estate Bubble Index: elevated risk zone)</td>
-                    </tr>
-                    <tr>
-                        <td>Key constraint</td>
-                        <td>Lex Koller (foreign ownership restrictions) + strict cantonal zoning + rent reference rate protection</td>
-                    </tr>
-                </table>
-
-                <h3>Market Characteristics</h3>
-                <p>
-                    <strong>Urban Model:</strong> The world's most expensive
-                    residential market per square meter among mid-sized European
-                    cities. Zurich operates on a logic of capital preservation over
-                    yield: investors accept 2–3% gross returns in exchange for CHF
-                    currency strength, political stability (Swiss Confederation),
-                    zero vacancy risk, and long-term appreciation correlated with
-                    global wealth concentration.
-                </p>
-                <p>
-                    <strong>Investor Profile:</strong> Predominantly Swiss
-                    institutional capital (pension funds, insurance companies, real
-                    estate foundations) holding multi-decade positions in residential
-                    portfolios. Family offices and UHNW individuals dominate the
-                    prime lake-facing segment. Foreign investors face significant
-                    structural friction from Lex Koller, which prohibits non-resident
-                    non-EU nationals from purchasing most residential property without
-                    cantonal exemption.
-                </p>
-                <p>
-                    <strong>Construction Culture:</strong> Swiss Norm (SIA) standards
-                    are among the most rigorous in Europe for both technical
-                    performance and procurement process. Minergie certification (the
-                    Swiss equivalent of BREEAM/LEED) is the de facto minimum for
-                    new residential construction. Timber hybrid construction and
-                    Passivhaus-adjacent energy standards dominate the new-build
-                    pipeline, particularly in Kreis 5 and Oerlikon. BIM adoption
-                    is near-universal in projects above CHF 5M.
-                </p>
-                <p>
-                    <strong>Regulation:</strong> Cantonal zoning is highly
-                    restrictive: the 2014 revision to the Federal Spatial Planning
-                    Act (RPG) imposed strict limits on rezoning agricultural land,
-                    compressing developable supply. Municipal Wohnanteil policies
-                    (residential share requirements in mixed-use zones) and social
-                    housing quotas (typically 33% affordable units in major
-                    developments) add cost and complexity. Lex Koller creates a
-                    two-tier market between Swiss/EU and non-EU buyers.
-                </p>
-                <p>
-                    <strong>Tech Adoption:</strong> Zurich is Switzerland's PropTech
-                    and ConstructionTech hub (ETH Zurich, EMPA, StartX ecosystem).
-                    Digital twin platforms, robotic prefabrication (Erne, Blumer
-                    Lehmann), and AI-assisted permit processing are in active pilot
-                    at cantonal level. Real estate data platforms (Wüest Partner,
-                    IAZI) set the standard for European market analytics.
-                </p>
-
-                <h3>What Makes Zurich Different</h3>
-                <p>
-                    In Zurich, scarcity is structural and permanent. The combination
-                    of geographic constraints (lake + hills), legal supply caps
-                    (RPG), and CHF safe-haven demand means the market functions
-                    differently from any other European city: yield compression is
-                    not a temporary phase but a permanent feature.
-                </p>
-                <ul>
-                    <li>
-                        <strong>Lex Koller Friction:</strong> Non-EU investors
-                        face categorical restrictions on residential acquisition.
-                        Commercial property (offices, logistics, retail) is exempt,
-                        creating a structural tilt toward commercial asset classes
-                        for international capital.
-                    </li>
-                    <li>
-                        <strong>CHF as Asset Class:</strong> For EUR or USD-based
-                        investors, Swiss franc appreciation historically adds 1–2%
-                        annual return on top of local yields, partially compensating
-                        for compressed local cap rates.
-                    </li>
-                    <li>
-                        <strong>Near-Zero Vacancy:</strong> With ~235 vacant
-                        apartments in a city of 450,000, income risk is effectively
-                        eliminated. Rental cashflow is as close to a bond as
-                        residential real estate gets.
-                    </li>
-                    <li>
-                        <strong>Multi-Decade Patience Required:</strong> Entry
-                        prices are high, yields are low, and regulatory complexity
-                        is significant. Zurich rewards patient, sophisticated
-                        capital — it is not a market for opportunistic or
-                        short-horizon strategies.
-                    </li>
-                </ul>
-
-                <h2>Resident Perspective</h2>
-
-                <h3>Market Characteristics</h3>
-                <p>
-                    <strong>Urban Model:</strong> A city engineered for high
-                    quality of life: the S-Bahn runs every 15 minutes to any
-                    destination in the metropolitan area, cycling infrastructure
-                    covers the flat inner Kreise, and public space — from Badi
-                    swimming facilities to Uetliberg trails — is free and universally
-                    accessible regardless of income.
-                </p>
-                <p>
-                    <strong>Market Experience:</strong> The rental market is the
-                    most competitive in Europe by listing velocity: properties
-                    advertise for an average of 16–18 days before signing. Tenants
-                    typically submit 10–15 applications per property and are screened
-                    via Betreibungsregisterauszug (debt register extract). The
-                    reference interest rate (Referenzzinssatz) mechanism links
-                    existing rents to Swiss National Bank policy rates, offering
-                    significant downside rent protection for sitting tenants —
-                    but creating a sharp cliff between protected incumbent rents
-                    and market rents for new leases.
-                </p>
-                <p>
-                    <strong>Construction Culture:</strong> New apartments are
-                    characterized by exceptional acoustic insulation, triple-glazed
-                    windows, mechanical ventilation with heat recovery, and
-                    underfloor heating — SIA standards translate directly into
-                    living comfort. Interior layouts tend toward compact efficiency
-                    rather than generous square meterage, reflecting land cost
-                    rationalization.
-                </p>
-                <p>
-                    <strong>Regulation:</strong> Tenant protections are strong:
-                    the Referenzzinssatz mechanism, the right to challenge rent
-                    increases via cantonal mediation (Schlichtungsbehörde), and
-                    strict notice period rules give sitting tenants significant
-                    legal security. However, these protections create a dual market
-                    where incumbent tenants rarely move, amplifying scarcity for
-                    new entrants.
-                </p>
-                <p>
-                    <strong>Tech Adoption:</strong> Digital-first city services:
-                    resident registration (Anmeldung), tax filing, and permit
-                    applications are fully online. Mobility-as-a-Service platforms
-                    (ZVV app, PubliBike, Mobility carsharing) integrate seamlessly.
-                    Smart home adoption among new-build tenants is high, driven
-                    by building-level energy monitoring requirements.
-                </p>
-
-                <h3>What Makes Zurich Different</h3>
-                <p>
-                    Zurich offers the highest measurable quality of life of any
-                    city in this analysis — and the highest cost of entry. The
-                    lake, the mountains visible on clear days, and the social
-                    contract of Swiss civic life are not marketing: they are
-                    structural features of daily existence.
-                </p>
-                <ul>
-                    <li>
-                        <strong>16–18 Day Listing Velocity:</strong> The rental
-                        market moves faster than any other European city in this
-                        analysis. Prospective tenants must have documents ready
-                        (salary slips, debt register, references) before the
-                        viewing, not after.
-                    </li>
-                    <li>
-                        <strong>Lake as Daily Infrastructure:</strong> Swimming
-                        in Lake Zurich from June to September is not a leisure
-                        activity reserved for weekends — it is a daily commuter
-                        ritual. The Badi network (Seebad Enge, Oberer Letten,
-                        Flussbad Unterer Letten) is embedded in the urban fabric.
-                    </li>
-                    <li>
-                        <strong>Rent Protection vs. Market Cliff:</strong> Sitting
-                        tenants in older stock pay rents 20–40% below market rate,
-                        anchored by the Referenzzinssatz. New entrants pay full
-                        market rates. The social consequence is a city where
-                        long-term residents and newcomers inhabit economically
-                        parallel realities.
-                    </li>
-                    <li>
-                        <strong>Ownership Remains Out of Reach:</strong> For most
-                        residents, homeownership in Zurich is not a life-stage
-                        milestone but a category error. The 20% down payment
-                        requirement on median apartment prices (~CHF 1.4M) implies
-                        CHF 280,000 in liquid equity — a sum that takes a decade
-                        to accumulate even on Swiss salaries.
-                    </li>
-                </ul>
-
-            </div>
-        </section>
-        <footer class="footer">
-            <div class="container">
-                <div
-                    style="
-                        display: flex;
-                        align-items: center;
-                        justify-content: space-between;
-                        gap: 1.5rem;
-                        flex-wrap: wrap;
-                    "
-                >
-                    <a
-                        href="../../../home/index.html"
-                        style="
-                            text-decoration: none;
-                            color: var(--color-text);
-                            font-size: 0.95rem;
-                            opacity: 0.6;
-                            transition: opacity 0.3s;
-                        "
-                        onmouseover="this.style.opacity = '1'"
-                        onmouseout="this.style.opacity = '0.6'"
-                        >‹ Back to Portfolio</a
-                    >
-                    <p>&copy; 2026 Human Traces. All rights reserved.</p>
+                <div style="margin-top:28px">
+                    <div class="ci-stack">
+                        <div class="ci-row2">
+                            <div class="ci-panel">
+                                <div class="ci-cat">Global Liveability</div>
+                                <div style="display:flex;align-items:baseline;gap:12px">
+                                    <span class="ci-big">#1<small> world</small></span>
+                                    <span class="ci-badge green">Perennial top</span>
+                                </div>
+                                <div class="ci-sub">Mercer Quality of Living 2024</div>
+                                <div class="ci-note">Has topped or shared the top position in Mercer's global ranking for over 15 consecutive years. Consistently #1 or #2 alongside Vienna.</div>
+                            </div>
+                            <div class="ci-panel">
+                                <div class="ci-cat">Housing Cost</div>
+                                <div style="display:flex;align-items:baseline;gap:12px">
+                                    <span class="ci-big">CHF 14<small>k/m²</small></span>
+                                    <span class="ci-badge red">Very high</span>
+                                </div>
+                                <div class="ci-sub">Avg. purchase price, city centre</div>
+                                <div class="ci-note">Among the most expensive residential markets in Europe. Most residents rent — homeownership rates below 20%. Supply severely constrained.</div>
+                            </div>
+                        </div>
+                        <div class="ci-row2">
+                            <div class="ci-panel">
+                                <div class="ci-cat">Safety</div>
+                                <div style="display:flex;align-items:baseline;gap:12px">
+                                    <span class="ci-big">84<small>/100</small></span>
+                                    <span class="ci-badge green">Very safe</span>
+                                </div>
+                                <div class="ci-sub">Numbeo Safety Index 2024</div>
+                                <div class="ci-note">One of Europe's safest cities. Petty crime is low even in the Langstrasse nightlife district at peak hours.</div>
+                            </div>
+                            <div class="ci-panel">
+                                <div class="ci-cat">Air Quality</div>
+                                <div style="display:flex;align-items:baseline;gap:12px">
+                                    <span class="ci-big">AQI 18</span>
+                                    <span class="ci-badge green">Excellent</span>
+                                </div>
+                                <div class="ci-sub">Annual average PM2.5</div>
+                                <div class="ci-note">Lake breezes and alpine air circulation keep Zurich's air among the cleanest of any European financial city.</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </section>
+
+        <!-- 02 CLIMATE -->
+        <section id="weather">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="section-num">02</span>
+                    <h2>Climate</h2>
+                </div>
+                <div class="mini-stat-row">
+                    <div class="mini-stat">
+                        <div class="num">Cfb</div>
+                        <div class="label">Köppen — Maritime Temperate</div>
+                    </div>
+                    <div class="mini-stat">
+                        <div class="num">10.4<small>°C</small></div>
+                        <div class="label">Mean annual temp</div>
+                    </div>
+                    <div class="mini-stat">
+                        <div class="num">1,130<small>mm</small></div>
+                        <div class="label">Annual rainfall</div>
+                    </div>
+                    <div class="mini-stat">
+                        <div class="num">1,700<small>h</small></div>
+                        <div class="label">Annual sunshine</div>
+                    </div>
+                </div>
+                <p class="body-text" style="margin-top:20px">
+                    Zurich's climate sits between maritime and continental — wetter than most Swiss cities (the Alps force moisture from Atlantic fronts to fall here), with cold but not extreme winters and warm summers. Lake Zurich moderates temperatures. The Föhn wind — warm, dry air from the Alps — occasionally brings crystal-clear views of the mountains from the city centre. Winter fog ("Hochnebel") can lock the city in for weeks while the Alps above are sunny.
+                </p>
+                <div class="rain-chart-wrap">
+                    <div class="rain-chart">
+                        <div class="rain-bar"><div class="bar" style="height:42%"><div class="dcount">12d</div></div><div class="m">Jan</div><div class="temps"><span class="tmax">4°</span><br><span class="tmin">-1°</span></div><div class="suntime"><span class="sr">8:05</span><br><span class="ss">16:55</span></div></div>
+                        <div class="rain-bar"><div class="bar" style="height:38%"><div class="dcount">10d</div></div><div class="m">Feb</div><div class="temps"><span class="tmax">6°</span><br><span class="tmin">0°</span></div><div class="suntime"><span class="sr">7:15</span><br><span class="ss">17:50</span></div></div>
+                        <div class="rain-bar"><div class="bar" style="height:48%"><div class="dcount">12d</div></div><div class="m">Mar</div><div class="temps"><span class="tmax">11°</span><br><span class="tmin">3°</span></div><div class="suntime"><span class="sr">6:20</span><br><span class="ss">18:45</span></div></div>
+                        <div class="rain-bar"><div class="bar" style="height">45%"><div class="dcount">12d</div></div><div class="m">Apr</div><div class="temps"><span class="tmax">15°</span><br><span class="tmin">6°</span></div><div class="suntime"><span class="sr">6:22</span><br><span class="ss">20:38</span></div></div>
+                        <div class="rain-bar"><div class="bar" style="height:55%"><div class="dcount">14d</div></div><div class="m">May</div><div class="temps"><span class="tmax">20°</span><br><span class="tmin">10°</span></div><div class="suntime"><span class="sr">5:15</span><br><span class="ss">21:26</span></div></div>
+                        <div class="rain-bar"><div class="bar" style="height:65%"><div class="dcount">15d</div></div><div class="m">Jun</div><div class="temps"><span class="tmax">23°</span><br><span class="tmin">13°</span></div><div class="suntime"><span class="sr">4:50</span><br><span class="ss">22:05</span></div></div>
+                        <div class="rain-bar"><div class="bar" style="height:68%"><div class="dcount">15d</div></div><div class="m">Jul</div><div class="temps"><span class="tmax">26°</span><br><span class="tmin">15°</span></div><div class="suntime"><span class="sr">5:05</span><br><span class="ss">21:52</span></div></div>
+                        <div class="rain-bar"><div class="bar" style="height:63%"><div class="dcount">14d</div></div><div class="m">Aug</div><div class="temps"><span class="tmax">25°</span><br><span class="tmin">15°</span></div><div class="suntime"><span class="sr">5:55</span><br><span class="ss">21:02</span></div></div>
+                        <div class="rain-bar"><div class="bar" style="height:50%"><div class="dcount">12d</div></div><div class="m">Sep</div><div class="temps"><span class="tmax">21°</span><br><span class="tmin">11°</span></div><div class="suntime"><span class="sr">6:53</span><br><span class="ss">19:49</span></div></div>
+                        <div class="rain-bar"><div class="bar" style="height:47%"><div class="dcount">11d</div></div><div class="m">Oct</div><div class="temps"><span class="tmax">15°</span><br><span class="tmin">7°</span></div><div class="suntime"><span class="sr">6:50</span><br><span class="ss">18:38</span></div></div>
+                        <div class="rain-bar"><div class="bar" style="height:48%"><div class="dcount">12d</div></div><div class="m">Nov</div><div class="temps"><span class="tmax">9°</span><br><span class="tmin">3°</span></div><div class="suntime"><span class="sr">6:50</span><br><span class="ss">17:22</span></div></div>
+                        <div class="rain-bar"><div class="bar" style="height:44%"><div class="dcount">12d</div></div><div class="m">Dec</div><div class="temps"><span class="tmax">4°</span><br><span class="tmin">0°</span></div><div class="suntime"><span class="sr">8:00</span><br><span class="ss">16:35</span></div></div>
+                    </div>
+                </div>
+                <p class="body-text" style="margin-top:22px">
+                    <b style="color:var(--ink)">Best months to visit:</b> June–September for lake swimming and alpine views. Late September–October for autumn colours along the lake and in the hills. December brings the Christkindlmarkt. Avoid November–January if grey skies affect you — Hochnebel fog can persist for weeks.
+                </p>
+            </div>
+        </section>
+
+        <!-- 03 CULTURAL CODES -->
+        <section id="culture">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="section-num">03</span>
+                    <h2>Cultural Codes</h2>
+                </div>
+                <p class="body-text">Zurich operates by codes of discretion, precision, and understated excellence. Wealth is pervasive and deliberately invisible. The city's cultural life is serious — opera, museums, and classical music funded to a standard that dwarfs cities ten times its size. Understanding Zurich means understanding Swiss German culture: direct, private, punctual, and deeply unimpressed by status.</p>
+                <div class="codegrid">
+                    <div class="code-card">
+                        <span class="tag">Concept</span>
+                        <h3>Züridütsch &amp; Sprachbarriere</h3>
+                        <p style="font-size:13.5px;color:var(--ink-soft)">Swiss German (Züridütsch) is a dialect so distinct from Standard German that even native Germans find it incomprehensible. It is spoken in all informal contexts — shops, restaurants, conversations — while High German is used in formal writing, schools, and broadcasting. English is widely understood but the language question defines insider/outsider status more acutely than in most European cities.</p>
+                    </div>
+                    <div class="code-card">
+                        <span class="tag">Concept</span>
+                        <h3>Gmeinderat &amp; Direct Democracy</h3>
+                        <p style="font-size:13.5px;color:var(--ink-soft)">Swiss direct democracy is not a slogan — it is a lived daily reality. Zürich residents regularly vote on local ordinances: parking policy, building heights, transit investments, social services. The system produces extraordinary civic ownership and extraordinary frustration for those unused to it. Every significant policy decision can be challenged by referendum.</p>
+                    </div>
+                    <div class="code-card">
+                        <span class="tag">Concept</span>
+                        <h3>Ruhestunden</h3>
+                        <p style="font-size:13.5px;color:var(--ink-soft)">Quiet hours are legally enforced: no loud noise after 22:00 on weekdays, after 23:00 on Fridays, and most importantly, no noise at all on Sundays — no mowing lawns, no washing machines in communal rooms, no power tools, no deliveries. This is not quaint tradition; violations result in formal complaints to building management. Observing Ruhestunden is a foundational social contract.</p>
+                    </div>
+                    <div class="code-card">
+                        <span class="tag">Concept</span>
+                        <h3>Zürich West &amp; Kreativszene</h3>
+                        <p style="font-size:13.5px;color:var(--ink-soft)">The former industrial district west of the main station — slaughterhouses, railway workshops, gas works — was converted from the 1990s into Zurich's creative quarter. Langstrasse, Hardbrücke, and the Schiffbau area contain the city's clubs, galleries, and experimental venues. The tension between the established city and this reinvented district is where Zurich's cultural energy lives.</p>
+                    </div>
+                </div>
+
+                <div style="margin-top:36px">
+                    <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.09em;color:var(--ink-soft);margin-bottom:20px;display:flex;align-items:center;gap:12px">
+                        Culture Adjustment Index<span style="flex:1;height:1px;background:var(--line);display:block"></span>
+                    </div>
+                    <div class="meter-row">
+                        <div class="meter-label">Language barrier</div>
+                        <div class="meter-track"><div class="meter-fill" style="left:55%"></div></div>
+                        <div class="meter-note">Swiss German dialect is a real barrier</div>
+                    </div>
+                    <div class="meter-row">
+                        <div class="meter-label">Cost of living</div>
+                        <div class="meter-track"><div class="meter-fill" style="left:92%"></div></div>
+                        <div class="meter-note">Among the world's most expensive</div>
+                    </div>
+                    <div class="meter-row">
+                        <div class="meter-label">Bureaucracy</div>
+                        <div class="meter-track"><div class="meter-fill" style="left:42%"></div></div>
+                        <div class="meter-note">Efficient but strict — Swiss precision</div>
+                    </div>
+                    <div class="meter-row">
+                        <div class="meter-label">Social reserve</div>
+                        <div class="meter-track"><div class="meter-fill" style="left:70%"></div></div>
+                        <div class="meter-note">Private culture — friendships take time</div>
+                    </div>
+                    <div class="meter-row">
+                        <div class="meter-label">Punctuality</div>
+                        <div class="meter-track"><div class="meter-fill" style="left:96%"></div></div>
+                        <div class="meter-note">Extreme — being late is disrespectful</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04 DISTRICTS -->
+        <section id="districts">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="section-num">04</span>
+                    <h2>Districts</h2>
+                </div>
+                <div class="block">
+                    <h3>Kreis 1 — Altstadt &amp; City Centre</h3>
+                    <p class="body-text">The medieval old town on both sides of the Limmat — Niederdorf (east bank, lively) and the Lindenhügel (west bank, institutional). ETH and University of Zurich dominate the hill. The Bahnhofstrasse, running south from the main station, is one of the world's most expensive retail streets. Kreis 1 is prestigious but not where most people actually want to live — too central, too loud, too expensive.</p>
+                </div>
+                <div class="block">
+                    <h3>Kreis 4 — Langstrasse</h3>
+                    <p class="body-text">Zurich's historically edgy district — the red-light area in living memory, now the city's most diverse and culturally interesting neighbourhood. Langstrasse itself is lined with clubs, bars, independent restaurants and migrant businesses. This is where Zurich's bohemian and creative class lives. Gentrification is advanced but has not yet eliminated the character.</p>
+                </div>
+                <div class="block">
+                    <h3>Kreis 5 — Zürich West (Industrie)</h3>
+                    <p class="body-text">The former industrial district that became Zurich's creative and nightlife hub: Schiffbau arts complex (former shipbuilding hall), Hardbrücke elevated railway, Frau Gerolds Garten. A decade ago gritty and cheap; now expensive and design-conscious. The Technopark and Prime Tower anchor Zurich's emerging tech cluster adjacent to the old quarter.</p>
+                </div>
+                <div class="block">
+                    <h3>Kreis 6 &amp; 7 — Zürichberg</h3>
+                    <p class="body-text">The forested hillside east of the centre, home to Zurich's wealthiest long-term residents. Large villas with lake views, embassy residences, and discreet old money. The Zoo is here, as is the ETH university campus. Property prices reach their absolute maximum in these districts — rarely on the open market.</p>
+                </div>
+                <div class="block">
+                    <h3>Kreis 3 — Wiedikon</h3>
+                    <p class="body-text">Zurich's most desirable "normal" neighbourhood — south of centre, primarily residential, well-served by tram, with a strong food and café culture. Popular with young professionals and families. Less architecturally dramatic than Kreis 1 but more genuinely liveable. Rents are high by European standards but modest relative to Zurich.</p>
+                </div>
+                <div class="block">
+                    <h3>Kreis 8 — Seefeld</h3>
+                    <p class="body-text">The lakeside district southeast of the centre — Zurich's equivalent of a Riviera strip. Wide lakeside promenade (Seefeldquai), elegant apartment buildings, Zurichhorn park and the Chinese Garden. Very desirable, very expensive, with a strong international and expatriate community drawn by the views and the school access.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 05 THINGS TO DO -->
+        <section id="things">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="section-num">05</span>
+                    <h2>Things To Do</h2>
+                </div>
+                <div class="taxo-grid">
+                    <div class="taxo-card">
+                        <div class="tnum">01</div>
+                        <h3>Lake Zurich &amp; Baths</h3>
+                        <div class="sub"><b>Swimming in the lake</b><span>Lake Zurich is swimmable June–September — one of Europe's cleanest urban lake bathing experiences. The Seebad Enge and Frauenbad (women-only, historic) are the most celebrated. Entry is cheap; quality is extraordinary.</span></div>
+                        <div class="sub"><b>Badi culture</b><span>Zurich's "Badi" (outdoor swimming facilities) are municipal institutions — the Oberer Letten canal baths and riverside lidos are insanely good for a city this expensive.</span></div>
+                    </div>
+                    <div class="taxo-card">
+                        <div class="tnum">02</div>
+                        <h3>Kunsthaus Zürich</h3>
+                        <div class="sub"><b>Expanded museum (2021)</b><span>Switzerland's largest art museum, recently extended with a David Chipperfield-designed wing doubling its capacity. World-class collection of Munch, Monet, Giacometti, and a major Dada archive (Dada was born in Zurich in 1916).</span></div>
+                        <div class="sub"><b>Dada birthplace</b><span>The Cabaret Voltaire on Spiegelgasse is a 5-minute walk from the Kunsthaus — the original location where Dada was founded in February 1916.</span></div>
+                    </div>
+                    <div class="taxo-card">
+                        <div class="tnum">03</div>
+                        <h3>Altstadt &amp; Old Town</h3>
+                        <div class="sub"><b>Niederdorf</b><span>The east-bank old town — medieval lanes, cafés, bookshops, and the Grossmünster cathedral. Lively in the evening; the lanes around Hirschenplatz are the social heart of the old city.</span></div>
+                        <div class="sub"><b>Lindenhügel</b><span>West bank — the Fraumünster with its Chagall windows, the Münsterhof square, and the terrace views back across the Limmat. Essential on a clear day.</span></div>
+                    </div>
+                    <div class="taxo-card">
+                        <div class="tnum">04</div>
+                        <h3>Nightlife &amp; Clubs</h3>
+                        <div class="sub"><b>Langstrasse</b><span>Zurich's nightlife corridor — bars, clubs, and restaurants from 20:00 to dawn. More mixed and accessible than reputation suggests; the stigma of the old red-light district has faded.</span></div>
+                        <div class="sub"><b>Techno scene</b><span>Zurich has a serious techno and electronic music culture — Hive Club, Zukunft, Rote Fabrik on the lake. The Street Parade (August) is Europe's largest techno parade after Loveparade.</span></div>
+                    </div>
+                    <div class="taxo-card">
+                        <div class="tnum">05</div>
+                        <h3>Day Trips &amp; Alps</h3>
+                        <div class="sub"><b>Uetliberg</b><span>The mountain directly above Zurich — 30-min train from HB, followed by a 30-min walk to the 870m summit. Panoramic view of the Alps, Lake Zurich, and the city on clear days. Free (just the train fare).</span></div>
+                        <div class="sub"><b>Jungfraujoch / Lucerne</b><span>Lucerne in 40 minutes. Interlaken and the Bernese Alps (Eiger, Mönch, Jungfrau) in 2 hours. The Swiss rail system makes the Alps genuinely accessible for day trips.</span></div>
+                    </div>
+                    <div class="taxo-card">
+                        <div class="tnum">06</div>
+                        <h3>Markets &amp; Shopping</h3>
+                        <div class="sub"><b>Bürkliplatz market</b><span>Saturday antiques and crafts market at the lake's northern tip — one of Switzerland's best flea markets. Tuesday and Friday general market with local produce.</span></div>
+                        <div class="sub"><b>Bahnhofstrasse</b><span>One of the world's most expensive retail streets — watches, jewellery, luxury goods. Also simply a magnificent public boulevard. Tram 2 or 9 runs its full length.</span></div>
+                    </div>
+                </div>
+
+                <div style="margin-top:36px">
+                    <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.09em;color:var(--ink-soft);margin-bottom:16px;display:flex;align-items:center;gap:12px">
+                        Annual Calendar<span style="flex:1;height:1px;background:var(--line);display:block"></span>
+                    </div>
+                    <div class="event-row">
+                        <div class="etag">Apr</div>
+                        <div class="ename"><a href="#">Sechseläuten</a> — spring festival, burning of the Böögg snowman</div>
+                        <div class="ewhen">3rd Mon Apr</div>
+                    </div>
+                    <div class="event-row">
+                        <div class="etag">Jun</div>
+                        <div class="ename"><a href="#">Zurich Pride</a> — Christopher Street Day parade, large event</div>
+                        <div class="ewhen">Jun</div>
+                    </div>
+                    <div class="event-row">
+                        <div class="etag">Aug</div>
+                        <div class="ename"><a href="#">Street Parade</a> — Europe's largest techno parade, 1M+ attendees</div>
+                        <div class="ewhen">2nd Sat Aug</div>
+                    </div>
+                    <div class="event-row">
+                        <div class="etag">Sep</div>
+                        <div class="ename"><a href="#">Zurich Film Festival</a> — major international film event</div>
+                        <div class="ewhen">Late Sep</div>
+                    </div>
+                    <div class="event-row">
+                        <div class="etag">Dec</div>
+                        <div class="ename"><a href="#">Christkindlmarkt</a> — Zurich's Christmas market at HB train station</div>
+                        <div class="ewhen">Dec</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 06 FOOD & RITUALS -->
+        <section id="food">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="section-num">06</span>
+                    <h2>Food &amp; Rituals</h2>
+                </div>
+                <p class="body-text">Zurich's food culture is serious, expensive, and deeply influenced by its three linguistic neighbours — German, French, and Italian Switzerland all contribute. Zurich itself is a German-Swiss city: fondue, Zürcher Geschnetzeltes, and Rösti are the foundations. The restaurant scene is world-class but priced to match — budget CHF 40–80/person for a decent dinner.</p>
+
+                <div class="meal-block">
+                    <div class="meal-head">
+                        <h4>Swiss-Zürich Classics</h4>
+                        <span class="meal-time">From Geschnetzeltes to Tirggel</span>
+                    </div>
+                    <div class="meal-items">
+                        <div class="mdish">
+                            <div class="mtext">
+                                <div class="mname">Zürcher Geschnetzeltes</div>
+                                <div class="mnote">Zurich's signature dish — thin-sliced veal in a cream and white wine sauce with mushrooms, served with Rösti. Non-negotiable on a first visit. The version at Zum Kropf or Kronenhalle is definitive.</div>
+                                <span class="mtag savory">Savory</span>
+                            </div>
+                        </div>
+                        <div class="mdish">
+                            <div class="mtext">
+                                <div class="mname">Fondue</div>
+                                <div class="mnote">Half Gruyère, half Vacherin Fribourgeois melted with white wine and kirsch. A winter ritual in Zurich — shared pot, long forks, and strict etiquette (drop your bread, buy everyone a drink). Best in the Alps; excellent in the city too.</div>
+                                <span class="mtag savory">Savory</span>
+                            </div>
+                        </div>
+                        <div class="mdish">
+                            <div class="mtext">
+                                <div class="mname">Rösti</div>
+                                <div class="mnote">Grated potato cake, fried until golden and crisp — the Swiss German staple that crosses all class lines. Served as a side or topped with fried egg, bacon, or Raclette cheese. Zurich divides the German/French Switzerland along what locals call the "Röstigraben."</div>
+                                <span class="mtag side">Side</span>
+                            </div>
+                        </div>
+                        <div class="mdish">
+                            <div class="mtext">
+                                <div class="mname">Raclette</div>
+                                <div class="mnote">Wheel of alpine cheese melted under a grill and scraped over boiled potatoes, cornichons, and pickled onions. A social winter dish — proper Raclette evenings last three hours. Zurich's ski-hut restaurants do it best.</div>
+                                <span class="mtag savory">Savory</span>
+                            </div>
+                        </div>
+                        <div class="mdish">
+                            <div class="mtext">
+                                <div class="mname">Tirggel</div>
+                                <div class="mnote">Zurich's traditional Christmas honey biscuit — paper-thin, hard, embossed with biblical and historical scenes. Made only during Advent. Sold at the Beeler confectionery since 1901 and at Christmas markets. A genuine Zürich-specific tradition.</div>
+                                <span class="mtag sweet">Sweet</span>
+                            </div>
+                        </div>
+                        <div class="mdish">
+                            <div class="mtext">
+                                <div class="mname">Swiss Chocolate</div>
+                                <div class="mnote">Lindt, Sprüngli, Läderach — Swiss chocolate is not a tourist cliché here but a genuine daily pleasure. Confiserie Sprüngli on Bahnhofstrasse is the cathedral of Swiss chocolate; their Luxemburgerli macarons are a Zurich institution.</div>
+                                <span class="mtag sweet">Sweet</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="meal-block">
+                    <div class="meal-head">
+                        <h4>Coffee &amp; Modern Zurich</h4>
+                        <span class="meal-time">Langstrasse cafés &amp; international scene</span>
+                    </div>
+                    <div class="meal-items">
+                        <div class="mdish">
+                            <div class="mtext">
+                                <div class="mname">Third-wave Coffee</div>
+                                <div class="mnote">Zurich's specialty coffee scene is excellent — Café Comité, Vicafe, and the burgeoning Kreis 4/5 café culture. The Swiss expect precision in their coffee as in everything else; quality is high.</div>
+                                <span class="mtag side">Coffee</span>
+                            </div>
+                        </div>
+                        <div class="mdish">
+                            <div class="mtext">
+                                <div class="mname">International Dining</div>
+                                <div class="mnote">Zurich's expatriate population and global financial community have created an excellent international restaurant scene — Japanese, Lebanese, modern European. Kreis 4 Langstrasse concentrates the best value-for-quality options.</div>
+                                <span class="mtag savory">Restaurant</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 07 CONNECTIVITY -->
+        <section id="connect">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="section-num">07</span>
+                    <h2>Connectivity</h2>
+                </div>
+                <p class="body-text">Zurich Hauptbahnhof (HB) is Switzerland's central rail hub and one of Europe's busiest stations — every Swiss city is reachable within 3 hours; most within 1–2. The SBB network's legendary punctuality (98%+ on-time rate) makes rail the default mode for business travel throughout Switzerland and to Munich, Paris, and Milan.</p>
+
+                <div class="mapbox" style="margin-top:24px">
+                    <svg viewBox="0 0 700 480" xmlns="http://www.w3.org/2000/svg" style="width:100%;font-family:'Inter',sans-serif">
+                        <!-- Concentric isochrone rings -->
+                        <ellipse cx="350" cy="240" rx="38" ry="28" fill="none" stroke="#4a4035" stroke-width="1.2" stroke-dasharray="4,6" opacity="0.45"/>
+                        <ellipse cx="350" cy="240" rx="80" ry="60" fill="none" stroke="#4a4035" stroke-width="1.2" stroke-dasharray="4,6" opacity="0.40"/>
+                        <ellipse cx="350" cy="240" rx="140" ry="105" fill="none" stroke="#4a4035" stroke-width="1.2" stroke-dasharray="4,6" opacity="0.35"/>
+                        <ellipse cx="350" cy="240" rx="210" ry="158" fill="none" stroke="#4a4035" stroke-width="1.2" stroke-dasharray="4,6" opacity="0.30"/>
+                        <ellipse cx="350" cy="240" rx="300" ry="220" fill="none" stroke="#4a4035" stroke-width="1.2" stroke-dasharray="4,6" opacity="0.25"/>
+
+                        <text x="395" y="215" font-family="'JetBrains Mono',monospace" font-size="8" fill="#6b6259" opacity="0.7">30 min</text>
+                        <text x="437" y="198" font-family="'JetBrains Mono',monospace" font-size="8" fill="#6b6259" opacity="0.7">1 hr</text>
+                        <text x="495" y="178" font-family="'JetBrains Mono',monospace" font-size="8" fill="#6b6259" opacity="0.7">2 hr</text>
+                        <text x="555" y="155" font-family="'JetBrains Mono',monospace" font-size="8" fill="#6b6259" opacity="0.7">3–4 hr</text>
+
+                        <!-- Hub: Zurich HB -->
+                        <circle cx="350" cy="240" r="8" fill="#2a2420"/>
+                        <text x="360" y="235" font-size="11" font-weight="600" fill="#2a2420">Zurich HB</text>
+                        <text x="360" y="248" font-family="'JetBrains Mono',monospace" font-size="8" fill="#6b6259">Hub · SBB Swiss Rail</text>
+
+                        <!-- ZRH Airport — 10 min S-Bahn, NW -->
+                        <line x1="350" y1="240" x2="282" y2="198" stroke="#a65b3b" stroke-width="1.5" stroke-dasharray="5,3" opacity="0.8"/>
+                        <circle cx="282" cy="198" r="5" fill="#a65b3b"/>
+                        <text x="270" y="193" font-size="10" fill="#a65b3b" text-anchor="end">ZRH Airport</text>
+                        <text x="270" y="203" font-family="'JetBrains Mono',monospace" font-size="8" fill="#a65b3b" opacity="0.8" text-anchor="end">S-Bahn · 10 min</text>
+
+                        <!-- Bern — 55 min, W -->
+                        <line x1="350" y1="240" x2="205" y2="240" stroke="#2a2420" stroke-width="2.5" opacity="0.8"/>
+                        <circle cx="205" cy="240" r="5" fill="#2a2420"/>
+                        <text x="193" y="236" font-size="10.5" font-weight="600" fill="#2a2420" text-anchor="end">Bern</text>
+                        <text x="193" y="246" font-family="'JetBrains Mono',monospace" font-size="8" fill="#6b6259" text-anchor="end">IC · 55 min</text>
+
+                        <!-- Basel — 55 min, NW -->
+                        <line x1="350" y1="240" x2="230" y2="150" stroke="#2a2420" stroke-width="2" opacity="0.7"/>
+                        <circle cx="230" cy="150" r="5" fill="#2a2420"/>
+                        <text x="218" y="144" font-size="10.5" font-weight="600" fill="#2a2420" text-anchor="end">Basel</text>
+                        <text x="218" y="154" font-family="'JetBrains Mono',monospace" font-size="8" fill="#6b6259" text-anchor="end">IC · 55 min</text>
+
+                        <!-- Lucerne — 45 min, SW -->
+                        <line x1="350" y1="240" x2="248" y2="315" stroke="#2a2420" stroke-width="2" opacity="0.7"/>
+                        <circle cx="248" cy="315" r="5" fill="#2a2420"/>
+                        <text x="236" y="312" font-size="10.5" font-weight="600" fill="#2a2420" text-anchor="end">Lucerne</text>
+                        <text x="236" y="322" font-family="'JetBrains Mono',monospace" font-size="8" fill="#6b6259" text-anchor="end">IC · 45 min</text>
+
+                        <!-- Munich — 3h 30min, E -->
+                        <line x1="350" y1="240" x2="560" y2="240" stroke="#5c6650" stroke-width="1.5" opacity="0.6"/>
+                        <circle cx="560" cy="240" r="4" fill="#5c6650"/>
+                        <text x="570" y="236" font-size="10" fill="#5c6650">Munich</text>
+                        <text x="570" y="246" font-family="'JetBrains Mono',monospace" font-size="8" fill="#6b6259">EC · 3h 30m</text>
+
+                        <!-- Milan — 3h 20min, S -->
+                        <line x1="350" y1="240" x2="350" y2="418" stroke="#5c6650" stroke-width="1.5" opacity="0.6"/>
+                        <circle cx="350" cy="418" r="4" fill="#5c6650"/>
+                        <text x="362" y="414" font-size="10" fill="#5c6650">Milan</text>
+                        <text x="362" y="424" font-family="'JetBrains Mono',monospace" font-size="8" fill="#6b6259">EC · 3h 20m</text>
+
+                        <!-- Paris — 4h, W (TGV via Basel) -->
+                        <line x1="350" y1="240" x2="100" y2="160" stroke="#5c6650" stroke-width="1.5" opacity="0.5"/>
+                        <circle cx="100" cy="160" r="4" fill="#5c6650"/>
+                        <text x="88" y="155" font-size="10" fill="#5c6650" text-anchor="end">Paris</text>
+                        <text x="88" y="165" font-family="'JetBrains Mono',monospace" font-size="8" fill="#5c6650" opacity="0.8" text-anchor="end">TGV via Basel · 4h</text>
+
+                        <!-- London — flight, NW far -->
+                        <line x1="350" y1="240" x2="68" y2="55" stroke="#b08a4e" stroke-width="1.2" stroke-dasharray="6,4" opacity="0.5"/>
+                        <circle cx="68" cy="55" r="3" fill="#b08a4e" opacity="0.7"/>
+                        <text x="56" y="49" font-size="9" fill="#b08a4e" opacity="0.7" text-anchor="end">London</text>
+                        <text x="56" y="59" font-family="'JetBrains Mono',monospace" font-size="7" fill="#b08a4e" opacity="0.5" text-anchor="end">Flight · 2h</text>
+
+                        <!-- NY long-haul -->
+                        <line x1="350" y1="240" x2="55" y2="90" stroke="#b08a4e" stroke-width="1" stroke-dasharray="3,5" opacity="0.35"/>
+                        <circle cx="55" cy="90" r="3" fill="#b08a4e" opacity="0.6"/>
+                        <text x="43" y="84" font-size="9" fill="#b08a4e" opacity="0.6" text-anchor="end">New York</text>
+                        <text x="43" y="94" font-family="'JetBrains Mono',monospace" font-size="7" fill="#b08a4e" opacity="0.5" text-anchor="end">Direct · 10h</text>
+
+                        <!-- Dubai long-haul -->
+                        <line x1="350" y1="240" x2="638" y2="402" stroke="#b08a4e" stroke-width="1" stroke-dasharray="3,5" opacity="0.35"/>
+                        <circle cx="638" cy="402" r="3" fill="#b08a4e" opacity="0.6"/>
+                        <text x="646" y="398" font-size="9" fill="#b08a4e" opacity="0.6">Dubai</text>
+                        <text x="646" y="408" font-family="'JetBrains Mono',monospace" font-size="7" fill="#b08a4e" opacity="0.5">Direct · 6h 30m</text>
+                    </svg>
+
+                    <div class="maplegend">
+                        <div class="maplegend-item">
+                            <div class="maplegend-sym"><svg width="20" height="4"><line x1="0" y1="2" x2="20" y2="2" stroke="#2a2420" stroke-width="2.5"/></svg></div>
+                            <div><div class="maplegend-label">SBB Intercity</div><div class="maplegend-detail">Swiss domestic rail</div></div>
+                        </div>
+                        <div class="maplegend-item">
+                            <div class="maplegend-sym"><svg width="20" height="4"><line x1="0" y1="2" x2="20" y2="2" stroke="#a65b3b" stroke-width="1.5" stroke-dasharray="5,3"/></svg></div>
+                            <div><div class="maplegend-label">Airport S-Bahn</div><div class="maplegend-detail">ZRH direct rail link</div></div>
+                        </div>
+                        <div class="maplegend-item">
+                            <div class="maplegend-sym"><svg width="20" height="4"><line x1="0" y1="2" x2="20" y2="2" stroke="#5c6650" stroke-width="1.5"/></svg></div>
+                            <div><div class="maplegend-label">International Rail</div><div class="maplegend-detail">EC to Munich / Milan; TGV to Paris</div></div>
+                        </div>
+                        <div class="maplegend-item">
+                            <div class="maplegend-sym"><svg width="20" height="4"><line x1="0" y1="2" x2="20" y2="2" stroke="#b08a4e" stroke-width="1.2" stroke-dasharray="6,4"/></svg></div>
+                            <div><div class="maplegend-label">Long-haul Flights</div><div class="maplegend-detail">Via Zurich Airport (ZRH)</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hubpanels">
+                    <div class="hubpanel">
+                        <div class="htitle">Zurich HB</div>
+                        <div class="hsub">Daily rail passengers</div>
+                        <div class="bignum">460<small>k/day</small></div>
+                    </div>
+                    <div class="hubpanel">
+                        <div class="htitle">ZRH Airport</div>
+                        <div class="hsub">Annual passengers (2024)</div>
+                        <div class="bignum">31<small>M/yr</small></div>
+                    </div>
+                    <div class="hubpanel">
+                        <div class="htitle">Airport to HB</div>
+                        <div class="hsub">S-Bahn direct link</div>
+                        <div class="bignum">10<small>min</small></div>
+                    </div>
+                </div>
+
+                <div class="reach-table">
+                    <div class="reach-row"><div class="mode">ZRH Airport</div><div class="bar"><i style="width:7%"></i></div><div class="val">10 min</div></div>
+                    <div class="reach-row"><div class="mode">Lucerne</div><div class="bar"><i style="width:32%"></i></div><div class="val">45 min</div></div>
+                    <div class="reach-row"><div class="mode">Bern</div><div class="bar"><i style="width:38%"></i></div><div class="val">55 min</div></div>
+                    <div class="reach-row"><div class="mode">Basel</div><div class="bar"><i style="width:38%"></i></div><div class="val">55 min</div></div>
+                    <div class="reach-row"><div class="mode">Geneva</div><div class="bar"><i style="width:62%"></i></div><div class="val">2h 45m</div></div>
+                    <div class="reach-row"><div class="mode">Milan</div><div class="bar"><i style="width:76%"></i></div><div class="val">3h 20m</div></div>
+                    <div class="reach-row"><div class="mode">Munich</div><div class="bar"><i style="width:82%"></i></div><div class="val">3h 30m</div></div>
+                    <div class="reach-row"><div class="mode">Paris</div><div class="bar"><i style="width:100%"></i></div><div class="val">4h (TGV)</div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 08 VISIT MAP -->
+        <section id="visit">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="section-num">08</span>
+                    <h2>Visit Map</h2>
+                </div>
+                <p class="body-text">Zurich is best explored on foot in the Altstadt and by tram throughout the city. The ZVV transit network is excellent — a 24-hour visitor pass (CHF ~13) covers all trams, buses, and S-Bahn within the city. The lake is never more than 10 minutes' walk from anywhere in the centre.</p>
+
+                <div class="route-tabs">
+                    <span class="route-tab r1">Route A — Old Town &amp; Museums</span>
+                    <span class="route-tab r2">Route B — Lake &amp; Seefeld</span>
+                    <span class="route-tab r3">Route C — Zürich West &amp; Langstrasse</span>
+                </div>
+
+                <div id="zurich-visit-map" style="height:420px;margin-top:18px;border:1px solid var(--line)"></div>
+
+                <div class="maplegend">
+                    <div class="maplegend-item">
+                        <div class="maplegend-sym"><i class="dot" style="background:#2a2420;width:13px;height:13px"></i></div>
+                        <div><div class="maplegend-label">Zurich HB / Limmat</div><div class="maplegend-detail">Isochrone centre</div></div>
+                    </div>
+                    <div class="maplegend-item">
+                        <div class="maplegend-sym"><i class="dot" style="background:#a65b3b;width:11px;height:11px"></i></div>
+                        <div><div class="maplegend-label">Route A</div><div class="maplegend-detail">Old Town &amp; museums</div></div>
+                    </div>
+                    <div class="maplegend-item">
+                        <div class="maplegend-sym"><i class="dot" style="background:#5c6650;width:11px;height:11px"></i></div>
+                        <div><div class="maplegend-label">Route B</div><div class="maplegend-detail">Lake &amp; Seefeld</div></div>
+                    </div>
+                    <div class="maplegend-item">
+                        <div class="maplegend-sym"><i class="dot" style="background:#b08a4e;width:11px;height:11px"></i></div>
+                        <div><div class="maplegend-label">Route C</div><div class="maplegend-detail">Zürich West &amp; Langstrasse</div></div>
+                    </div>
+                </div>
+
+                <div class="landmark-list">
+                    <div class="lm-item"><span class="lm-num">01</span><div><a href="#">Zurich Hauptbahnhof</a><span class="lm-note">Europe's busiest terminus · indoor Christkindlmarkt Dec</span></div></div>
+                    <div class="lm-item"><span class="lm-num">02</span><div><a href="#">Kunsthaus Zürich</a><span class="lm-note">Switzerland's largest art museum · Chipperfield extension</span></div></div>
+                    <div class="lm-item"><span class="lm-num">03</span><div><a href="#">Grossmünster</a><span class="lm-note" style="color:#a65b3b">Romanesque cathedral · twin towers · Altstadt</span></div></div>
+                    <div class="lm-item"><span class="lm-num">04</span><div><a href="#">Fraumünster</a><span class="lm-note" style="color:#a65b3b">Chagall stained glass windows · west bank old town</span></div></div>
+                    <div class="lm-item"><span class="lm-num">05</span><div><a href="#">Bahnhofstrasse</a><span class="lm-note">World's most expensive retail boulevard · trams 2/9</span></div></div>
+                    <div class="lm-item"><span class="lm-num">06</span><div><a href="#">Bürkliplatz &amp; Lake</a><span class="lm-note" style="color:#5c6650">Lake promenade · Saturday market · swimming</span></div></div>
+                    <div class="lm-item"><span class="lm-num">07</span><div><a href="#">Cabaret Voltaire</a><span class="lm-note" style="color:#a65b3b">Birthplace of Dada (1916) · Spiegelgasse</span></div></div>
+                    <div class="lm-item"><span class="lm-num">08</span><div><a href="#">Rietberg Museum</a><span class="lm-note" style="color:#5c6650">Non-European art · villa park setting</span></div></div>
+                    <div class="lm-item"><span class="lm-num">09</span><div><a href="#">Langstrasse</a><span class="lm-note" style="color:#b08a4e">Nightlife, restaurants, diverse neighbourhood</span></div></div>
+                    <div class="lm-item"><span class="lm-num">10</span><div><a href="#">Schiffbau / Zürich West</a><span class="lm-note" style="color:#b08a4e">Former industrial quarter · arts, design, clubs</span></div></div>
+                    <div class="lm-item"><span class="lm-num">11</span><div><a href="#">Uetliberg</a><span class="lm-note" style="color:#5c6650">870m viewpoint above Zurich · 30 min S10 train</span></div></div>
+                    <div class="lm-item"><span class="lm-num">12</span><div><a href="#">Seebad Enge / Letten</a><span class="lm-note" style="color:#b08a4e">Lake &amp; river swimming · municipal baths</span></div></div>
+                </div>
+
+                <div class="mapnote">
+                    <b style="color:var(--ink)">Practical note:</b> The ZVV 24-hour pass (Zone 110, CHF ~13) covers all trams, buses, and S-Bahn in the city. Tram 4 links HB to Langstrasse; Tram 2/9 runs Bahnhofstrasse to the lake; S-Bahn S10 goes directly to Uetliberg. Validate your ticket before boarding.
+                </div>
+            </div>
+        </section>
+
+        <!-- 09 INVESTOR PERSPECTIVE -->
+        <section id="invest">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="section-num">09</span>
+                    <h2>Investor Perspective</h2>
+                </div>
+                <p class="body-text">Zurich is one of the world's most resilient real estate markets — high barriers to entry, very low vacancy rates, strong institutional demand, and a regulatory environment that protects existing property values. Returns are compressed but risks are extremely low. Entry requires significant capital; CHF denomination provides additional currency stability.</p>
+
+                <div class="schema-grid">
+                    <div class="schema-row">
+                        <div class="k">Market Type</div>
+                        <div class="v">Mature, tightly regulated residential and commercial market. Very low vacancy rates city-wide. New supply concentrated in Zürich West (Hardbrücke) and Altstetten. Foreign ownership restrictions apply — non-residents face Lex Koller limitations on residential purchases.</div>
+                    </div>
+                    <div class="schema-row">
+                        <div class="k">Price Level</div>
+                        <div class="v">CHF 12,000–18,000/m² in Kreis 1 / Seefeld. CHF 9,000–14,000/m² in Kreis 3 / Witikon. CHF 7,000–11,000/m² in Kreis 5 / Zürich West. Rental yields: 2.5–3.5% gross — compressed due to high purchase prices and stable rents.</div>
+                    </div>
+                    <div class="schema-row">
+                        <div class="k">Demand Drivers</div>
+                        <div class="v">ETH Zurich / UZH academic community (50,000 students), global banking sector (UBS, Credit Suisse legacy, Julius Bär, Pictet Swiss offices), tech sector (Google, Microsoft, Disney major Zurich campuses), pharmaceutical supply chain professionals.</div>
+                    </div>
+                    <div class="schema-row">
+                        <div class="k">Risk Factors</div>
+                        <div class="v">Lex Koller restricts non-resident property purchase. Swiss franc appreciation risk for EUR/USD-based investors. Property transfer tax and notary fees ~3–5%. Strict tenancy protection laws limit rent increases and make eviction difficult.</div>
+                    </div>
+                    <div class="schema-row">
+                        <div class="k">Opportunity Zones</div>
+                        <div class="v">Zürich West (Hardbrücke — tech and creative cluster, still developing); Altstetten (value play, improving transport links); student housing near ETH Hönggerberg campus; converted commercial-to-residential in fringe Kreis 5 sites.</div>
+                    </div>
+                    <div class="schema-row">
+                        <div class="k">Key Employers</div>
+                        <div class="v">UBS, SIX Swiss Exchange, Swiss Re, Zurich Insurance, Google Switzerland, Microsoft, ETH Zurich, University Hospital Zurich (USZ), Roche, Novartis (via commute to Basel).</div>
+                    </div>
+                </div>
+
+                <div class="pillbar">
+                    <span class="pill">Core Residential</span>
+                    <span class="pill">Tech Office</span>
+                    <span class="pill">Student Housing</span>
+                    <span class="pill">Life Sciences</span>
+                    <span class="pill">Mixed-Use</span>
+                    <span class="pill">Value-Add Conversion</span>
+                </div>
+
+                <div style="margin-top:36px">
+                    <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.09em;color:var(--ink-soft);margin-bottom:16px;display:flex;align-items:center;gap:12px">
+                        Cost of Living Snapshot<span style="flex:1;height:1px;background:var(--line);display:block"></span>
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+                        <div>
+                            <table class="salary-table">
+                                <tr><td>Software engineer (mid)</td><td>CHF 130–170k/yr</td></tr>
+                                <tr><td>Financial analyst</td><td>CHF 110–150k/yr</td></tr>
+                                <tr><td>ETH researcher (postdoc)</td><td>CHF 80–100k/yr</td></tr>
+                                <tr><td>Architect / designer</td><td>CHF 90–120k/yr</td></tr>
+                            </table>
+                        </div>
+                        <div>
+                            <table class="cost-table">
+                                <tr><td>1-bed rent, Kreis 1–3</td><td>CHF 2,800–4,000/mo</td></tr>
+                                <tr><td>1-bed rent, Kreis 5 / Altstetten</td><td>CHF 2,000–2,800/mo</td></tr>
+                                <tr><td>ZVV annual transit pass</td><td>CHF 940/yr (city zones)</td></tr>
+                                <tr><td>Restaurant meal (mid)</td><td>CHF 35–60</td></tr>
+                                <tr><td>Grocery index vs CH avg</td><td class="note">~12% above Swiss avg</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10 RESIDENT PERSPECTIVE -->
+        <section id="resident">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="section-num">10</span>
+                    <h2>Living Here</h2>
+                </div>
+                <p class="body-text">Zurich delivers on its promise of liveability with almost irritating consistency. The trams are on time. The lakes are clean. The mountains are visible on clear days. The food is excellent. The culture is serious. The price of all of this is real — both financially (the highest cost of living of any city in this portfolio) and socially (privacy and reserve are foundational Swiss values that require patience to navigate).</p>
+
+                <table class="yn-table">
+                    <thead>
+                        <tr>
+                            <th class="yes">What works well</th>
+                            <th class="no">What to anticipate</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="cat-row"><td colspan="2">Daily Life</td></tr>
+                        <tr>
+                            <td class="yes-cell">ZVV transit system is punctual, clean, and comprehensive — no need for a car</td>
+                            <td class="no-cell">Cost of living is the highest of any city in this portfolio — budget carefully</td>
+                        </tr>
+                        <tr>
+                            <td class="yes-cell">Lake Zurich swimming June–September is one of Europe's great free pleasures</td>
+                            <td class="no-cell">Swiss German dialect creates a genuine language barrier even for German speakers</td>
+                        </tr>
+                        <tr>
+                            <td class="yes-cell">Supermarkets (Migros, Coop) are excellent and open reasonable hours</td>
+                            <td class="no-cell">Ruhestunden strictly enforced — no noise after 22:00 on weekdays, none on Sundays</td>
+                        </tr>
+                        <tr class="cat-row"><td colspan="2">Culture &amp; Social</td></tr>
+                        <tr>
+                            <td class="yes-cell">Kunsthaus, Opernhaus, Tonhalle — world-class cultural institutions at a small city's scale</td>
+                            <td class="no-cell">Swiss social circles are slow to open — expect 1–2 years before genuine friendships form</td>
+                        </tr>
+                        <tr>
+                            <td class="yes-cell">Street Parade, Zürich Film Festival, Sechseläuten — strong annual calendar</td>
+                            <td class="no-cell">Limited nightlife compared to Berlin or Amsterdam — the city quiets by 02:00</td>
+                        </tr>
+                        <tr class="cat-row"><td colspan="2">Practicalities</td></tr>
+                        <tr>
+                            <td class="yes-cell">ZRH airport 10 minutes from HB — London 2h, New York 10h direct</td>
+                            <td class="no-cell">Lex Koller restricts non-resident property purchase — legal advice essential</td>
+                        </tr>
+                        <tr>
+                            <td class="yes-cell">Swiss health system — universal coverage, excellent hospitals (USZ), free choice of GP</td>
+                            <td class="no-cell">Mandatory health insurance (Krankenkasse) is expensive — CHF 400–600/month per adult</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="identity-grid" style="margin-top:32px">
+                    <div class="identity-col">
+                        <div class="tag-title">Zurich-specific habits</div>
+                        <ul>
+                            <li><b>ZVV Generalabonnement</b> — Swiss national rail pass used by commuters and residents; covers all public transport nationwide</li>
+                            <li><b>Migros vs Coop</b> — the two dominant supermarket chains; Coop is slightly upmarket, Migros cooperative-owned</li>
+                            <li><b>Fasnacht</b> — masked carnival (Basel is most famous but Zürich celebrates too)</li>
+                            <li><b>Separate rubbish bags</b> — official Züri-Sack garbage bags required; recyclables sorted meticulously (glass, paper, PET separately)</li>
+                            <li><b>Sunday silence</b> — shops closed, no DIY noise, no loud music; walk or cycle and enjoy it</li>
+                        </ul>
+                    </div>
+                    <div class="identity-col">
+                        <div class="tag-title">Where locals actually go</div>
+                        <ul>
+                            <li><b>Oberer Letten</b> — riverside canal baths on the Limmat; young, social, free</li>
+                            <li><b>Frau Gerolds Garten</b> — summer bar and restaurant in Zürich West railway arches</li>
+                            <li><b>Niederdorf</b> — Hirschenplatz area for evening drinks; less touristy than it looks</li>
+                            <li><b>Volkshaus</b> — cooperative restaurant and concert hall; old-school Zurich at its best</li>
+                            <li><b>Pfannenstiel ridge</b> — hillside cycling and walking east of the lake; weekend escape</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 11 READ & WATCH -->
+        <section id="read">
+            <div class="wrap">
+                <div class="section-head">
+                    <span class="section-num">11</span>
+                    <h2>Read &amp; Watch</h2>
+                </div>
+                <div class="rwgrid">
+                    <div>
+                        <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.09em;color:var(--ink-soft);margin-bottom:16px">Books</div>
+                        <div class="rw-item">
+                            <div class="idx">01</div>
+                            <div><div class="t">Homo Faber</div><div class="a">Max Frisch — The great Zürich novelist's most internationally celebrated work. Technology, fate, and the limits of rationality.</div></div>
+                        </div>
+                        <div class="rw-item">
+                            <div class="idx">02</div>
+                            <div><div class="t">Andorra</div><div class="a">Max Frisch — Stage play exploring Swiss identity, prejudice, and complicity. Written in Zürich in 1961.</div></div>
+                        </div>
+                        <div class="rw-item">
+                            <div class="idx">03</div>
+                            <div><div class="t">The Physicists</div><div class="a">Friedrich Dürrenmatt — Swiss absurdist masterpiece set in a psychiatric clinic. Cold War anxiety and Swiss neutrality.</div></div>
+                        </div>
+                        <div class="rw-item">
+                            <div class="idx">04</div>
+                            <div><div class="t">Dada: Art and Anti-Art</div><div class="a">Hans Richter — First-hand account of the Dada movement that began at the Cabaret Voltaire in Zürich, February 1916.</div></div>
+                        </div>
+                        <div class="rw-item">
+                            <div class="idx">05</div>
+                            <div><div class="t">The Swiss, the Gold and the Dead</div><div class="a">Jean Ziegler — Controversial investigation into Swiss banking and WWII-era assets. Essential context for understanding Swiss financial culture.</div></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.09em;color:var(--ink-soft);margin-bottom:16px">Film &amp; Documentary</div>
+                        <div class="rw-item">
+                            <div class="idx">01</div>
+                            <div><div class="t">The Boat is Full</div><div class="a">Markus Imhoof, 1981 — Swiss Oscar-nominated film about refugees turned away during WWII. Still controversial.</div></div>
+                        </div>
+                        <div class="rw-item">
+                            <div class="idx">02</div>
+                            <div><div class="t">Sister (L'Enfant d'en haut)</div><div class="a">Ursula Meier, 2012 — Swiss Alps social drama. Stark portrait of economic inequality beneath the prosperous surface.</div></div>
+                        </div>
+                        <div class="rw-item">
+                            <div class="idx">03</div>
+                            <div><div class="t">Züri Brännt</div><div class="a">1980 Zürich youth riots documentary — the movement that led to the Zürich alternative cultural scene and eventually Zürich West.</div></div>
+                        </div>
+                        <div class="rw-item">
+                            <div class="idx">04</div>
+                            <div><div class="t">Heidi (2015)</div><div class="a">Alain Gsponer — Contemporary adaptation of Johanna Spyri's classic. The Alps as a psychological landscape.</div></div>
+                        </div>
+                        <div class="rw-item">
+                            <div class="idx">05</div>
+                            <div><div class="t">SRF Dok</div><div class="a">Swiss public broadcaster's documentary strand — outstanding investigative and cultural films about Swiss society, available with English subtitles.</div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="wrap">
+                Human Traces · Cities · Zurich ·
+                <span style="opacity:0.5">data compiled 2024–2025</span>
+            </div>
         </footer>
+
         <script src="../../js/main.js"></script>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <script>
+            var map = L.map("zurich-visit-map", { scrollWheelZoom: false, zoomControl: true }).setView([47.3769, 8.5417], 14);
+            L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+                maxZoom: 19,
+                attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+            }).addTo(map);
+
+            map.on('click', function(e) {
+                console.log('Lat: ' + e.latlng.lat.toFixed(4) + ', Lng: ' + e.latlng.lng.toFixed(4));
+            });
+
+            function makeIcon(color, num) {
+                return L.divIcon({
+                    className: '',
+                    html: '<div style="background:' + color + ';color:#fff;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:JetBrains Mono,monospace;font-size:9px;font-weight:700;border:2px solid rgba(255,255,255,0.8);box-shadow:0 1px 4px rgba(0,0,0,0.3)">' + num + '</div>',
+                    iconSize: [24, 24],
+                    iconAnchor: [12, 12]
+                });
+            }
+
+            var stops = [
+                { latlng: [47.3782, 8.5403], color: '#2a2420', num: '01', title: 'Zurich Hauptbahnhof', note: 'Europe\'s busiest terminus — S-Bahn, IC, IC2, EC, TGV all depart here. Indoor Christkindlmarkt in December.' },
+                { latlng: [47.3703, 8.5489], color: '#2a2420', num: '02', title: 'Kunsthaus Zürich', note: 'Switzerland\'s largest art museum — Chipperfield extension opened 2021. Munch, Monet, Giacometti, Dada.' },
+                { latlng: [47.3700, 8.5444], color: '#a65b3b', num: '03', title: 'Grossmünster', note: 'Romanesque twin-tower cathedral at the heart of the Altstadt. Climb the Karlsturm for city views.' },
+                { latlng: [47.3692, 8.5421], color: '#a65b3b', num: '04', title: 'Fraumünster', note: 'Marc Chagall\'s stained glass windows (1970) — the most beautiful interior in Zurich.' },
+                { latlng: [47.3726, 8.5381], color: '#2a2420', num: '05', title: 'Bahnhofstrasse', note: 'One of the world\'s most expensive retail boulevards — 1.4km from HB to the lake.' },
+                { latlng: [47.3654, 8.5410], color: '#5c6650', num: '06', title: 'Bürkliplatz & Lake', note: 'Northern tip of Lake Zurich — Saturday market, summer swimming, steamboat departures.' },
+                { latlng: [47.3716, 8.5447], color: '#a65b3b', num: '07', title: 'Cabaret Voltaire', note: 'Spiegelgasse 1 — where Hugo Ball, Tristan Tzara and Jean Arp founded Dada in February 1916.' },
+                { latlng: [47.3621, 8.5518], color: '#5c6650', num: '08', title: 'Museum Rietberg', note: 'Non-European art in a classical villa set in Rieter Park. Exceptional Asian and African collections.' },
+                { latlng: [47.3780, 8.5283], color: '#b08a4e', num: '09', title: 'Langstrasse', note: 'Zurich\'s most diverse and vibrant street — bars, restaurants, clubs from Kreis 4.' },
+                { latlng: [47.3860, 8.5210], color: '#b08a4e', num: '10', title: 'Schiffbau / Zürich West', note: 'Former industrial quarter — Schiffbau arts complex, Frau Gerolds Garten, tech companies.' },
+                { latlng: [47.3491, 8.4917], color: '#5c6650', num: '11', title: 'Uetliberg', note: 'Zurich\'s own mountain — 870m summit, 30-min S10 train. Panoramic Alps and lake views.' },
+                { latlng: [47.3872, 8.5331], color: '#b08a4e', num: '12', title: 'Oberer Letten', note: 'Limmat river canal baths — Zurich\'s best free swimming; social and lively in summer.' }
+            ];
+
+            stops.forEach(function(s) {
+                var marker = L.marker(s.latlng, { icon: makeIcon(s.color, s.num) }).addTo(map);
+                var popup = L.popup({ maxWidth: 240 }).setContent(
+                    '<div class="map-popup-inner">' +
+                    '<div class="map-popup-title"><span class="map-popup-num" style="background:' + s.color + '">' + s.num + '</span>' + s.title + '</div>' +
+                    '<div class="map-popup-note">' + s.note + '</div>' +
+                    '</div>'
+                );
+                marker.bindPopup(popup);
+            });
+        </script>
     </body>
 </html>
