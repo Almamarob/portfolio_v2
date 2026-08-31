@@ -28,12 +28,12 @@ async function initMap() {
     );
     const countries = topojson.feature(world, world.objects.countries);
 
-    // Filter for European countries (approximate bounding box)
+    // Filter for European countries (expanded longitude to include Ireland/Dublin at ~ -6.26)
     const europeCountries = countries.features.filter((d) => {
       const bounds = d3.geoBounds(d);
       const lon = (bounds[0][0] + bounds[1][0]) / 2;
       const lat = (bounds[0][1] + bounds[1][1]) / 2;
-      return lon >= -15 && lon <= 40 && lat >= 34 && lat <= 72;
+      return lon >= -12 && lon <= 40 && lat >= 34 && lat <= 72;
     });
 
     // Draw countries
@@ -47,7 +47,7 @@ async function initMap() {
       .attr("class", "map-country")
       .attr("d", path);
 
-    // City data
+    // City data (Aggiunta Dublin con coordinate e percorso corretto)
     const cities = [
       { name: "Milano", coords: [9.19, 45.46], url: "milano/milano.html" },
       { name: "Berlin", coords: [13.4, 52.52], url: "berlin/berlin.html" },
@@ -55,6 +55,7 @@ async function initMap() {
       { name: "Utrecht", coords: [5.12, 52.09], url: "utrecht/utrecht.html" },
       { name: "Ghent", coords: [3.72, 51.05], url: "ghent/ghent.html" },
       { name: "Zurich", coords: [8.55, 47.37], url: "zurich/zurich.html" },
+      { name: "Dublin", coords: [-6.26, 53.35], url: "dublin/dublin.html" },
     ];
 
     // Draw city nodes
