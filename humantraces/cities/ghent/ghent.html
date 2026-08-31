@@ -89,6 +89,13 @@
             .code-card { background: var(--paper); border: 1px solid var(--line); padding: 20px; }
             .code-card .tag { font-family: "JetBrains Mono", monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--rust); margin-bottom: 10px; display: block; }
 
+            /* FOOD STRIP */
+            .foodstrip { display: flex; gap: 14px; overflow-x: auto; margin-top: 18px; padding-bottom: 6px; }
+            .dish { flex: 0 0 170px; background: var(--paper); border: 1px solid var(--line); overflow: hidden; }
+            .dish .dtext { padding: 14px; }
+            .dish .name { font-family: "Fraunces", serif; font-size: 15px; margin-bottom: 6px; }
+            .dish .note { font-size: 12px; color: var(--ink-soft); }
+
             .meal-block { margin-top: 30px; }
             .meal-head { display: flex; align-items: baseline; gap: 10px; margin-bottom: 14px; }
             .meal-head h4 { font-family: "Fraunces", serif; font-size: 17px; font-weight: 500; }
@@ -185,8 +192,9 @@
             .mini-stat .num small { font-family: "Inter"; font-size: 11px; font-weight: 400; color: var(--ink-soft); }
             .mini-stat .label { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-soft); margin-top: 6px; }
 
-            .rain-chart { display: flex; align-items: flex-end; gap: 6px; height: 110px; margin-top: 34px; padding: 0 4px; }
+            .rain-chart { display: flex; align-items: flex-end; gap: 6px; height: 200px; margin-top: 34px; padding: 0 4px; }
             .rain-bar { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; position: relative; }
+            .rain-bar .emoji { position: absolute; top: -30px; font-size: 14px; }
             .rain-bar .bar { width: 100%; background: var(--rust-soft); opacity: 0.65; position: relative; }
             .rain-bar .bar .dcount { position: absolute; top: -15px; left: 0; right: 0; text-align: center; font-family: "JetBrains Mono", monospace; font-size: 9px; color: var(--rust); font-weight: 500; }
             .rain-bar .m { font-family: "JetBrains Mono", monospace; font-size: 9px; color: var(--ink); font-weight: 600; margin-top: 6px; }
@@ -196,6 +204,7 @@
             .rain-bar .suntime { font-family: "JetBrains Mono", monospace; font-size: 9px; color: var(--ink-soft); margin-top: 3px; text-align: center; line-height: 1.6; }
             .rain-bar .suntime .sr { color: var(--gold); }
             .rain-bar .suntime .ss { color: var(--moss); }
+            .rain-bar .rdays { font-family: "JetBrains Mono", monospace; font-size: 8px; color: var(--ink-soft); margin-top: 2px; text-align: center; opacity: 0.72; }
 
             .origin-bar-row { display: grid; grid-template-columns: 110px 1fr 40px; align-items: center; gap: 10px; margin-bottom: 8px; font-size: 12px; }
             .origin-bar-row .otrack { height: 6px; background: var(--line); }
@@ -542,18 +551,18 @@
                 </p>
                 <div class="rain-chart-wrap">
                     <div class="rain-chart">
-                        <div class="rain-bar"><div class="emoji">❄️</div><div class="bar" style="height:88px"><div class="dcount">73mm</div></div><div class="m">Jan</div><div class="temps"><span class="tmax">6°</span><br><span class="tmin">1°</span></div><div class="suntime"><span class="sr">8:50</span><br><span class="ss">16:40</span></div><div class="rdays">12d rain</div></div>
-                        <div class="rain-bar"><div class="emoji">❄️</div><div class="bar" style="height:68px"><div class="dcount">57mm</div></div><div class="m">Feb</div><div class="temps"><span class="tmax">7°</span><br><span class="tmin">1°</span></div><div class="suntime"><span class="sr">8:02</span><br><span class="ss">17:36</span></div><div class="rdays">10d rain</div></div>
-                        <div class="rain-bar"><div class="emoji">🌧️</div><div class="bar" style="height:84px"><div class="dcount">70mm</div></div><div class="m">Mar</div><div class="temps"><span class="tmax">11°</span><br><span class="tmin">4°</span></div><div class="suntime"><span class="sr">7:03</span><br><span class="ss">18:30</span></div><div class="rdays">11d rain</div></div>
-                        <div class="rain-bar"><div class="emoji">🌦️</div><div class="bar" style="height:62px"><div class="dcount">52mm</div></div><div class="m">Apr</div><div class="temps"><span class="tmax">15°</span><br><span class="tmin">6°</span></div><div class="suntime"><span class="sr">7:05</span><br><span class="ss">20:25</span></div><div class="rdays">9d rain</div></div>
-                        <div class="rain-bar"><div class="emoji">🌤️</div><div class="bar" style="height:79px"><div class="dcount">66mm</div></div><div class="m">May</div><div class="temps"><span class="tmax">19°</span><br><span class="tmin">9°</span></div><div class="suntime"><span class="sr">5:55</span><br><span class="ss">21:15</span></div><div class="rdays">11d rain</div></div>
-                        <div class="rain-bar"><div class="emoji">☀️</div><div class="bar" style="height:96px"><div class="dcount">80mm</div></div><div class="m">Jun</div><div class="temps"><span class="tmax">22°</span><br><span class="tmin">12°</span></div><div class="suntime"><span class="sr">5:25</span><br><span class="ss">21:55</span></div><div class="rdays">11d rain</div></div>
-                        <div class="rain-bar"><div class="emoji">☀️</div><div class="bar" style="height:102px"><div class="dcount">85mm</div></div><div class="m">Jul</div><div class="temps"><span class="tmax">24°</span><br><span class="tmin">14°</span></div><div class="suntime"><span class="sr">5:40</span><br><span class="ss">21:40</span></div><div class="rdays">12d rain</div></div>
-                        <div class="rain-bar"><div class="emoji">☀️</div><div class="bar" style="height:103px"><div class="dcount">86mm</div></div><div class="m">Aug</div><div class="temps"><span class="tmax">24°</span><br><span class="tmin">14°</span></div><div class="suntime"><span class="sr">6:30</span><br><span class="ss">20:45</span></div><div class="rdays">12d rain</div></div>
-                        <div class="rain-bar"><div class="emoji">🌤️</div><div class="bar" style="height:94px"><div class="dcount">78mm</div></div><div class="m">Sep</div><div class="temps"><span class="tmax">20°</span><br><span class="tmin">11°</span></div><div class="suntime"><span class="sr">7:27</span><br><span class="ss">19:30</span></div><div class="rdays">11d rain</div></div>
-                        <div class="rain-bar"><div class="emoji">🌧️</div><div class="bar" style="height:109px"><div class="dcount">91mm</div></div><div class="m">Oct</div><div class="temps"><span class="tmax">15°</span><br><span class="tmin">8°</span></div><div class="suntime"><span class="sr">7:25</span><br><span class="ss">18:20</span></div><div class="rdays">13d rain</div></div>
-                        <div class="rain-bar"><div class="emoji">🌧️</div><div class="bar" style="height:108px"><div class="dcount">93mm</div></div><div class="m">Nov</div><div class="temps"><span class="tmax">10°</span><br><span class="tmin">5°</span></div><div class="suntime"><span class="sr">7:25</span><br><span class="ss">17:05</span></div><div class="rdays">14d rain</div></div>
-                        <div class="rain-bar"><div class="emoji">❄️</div><div class="bar" style="height:94px"><div class="dcount">78mm</div></div><div class="m">Dec</div><div class="temps"><span class="tmax">7°</span><br><span class="tmin">2°</span></div><div class="suntime"><span class="sr">8:46</span><br><span class="ss">16:30</span></div><div class="rdays">13d rain</div></div>
+                        <div class="rain-bar"><span class="emoji">❄️</span><div class="bar" style="height:64px"><div class="dcount">73mm</div></div><div class="m">Jan</div><div class="temps"><span class="tmax">6°</span><br><span class="tmin">1°</span></div><div class="suntime"><span class="sr">8:50</span><br><span class="ss">16:40</span></div><div class="rdays">12d rain</div></div>
+                        <div class="rain-bar"><span class="emoji">🌨️</span><div class="bar" style="height:50px"><div class="dcount">57mm</div></div><div class="m">Feb</div><div class="temps"><span class="tmax">7°</span><br><span class="tmin">1°</span></div><div class="suntime"><span class="sr">8:02</span><br><span class="ss">17:36</span></div><div class="rdays">10d rain</div></div>
+                        <div class="rain-bar"><span class="emoji">🌤️</span><div class="bar" style="height:61px"><div class="dcount">70mm</div></div><div class="m">Mar</div><div class="temps"><span class="tmax">11°</span><br><span class="tmin">4°</span></div><div class="suntime"><span class="sr">7:03</span><br><span class="ss">18:30</span></div><div class="rdays">11d rain</div></div>
+                        <div class="rain-bar"><span class="emoji">🌧️</span><div class="bar" style="height:45px"><div class="dcount">52mm</div></div><div class="m">Apr</div><div class="temps"><span class="tmax">15°</span><br><span class="tmin">6°</span></div><div class="suntime"><span class="sr">7:05</span><br><span class="ss">20:25</span></div><div class="rdays">9d rain</div></div>
+                        <div class="rain-bar"><span class="emoji">🌦️</span><div class="bar" style="height:57px"><div class="dcount">66mm</div></div><div class="m">May</div><div class="temps"><span class="tmax">19°</span><br><span class="tmin">9°</span></div><div class="suntime"><span class="sr">5:55</span><br><span class="ss">21:15</span></div><div class="rdays">11d rain</div></div>
+                        <div class="rain-bar"><span class="emoji">☀️</span><div class="bar" style="height:70px"><div class="dcount">80mm</div></div><div class="m">Jun</div><div class="temps"><span class="tmax">22°</span><br><span class="tmin">12°</span></div><div class="suntime"><span class="sr">5:25</span><br><span class="ss">21:55</span></div><div class="rdays">11d rain</div></div>
+                        <div class="rain-bar"><span class="emoji">☀️</span><div class="bar" style="height:74px"><div class="dcount">85mm</div></div><div class="m">Jul</div><div class="temps"><span class="tmax">24°</span><br><span class="tmin">14°</span></div><div class="suntime"><span class="sr">5:40</span><br><span class="ss">21:40</span></div><div class="rdays">12d rain</div></div>
+                        <div class="rain-bar"><span class="emoji">🌤️</span><div class="bar" style="height:75px"><div class="dcount">86mm</div></div><div class="m">Aug</div><div class="temps"><span class="tmax">24°</span><br><span class="tmin">14°</span></div><div class="suntime"><span class="sr">6:30</span><br><span class="ss">20:45</span></div><div class="rdays">12d rain</div></div>
+                        <div class="rain-bar"><span class="emoji">🌤️</span><div class="bar" style="height:68px"><div class="dcount">78mm</div></div><div class="m">Sep</div><div class="temps"><span class="tmax">20°</span><br><span class="tmin">11°</span></div><div class="suntime"><span class="sr">7:27</span><br><span class="ss">19:30</span></div><div class="rdays">11d rain</div></div>
+                        <div class="rain-bar"><span class="emoji">🍂</span><div class="bar" style="height:79px"><div class="dcount">91mm</div></div><div class="m">Oct</div><div class="temps"><span class="tmax">15°</span><br><span class="tmin">8°</span></div><div class="suntime"><span class="sr">7:25</span><br><span class="ss">18:20</span></div><div class="rdays">13d rain</div></div>
+                        <div class="rain-bar"><span class="emoji">🌧️</span><div class="bar" style="height:81px"><div class="dcount">93mm</div></div><div class="m">Nov</div><div class="temps"><span class="tmax">10°</span><br><span class="tmin">5°</span></div><div class="suntime"><span class="sr">7:25</span><br><span class="ss">17:05</span></div><div class="rdays">14d rain</div></div>
+                        <div class="rain-bar"><span class="emoji">❄️</span><div class="bar" style="height:68px"><div class="dcount">78mm</div></div><div class="m">Dec</div><div class="temps"><span class="tmax">7°</span><br><span class="tmin">2°</span></div><div class="suntime"><span class="sr">8:46</span><br><span class="ss">16:30</span></div><div class="rdays">13d rain</div></div>
                     </div>
                 </div>
                 <p class="body-text" style="margin-top:22px">
@@ -754,61 +763,288 @@
 
                 <div class="foodstrip">
                     <div class="dish">
-                        <div style="width:100%;height:110px;background:#e0c890;display:flex;align-items:center;justify-content:center;font-size:44px;opacity:0.85">🍲</div>
+                        <div
+                            style="
+                                width: 100%;
+                                height: 110px;
+                                background: #e0c890;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 44px;
+                                opacity: 0.85;
+                            "
+                        >
+                            🍲
+                        </div>
                         <div class="dtext">
-                            <div class="name">Waterzooi</div>
-                            <div class="note" style="font-style:italic;margin-bottom:6px">Ghentian cream stew</div>
-                            <div class="note">Ghent's signature dish — chicken (originally fish) with root vegetables in a cream and egg broth. Neither soup nor stew. Best versions are in Patershol; every local restaurant has one.</div>
+                            <div class="name">
+                                <a
+                                    href="https://www.tasteatlas.com/waterzooi"
+                                    target="_blank"
+                                    style="
+                                        color: var(--ink);
+                                        text-decoration: none;
+                                        border-bottom: 1px solid var(--line);
+                                    "
+                                    >Waterzooi</a
+                                >
+                            </div>
+                            <div
+                                class="note"
+                                style="font-style: italic; margin-bottom: 6px"
+                            >
+                                Ghentian cream stew
+                            </div>
+                            <div class="note">
+                                Ghent's signature dish — chicken (originally fish) with root vegetables in a cream and egg broth. Neither soup nor stew. Best versions are in Patershol; every local restaurant has one.
+                            </div>
                         </div>
                     </div>
                     <div class="dish">
-                        <div style="width:100%;height:110px;background:#7840a0;display:flex;align-items:center;justify-content:center;font-size:44px;opacity:0.85">🍬</div>
+                        <div
+                            style="
+                                width: 100%;
+                                height: 110px;
+                                background: #7840a0;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 44px;
+                                opacity: 0.85;
+                            "
+                        >
+                            🍬
+                        </div>
                         <div class="dtext">
-                            <div class="name">Cuberdons</div>
-                            <div class="note" style="font-style:italic;margin-bottom:6px">Raspberry cone sweets</div>
-                            <div class="note">Purple cone-shaped confection filled with raspberry syrup — Ghent's most emblematic sweet. Sold from traditional carts at Vrijdagmarkt. Crunchy shell, liquid centre.</div>
+                            <div class="name">
+                                <a
+                                    href="https://www.tasteatlas.com/cuberdon"
+                                    target="_blank"
+                                    style="
+                                        color: var(--ink);
+                                        text-decoration: none;
+                                        border-bottom: 1px solid var(--line);
+                                    "
+                                    >Cuberdons</a
+                                >
+                            </div>
+                            <div
+                                class="note"
+                                style="font-style: italic; margin-bottom: 6px"
+                            >
+                                Raspberry cone sweets
+                            </div>
+                            <div class="note">
+                                Purple cone-shaped confection filled with raspberry syrup — Ghent's most emblematic sweet. Sold from traditional carts at Vrijdagmarkt. Crunchy shell, liquid centre.
+                            </div>
                         </div>
                     </div>
                     <div class="dish">
-                        <div style="width:100%;height:110px;background:#c8d0d8;display:flex;align-items:center;justify-content:center;font-size:44px;opacity:0.85">🦪</div>
+                        <div
+                            style="
+                                width: 100%;
+                                height: 110px;
+                                background: #c8d0d8;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 44px;
+                                opacity: 0.85;
+                            "
+                        >
+                            🦪
+                        </div>
                         <div class="dtext">
-                            <div class="name">Moules-Frites</div>
-                            <div class="note" style="font-style:italic;margin-bottom:6px">Mussels and fries</div>
-                            <div class="note">Belgian mussels (September–April) steamed in white wine, shallots, and parsley, with hand-cut fries and Belgian mayo. Simple, perfect. Order a kilo per person.</div>
+                            <div class="name">
+                                <a
+                                    href="https://www.tasteatlas.com/moules-frites"
+                                    target="_blank"
+                                    style="
+                                        color: var(--ink);
+                                        text-decoration: none;
+                                        border-bottom: 1px solid var(--line);
+                                    "
+                                    >Moules-Frites</a
+                                >
+                            </div>
+                            <div
+                                class="note"
+                                style="font-style: italic; margin-bottom: 6px"
+                            >
+                                Mussels and fries
+                            </div>
+                            <div class="note">
+                                Belgian mussels (September–April) steamed in white wine, shallots, and parsley, with hand-cut fries and Belgian mayo. Simple, perfect. Order a kilo per person.
+                            </div>
                         </div>
                     </div>
                     <div class="dish">
-                        <div style="width:100%;height:110px;background:#e8d0a0;display:flex;align-items:center;justify-content:center;font-size:44px;opacity:0.85">🧇</div>
+                        <div
+                            style="
+                                width: 100%;
+                                height: 110px;
+                                background: #e8d0a0;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 44px;
+                                opacity: 0.85;
+                            "
+                        >
+                            🧇
+                        </div>
                         <div class="dtext">
-                            <div class="name">Gaufre de Bruxelles</div>
-                            <div class="note" style="font-style:italic;margin-bottom:6px">Belgian waffle</div>
-                            <div class="note">Rectangular, light, crispy, with deep pockets. Eaten plain with powdered sugar from street vendors. Never the tourist-trap topped versions — those are not Belgian.</div>
+                            <div class="name">
+                                <a
+                                    href="https://www.tasteatlas.com/brussels-waffle"
+                                    target="_blank"
+                                    style="
+                                        color: var(--ink);
+                                        text-decoration: none;
+                                        border-bottom: 1px solid var(--line);
+                                    "
+                                    >Gaufre de Bruxelles</a
+                                >
+                            </div>
+                            <div
+                                class="note"
+                                style="font-style: italic; margin-bottom: 6px"
+                            >
+                                Belgian waffle
+                            </div>
+                            <div class="note">
+                                Rectangular, light, crispy, with deep pockets. Eaten plain with powdered sugar from street vendors. Never the tourist-trap topped versions — those are not Belgian.
+                            </div>
                         </div>
                     </div>
                     <div class="dish">
-                        <div style="width:100%;height:110px;background:#a06840;display:flex;align-items:center;justify-content:center;font-size:44px;opacity:0.85">🍺</div>
+                        <div
+                            style="
+                                width: 100%;
+                                height: 110px;
+                                background: #a06840;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 44px;
+                                opacity: 0.85;
+                            "
+                        >
+                            🍺
+                        </div>
                         <div class="dtext">
-                            <div class="name">Trappist Beer</div>
-                            <div class="note" style="font-style:italic;margin-bottom:6px">Belgian monastic ale</div>
-                            <div class="note">Westvleteren, Rochefort, Orval. Ghent's specialist bars stock hundreds of Belgian labels. Choice of correct glassware is non-negotiable and taken very seriously.</div>
+                            <div class="name">
+                                <a
+                                    href="https://www.tasteatlas.com/belgian-ale"
+                                    target="_blank"
+                                    style="
+                                        color: var(--ink);
+                                        text-decoration: none;
+                                        border-bottom: 1px solid var(--line);
+                                    "
+                                    >Trappist Beer</a
+                                >
+                            </div>
+                            <div
+                                class="note"
+                                style="font-style: italic; margin-bottom: 6px"
+                            >
+                                Belgian monastic ale
+                            </div>
+                            <div class="note">
+                                Westvleteren, Rochefort, Orval. Ghent's specialist bars stock hundreds of Belgian labels. Choice of correct glassware is non-negotiable and taken very seriously.
+                            </div>
                         </div>
                     </div>
                     <div class="dish">
-                        <div style="width:100%;height:110px;background:#a06848;display:flex;align-items:center;justify-content:center;font-size:44px;opacity:0.85">🥘</div>
+                        <div
+                            style="
+                                width: 100%;
+                                height: 110px;
+                                background: #a06848;
+                                display: flex;
+                                align-items: center;
+                                justify-content: center;
+                                font-size: 44px;
+                                opacity: 0.85;
+                            "
+                        >
+                            🥘
+                        </div>
                         <div class="dtext">
-                            <div class="name">Hutsepot</div>
-                            <div class="note" style="font-style:italic;margin-bottom:6px">Belgian winter stew</div>
-                            <div class="note">Beef, pork, mutton, and root vegetables slow-cooked together. A working-class dish elevated by quality ingredients; found as a Thursday special in traditional restaurants.</div>
+                            <div class="name">
+                                <a
+                                    href="https://www.tasteatlas.com/hutspot"
+                                    target="_blank"
+                                    style="
+                                        color: var(--ink);
+                                        text-decoration: none;
+                                        border-bottom: 1px solid var(--line);
+                                    "
+                                    >Hutsepot</a
+                                >
+                            </div>
+                            <div
+                                class="note"
+                                style="font-style: italic; margin-bottom: 6px"
+                            >
+                                Belgian winter stew
+                            </div>
+                            <div class="note">
+                                Beef, pork, mutton, and root vegetables slow-cooked together. A working-class dish elevated by quality ingredients; found as a Thursday special in traditional restaurants.
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div style="margin-top:28px">
-                    <div style="font-family:'JetBrains Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:0.09em;color:var(--ink-soft);margin-bottom:14px;display:flex;align-items:center;gap:12px">Key Rituals<span style="flex:1;height:1px;background:var(--line);display:block"></span></div>
-                    <div class="sub"><b>Thursday Veggie Day</b><span> — city-wide plant-based meal initiative since 2009. Many restaurants offer dedicated Thursday menus; the policy has genuinely elevated Ghent's vegetable cooking to serious culinary level.</span></div>
-                    <div class="sub"><b>Cuberdons at Vrijdagmarkt</b><span> — the competing cone-sweet carts on the Friday market are a Ghentian institution. The rivalry between vendors is theatrical, long-standing, and taken entirely seriously.</span></div>
-                    <div class="sub"><b>Beer tour Patershol</b><span> — a circuit of medieval taverns sampling Belgian Trappist and abbey ales is the definitive Ghentian evening. Correct glassware for each beer is a matter of local pride, not performance.</span></div>
-                    <div class="sub"><b>Graslei aperitif</b><span> — terrace bars along the Graslei quayside, May–September. Arriving before 18:00 secures a waterfront seat; arriving after 19:00 means standing.</span></div>
+                <div style="margin-top: 28px">
+                    <div
+                        style="
+                            font-family: 'JetBrains Mono', monospace;
+                            font-size: 9.5px;
+                            text-transform: uppercase;
+                            letter-spacing: 0.09em;
+                            color: var(--ink-soft);
+                            margin-bottom: 14px;
+                            display: flex;
+                            align-items: center;
+                            gap: 12px;
+                        "
+                    >
+                        Key Rituals<span
+                            style="
+                                flex: 1;
+                                height: 1px;
+                                background: var(--line);
+                                display: block;
+                            "
+                        ></span>
+                    </div>
+                    <div class="sub">
+                        <b>Thursday Veggie Day</b
+                        ><span>
+                            — city-wide plant-based meal initiative since 2009. Many restaurants offer dedicated Thursday menus; the policy has genuinely elevated Ghent's vegetable cooking to serious culinary level.</span
+                        >
+                    </div>
+                    <div class="sub">
+                        <b>Cuberdons at Vrijdagmarkt</b
+                        ><span>
+                            — the competing cone-sweet carts on the Friday market are a Ghentian institution. The rivalry between vendors is theatrical, long-standing, and taken entirely seriously.</span
+                        >
+                    </div>
+                    <div class="sub">
+                        <b>Beer tour Patershol</b
+                        ><span>
+                            — a circuit of medieval taverns sampling Belgian Trappist and abbey ales is the definitive Ghentian evening. Correct glassware for each beer is a matter of local pride, not performance.</span
+                        >
+                    </div>
+                    <div class="sub">
+                        <b>Graslei aperitif</b
+                        ><span>
+                            — terrace bars along the Graslei quayside, May–September. Arriving before 18:00 secures a waterfront seat; arriving after 19:00 means standing.</span
+                        >
+                    </div>
                 </div>
             </div>
         </section>
